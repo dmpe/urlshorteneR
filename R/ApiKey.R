@@ -11,9 +11,10 @@ rbitly.api.auth_token <- NA
 rbitlyApi <- function(auth_token) {
   if (!missing(auth_token)) {
     assignInMyNamespace('rbitly.api.auth_token', auth_token)
-    # rbitly.api.auth_token <- auth_token
   }
+  invisible(rbitly.api.auth_token)
 }
+
 
 #' This method is for the case if user doesn't know what is his "Generic Access Token". When inserting username and password it will
 #' return the key and assign it using \code{auth_token} method in the namespace
@@ -36,7 +37,7 @@ returnApiKey <- function(username, password) {
   req <- POST(access_token.url, autenticate, encode = "multipart")
   
   valueOfApiKey <- content(req)
-  rbitlyApi(valueOfApiKey)
+  return(valueOfApiKey)
 }
 
 
