@@ -13,9 +13,9 @@ Depends:
 Imports:
   testthat,
   xml2,
-  httr (>= 0.6.1),
+  httr (>= 0.6.0),
   RCurl,
-  jsonlite (>= 0.9.16), 
+  jsonlite (>= 0.9.15), 
   roxygen2
 License: MIT
 URL: https://github.com/dmpe

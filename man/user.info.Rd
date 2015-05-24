@@ -7,6 +7,6 @@
 user.info()
 }
 \description{
-Return or update information about a user.
+See http://dev.bitly.com/user_info.html#v3_user_info
 }
 

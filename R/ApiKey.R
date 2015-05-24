@@ -40,6 +40,21 @@ returnApiKey <- function(username, password) {
   return(valueOfApiKey)
 }
 
+#' Generalized function for executing GET Requests
+#' 
+#' @param url which is used for the request
+#' @param authcode calls the rbitlyApi \code{auth_token}
+#' @import httr
+#' @import jsonlite
+doRequest <- function(url, authcode = rbitlyApi()) {
+  createdUrl <- paste(url, authcode, sep = "?access_token=")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  returnGetRequest <- GET(createdUrl)
+  text_response <- content(returnGetRequest, as = "text")
+  json_response <- fromJSON(text_response)
+}
+
 
 
 
