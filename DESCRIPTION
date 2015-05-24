@@ -1,21 +1,21 @@
-Package: RBitly
+Package: rbitly
 Type: Package
-Title: RBit.ly
-Version: 0.1
-Date: 2015-02-27
-Authors@R: as.person(c(
-    "John Malc <cincenko@outlook.com> [cre, aut, cph]"
-    ))
+Title: rbitly
+Version: 0.2
+Date: 2015-05-27
+Authors@R: c(
+    person("John", "Malc", , "cincenko@outlook.com", role = c("aut", "cre"))
+    )
 Maintainer: Who to complain to <cincenko@outlook.com>
 Description: More about what it does (maybe more than one line)
-LazyData: TRUE
 Depends:
-  R (>= 3.0.0)
-Suggests:
+  R (>= 3.2.0)
+Imports:
   testthat,
-  XML,
-  httr,
+  xml2,
+  httr (>= 0.6.1),
   RCurl,
-  jsonlite
+  jsonlite (>= 0.9.16), 
+  roxygen2
 License: MIT
 URL: https://github.com/dmpe

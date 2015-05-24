@@ -1,2 +1,2 @@
 library(testthat)
-test_check("RBitly")
+test_check("rbitly")
