@@ -12,11 +12,17 @@ R package for Bitly.com
     + /v3/link/clicks
     + /v3/link/countries
     
-
+- <http://dev.bitly.com/user_metrics.html>
+    + 
+    
+- <http://dev.bitly.com/organization_metrics.html>
+    +
+    
 ### What is **not** implemented
 
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
+    
 - At the moment no OAuth support -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth)
 
 ### Thanks to:
