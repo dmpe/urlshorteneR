@@ -11,6 +11,7 @@ R package for Bitly.com
 - <http://dev.bitly.com/link_metrics.html>
     + /v3/link/clicks
     + /v3/link/countries
+    
 
 ### What is **not** implemented
 

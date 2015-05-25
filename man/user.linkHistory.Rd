@@ -6,6 +6,9 @@
 \usage{
 user.linkHistory(limit = 100)
 }
+\arguments{
+\item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.}
+}
 \description{
 See http://dev.bitly.com/user_info.html#v3_user_link_history
 }
