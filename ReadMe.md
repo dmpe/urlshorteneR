@@ -17,17 +17,30 @@ R package for Bitly.com
     
 - <http://dev.bitly.com/organization_metrics.html>
     +
-    
+
+ 
 ### What is **not** implemented
 
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
     
+    
 - At the moment no OAuth support -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth)
 
-### Thanks to:
 
- - Somewhat (well, quite a lot) inspired by [Quandl Api R](https://github.com/quandl/R-package/)
+### How to Contribute
+
+- Fork the repository
+- Create and switch to a new branch `git checkout -b [name_of_your_new_branch]`
+- Do the changes (i.e. edit files)
+- Push remote branch to your github `git remote add [name_of_your_remote]` & `git push origin [name_of_your_remote]`
+- Create a new pull request (to my `master` branch)
+
+
+### Special Thanks to:
+
+- Myself :yum:
+- Somewhat (well, quite a lot) inspired by [Quandl Api R](https://github.com/quandl/R-package/)
 
 
 
