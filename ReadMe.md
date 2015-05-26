@@ -39,10 +39,11 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 - Push remote branch to your github `git remote add [name_of_your_remote]` & `git push origin [name_of_your_remote]`
 - Create a new pull request (to my `master` branch)
 
+Want a direct push access? No problem, just let me know.
 
 ### Special Thanks to:
 
-- Myself (@dmpe) :yum:
+- Myself ([@dmpe](https://www.github.com/dmpe)) :yum:
 - Somewhat (well, quite a lot) inspired by [Quandl Api R](https://github.com/quandl/R-package/)
 
 
