@@ -22,7 +22,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
     +
 
  
-### What is **not** implemented
+### What is **not** implemented (maybe #todo)
 
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
@@ -42,7 +42,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 ### Special Thanks to:
 
-- Myself :yum:
+- Myself (@dmpe) :yum:
 - Somewhat (well, quite a lot) inspired by [Quandl Api R](https://github.com/quandl/R-package/)
 
 
