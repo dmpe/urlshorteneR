@@ -5,7 +5,9 @@
 #' @export
 user.info <- function() {
   user.info.url <- "https://api-ssl.bitly.com/v3/user/info"
-  doRequest(user.info.url)
+  createdUrl <- paste(user.info.url, "?format=json", sep = "")
+  
+  doRequest(createdUrl)
 }
 
 #' Returns entries from a user's link history in reverse chronological order.

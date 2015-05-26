@@ -1,6 +1,6 @@
 R package for Bitly.com 
 ============
-
+Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 ### What is implemented:
 
@@ -11,6 +11,8 @@ R package for Bitly.com
 - <http://dev.bitly.com/link_metrics.html>
     + /v3/link/clicks
     + /v3/link/countries
+    + /v3/link/encoders_count
+    + /v3/link/referring_domains
     
 - <http://dev.bitly.com/user_metrics.html>
     + 

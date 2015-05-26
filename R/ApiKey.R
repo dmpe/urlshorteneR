@@ -2,6 +2,7 @@ rbitly.api.auth_token <- NA
 rbitly.api.version <- "v3"
 
 #' Assign rbitly token automatically if I know it
+#' 
 #' @param auth_token Optionally passed parameter to set Bit.ly Generic Access Token \code{auth_token}.
 #' @return Returns invisibly the currently set \code{auth_token}.
 #' @examples {
@@ -48,11 +49,16 @@ returnApiKey <- function(username, password) {
 #' @import httr
 #' @import jsonlite
 doRequest <- function(url, authcode = rbitlyApi()) {
-  createdUrl <- paste(url, authcode, sep = "&access_token=")
   
-  returnGetRequest <- GET(createdUrl)
-  text_response <- content(returnGetRequest, as = "text")
-  json_response <- fromJSON(text_response)
+  if (is.na(authcode)) {
+    stop("Please assign your Api Key ('Generic Access Token') ")
+  } else {
+    createdUrl <- paste(url, authcode, sep = "&access_token=")
+    
+    returnGetRequest <- GET(createdUrl)
+    text_response <- content(returnGetRequest, as = "text")
+    json_response <- fromJSON(text_response)
+  }
 }
 
 

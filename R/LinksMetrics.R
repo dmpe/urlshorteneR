@@ -74,7 +74,69 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 }
 
 
+#' Returns the number of users who have shortened (encoded) a single Bitlink.
+#' 
+#' See http://dev.bitly.com/link_metrics.html#v3_link_encoders_count
+#' 
+#' @param link - a Bitlink.
+#' @return aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
+#' @return count - the number of bitly users who have shortened (encoded) this link.
+#' @examples
+#' link.metrics.encoders_count(link = "http://bit.ly/DPetrov")
+#' 
+#' @import RCurl
+#' @export
+link.metrics.encoders_count <- function(link) {
+  link.metrics.encoders_count.url <- "https://api-ssl.bitly.com/v3/link/encoders_count"
+  
+  createdUrl <- paste(link.metrics.encoders_count.url, "?link=", curlEscape(link), sep = "")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  # call method from ApiKey.R
+  df.link.metrics.encoders_count <- doRequest(createdUrl)
+  
+  df.link.metrics.encoders_count.data <- df.link.metrics.encoders_count$data
+  
+  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
+  df.link.metrics.encoders_count.data <- data.frame(t(sapply(df.link.metrics.encoders_count.data,c)))
+  return(df.link.metrics.encoders_count.data)
+}
 
+#' Returns metrics about the domains referring click traffic to a single Bitlink.
+#' 
+#' See http://dev.bitly.com/link_metrics.html#v3_link_referring_domains
+#' 
+#' @param link - a Bitlink.
+#' @param limit - 1 to 1000 (default=1000).
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
+#' value for each period of time.
+#' @return clicks - the number of clicks referred from this domain.
+#' @return domain - the domain referring clicks.
+#' @return url - the complete URL of the domain referring clicks.
+
+#' @examples
+#' link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' 
+#' @import RCurl
+#' @export
+link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+  unit.matched <- match.arg(unit)
+  
+  link.metrics.referring_domains.url <- "https://api-ssl.bitly.com/v3/link/referring_domains"
+  
+  createdUrl <- paste(link.metrics.referring_domains.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  # call method from ApiKey.R
+  df.link.metrics.referring_domains <- doRequest(createdUrl)
+  
+  df.link.metrics.referring_domains.data <- df.link.metrics.referring_domains$data$referring_domains
+  
+  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
+  df.link.metrics.referring_domains.data <- data.frame(t(sapply(df.link.metrics.referring_domains.data,c)))
+  return(df.link.metrics.referring_domains.data)
+}
 
 
 
