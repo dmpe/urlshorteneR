@@ -1,4 +1,4 @@
-R package for Bitly.com 
+R package for Bit.ly & Bitly.com & j.mp and other custom domains
 ============
 Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
@@ -15,7 +15,8 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
     + /v3/link/referring_domains
     
 - <http://dev.bitly.com/user_metrics.html>
-    + 
+    + /v3/user/clicks
+    + /v3/user/countries
     
 - <http://dev.bitly.com/organization_metrics.html>
     +
