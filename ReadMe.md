@@ -38,6 +38,14 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 - Additionally, only a **small subset of input paramaters** has been implemented. 
 
+### Installation
+
+Use devtools to install the development version from Github:
+
+```
+devtools::install_github('dmpe/rbitly', build_vignettes = FALSE)
+```
+
 ### How to Contribute
 
 - Fork the repository
