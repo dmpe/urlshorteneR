@@ -18,6 +18,7 @@ test_that("Returns entries from a user's link history in reverse chronological o
   expect_named(ulh, c("keyword_link","archived", "user_ts" ,"title", "created_at", "tags", "modified_at", 
                       "private", "aggregate_link", "long_url", "client_id", "link", "note"))
 })
+
 test_that("Returns entries from a user's link history in reverse chronological order.", {
   user.tdl <- user.tracking_domain_list()
 })

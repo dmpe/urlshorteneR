@@ -39,7 +39,8 @@ user.info <- function() {
   df.user.info.data <- doRequest(createdUrl)
   
   df.user.info.data <- data.frame(t(sapply(df.user.info.data$data,c)))
-  df.user.info.data$member_since <- as.POSIXct(df.user.info.data$member_since, origin = "1970-01-01", tz = "UTC")
+  #   print(class(unlist(df.user.info.data$member_since)))
+  df.user.info.data$member_since <- as.POSIXct(unlist(df.user.info.data$member_since), origin = "1970-01-01", tz = "UTC")
   
   return(df.user.info.data)
 }
