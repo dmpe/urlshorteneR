@@ -9,7 +9,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
     + /v3/user/link_history
     + /v3/oauth/app (**NOT**, see below)
     + /v3/user/network_history (**NOT**)
-    + /v3/user/tracking_domain_list (**NOT**)
+    + /v3/user/tracking_domain_list
     
 - <http://dev.bitly.com/link_metrics.html>
     + /v3/link/clicks

@@ -31,4 +31,21 @@ user.linkHistory <- function(limit = 100){
   return(df.all.history)
 }
 
+#' Returns a list of tracking domains a user has configured.
+#' 
+#' See http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list
+#' 
+#' @return tracking_domains - a list of tracking domains configured for the authenticated user.
+#' 
+#' @export
+user.tracking_domain_list <- function() {
+  user.tracking_domain_list.url <- "https://api-ssl.bitly.com/v3/user/tracking_domain_list"
+  
+  createdUrl <- paste(user.tracking_domain_list.url, "?format=json", sep = "")
+  
+  df.tracking_domain_list <- doRequest(createdUrl)
+  df.tracking_domain_list <- data.frame(t(sapply(df.tracking_domain_list$data$tracking_domains,c)))
 
+  return(df.tracking_domain_list)
+  
+}
