@@ -15,9 +15,12 @@ aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 count - the number of bitly users who have shortened (encoded) this link.
 }
 \description{
-See http://dev.bitly.com/link_metrics.html#v3_link_encoders_count
+Returns the number of users who have shortened (encoded) a single Bitlink.
 }
 \examples{
 link.metrics.encoders_count(link = "http://bit.ly/DPetrov")
+}
+\seealso{
+\url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}
 }
 

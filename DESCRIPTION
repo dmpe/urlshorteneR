@@ -1,21 +1,21 @@
 Package: rbitly
 Type: Package
-Title: rbitly
-Version: 0.2
+Title: R Package for accessing Bit.ly API.
+Description: Bit.ly & j.mp are URL shortening services which the user can use to make his URL shorter (e.g. Twitter etc.). This R package allow users to access service's API and retreive many useful statistics.
+Version: 0.3
 Date: 2015-05-27
 Authors@R: c(
     person("John", "Malc", , "cincenko@outlook.com", role = c("aut", "cre"))
     )
 Maintainer: Who to complain to <cincenko@outlook.com>
-Description: More about what it does (maybe more than one line)
 Depends:
   R (>= 3.2.0)
 Imports:
   testthat,
-  xml2,
   httr (>= 0.6.0),
   RCurl (>= 1.95-4.6),
   jsonlite (>= 0.9.15), 
   roxygen2
+VignetteBuilder: knitr
 License: MIT
-URL: https://github.com/dmpe
+URL: https://github.com/dmpe/rbitly

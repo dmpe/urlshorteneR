@@ -21,9 +21,12 @@ value for each period of time.}
 \item{rollup}{- true (default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
 }
 \description{
-See http://dev.bitly.com/link_metrics.html#v3_link_clicks
+Returns the number of clicks on a single Bitlink of the authenticated user.
 }
 \examples{
 link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+}
+\seealso{
+\url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 }
 

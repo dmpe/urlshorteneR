@@ -1,6 +1,6 @@
 #' Returns the number of clicks on a single Bitlink of the authenticated user.
 #' 
-#' See http://dev.bitly.com/link_metrics.html#v3_link_clicks
+#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
@@ -39,7 +39,7 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 
 #' Returns metrics about the countries referring click traffic to a single Bitlink.
 #' 
-#' See http://dev.bitly.com/link_metrics.html#v3_link_countries
+#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
@@ -47,6 +47,7 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
+#' 
 #' @examples
 #' link.metrics.countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
@@ -77,11 +78,13 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 
 #' Returns the number of users who have shortened (encoded) a single Bitlink.
 #' 
-#' See http://dev.bitly.com/link_metrics.html#v3_link_encoders_count
+#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}
 #' 
 #' @param link - a Bitlink.
+#' 
 #' @return aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 #' @return count - the number of bitly users who have shortened (encoded) this link.
+#' 
 #' @examples
 #' link.metrics.encoders_count(link = "http://bit.ly/DPetrov")
 #' 
@@ -105,13 +108,14 @@ link.metrics.encoders_count <- function(link) {
 
 #' Returns metrics about the domains referring click traffic to a single Bitlink.
 #' 
-#' See http://dev.bitly.com/link_metrics.html#v3_link_referring_domains
+#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referring_domains}
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
+#' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return domain - the domain referring clicks.
 #' @return url - the complete URL of the domain referring clicks.

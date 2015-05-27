@@ -25,9 +25,12 @@ domain - the domain referring clicks.
 url - the complete URL of the domain referring clicks.
 }
 \description{
-See http://dev.bitly.com/link_metrics.html#v3_link_referring_domains
+Returns metrics about the domains referring click traffic to a single Bitlink.
 }
 \examples{
 link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+}
+\seealso{
+\url{http://dev.bitly.com/link_metrics.html#v3_link_referring_domains}
 }
 

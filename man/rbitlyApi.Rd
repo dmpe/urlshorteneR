@@ -16,8 +16,6 @@ Returns invisibly the currently set rbitlyApi.
 Assign rbitly token automatically if I know it
 }
 \examples{
-{
 rbitlyApi('foobar')
-}
 }
 

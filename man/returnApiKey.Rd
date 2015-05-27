@@ -17,9 +17,7 @@ This method is for the case if the user doesn't know what is his/her "Generic Ac
 return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
 }
 \examples{
-{
 returnApiKey("YourUsername", "YourPassword")
-}
 }
 \seealso{
 See \url{http://dev.bitly.com/rate_limiting.html}
