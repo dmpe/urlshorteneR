@@ -15,7 +15,7 @@ value for each period of time.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all units of time.}
 
-\item{true}{or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
+\item{rollup}{- true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
 }
 \value{
 dt: a unix timestamp representing the beginning of this unit.

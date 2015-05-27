@@ -52,6 +52,7 @@ returnApiKey <- function(username, password) {
 #' 
 #' @import httr
 #' @import jsonlite
+#' @import stringr
 doRequest <- function(url, authcode = rbitlyApi()) {
   
   if (is.na(authcode)) {

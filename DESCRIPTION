@@ -7,18 +7,19 @@ Date: 2015-05-27
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"))
     )
-Maintainer: Yihui Xie <cincenko@outlook.com>
+Maintainer: John Malc <cincenko@outlook.com>
 Depends:
   R (>= 3.2.0)
 Imports:
   httr (>= 0.6.0),
   RCurl (>= 1.95-4.6),
   jsonlite (>= 0.9.15), 
+  stringr
 Suggests:
   roxygen2, 
   knitr,
   testthat
 VignetteBuilder: knitr
-License: MIT
+License: MIT + file LICENSE
 URL: https://github.com/dmpe/rbitly
 BugReports: https://github.com/dmpe/rbitly/issues
