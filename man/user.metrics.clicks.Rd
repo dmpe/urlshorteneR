@@ -2,8 +2,7 @@
 % Please edit documentation in R/UserMetrics.R
 \name{user.metrics.clicks}
 \alias{user.metrics.clicks}
-\title{Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
-See http://dev.bitly.com/user_metrics.html#v3_user_clicks}
+\title{Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.}
 \usage{
 user.metrics.clicks(limit = 1000, unit = c("minute", "hour", "day", "week",
   "month"), units = -1)
@@ -18,12 +17,14 @@ value for each period of time.}
 }
 \description{
 Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
-See http://dev.bitly.com/user_metrics.html#v3_user_clicks
 }
 \note{
 without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7.
 }
 \examples{
 user.metrics.clicks(unit = "day", units = -1, limit = 100)
+}
+\seealso{
+See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
 }
 

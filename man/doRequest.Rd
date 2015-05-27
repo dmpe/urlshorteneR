@@ -9,7 +9,7 @@ doRequest(url, authcode = rbitlyApi())
 \arguments{
 \item{url}{which is used for the request}
 
-\item{authcode}{calls the rbitlyApi \code{auth_token}}
+\item{authcode}{calls the rbitlyApi \code{\link{rbitlyApi}}}
 }
 \description{
 Generalized function for executing GET Requests by appending user's Bit.ly API Key.

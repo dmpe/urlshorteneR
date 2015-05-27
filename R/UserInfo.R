@@ -1,6 +1,6 @@
 #' Return or update information about a user.
 #'
-#' See http://dev.bitly.com/user_info.html#v3_user_info
+#' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_info}
 #'
 #' @return login - the specified bitly login or the login of the authenticated user.
 #' @return profile_url - URL of user's profile page.
@@ -9,7 +9,7 @@
 #' @return full_name - (optional) the user's full name, if set.
 #' @return display_name - (optional) the user's display name, if set.
 #' @return share_accounts - (optional) a list of the share accounts (Twitter or Facebook) linked to the user's account.
-#'
+
 #' @note Only included in requests for a user's own info
 #'
 #' @return apiKey - the user's bitly API key.
@@ -34,8 +34,7 @@ user.info <- function() {
   user.info.url <- "https://api-ssl.bitly.com/v3/user/info"
   createdUrl <- paste(user.info.url, "?format=json", sep = "")
   
-  # dont use httr package, as it will fail into " Error in parse_string(txt, bigint_as_char) : lexical error: invalid char in json text."
-  # parsedjson <- fromJSON(createdUrl)
+  # dont use httr package, as it will fail into "Error in parse_string(txt, bigint_as_char) : lexical error: invalid char in json text."
   df.user.info.data <- doRequest(createdUrl)
   
   df.user.info.data <- data.frame(t(sapply(df.user.info.data$data,c)))
@@ -47,9 +46,28 @@ user.info <- function() {
 
 #' Returns entries from a user's link history in reverse chronological order.
 #' 
-#' See http://dev.bitly.com/user_info.html#v3_user_link_history
+#' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}
 #' 
 #' @param limit - optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.
+#' 
+#' @param expand_client_id - (optional) true or false (default) whether to provide additional information about encoding application. 
+#' @param archived - (optional) - on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)
+#' @param private - (optional) on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)
+#' 
+#' @return link - the Bitlink specific to this user and this long_url.
+#' @return aggregate_link - the global bitly identifier for this long_url.
+#' @return long_url - the original long URL.
+#' @return archived - a true/false value indicating whether the user has archived this link.
+#' @return private - a true/false value indicating whether the user has made this link private.
+#' @return created_at - an integer unix epoch indicating when this link was shortened/encoded.
+#' @return user_ts - a user-provided timestamp for when this link was shortened/encoded, used for backfilling data.
+#' @return modified_at - an integer unix epoch indicating when this link's metadata was last edited.
+#' @return title - the title for this link.
+#' @return note - the user-provided note, if set.
+#' @return shares - a list of share actions (for the authenticated user only)
+#' @return client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user. 
+#' If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
+#' 
 #' @export
 user.linkHistory <- function(limit = 100){
   user.linkHistory.url <- "https://api-ssl.bitly.com/v3/user/link_history"
@@ -68,7 +86,7 @@ user.linkHistory <- function(limit = 100){
 
 #' Returns a list of tracking domains a user has configured.
 #' 
-#' See http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list
+#' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}
 #' 
 #' @return tracking_domains - a list of tracking domains configured for the authenticated user.
 #' 

@@ -48,11 +48,14 @@ enterprise_permissions - (optional) list of enterprise permissions associated wi
 bbt_start_date - (optional) the date for when this account became a Bitly Brand Tools account.
 }
 \description{
-See http://dev.bitly.com/user_info.html#v3_user_info
+Return or update information about a user.
 }
 \note{
 Only included in requests for a user's own info
 
 Only included for enterprise accounts (is_enterprise == 1 or has_master == 1)
+}
+\seealso{
+See \url{http://dev.bitly.com/user_info.html#v3_user_info}
 }
 

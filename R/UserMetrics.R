@@ -1,6 +1,6 @@
-#'
 #' Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
-#' See http://dev.bitly.com/user_metrics.html#v3_user_clicks
+#' 
+#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
 #' 
 #' @param limit - 1 to 1000 (default=1000).
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
@@ -36,7 +36,7 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 
 #' Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.
 #' 
-#' See http://dev.bitly.com/user_metrics.html#v3_user_countries
+#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
 #'
 #' @param limit - 1 to 1000 (default=1000).
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.

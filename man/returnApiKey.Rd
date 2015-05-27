@@ -3,9 +3,9 @@
 \name{returnApiKey}
 \alias{returnApiKey}
 \title{This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
-return the key and assign it using \code{auth_token} method in the namespace.}
+return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.}
 \usage{
-http://dev.bitly.com/rate_limiting.html
+returnApiKey(username, password)
 }
 \arguments{
 \item{username}{}
@@ -14,11 +14,14 @@ http://dev.bitly.com/rate_limiting.html
 }
 \description{
 This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
-return the key and assign it using \code{auth_token} method in the namespace.
+return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
 }
 \examples{
 {
 returnApiKey("YourUsername", "YourPassword")
 }
+}
+\seealso{
+See \url{http://dev.bitly.com/rate_limiting.html}
 }
 

@@ -10,6 +10,9 @@ user.tracking_domain_list()
 tracking_domains - a list of tracking domains configured for the authenticated user.
 }
 \description{
-See http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list
+Returns a list of tracking domains a user has configured.
+}
+\seealso{
+See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}
 }
 

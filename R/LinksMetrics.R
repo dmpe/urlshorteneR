@@ -8,6 +8,7 @@
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
+#' 
 #' @examples
 #' link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 

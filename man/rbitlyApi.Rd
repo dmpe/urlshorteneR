@@ -7,10 +7,10 @@
 rbitlyApi(auth_token)
 }
 \arguments{
-\item{auth_token}{Optionally passed parameter to set Bit.ly Generic Access Token \code{auth_token}.}
+\item{auth_token}{Optionally passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.}
 }
 \value{
-Returns invisibly the currently set \code{auth_token}.
+Returns invisibly the currently set rbitlyApi.
 }
 \description{
 Assign rbitly token automatically if I know it

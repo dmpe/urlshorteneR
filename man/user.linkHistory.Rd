@@ -8,8 +8,43 @@ user.linkHistory(limit = 100)
 }
 \arguments{
 \item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.}
+
+\item{expand_client_id}{- (optional) true or false (default) whether to provide additional information about encoding application.}
+
+\item{archived}{- (optional) - on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)}
+
+\item{private}{- (optional) on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)}
+}
+\value{
+link - the Bitlink specific to this user and this long_url.
+
+aggregate_link - the global bitly identifier for this long_url.
+
+long_url - the original long URL.
+
+archived - a true/false value indicating whether the user has archived this link.
+
+private - a true/false value indicating whether the user has made this link private.
+
+created_at - an integer unix epoch indicating when this link was shortened/encoded.
+
+user_ts - a user-provided timestamp for when this link was shortened/encoded, used for backfilling data.
+
+modified_at - an integer unix epoch indicating when this link's metadata was last edited.
+
+title - the title for this link.
+
+note - the user-provided note, if set.
+
+shares - a list of share actions (for the authenticated user only)
+
+client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user.
+If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
 }
 \description{
-See http://dev.bitly.com/user_info.html#v3_user_link_history
+Returns entries from a user's link history in reverse chronological order.
+}
+\seealso{
+See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}
 }
 

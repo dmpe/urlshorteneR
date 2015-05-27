@@ -3,13 +3,13 @@ rbitly.api.version <- "v3"
 
 #' Assign rbitly token automatically if I know it
 #' 
-#' @param auth_token Optionally passed parameter to set Bit.ly Generic Access Token \code{auth_token}.
+#' @param auth_token Optionally passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.
 #' 
-#' @return Returns invisibly the currently set \code{auth_token}.
+#' @return Returns invisibly the currently set rbitlyApi.
 #' 
-#' @examples {
+#' @examples
 #' rbitlyApi('foobar')
-#' }
+#' 
 #' 
 #' @export 
 rbitlyApi <- function(auth_token) {
@@ -21,15 +21,16 @@ rbitlyApi <- function(auth_token) {
 
 
 #' This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
-#' return the key and assign it using \code{auth_token} method in the namespace.
+#' return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
 #' 
-#' @usage http://dev.bitly.com/rate_limiting.html
+#' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
 #' 
 #' @param username
 #' @param password
-#' @examples {
+#' 
+#' @examples 
 #' returnApiKey("YourUsername", "YourPassword")
-#' }
+#' 
 #' 
 #' @import httr
 #' @export
@@ -47,7 +48,7 @@ returnApiKey <- function(username, password) {
 #' Generalized function for executing GET Requests by appending user's Bit.ly API Key.
 #' 
 #' @param url which is used for the request
-#' @param authcode calls the rbitlyApi \code{auth_token}
+#' @param authcode calls the rbitlyApi \code{\link{rbitlyApi}}
 #' 
 #' @import httr
 #' @import jsonlite
@@ -58,7 +59,7 @@ doRequest <- function(url, authcode = rbitlyApi()) {
   } else {
     createdUrl <- paste(url, authcode, sep = "&access_token=")
     
-    # fail to parse contnt correctly
+    # fail to parse content correctly
     if(str_detect(url, "v3/user/info")) {
       
       json_response <- fromJSON(createdUrl)

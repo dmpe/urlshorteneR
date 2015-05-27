@@ -21,12 +21,15 @@ clicks - the number of clicks referred from this country.
 country - the two-letter code of the referring country.
 }
 \description{
-See http://dev.bitly.com/user_metrics.html#v3_user_countries
+Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.
 }
 \note{
 without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7. When a unit is specified, rollup is always true.
 }
 \examples{
 user.metrics.countries(unit = "day", units = -1, limit = 100)
+}
+\seealso{
+See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
 }
 
