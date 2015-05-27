@@ -2,16 +2,23 @@ R package for Bit.ly & Bitly.com & j.mp and other custom domains
 ============
 Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
-### What is implemented:
+### What is/not implemented:
 
 - <http://dev.bitly.com/user_info.html>
     + /v3/user/info
     + /v3/user/link_history
+    + /v3/oauth/app (**NOT**, see below)
+    + /v3/user/network_history (**NOT**)
+    + /v3/user/tracking_domain_list (**NOT**)
     
 - <http://dev.bitly.com/link_metrics.html>
     + /v3/link/clicks
     + /v3/link/countries
+    + /v3/link/encoders (**NOT**)
+    + /v3/link/encoders_by_count (**NOT**)
     + /v3/link/encoders_count
+    + /v3/link/referrers (**NOT**)
+    + /v3/link/referrers_by_domain (**NOT**)
     + /v3/link/referring_domains
     
 - <http://dev.bitly.com/user_metrics.html>
@@ -20,15 +27,11 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
     
 - <http://dev.bitly.com/organization_metrics.html>
     +
-
- 
-### What is **not** implemented (maybe #todo)
-
+    
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
     
-    
-- At the moment no OAuth support -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth)
+- At the moment **no OAuth support** -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth), which requires `Generic Access Token` from <https://bitly.com/a/oauth_apps>
 
 
 ### How to Contribute
