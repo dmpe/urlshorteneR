@@ -14,7 +14,6 @@
 #' @examples
 #' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
-#' user.metrics.clicks(units = -1, limit = 100, rollup = "false")
 #' 
 #' @note without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7.
 #' 
@@ -38,19 +37,11 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
     return(df.user.metrics.clicks.data)
     
   } else {
-    
     df.user.metrics.clicks.data$dt <- as.POSIXct(as.integer(df.user.metrics.clicks.data$dt), origin = "1970-01-01", tz = "UTC")
     
-    if(is.null(unit)) {
-      df.user.metrics.clicks.data$day_start <- as.POSIXct(as.integer(df.user.metrics.clicks.data$day_start), origin = "1970-01-01", tz = "UTC")
-    }
-    
-    df.user.metrics.clicks.data <- data.frame(sapply(df.user.metrics.clicks.data,c))
+    df.user.metrics.clicks.data <- data.frame(df.user.metrics.clicks.data)
     return(df.user.metrics.clicks.data)
   }
-#   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-#   df.user.metrics.clicks.data <- data.frame(sapply(df.user.metrics.clicks.data,c))
-#   return(df.user.metrics.clicks.data)
 }
 
 
@@ -67,14 +58,14 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' @return clicks - the number of clicks referred from this country.
 #' @return country - the two-letter code of the referring country.
 #' 
-#' @note without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7. When a unit is specified, rollup is always true.
+#' @note When a unit is specified (always the case), rollup is always true.
 #' 
 #' @examples
 #' user.metrics.countries(unit = "day", units = -1, limit = 100)
 #' 
 #' @import RCurl
 #' @export
-user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month", rollup = "true"), units = -1) {
   unit.matched <- match.arg(unit)
   
   user.metrics.countries.url <- "https://api-ssl.bitly.com/v3/user/countries"
@@ -87,7 +78,17 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
   
   df.user.metrics.countries.data <- df.user.metrics.countries$data$user_countries
   
-  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.user.metrics.countries.data <- data.frame(sapply(df.user.metrics.countries.data,c))
-  return(df.user.metrics.countries.data)
+  if(rollup == "true") {
+    
+    # no data frame
+    return(df.user.metrics.countries.data)
+    
+  } else {
+    
+    # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
+    df.user.metrics.countries.data <- data.frame(sapply(df.user.metrics.countries.data,c))
+    return(df.user.metrics.countries.data)
+  }
+  
+  
 }

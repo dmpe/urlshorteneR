@@ -31,7 +31,6 @@ without the parameter unit this endpoint returns a legacy response format which 
 \examples{
 user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
 user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
-user.metrics.clicks(units = -1, limit = 100, rollup = "false")
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}

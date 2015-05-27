@@ -5,7 +5,7 @@
 \title{Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.}
 \usage{
 user.metrics.countries(limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), units = -1)
+  "week", "month", rollup = "true"), units = -1)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -24,7 +24,7 @@ country - the two-letter code of the referring country.
 Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.
 }
 \note{
-without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7. When a unit is specified, rollup is always true.
+When a unit is specified (always the case), rollup is always true.
 }
 \examples{
 user.metrics.countries(unit = "day", units = -1, limit = 100)

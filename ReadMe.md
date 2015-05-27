@@ -23,7 +23,6 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/link/referrers_by_domain  | (**NOT**)
 /v3/link/referring_domains  | Yes
     
-    
 <http://dev.bitly.com/user_metrics.html> | Implemented Yes/No
 ------------- | -------------
 /v3/user/clicks  | Yes
