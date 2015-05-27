@@ -12,7 +12,9 @@
 #' @return clicks: the number of clicks on this user's links in the specified timeframe.
 #' 
 #' @examples
-#' user.metrics.clicks(unit = "day", units = -1, limit = 100)
+#' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
+#' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
+#' user.metrics.clicks(units = -1, limit = 100, rollup = "false")
 #' 
 #' @note without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7.
 #' 
@@ -23,22 +25,32 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
   
   user.metrics.clicks.url <- "https://api-ssl.bitly.com/v3/user/clicks"
   
-  createdUrl <- paste(user.metrics.clicks.url, "?limit=", limit, "&unit=",  unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
+  createdUrl <- paste(user.metrics.clicks.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
   df.user.metrics.clicks <- doRequest(createdUrl)
-  
   df.user.metrics.clicks.data <- df.user.metrics.clicks$data$user_clicks
-  df.user.metrics.clicks.data$dt <- as.POSIXct(unlist(df.user.metrics.clicks.data$dt), origin = "1970-01-01", tz = "UTC")
   
-  if(!is.na(unit)) {
-    df.user.metrics.clicks.data$day_start <- as.POSIXct(unlist(df.user.metrics.clicks.data$day_start), origin = "1970-01-01", tz = "UTC")
+  if(rollup == "true") {
+    
+    # no data frame
+    return(df.user.metrics.clicks.data)
+    
+  } else {
+    
+    df.user.metrics.clicks.data$dt <- as.POSIXct(as.integer(df.user.metrics.clicks.data$dt), origin = "1970-01-01", tz = "UTC")
+    
+    if(is.null(unit)) {
+      df.user.metrics.clicks.data$day_start <- as.POSIXct(as.integer(df.user.metrics.clicks.data$day_start), origin = "1970-01-01", tz = "UTC")
+    }
+    
+    df.user.metrics.clicks.data <- data.frame(sapply(df.user.metrics.clicks.data,c))
+    return(df.user.metrics.clicks.data)
   }
-  
-  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.user.metrics.clicks.data <- data.frame(sapply(df.user.metrics.clicks.data,c))
-  return(df.user.metrics.clicks.data)
+#   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
+#   df.user.metrics.clicks.data <- data.frame(sapply(df.user.metrics.clicks.data,c))
+#   return(df.user.metrics.clicks.data)
 }
 
 

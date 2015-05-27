@@ -29,7 +29,9 @@ Returns the aggregate number of clicks on all of the authenticated user's Bitlin
 without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7.
 }
 \examples{
-user.metrics.clicks(unit = "day", units = -1, limit = 100)
+user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
+user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
+user.metrics.clicks(units = -1, limit = 100, rollup = "false")
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
