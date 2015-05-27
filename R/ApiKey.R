@@ -4,7 +4,9 @@ rbitly.api.version <- "v3"
 #' Assign rbitly token automatically if I know it
 #' 
 #' @param auth_token Optionally passed parameter to set Bit.ly Generic Access Token \code{auth_token}.
+#' 
 #' @return Returns invisibly the currently set \code{auth_token}.
+#' 
 #' @examples {
 #' rbitlyApi('foobar')
 #' }
@@ -18,8 +20,8 @@ rbitlyApi <- function(auth_token) {
 }
 
 
-#' This method is for the case if user doesn't know what is his "Generic Access Token". When inserting username and password it will
-#' return the key and assign it using \code{auth_token} method in the namespace
+#' This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
+#' return the key and assign it using \code{auth_token} method in the namespace.
 #' 
 #' @usage http://dev.bitly.com/rate_limiting.html
 #' 
@@ -42,22 +44,33 @@ returnApiKey <- function(username, password) {
   return(valueOfApiKey)
 }
 
-#' Generalized function for executing GET Requests
+#' Generalized function for executing GET Requests by appending user's Bit.ly API Key.
 #' 
 #' @param url which is used for the request
 #' @param authcode calls the rbitlyApi \code{auth_token}
+#' 
 #' @import httr
 #' @import jsonlite
 doRequest <- function(url, authcode = rbitlyApi()) {
   
   if (is.na(authcode)) {
-    stop("Please assign your Api Key ('Generic Access Token') ")
+    stop("Please assign your API Key ('Generic Access Token') ")
   } else {
     createdUrl <- paste(url, authcode, sep = "&access_token=")
     
-    returnGetRequest <- GET(createdUrl)
-    text_response <- content(returnGetRequest, as = "text")
-    json_response <- fromJSON(text_response)
+    # fail to parse contnt correctly
+    if(str_detect(url, "v3/user/info")) {
+      
+      json_response <- fromJSON(createdUrl)
+      return(json_response)
+      
+    } else {
+
+      returnGetRequest <- GET(createdUrl)
+      text_response <- content(returnGetRequest, as = "text")
+      json_response <- fromJSON(text_response)
+      return(json_response)
+    }
   }
 }
 

@@ -28,7 +28,7 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
   df.user.metrics.clicks.data <- df.user.metrics.clicks$data$user_clicks
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.user.metrics.clicks.data <- data.frame(sapply(df.user.metrics.clicks.data,c))
+  df.user.metrics.clicks.data <- data.frame(t(sapply(df.user.metrics.clicks.data,c)))
   return(df.user.metrics.clicks.data)
 }
 

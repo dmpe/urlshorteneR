@@ -2,7 +2,7 @@
 % Please edit documentation in R/ApiKey.R
 \name{doRequest}
 \alias{doRequest}
-\title{Generalized function for executing GET Requests}
+\title{Generalized function for executing GET Requests by appending user's Bit.ly API Key.}
 \usage{
 doRequest(url, authcode = rbitlyApi())
 }
@@ -12,6 +12,6 @@ doRequest(url, authcode = rbitlyApi())
 \item{authcode}{calls the rbitlyApi \code{auth_token}}
 }
 \description{
-Generalized function for executing GET Requests
+Generalized function for executing GET Requests by appending user's Bit.ly API Key.
 }
 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/ApiKey.R
 \name{returnApiKey}
 \alias{returnApiKey}
-\title{This method is for the case if user doesn't know what is his "Generic Access Token". When inserting username and password it will
-return the key and assign it using \code{auth_token} method in the namespace}
+\title{This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
+return the key and assign it using \code{auth_token} method in the namespace.}
 \usage{
 http://dev.bitly.com/rate_limiting.html
 }
@@ -13,8 +13,8 @@ http://dev.bitly.com/rate_limiting.html
 \item{password}{}
 }
 \description{
-This method is for the case if user doesn't know what is his "Generic Access Token". When inserting username and password it will
-return the key and assign it using \code{auth_token} method in the namespace
+This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
+return the key and assign it using \code{auth_token} method in the namespace.
 }
 \examples{
 {

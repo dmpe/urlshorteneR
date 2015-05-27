@@ -5,9 +5,9 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 ### What is/not implemented:
 
 - <http://dev.bitly.com/user_info.html>
+    + /v3/oauth/app (**NOT**, see below)
     + /v3/user/info
     + /v3/user/link_history
-    + /v3/oauth/app (**NOT**, see below)
     + /v3/user/network_history (**NOT**)
     + /v3/user/tracking_domain_list
     
@@ -33,6 +33,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
     
 - At the moment **no OAuth support** -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth), which requires `Generic Access Token` from <https://bitly.com/a/oauth_apps>
 
+- Additionally, only a **small subset of input paramaters** has been implemented. 
 
 ### How to Contribute
 

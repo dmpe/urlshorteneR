@@ -5,8 +5,16 @@
 \title{Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
 See http://dev.bitly.com/user_metrics.html#v3_user_clicks}
 \usage{
-user.metrics.clicks(link, limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), units = -1)
+user.metrics.clicks(limit = 1000, unit = c("minute", "hour", "day", "week",
+  "month"), units = -1)
+}
+\arguments{
+\item{limit}{- 1 to 1000 (default=1000).}
+
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
+value for each period of time.}
+
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all units of time.}
 }
 \description{
 Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
@@ -16,6 +24,6 @@ See http://dev.bitly.com/user_metrics.html#v3_user_clicks
 without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7.
 }
 \examples{
-user.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+user.metrics.clicks(unit = "day", units = -1, limit = 100)
 }
 
