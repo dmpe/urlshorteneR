@@ -8,8 +8,7 @@ rbitly.api.version <- "v3"
 #' @return Returns invisibly the currently set rbitlyApi.
 #' 
 #' @examples
-#' rbitlyApi('foobar')
-#' 
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' 
 #' @export 
 rbitlyApi <- function(auth_token) {
@@ -25,12 +24,13 @@ rbitlyApi <- function(auth_token) {
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
 #' 
-#' @param username
-#' @param password
+#' @param username - the username 
+#' @param password - the password
 #' 
 #' @examples 
+#' \donttest{
 #' returnApiKey("YourUsername", "YourPassword")
-#' 
+#' }
 #' 
 #' @import httr
 #' @export

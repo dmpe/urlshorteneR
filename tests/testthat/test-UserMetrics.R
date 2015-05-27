@@ -9,7 +9,7 @@ rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 context("User Metrics")
 
 test_that("Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.", {
-  umcoun <- user.metrics.countries(unit = "day", units = -1, limit = 100)
+  umcoun <- user.metrics.countries(unit = "day", units = -1, limit = 100, rollup = "true")
   expect_named(umcoun, c("country","clicks")) # "url" doens't need to be in there (semi-optional)
 })
 

@@ -28,6 +28,7 @@ url - the complete URL of the domain referring clicks.
 Returns metrics about the domains referring click traffic to a single Bitlink.
 }
 \examples{
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 }
 \seealso{

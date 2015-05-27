@@ -5,7 +5,7 @@
 \title{Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.}
 \usage{
 user.metrics.clicks(limit = 1000, unit = c("minute", "hour", "day", "week",
-  "month"), units = -1, rollup = "true")
+  "month"), units = -1, rollup = c("false", "true"))
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -14,6 +14,8 @@ user.metrics.clicks(limit = 1000, unit = c("minute", "hour", "day", "week",
 value for each period of time.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all units of time.}
+
+\item{true}{or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
 }
 \value{
 dt: a unix timestamp representing the beginning of this unit.
@@ -29,6 +31,7 @@ Returns the aggregate number of clicks on all of the authenticated user's Bitlin
 without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7.
 }
 \examples{
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
 user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
 }

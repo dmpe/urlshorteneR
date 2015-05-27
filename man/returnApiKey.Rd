@@ -8,16 +8,18 @@ return the key and assign it using \code{\link{rbitlyApi}} method in the namespa
 returnApiKey(username, password)
 }
 \arguments{
-\item{username}{}
+\item{username}{- the username}
 
-\item{password}{}
+\item{password}{- the password}
 }
 \description{
 This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
 return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
 }
 \examples{
+\donttest{
 returnApiKey("YourUsername", "YourPassword")
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/rate_limiting.html}

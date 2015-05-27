@@ -6,12 +6,14 @@
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
+#' @param  true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
 #' 
 #' @return dt: a unix timestamp representing the beginning of this unit.
 #' @return day_start: a unix timestamp representing the beginning of the specified day (ONLY returned if unit is not specified).
 #' @return clicks: the number of clicks on this user's links in the specified timeframe.
 #' 
 #' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
@@ -19,12 +21,13 @@
 #' 
 #' @import RCurl
 #' @export
-user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1, rollup = "true") {
+user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1, rollup = c("false", "true")) {
   unit.matched <- match.arg(unit)
+  rollup.matched <- match.arg(rollup)
   
   user.metrics.clicks.url <- "https://api-ssl.bitly.com/v3/user/clicks"
   
-  createdUrl <- paste(user.metrics.clicks.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
+  createdUrl <- paste(user.metrics.clicks.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup.matched, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -54,23 +57,26 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
+#' @param rollup - true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
 #' 
 #' @return clicks - the number of clicks referred from this country.
 #' @return country - the two-letter code of the referring country.
 #' 
-#' @note When a unit is specified (always the case), rollup is always true.
+#' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
-#' user.metrics.countries(unit = "day", units = -1, limit = 100)
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' user.metrics.countries(unit = "day", units = -1, limit = 100, rollup = "true")
 #' 
 #' @import RCurl
 #' @export
-user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month", rollup = "true"), units = -1) {
+user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), rollup = c("false", "true"), units = -1) {
   unit.matched <- match.arg(unit)
+  rollup.matched <- match.arg(rollup)
   
   user.metrics.countries.url <- "https://api-ssl.bitly.com/v3/user/countries"
   
-  createdUrl <- paste(user.metrics.countries.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(user.metrics.countries.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup.matched, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -79,16 +85,13 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
   df.user.metrics.countries.data <- df.user.metrics.countries$data$user_countries
   
   if(rollup == "true") {
-    
     # no data frame
     return(df.user.metrics.countries.data)
     
   } else {
-    
     # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
     df.user.metrics.countries.data <- data.frame(sapply(df.user.metrics.countries.data,c))
     return(df.user.metrics.countries.data)
   }
-  
   
 }

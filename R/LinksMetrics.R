@@ -10,6 +10,7 @@
 #' value for each period of time.
 #' 
 #' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @import RCurl
@@ -49,6 +50,7 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' value for each period of time.
 #' 
 #' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @import RCurl
@@ -86,6 +88,7 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' @return count - the number of bitly users who have shortened (encoded) this link.
 #' 
 #' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.encoders_count(link = "http://bit.ly/DPetrov")
 #' 
 #' @import RCurl
@@ -121,6 +124,7 @@ link.metrics.encoders_count <- function(link) {
 #' @return url - the complete URL of the domain referring clicks.
 
 #' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @import RCurl

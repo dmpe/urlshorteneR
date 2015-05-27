@@ -24,6 +24,7 @@ value for each period of time.}
 Returns the number of clicks on a single Bitlink of the authenticated user.
 }
 \examples{
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 }
 \seealso{
