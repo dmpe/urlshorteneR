@@ -12,8 +12,6 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/user/network_history  | (**NOT**)
 /v3/user/tracking_domain_list  | Yes
 
--------------------------
-
 <http://dev.bitly.com/link_metrics.html>  | Implemented Yes/No
 ------------- | -------------
 /v3/link/clicks  | Yes
@@ -26,12 +24,10 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/link/referring_domains  | Yes
     
     
-sadasfdsafsdgsfgbser
-
-
 <http://dev.bitly.com/user_metrics.html> | Implemented Yes/No
-    + /v3/user/clicks
-    + /v3/user/countries
+------------- | -------------
+/v3/user/clicks  | Yes
+/v3/user/countries  | Yes
     
 - <http://dev.bitly.com/organization_metrics.html>
     +
