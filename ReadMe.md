@@ -30,7 +30,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 
 <http://dev.bitly.com/user_metrics.html> | Implemented Yes/No | Premium
-------------- | -------------
+------------- | ------------- | -------------
 /v3/user/clicks  | Yes | NO
 /v3/user/countries  | Yes | No
 /v3/user/popular_earned_by_clicks  | No  | Yes
@@ -44,7 +44,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 
 <http://dev.bitly.com/organization_metrics.html> | Implemented Yes/No | Premium
-------------- | -------------
+------------- | ------------- | -------------
 /v3/organization/brand_messages  | No | Yes
 /v3/organization/clicks  | No | Yes
 /v3/organization/intersecting_links | No  | Yes
@@ -55,10 +55,10 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 
 <http://dev.bitly.com/domains.html> | Implemented Yes/No | Premium
-------------- | -------------
-/v3/bitly_pro_domain
-/v3/user/tracking_domain_clicks
-/v3/user/tracking_domain_shorten_counts
+------------- | ------------- | -------------
+/v3/bitly_pro_domain  | No | Yes
+/v3/user/tracking_domain_clicks  | No | Yes
+/v3/user/tracking_domain_shorten_counts  | No | Yes
 
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
