@@ -30,22 +30,23 @@ test_that("Returns the aggregate number of clicks on all of the authenticated us
 
 test_that("Returns aggregate metrics about the pages referring click traffic to all of the authenticated user's Bitlinks.", {
   umr <- user.metrics.referrers(unit = "day", units = -1, limit = 100, rollup = "false")
-  expect_named(umr, c("referrer", "clicks")) # "url" doens't need to be in there (semi-optional)
+  expect_named(umr, c("referrer", "clicks")) 
 })
 
 test_that("Returns aggregate metrics about the pages referring click traffic to all of the authenticated user's Bitlinks.", {
   umrr <- user.metrics.referrers(unit = "day", units = -1, limit = 100, rollup = "true")
-  expect_named(umrr, c("referrer", "clicks")) # "url" doens't need to be in there (semi-optional)
+  expect_named(umrr, c("referrer", "clicks")) 
 })
 
 test_that("Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.", {
-  umrd <- user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "false")
-  expect_named(umrd, c("referrer", "clicks")) # "url" doens't need to be in there (semi-optional)
+  umrd <- user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "false")
+  expect_named(umrd, c("domain", "clicks"))
 })
 
 test_that("Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.", {
-  umrdr <- user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true")
-  expect_named(umrdr, c("referrer", "clicks")) # "url" doens't need to be in there (semi-optional)
+  umrdr <- user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true")
+  expect_message(user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true")
+                 , "You have zero referring domains given your function input.") 
 })
 
 

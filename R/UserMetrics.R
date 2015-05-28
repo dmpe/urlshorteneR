@@ -195,6 +195,5 @@ user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hou
   }
   
   return(user.metrics.referring_domains.data)
-  
-  
+
 }
