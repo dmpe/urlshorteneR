@@ -48,7 +48,6 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 }
 
 
-
 #' Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
@@ -93,5 +92,95 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
     df.user.metrics.countries.data <- data.frame(sapply(df.user.metrics.countries.data,c))
     return(df.user.metrics.countries.data)
   }
+  
+}
+
+
+#' Returns aggregate metrics about the pages referring click traffic to all of the authenticated user's Bitlinks.
+#' 
+#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
+#'
+#' @param limit - 1 to 1000 (default=1000).
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
+#' value for each period of time.
+#' @param rollup - true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
+#' 
+#' @return clicks - the number of clicks referred from this URL.
+#' @return referrer - the URL referring clicks.
+#' 
+#' @note When a unit is specified (always the case), rollup is always (!) true.
+#' 
+#' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' user.metrics.referrers(unit = "day", units = -1, limit = 100, rollup = "true")
+#' 
+#' @import RCurl
+#' @export
+user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), rollup = c("false", "true"), units = -1) {
+  unit.matched <- match.arg(unit)
+  rollup.matched <- match.arg(rollup)
+  
+  user.metrics.referrers.url <- "https://api-ssl.bitly.com/v3/user/referrers"
+  
+  createdUrl <- paste(user.metrics.referrers.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup.matched, sep = "")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  # call method from ApiKey.R
+  user.metrics.referrers.url <- doRequest(createdUrl)
+  
+  user.metrics.referrers.url.data <- user.metrics.referrers.url$data$user_referrers
+  # more testing required
+  if(rollup == "true") {
+    user.metrics.referrers.url.data <- data.frame(t(sapply(user.metrics.referrers.url.data,c)))
+    return(user.metrics.referrers.url.data)
+    
+  } else {
+    # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
+    user.metrics.referrers.url.data <- data.frame(t(sapply(user.metrics.referrers.url.data,c)))
+    return(user.metrics.referrers.url.data)
+  }
+  
+}
+
+#' Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks. 
+#' If the user is a master (ent.) account, or is a subaccount with full_reports permission, the user may choose to view the metrics of any account belonging to the master account.
+#' 
+#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referring_domains}
+#'
+#' @param limit - 1 to 1000 (default=1000).
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
+#' value for each period of time.
+#' @param rollup - true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
+#' @param exclude_social_networks - true (default) or false. If true, exclude domains that are part of a social network that bitly tracks.
+#' @param login - an optional string consisting of the account name used to report the appropriate statistics; defaults to the current user.
+#' 
+#' @return clicks - the number of clicks referred from this URL.
+#' @return referrer - the URL referring clicks.
+#' 
+#' @note When a unit is specified (always the case), rollup is always (!) true.
+#' 
+#' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true")
+#' 
+#' @import RCurl
+
+user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), rollup = c("false", "true"), units = -1, exclude_social_networks = c("true", "false"), login) {
+  
+  unit.matched <- match.arg(unit)
+  rollup.matched <- match.arg(rollup)
+  exclude_social_networks.matched <- match.arg(exclude_social_networks)
+  
+  user.metrics.referring_domains <- "https://api-ssl.bitly.com/v3/user/referring_domains"
+  
+  createdUrl <- paste(user.metrics.referrers.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup.matched, sep = "")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  # call method from ApiKey.R
+  user.metrics.referrers.url <- doRequest(createdUrl)
+  
+  user.metrics.referrers.url.data <- user.metrics.referrers.url$data$user_referrers
   
 }

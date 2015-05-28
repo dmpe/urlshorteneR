@@ -38,7 +38,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/user/popular_links  | Maybe
 /v3/user/popular_owned_by_clicks  | No  | Yes
 /v3/user/popular_owned_by_shortens | No  | Yes
-/v3/user/referrers  | Maybe
+/v3/user/referrers  | Yes
 /v3/user/referring_domains | Maybe
 /v3/user/shorten_counts | Maybe
 
