@@ -164,10 +164,14 @@ user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true")
+#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "false")
+#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "false")
+#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true")
 #' 
 #' @import RCurl
-
-user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), rollup = c("false", "true"), units = -1, exclude_social_networks = c("true", "false"), login) {
+#' @export
+user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), rollup = c("false", "true"), 
+                                           units = -1, exclude_social_networks = c("true", "false"), login) {
   
   unit.matched <- match.arg(unit)
   rollup.matched <- match.arg(rollup)
@@ -175,12 +179,22 @@ user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hou
   
   user.metrics.referring_domains <- "https://api-ssl.bitly.com/v3/user/referring_domains"
   
-  createdUrl <- paste(user.metrics.referrers.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup.matched, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  createdUrl <- paste(user.metrics.referring_domains, "?limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup.matched, sep = "")
+  createdUrl <- paste(createdUrl, "&exclude_social_networks=", exclude_social_networks.matched, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  user.metrics.referrers.url <- doRequest(createdUrl)
+  user.metrics.referring_domains.url <- doRequest(createdUrl)
   
-  user.metrics.referrers.url.data <- user.metrics.referrers.url$data$user_referrers
+  # if( exclude_social_networks = "false") {
+  
+  user.metrics.referring_domains.data <- user.metrics.referring_domains.url$data$user_referring_domains
+  
+  if(length(user.metrics.referring_domains.data) == 0) {
+    user.metrics.referring_domains.data <- NULL
+    message("You have zero referring domains given your function input.")
+  }
+  
+  return(user.metrics.referring_domains.data)
+  
   
 }
