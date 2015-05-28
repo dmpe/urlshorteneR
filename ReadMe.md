@@ -31,8 +31,8 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 <http://dev.bitly.com/user_metrics.html> | Implemented Yes/No | Premium
 ------------- | ------------- | -------------
-/v3/user/clicks  | Yes | NO
-/v3/user/countries  | Yes | No
+/v3/user/clicks  | Yes 
+/v3/user/countries  | Yes 
 /v3/user/popular_earned_by_clicks  | No  | Yes
 /v3/user/popular_earned_by_shortens  | No  | Yes
 /v3/user/popular_links  | Maybe
