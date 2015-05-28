@@ -4,9 +4,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 ### Help needed !!!
 
-Now looking for:
-
-- Testers (also with the enterprise account)
+- Testers (with the enterprise account too). Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
 
 
 ### What is/not implemented:
