@@ -27,7 +27,8 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/link/referrers  | (**NOT**)
 /v3/link/referrers_by_domain  | (**NOT**)
 /v3/link/referring_domains  | Yes
-    
+
+
 <http://dev.bitly.com/user_metrics.html> | Implemented Yes/No | Premium
 ------------- | -------------
 /v3/user/clicks  | Yes | NO
@@ -40,6 +41,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/user/referrers  | Maybe
 /v3/user/referring_domains | Maybe
 /v3/user/shorten_counts | Maybe
+
 
 <http://dev.bitly.com/organization_metrics.html> | Implemented Yes/No | Premium
 ------------- | -------------
