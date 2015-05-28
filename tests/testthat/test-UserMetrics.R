@@ -1,5 +1,5 @@
 library(testthat)
-library(rbitly)
+library(RBitly)
 library(httr)
 library(RCurl)
 library(jsonlite)

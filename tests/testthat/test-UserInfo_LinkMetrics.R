@@ -1,5 +1,5 @@
 library(testthat)
-library(rbitly)
+library(RBitly)
 library(httr)
 library(RCurl)
 library(jsonlite)
@@ -45,5 +45,9 @@ test_that("Returns metrics about the domains referring click traffic to a single
   expect_named(lmrd, c("domain", "clicks")) # "url" doens't need to be in there (semi-optional)
 })
 
+test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
+  lmebc <- link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", expand_user = "true", limit = 100, subaccounts = "false")
+  expect_named(lmebc, c("domain", "clicks")) # "url" doens't need to be in there (semi-optional)
+})
 
 

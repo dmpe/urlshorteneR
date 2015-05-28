@@ -2,6 +2,12 @@ R package for Bit.ly & Bitly.com & j.mp and other custom domains
 ============
 Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
+### Help needed !!!
+
+Now looking for:
+
+- Testers (also with the enterprise account)
+
 ### What is/not implemented:
 
 <http://dev.bitly.com/user_info.html>  | Implemented Yes/No
@@ -17,7 +23,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/link/clicks  | Yes
 /v3/link/countries  | Yes
 /v3/link/encoders  | (**NOT**)
-/v3/link/encoders_by_count  | (**NOT**)
+/v3/link/encoders_by_count  | Yes
 /v3/link/encoders_count  | Yes
 /v3/link/referrers  | (**NOT**)
 /v3/link/referrers_by_domain  | (**NOT**)
@@ -28,8 +34,12 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 /v3/user/clicks  | Yes
 /v3/user/countries  | Yes
     
-- <http://dev.bitly.com/organization_metrics.html>
-    +
+
+<http://dev.bitly.com/organization_metrics.html> | Implemented Yes/No
+------------- | -------------
+  | NO
+  | NO
+
     
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
