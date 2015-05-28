@@ -154,21 +154,21 @@ link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute"
 #' @note - The response will only contain users whose links have gotten at least one click, and will not contain any users whose links are private.
 #' 
 #' @param link - a Bitlink.
-#' @param my_network (optional) true or false (default) - restrict to my network
-#' @param subaccounts (only available to enterprise accounts) true or false (always default) - restrict to this enterprise account and its subaccounts
-#' @param limit - (optional) integer in the range 1:100 that specifies the number of records to return (default:100).
-#' @param expand_user (optional) true (default) or false - include display names of encoders
+#' @param my_network true or false (default) - restrict to my network
+#' @param subaccounts (only available to enterprise accounts) false (always default) - restrict to this enterprise account and its subaccounts
+#' @param limit - integer in the range 1:100 that specifies the number of records to return (default:100).
+#' @param expand_user false (always default) - include display names of encoders
 #'
 #' @return aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 #' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", expand_user = "true", limit = 100, subaccounts = "false")
+#' link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 #' 
 #' @import RCurl
 #' @export
-link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "false", expand_user = "true", subaccounts = "false") {
+link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "false", expand_user = "false", subaccounts = "false") {
 
   link.metrics.encoders_by_count.url <- "https://api-ssl.bitly.com/v3/link/encoders_by_count"
   
@@ -178,10 +178,9 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
   # call method from ApiKey.R
   df.link.metrics.encoders_by_count <- doRequest(createdUrl)
   
-  df.link.metrics.encoders_by_count.data <- df.link.metrics.encoders_by_count$data
+  df.link.metrics.encoders_by_count.data <- data.frame(df.link.metrics.encoders_by_count$data$encoders_by_count)
+  df.link.metrics.encoders_by_count.data$ts <- as.POSIXct(as.integer(df.link.metrics.encoders_by_count.data$ts), origin = "1970-01-01", tz = "UTC")
   
-  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.link.metrics.encoders_by_count.data <- data.frame(t(sapply(df.link.metrics.referring_domains.data,c)))
   return(df.link.metrics.encoders_by_count.data)
 }
 

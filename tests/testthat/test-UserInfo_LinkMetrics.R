@@ -46,8 +46,8 @@ test_that("Returns metrics about the domains referring click traffic to a single
 })
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
-  lmebc <- link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", expand_user = "true", limit = 100, subaccounts = "false")
-  expect_named(lmebc, c("domain", "clicks")) # "url" doens't need to be in there (semi-optional)
+  lmebc <- link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
+  expect_named(lmebc, c("count", "link", "user", "ts")) # "url" doens't need to be in there (semi-optional)
 })
 
 

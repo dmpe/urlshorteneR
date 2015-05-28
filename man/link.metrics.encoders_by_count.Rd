@@ -4,19 +4,19 @@
 \alias{link.metrics.encoders_by_count}
 \title{Returns users who have encoded this link (optionally only those in the requesting user's social graph), sorted by the number of clicks on each encoding user's link.}
 \usage{
-link.metrics.encoders_by_count(link, limit = 1000, my_network = "false",
-  expand_user = "true", subaccounts = "false")
+link.metrics.encoders_by_count(link, limit = 100, my_network = "false",
+  expand_user = "false", subaccounts = "false")
 }
 \arguments{
 \item{link}{- a Bitlink.}
 
-\item{limit}{- (optional) integer in the range 1:100 that specifies the number of records to return (default:10).}
+\item{limit}{- integer in the range 1:100 that specifies the number of records to return (default:100).}
 
-\item{my_network}{(optional) true or false (default) - restrict to my network}
+\item{my_network}{true or false (default) - restrict to my network}
 
-\item{expand_user}{(optional) true (default) or false - include display names of encoders}
+\item{expand_user}{false (always default) - include display names of encoders}
 
-\item{subaccounts}{(optional, only available to enterprise accounts) true or false (default) - restrict to this enterprise account and its subaccounts}
+\item{subaccounts}{(only available to enterprise accounts) false (always default) - restrict to this enterprise account and its subaccounts}
 }
 \value{
 aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
@@ -31,7 +31,7 @@ Returns users who have encoded this link (optionally only those in the requestin
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", expand_user = "true", limit = 100, subaccounts = "false")
+link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 }
 \seealso{
 See \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count}
