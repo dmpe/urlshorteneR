@@ -4,16 +4,16 @@
 \alias{user.linkHistory}
 \title{Returns entries from a user's link history in reverse chronological order.}
 \usage{
-user.linkHistory(limit = 100)
+user.linkHistory(limit = 100, private = "off", archived = "both")
 }
 \arguments{
 \item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.}
 
-\item{expand_client_id}{- (optional) true or false (default) whether to provide additional information about encoding application.}
+\item{private}{- (optional) on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)}
 
 \item{archived}{- (optional) - on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)}
 
-\item{private}{- (optional) on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)}
+\item{expand_client_id}{- (optional) true or false (default) whether to provide additional information about encoding application.}
 }
 \value{
 link - the Bitlink specific to this user and this long_url.
@@ -43,6 +43,10 @@ If expand_client_id is set to false (only currently supported), this will be a s
 }
 \description{
 Returns entries from a user's link history in reverse chronological order.
+}
+\examples{
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+user.linkHistory()
 }
 \seealso{
 See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}

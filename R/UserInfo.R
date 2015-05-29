@@ -68,11 +68,16 @@ user.info <- function() {
 #' @return client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user. 
 #' If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
 #' 
+#' @examples 
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' user.linkHistory() 
+#'
 #' @export
-user.linkHistory <- function(limit = 100){
+user.linkHistory <- function(limit = 100, private = "off", archived = "both") {
+  
   user.linkHistory.url <- "https://api-ssl.bitly.com/v3/user/link_history"
   
-  createdUrl <- paste(user.linkHistory.url, "?limit=", limit, sep = "")
+  createdUrl <- paste(user.linkHistory.url, "?limit=", limit, "&private=", private, "&archived=", archived, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   df.all <- doRequest(createdUrl)

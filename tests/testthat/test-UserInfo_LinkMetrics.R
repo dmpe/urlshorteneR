@@ -5,12 +5,12 @@ library(RCurl)
 library(jsonlite)
 library(stringr)
 
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-
 context("User Info")
 
 test_that("Return information about a user.", {
+  rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
   ui <- user.info()
+  expect_equal(dim(ui)[[2]], 16)
 })
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {

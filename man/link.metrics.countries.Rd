@@ -10,15 +10,14 @@ link.metrics.countries(link, limit = 1000, unit = c("minute", "hour", "day",
 \arguments{
 \item{link}{- a Bitlink.}
 
-\item{limit}{- 1 to 1000 (default=1000).
-##}
+\item{limit}{- 1 to 1000 (default = 1000).}
 
 \item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 value for each period of time.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all units of time.}
 
-\item{rollup}{- true (default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
+\item{rollup}{- true (always default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
 }
 \description{
 Returns metrics about the countries referring click traffic to a single Bitlink.

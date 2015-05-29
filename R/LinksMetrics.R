@@ -4,7 +4,7 @@
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
-#' ## @param rollup - true (default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
+#' @param rollup - true (always default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
@@ -15,12 +15,12 @@
 #' 
 #' @import RCurl
 #' @export
-link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1, rollup="true") {
   unit.matched <- match.arg(unit)
   
   link.metrics.clicks.url <- "https://api-ssl.bitly.com/v3/link/clicks"
   
-  createdUrl <- paste(link.metrics.clicks.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(link.metrics.clicks.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -43,8 +43,8 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
 #' 
 #' @param link - a Bitlink.
-#' @param limit - 1 to 1000 (default=1000).
-#' ## @param rollup - true (default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
+#' @param limit - 1 to 1000 (default = 1000).
+#' @param rollup - true (always default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
