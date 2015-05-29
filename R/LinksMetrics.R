@@ -55,13 +55,13 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @import RCurl
 #' @export
-link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1, rollup="true") {
   unit.matched <- match.arg(unit)
   
   link.metrics.countries.url <- "https://api-ssl.bitly.com/v3/link/countries"
   
   createdUrl <- paste(link.metrics.countries.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  createdUrl <- paste(createdUrl, "&rollup=", rollup, "&format=json", sep = "")
   
   # call method from ApiKey.R
   df.link.metrics.countries <- doRequest(createdUrl)

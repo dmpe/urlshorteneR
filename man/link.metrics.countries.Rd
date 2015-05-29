@@ -5,7 +5,7 @@
 \title{Returns metrics about the countries referring click traffic to a single Bitlink.}
 \usage{
 link.metrics.countries(link, limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), units = -1)
+  "week", "month"), units = -1, rollup = "true")
 }
 \arguments{
 \item{link}{- a Bitlink.}

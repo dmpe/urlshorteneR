@@ -5,10 +5,11 @@ library(RCurl)
 library(jsonlite)
 library(stringr)
 
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+
 context("User Info")
 
 test_that("Return information about a user.", {
-  rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
   ui <- user.info()
   expect_equal(dim(ui)[[2]], 16)
 })
@@ -28,6 +29,7 @@ context("Link Metrics")
 
 test_that("Returns the number of clicks on a single Bitlink.", {
   lmc <- link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  expect_equal(dim(lmc)[[2]], 5)
 })
 
 test_that("Returns metrics about the countries referring click traffic to a single Bitlink.", {
