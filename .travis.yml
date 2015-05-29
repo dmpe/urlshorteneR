@@ -3,10 +3,12 @@ sudo: required
 warnings_are_errors: true
 
 r_github_packages:
-  - rstudio/rmarkdown
   - hadley/testthat
+  - hadley/httr
   - jimhester/covr
   - yihui/knitr
+  - jeroenooms/curl
+  - jeroenooms/jsonlite
   
 after_success:
   - Rscript -e 'library(covr);coveralls()'
