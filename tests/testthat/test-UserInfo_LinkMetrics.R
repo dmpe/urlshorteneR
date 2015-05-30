@@ -43,13 +43,19 @@ test_that("Returns the number of users who have shortened (encoded) a single Bit
 })
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
-  lmrd <- link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-  expect_named(lmrd, c("domain", "clicks")) # "url" doens't need to be in there (semi-optional)
+  lme <- link.metrics.encoders(link = "http://bit.ly/DPetrov", my_network = "false", limit = 25)
+  expect_named(lme, c("link", "user", "ts")) 
 })
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
   lmebc <- link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
   expect_named(lmebc, c("count", "link", "user", "ts")) # "url" doens't need to be in there (semi-optional)
 })
+
+test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
+  lmrd <- link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  expect_named(lmrd, c("domain", "clicks")) # "url" doens't need to be in there (semi-optional)
+})
+
 
 

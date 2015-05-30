@@ -8,9 +8,9 @@
 #' value for each period of time.
 #' @param rollup - true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
 #' 
-#' @return dt: a unix timestamp representing the beginning of this unit.
-#' @return day_start: a unix timestamp representing the beginning of the specified day (ONLY returned if unit is not specified).
-#' @return clicks: the number of clicks on this user's links in the specified timeframe.
+#' @return dt - a unix timestamp representing the beginning of this unit.
+#' @return day_start - a unix timestamp representing the beginning of the specified day (ONLY returned if unit is not specified).
+#' @return clicks - the number of clicks on this user's links in the specified timeframe.
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

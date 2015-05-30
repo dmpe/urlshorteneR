@@ -28,7 +28,7 @@ Based on <http://dev.bitly.com/>
 ------------- | -------------
 /v3/link/clicks  | Yes
 /v3/link/countries  | Yes
-/v3/link/encoders  | (**NOT**)
+/v3/link/encoders  | Yes
 /v3/link/encoders_by_count  | Yes
 /v3/link/encoders_count  | Yes
 /v3/link/referrers  | (**NOT**)
@@ -46,7 +46,7 @@ Based on <http://dev.bitly.com/>
 /v3/user/popular_owned_by_clicks  | No  | Yes
 /v3/user/popular_owned_by_shortens | No  | Yes
 /v3/user/referrers  | Yes
-/v3/user/referring_domains | Maybe
+/v3/user/referring_domains | Yes
 /v3/user/shorten_counts | Maybe
 
 

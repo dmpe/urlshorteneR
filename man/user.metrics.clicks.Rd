@@ -18,11 +18,11 @@ value for each period of time.}
 \item{rollup}{- true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
 }
 \value{
-dt: a unix timestamp representing the beginning of this unit.
+dt - a unix timestamp representing the beginning of this unit.
 
-day_start: a unix timestamp representing the beginning of the specified day (ONLY returned if unit is not specified).
+day_start - a unix timestamp representing the beginning of the specified day (ONLY returned if unit is not specified).
 
-clicks: the number of clicks on this user's links in the specified timeframe.
+clicks - the number of clicks on this user's links in the specified timeframe.
 }
 \description{
 Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.

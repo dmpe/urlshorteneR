@@ -2,8 +2,8 @@ Package: RBitly
 Type: Package
 Title: R Package for accessing Bit.ly API
 Description: Package allowing users to access Bit.ly API and retreive many useful statistics.
-Version: 0.3.3
-Date: 2015-05-29
+Version: 0.3.4
+Date: 2015-01-01
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"))
     )

@@ -39,8 +39,7 @@ note - the user-provided note, if set.
 
 shares - a list of share actions (for the authenticated user only)
 
-client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user.
-If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
+client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user. If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
 }
 \description{
 Returns entries from a user's link history in reverse chronological order.

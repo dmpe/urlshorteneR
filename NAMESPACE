@@ -2,6 +2,7 @@
 
 export(link.metrics.clicks)
 export(link.metrics.countries)
+export(link.metrics.encoders)
 export(link.metrics.encoders_by_count)
 export(link.metrics.encoders_count)
 export(link.metrics.referring_domains)

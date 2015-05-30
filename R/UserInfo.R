@@ -65,8 +65,7 @@ user.info <- function() {
 #' @return title - the title for this link.
 #' @return note - the user-provided note, if set.
 #' @return shares - a list of share actions (for the authenticated user only)
-#' @return client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user. 
-#' If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
+#' @return client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user. If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
 #' 
 #' @examples 
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
