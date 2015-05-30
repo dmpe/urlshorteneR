@@ -42,7 +42,7 @@ Based on <http://dev.bitly.com/>
 /v3/user/countries  | Yes 
 /v3/user/popular_earned_by_clicks  | No  | Yes
 /v3/user/popular_earned_by_shortens  | No  | Yes
-/v3/user/popular_links  | Maybe
+/v3/user/popular_links  | Yes
 /v3/user/popular_owned_by_clicks  | No  | Yes
 /v3/user/popular_owned_by_shortens | No  | Yes
 /v3/user/referrers  | Yes
