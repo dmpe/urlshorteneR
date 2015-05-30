@@ -19,8 +19,6 @@ link.metrics.encoders(link, my_network = "false", limit = 25,
 \item{subaccounts}{(optional, only available to enterprise accounts) false (always default) - restrict to this enterprise account and its subaccounts}
 }
 \value{
-aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
-
 entries - a mapping of link, user, and ts (when the Bitlink was created).
 }
 \description{

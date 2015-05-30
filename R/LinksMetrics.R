@@ -89,7 +89,6 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' @param limit - (optional) integer in the range of 1 to 25 that specifies the number of records to return (default: 25).
 #' @param expand_user (optional) true or false (default) - include display names of encoders.
 #' 
-#' @return aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 #' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
 #' 
 #' @examples
@@ -158,7 +157,6 @@ link.metrics.encoders_count <- function(link) {
 #' @param limit - integer in the range 1:100 that specifies the number of records to return (default:100).
 #' @param expand_user false (always default) - include display names of encoders
 #'
-#' @return aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 #' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
 #' 
 #' @examples

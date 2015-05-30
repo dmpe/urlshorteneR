@@ -28,6 +28,12 @@ test_that("Returns the aggregate number of clicks on all of the authenticated us
   expect_named(umcc, c("dt", "clicks")) # "url" doens't need to be in there (semi-optional)
 })
 
+test_that("Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.", {
+  umpl <- user.metrics.popular_links(unit = "month", units = -1, limit = 100)
+  expect_named(umpl, c("link", "clicks")) 
+})
+
+
 test_that("Returns aggregate metrics about the pages referring click traffic to all of the authenticated user's Bitlinks.", {
   umr <- user.metrics.referrers(unit = "day", units = -1, limit = 100, rollup = "false")
   expect_named(umr, c("referrer", "clicks")) 

@@ -42,7 +42,7 @@ test_that("Returns the number of users who have shortened (encoded) a single Bit
   expect_named(lmec, c("count", "aggregate_link"))
 })
 
-test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
+test_that("Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).", {
   lme <- link.metrics.encoders(link = "http://bit.ly/DPetrov", my_network = "false", limit = 25)
   expect_named(lme, c("link", "user", "ts")) 
 })

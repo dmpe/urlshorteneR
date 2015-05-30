@@ -95,6 +95,44 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
   
 }
 
+#' Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.
+#' 
+#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
+#'
+#' @param limit - 1 to 1000 (default=1000).
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
+#' value for each period of time.
+#' 
+#' @return link - a Bitlink.
+#' @return clicks - the number of clicks on that Bitlink in the specified timeframe.
+#' 
+#' @note This replaces the realtime_links endpoint.
+#' 
+#' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' user.metrics.popular_links(unit = "day", units = -1, limit = 100)
+#' 
+#' @import RCurl
+#' @export
+user.metrics.popular_links <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+  unit.matched <- match.arg(unit)
+  
+  user.metrics.popular_links.url <- "https://api-ssl.bitly.com/v3/user/popular_links"
+  
+  createdUrl <- paste(user.metrics.popular_links.url, "?limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  # call method from ApiKey.R
+  user.metrics.popular_links <- doRequest(createdUrl)
+  
+  user.metrics.popular_links.data <- user.metrics.popular_links$data$popular_links
+  
+  user.metrics.popular_links.data <- data.frame(user.metrics.popular_links.data)
+  return(user.metrics.popular_links.data)
+  
+}
+
 
 #' Returns aggregate metrics about the pages referring click traffic to all of the authenticated user's Bitlinks.
 #' 
@@ -197,5 +235,5 @@ user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hou
   }
   
   return(user.metrics.referring_domains.data)
-
+  
 }
