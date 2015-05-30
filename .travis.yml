@@ -10,5 +10,10 @@ r_github_packages:
   - jeroenooms/curl
   - jeroenooms/jsonlite
   
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+    
 after_success:
   - Rscript -e 'library(covr);coveralls()'
