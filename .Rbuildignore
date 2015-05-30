@@ -1,3 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.httr-oauth$
+man-roxygen/
+.travis.yml
+.DS_Store
+inst/stuff/
+vignettes/figure/
+ReadMe.md
