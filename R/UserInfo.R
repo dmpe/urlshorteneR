@@ -73,15 +73,16 @@ user.info <- function() {
 #' user.linkHistory() 
 #'
 #' @export
-user.linkHistory <- function(limit = 100, private = "off", archived = "both") {
+user.linkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false") {
   
   user.linkHistory.url <- "https://api-ssl.bitly.com/v3/user/link_history"
   
   createdUrl <- paste(user.linkHistory.url, "?limit=", limit, "&private=", private, "&archived=", archived, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  createdUrl <- paste(createdUrl, "&expand_client_id=", expand_client_id, "&format=json", sep = "")
   
   df.all <- doRequest(createdUrl)
   df.all.history <- df.all$data$link_history
+  
   df.all.history$user_ts <- as.POSIXct(df.all.history$user_ts, origin = "1970-01-01", tz = "UTC")
   df.all.history$created_at <- as.POSIXct(df.all.history$created_at, origin = "1970-01-01", tz = "UTC")
   df.all.history$modified_at <- as.POSIXct(df.all.history$modified_at, origin = "1970-01-01", tz = "UTC")
@@ -106,6 +107,7 @@ user.tracking_domain_list <- function() {
   
   if(!length(df.tracking_domain_list) == 0) {
     
+    # create and return a data frame from a transposed list
     df.tracking_domain_list <- data.frame(t(sapply(df.tracking_domain_list,c)))
     return(df.tracking_domain_list)
     

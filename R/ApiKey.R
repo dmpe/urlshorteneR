@@ -1,11 +1,9 @@
 rbitly.api.auth_token <- NA
 rbitly.api.version <- "v3"
 
-#' Assign rbitly token automatically if I know it
+#' Assign rbitly token
 #' 
-#' @param auth_token Optionally passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.
-#' 
-#' @return Returns invisibly the currently set rbitlyApi.
+#' @param auth_token - Passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
@@ -26,6 +24,8 @@ rbitlyApi <- function(auth_token) {
 #' 
 #' @param username - the username 
 #' @param password - the password
+#' 
+#' @return api key - asdasfas
 #' 
 #' @examples 
 #' \donttest{

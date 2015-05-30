@@ -2,18 +2,15 @@
 % Please edit documentation in R/ApiKey.R
 \name{rbitlyApi}
 \alias{rbitlyApi}
-\title{Assign rbitly token automatically if I know it}
+\title{Assign rbitly token}
 \usage{
 rbitlyApi(auth_token)
 }
 \arguments{
-\item{auth_token}{Optionally passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.}
-}
-\value{
-Returns invisibly the currently set rbitlyApi.
+\item{auth_token}{- Passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.}
 }
 \description{
-Assign rbitly token automatically if I know it
+Assign rbitly token
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

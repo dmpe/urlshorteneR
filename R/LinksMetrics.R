@@ -163,7 +163,8 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", 
+#' units = -1, limit = 100)
 #' 
 #' @import RCurl
 #' @export

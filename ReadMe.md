@@ -4,6 +4,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 [![Build Status](https://travis-ci.org/dmpe/rbitly.svg?branch=master)](https://travis-ci.org/dmpe/rbitly)
 [![Coverage Status](https://coveralls.io/repos/dmpe/rbitly/badge.svg)](https://coveralls.io/r/dmpe/rbitly)
+----------------
 
 ### Help needed !!!
 
@@ -11,6 +12,8 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 
 ### What is/not implemented:
+
+Based on <http://dev.bitly.com/>
 
 <http://dev.bitly.com/user_info.html>  | Implemented Yes/No
 ------------- | -------------

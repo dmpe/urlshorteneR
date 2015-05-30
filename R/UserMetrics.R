@@ -165,8 +165,10 @@ user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "false")
-#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "false")
-#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true")
+#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, 
+#' rollup = "true", exclude_social_networks = "false")
+#' user.metrics.referring_domains(unit = "day", units = -1, limit = 100,
+#' rollup = "true", exclude_social_networks = "true")
 #' 
 #' @import RCurl
 #' @export

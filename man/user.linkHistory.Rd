@@ -4,7 +4,8 @@
 \alias{user.linkHistory}
 \title{Returns entries from a user's link history in reverse chronological order.}
 \usage{
-user.linkHistory(limit = 100, private = "off", archived = "both")
+user.linkHistory(limit = 100, private = "off", archived = "both",
+  expand_client_id = "false")
 }
 \arguments{
 \item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.}

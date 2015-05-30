@@ -12,6 +12,9 @@ returnApiKey(username, password)
 
 \item{password}{- the password}
 }
+\value{
+api key - asdasfas
+}
 \description{
 This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
 return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
