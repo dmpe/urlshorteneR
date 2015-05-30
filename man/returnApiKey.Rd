@@ -2,21 +2,21 @@
 % Please edit documentation in R/ApiKey.R
 \name{returnApiKey}
 \alias{returnApiKey}
-\title{This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
+\title{This method is for the case when the user doesn't know what is his/her "Generic Access Token". When inserting username/email and password it will
 return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.}
 \usage{
 returnApiKey(username, password)
 }
 \arguments{
-\item{username}{- the username}
+\item{username}{- the username or an email}
 
 \item{password}{- the password}
 }
 \value{
-api key - asdasfas
+api key - user's API Key. As described, it is not necessary to use rbitlyApi("api key") as this is done automatically
 }
 \description{
-This method is for the case if the user doesn't know what is his/her "Generic Access Token". When inserting username and password it will
+This method is for the case when the user doesn't know what is his/her "Generic Access Token". When inserting username/email and password it will
 return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
 }
 \examples{

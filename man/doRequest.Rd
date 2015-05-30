@@ -2,16 +2,16 @@
 % Please edit documentation in R/ApiKey.R
 \name{doRequest}
 \alias{doRequest}
-\title{Generalized function for executing GET Requests by appending user's Bit.ly API Key.}
+\title{Generalized function for executing GET requests by always appending user's Bit.ly API Key.}
 \usage{
 doRequest(url, authcode = rbitlyApi())
 }
 \arguments{
-\item{url}{which is used for the request}
+\item{url}{- which is used for the request}
 
-\item{authcode}{calls the rbitlyApi \code{\link{rbitlyApi}}}
+\item{authcode}{- calls the rbitlyApi \code{\link{rbitlyApi}}}
 }
 \description{
-Generalized function for executing GET Requests by appending user's Bit.ly API Key.
+Generalized function for executing GET requests by always appending user's Bit.ly API Key.
 }
 
