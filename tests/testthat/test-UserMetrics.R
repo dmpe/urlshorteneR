@@ -56,4 +56,12 @@ test_that("Returns aggregate metrics about the domains referring click traffic t
                  , "You have zero referring domains given your function input.") 
 })
 
+test_that("Returns the number of Bitlinks created in a given time period by the authenticated user.", {
+  umsc <- user.metrics.shorten_counts(unit = "day", units = -1, limit = 100, rollup = "true")
+  expect_equal(dim(umsc)[[2]], 5)
+})
 
+test_that("Returns the number of Bitlinks created in a given time period by the authenticated user.", {
+  umscf <- user.metrics.shorten_counts(unit = "day", units = -1, limit = 100, rollup = "false")
+  expect_named(umsc, c("dt", "shortens"))
+})

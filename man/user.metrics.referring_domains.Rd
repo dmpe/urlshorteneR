@@ -2,12 +2,11 @@
 % Please edit documentation in R/UserMetrics.R
 \name{user.metrics.referring_domains}
 \alias{user.metrics.referring_domains}
-\title{Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.
-If the user is a master (ent.) account, or is a subaccount with full_reports permission, the user may choose to view the metrics of any account belonging to the master account.}
+\title{Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.}
 \usage{
 user.metrics.referring_domains(limit = 1000, unit = c("minute", "hour",
   "day", "week", "month"), rollup = c("false", "true"), units = -1,
-  exclude_social_networks = c("true", "false"), login)
+  exclude_social_networks = c("true", "false"), login = NULL)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -29,7 +28,6 @@ clicks - the number of clicks referred from this URL.
 referrer - the URL referring clicks.
 }
 \description{
-Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.
 If the user is a master (ent.) account, or is a subaccount with full_reports permission, the user may choose to view the metrics of any account belonging to the master account.
 }
 \note{
@@ -39,10 +37,8 @@ When a unit is specified (always the case), rollup is always (!) true.
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true")
 user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "false")
-user.metrics.referring_domains(unit = "day", units = -1, limit = 100,
-rollup = "true", exclude_social_networks = "false")
-user.metrics.referring_domains(unit = "day", units = -1, limit = 100,
-rollup = "true", exclude_social_networks = "true")
+user.metrics.referring_domains(unit = "day", units = -1, limit = 100, exclude_social_networks = "false")
+user.metrics.referring_domains(unit = "day", units = -1, limit = 100, exclude_social_networks = "true")
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_referring_domains}

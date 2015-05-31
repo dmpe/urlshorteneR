@@ -47,7 +47,7 @@ Based on <http://dev.bitly.com/>
 /v3/user/popular_owned_by_shortens | No  | Yes
 /v3/user/referrers  | Yes
 /v3/user/referring_domains | Yes
-/v3/user/shorten_counts | Maybe
+/v3/user/shorten_counts | Yes
 
 
 <http://dev.bitly.com/organization_metrics.html> | Implemented Yes/No | Premium
