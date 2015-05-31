@@ -41,8 +41,6 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
     
   } else {
     df.user.metrics.clicks.data$dt <- as.POSIXct(as.integer(df.user.metrics.clicks.data$dt), origin = "1970-01-01", tz = "UTC")
-    
-    df.user.metrics.clicks.data <- data.frame(df.user.metrics.clicks.data)
     return(df.user.metrics.clicks.data)
   }
 }
@@ -66,6 +64,7 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user.metrics.countries(unit = "day", units = -1, limit = 100, rollup = "true")
+#' user.metrics.countries(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
 #' @import RCurl
 #' @export
@@ -83,15 +82,17 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
   
   df.user.metrics.countries.data <- df.user.metrics.countries$data$user_countries
   
+  # More testing required
   if(rollup == "true") {
-    # no data frame
     return(df.user.metrics.countries.data)
     
   } else {
     # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
     df.user.metrics.countries.data <- data.frame(sapply(df.user.metrics.countries.data,c))
-    return(df.user.metrics.countries.data)
   }
+  
+  return(df.user.metrics.countries.data)
+  
   
 }
 
@@ -128,7 +129,6 @@ user.metrics.popular_links <- function(limit = 1000, unit = c("minute", "hour", 
   
   user.metrics.popular_links.data <- user.metrics.popular_links$data$popular_links
   
-  user.metrics.popular_links.data <- data.frame(user.metrics.popular_links.data)
   return(user.metrics.popular_links.data)
   
 }
@@ -170,16 +170,17 @@ user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day
   
   user.metrics.referrers.data <- user.metrics.referrers.url$data$user_referrers
   
-  # more testing required
   if(rollup == "true") {
     user.metrics.referrers.data <- data.frame(t(sapply(user.metrics.referrers.data,c)))
     
   } else {
+    # No way I can check at the moment 
+    
     # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
     user.metrics.referrers.data <- data.frame(t(sapply(user.metrics.referrers.data,c)))
   }
   
-  return(user.metrics.referrers.url.data)
+  return(user.metrics.referrers.data)
   
 }
 
