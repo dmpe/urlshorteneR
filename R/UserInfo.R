@@ -21,7 +21,8 @@
 #' @return domain_preference_options - A list of the valid short domains that this account can choose as a default.
 #'
 #' @note Only included for enterprise accounts (is_enterprise == 1 or has_master == 1)
-#'
+#' @note both columns (!) are character type
+#' 
 #' @return sub_accounts - (optional) list of accounts associated with this account.
 #' @return e2e_domains - (optional) list of domains associated with this custom_short_domain.
 #' @return tracking_url_prefixes - A list of owned 3rd party urls such as Facebook tracked for analytics
@@ -29,17 +30,28 @@
 #' @return enterprise_permissions - (optional) list of enterprise permissions associated with this account.
 #' @return bbt_start_date - (optional) the date for when this account became a Bitly Brand Tools account.
 #' 
+#' @examples 
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' user.info() 
+#' 
+#' @import stringr
+#' 
 #' @export
 user.info <- function() {
   user.info.url <- "https://api-ssl.bitly.com/v3/user/info"
+  
   createdUrl <- paste(user.info.url, "?format=json", sep = "")
   
   # dont use httr package, as it will fail into "Error in parse_string(txt, bigint_as_char) : lexical error: invalid char in json text."
   df.user.info.data <- doRequest(createdUrl)
   
-  df.user.info.data <- data.frame(t(sapply(df.user.info.data$data,c)))
-  #   print(class(unlist(df.user.info.data$member_since)))
-  df.user.info.data$member_since <- as.POSIXct(unlist(df.user.info.data$member_since), origin = "1970-01-01", tz = "UTC")
+  df.user.info.data <- data.frame(ReturnValues = unlist(df.user.info.data$data))
+  df.user.info.data$ReturnValues <- str_trim(as.character(df.user.info.data$ReturnValues))
+  df.user.info.data$ReturnValuesDescription <- rownames(df.user.info.data)
+  rownames(df.user.info.data) <- NULL
+  
+  # convert to readable format 
+  df.user.info.data[5,1] <- as.character(as.POSIXct(as.integer(df.user.info.data[5, 1]), origin = "1970-01-01", tz = "UTC"))
   
   return(df.user.info.data)
 }
@@ -50,9 +62,9 @@ user.info <- function() {
 #' 
 #' @param limit - optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.
 #' 
-#' @param expand_client_id - (optional) true or false (default) whether to provide additional information about encoding application. 
-#' @param archived - (optional) - on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)
-#' @param private - (optional) on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)
+#' @param expand_client_id - true or false (always default) whether to provide additional information about encoding application. 
+#' @param archived - on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)
+#' @param private - on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)
 #' 
 #' @return link - the Bitlink specific to this user and this long_url.
 #' @return aggregate_link - the global bitly identifier for this long_url.
@@ -85,6 +97,7 @@ user.linkHistory <- function(limit = 100, private = "off", archived = "both", ex
   df.all.history$user_ts <- as.POSIXct(df.all.history$user_ts, origin = "1970-01-01", tz = "UTC")
   df.all.history$created_at <- as.POSIXct(df.all.history$created_at, origin = "1970-01-01", tz = "UTC")
   df.all.history$modified_at <- as.POSIXct(df.all.history$modified_at, origin = "1970-01-01", tz = "UTC")
+  df.all.history$tags <- NULL
   
   return(df.all.history)
 }
@@ -94,6 +107,10 @@ user.linkHistory <- function(limit = 100, private = "off", archived = "both", ex
 #' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}
 #' 
 #' @return tracking_domains - a list of tracking domains configured for the authenticated user.
+#'
+#' @examples 
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' user.tracking_domain_list()
 #' 
 #' @export
 user.tracking_domain_list <- function() {

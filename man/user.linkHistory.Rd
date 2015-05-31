@@ -10,11 +10,11 @@ user.linkHistory(limit = 100, private = "off", archived = "both",
 \arguments{
 \item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.}
 
-\item{private}{- (optional) on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)}
+\item{private}{- on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)}
 
-\item{archived}{- (optional) - on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)}
+\item{archived}{- on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)}
 
-\item{expand_client_id}{- (optional) true or false (default) whether to provide additional information about encoding application.}
+\item{expand_client_id}{- true or false (always default) whether to provide additional information about encoding application.}
 }
 \value{
 link - the Bitlink specific to this user and this long_url.

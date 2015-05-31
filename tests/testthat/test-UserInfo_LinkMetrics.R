@@ -11,12 +11,11 @@ context("User Info")
 
 test_that("Return information about a user.", {
   ui <- user.info()
-  expect_equal(dim(ui)[[2]], 16)
 })
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
   user.linkH <- user.linkHistory()
-  expect_named(user.linkH, c("keyword_link","archived", "user_ts" ,"title", "created_at", "tags", "modified_at", 
+  expect_named(user.linkH, c("keyword_link","archived", "user_ts" ,"title", "created_at", "modified_at", 
                       "private", "aggregate_link", "long_url", "client_id", "link", "note"))
 })
 

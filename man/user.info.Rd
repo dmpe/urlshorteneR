@@ -55,6 +55,10 @@ Only included in requests for a user's own info
 
 Only included for enterprise accounts (is_enterprise == 1 or has_master == 1)
 }
+\examples{
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+user.info()
+}
 \seealso{
 See \url{http://dev.bitly.com/user_info.html#v3_user_info}
 }
