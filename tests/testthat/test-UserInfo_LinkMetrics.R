@@ -11,6 +11,7 @@ context("User Info")
 
 test_that("Return information about a user.", {
   ui <- user.info()
+  expect_equal(dim(ui)[[2]], 2)
 })
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {

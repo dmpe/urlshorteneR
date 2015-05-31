@@ -54,6 +54,8 @@ Return or update information about a user.
 Only included in requests for a user's own info
 
 Only included for enterprise accounts (is_enterprise == 1 or has_master == 1)
+
+both columns (!) are character type
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
