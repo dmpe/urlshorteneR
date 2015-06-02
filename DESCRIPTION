@@ -3,7 +3,7 @@ Type: Package
 Title: R Package for Accessing Bit.ly API
 Description: Package allowing users to access Bit.ly API and retreive many useful statistics.
 Version: 0.3.5
-Date: 2015-01-01
+Date: 2015-06-01
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"))
     )
