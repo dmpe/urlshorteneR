@@ -11,7 +11,6 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 - Testers (with the enterprise account too). Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
 
-
 ### What is/not implemented:
 
 Based on <http://dev.bitly.com/>

@@ -294,7 +294,7 @@ link.metrics.referrers_by_domain <- function(link, limit = 1000, unit = c("minut
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
   df.link.metrics.referrers_by_domain.data <- data.frame(t(sapply(df.link.metrics.referrers_by_domain.data,c)))
   
-  #just guessing at the moment
+  # just guessing at the moment
   df.link.metrics.referrers_by_domain.data$type <- rownames(df.link.metrics.referrers_by_domain.data) 
   return(df.link.metrics.referrers_by_domain.data)
 }
