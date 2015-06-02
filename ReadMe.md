@@ -31,8 +31,8 @@ Based on <http://dev.bitly.com/>
 /v3/link/encoders  | Yes
 /v3/link/encoders_by_count  | Yes
 /v3/link/encoders_count  | Yes
-/v3/link/referrers  | (**NOT**)
-/v3/link/referrers_by_domain  | (**NOT**)
+/v3/link/referrers  | Yes
+/v3/link/referrers_by_domain  | Yes
 /v3/link/referring_domains  | Yes
 
 
@@ -76,7 +76,7 @@ Based on <http://dev.bitly.com/>
 
 - Additionally, only a **small subset of input paramaters** has been implemented. 
 
-### Installation
+### Installing (not yet on CRAN)
 
 Use devtools to install the development version from Github:
 

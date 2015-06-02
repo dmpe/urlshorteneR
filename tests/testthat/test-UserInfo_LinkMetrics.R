@@ -57,5 +57,13 @@ test_that("Returns metrics about the domains referring click traffic to a single
   expect_named(lmrd, c("domain", "clicks")) # "url" doens't need to be in there (semi-optional)
 })
 
+test_that("Returns metrics about the pages referring click traffic to a single Bitlink.", {
+  lmr <- link.metrics.referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  expect_named(lmr, c( "referrer", "clicks"))
+})
 
+test_that("Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.", {
+  lmrbd <- link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  expect_named(lmrbd, c( "referrer", "clicks", "type"))
+})
 

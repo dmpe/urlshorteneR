@@ -198,8 +198,7 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", 
-#' units = -1, limit = 100)
+#' link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day",units = -1, limit = 100)
 #' 
 #' @import RCurl
 #' @export
@@ -221,5 +220,83 @@ link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute"
   return(df.link.metrics.referring_domains.data)
 }
 
+
+#' Returns metrics about the pages referring click traffic to a single Bitlink.
+#' 
+#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
+#' 
+#' @param link - a Bitlink.
+#' @param limit - 1 to 1000 (default=1000).
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
+#' value for each period of time.
+#' 
+#' @return clicks - the number of clicks referred from this domain.
+#' @return referrer - the URL referring clicks.
+#' 
+#' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' link.metrics.referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' 
+#' @import RCurl
+#' @export
+link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+  unit.matched <- match.arg(unit)
+  
+  link.metrics.referrers.url <- "https://api-ssl.bitly.com/v3/link/referrers"
+  
+  createdUrl <- paste(link.metrics.referrers.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  # call method from ApiKey.R
+  df.link.metrics.referrers <- doRequest(createdUrl)
+  
+  df.link.metrics.referrers.data <- df.link.metrics.referrers$data$referrers
+  
+  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
+  df.link.metrics.referrers.data <- data.frame(t(sapply(df.link.metrics.referrers.data,c)))
+  return(df.link.metrics.referrers.data)
+}
+
+
+#' Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.
+#' 
+#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
+#' 
+#' @param link - a Bitlink.
+#' @param limit - 1 to 1000 (default=1000).
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
+#' value for each period of time.
+#' 
+#' @return clicks - the number of clicks referred from this domain.
+#' @return referrer - the URL referring clicks.
+#' 
+#' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' 
+#' @import RCurl
+#' @export
+link.metrics.referrers_by_domain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+  unit.matched <- match.arg(unit)
+  
+  link.metrics.referrers_by_domain.url <- "https://api-ssl.bitly.com/v3/link/referrers_by_domain"
+  
+  createdUrl <- paste(link.metrics.referrers_by_domain.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  
+  # call method from ApiKey.R
+  df.link.metrics.referrers_by_domain <- doRequest(createdUrl)
+  
+  df.link.metrics.referrers_by_domain.data <- df.link.metrics.referrers_by_domain$data$referrers
+  
+  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
+  df.link.metrics.referrers_by_domain.data <- data.frame(t(sapply(df.link.metrics.referrers_by_domain.data,c)))
+  
+  #just guessing at the moment
+  df.link.metrics.referrers_by_domain.data$type <- rownames(df.link.metrics.referrers_by_domain.data) 
+  return(df.link.metrics.referrers_by_domain.data)
+}
 
 
