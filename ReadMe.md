@@ -49,21 +49,22 @@ Based on <http://dev.bitly.com/>
 /v3/user/shorten_counts | Yes
 
 
-- <http://dev.bitly.com/organization_metrics.html>
-    + None endpoints are implemented here.
-
-
 <http://dev.bitly.com/domains.html> | Implemented Yes/No | Premium
 ------------- | ------------- | -------------
 /v3/bitly_pro_domain  | Yes| No
 /v3/user/tracking_domain_clicks  | No | Yes (cannot do unless sombody helps)
 /v3/user/tracking_domain_shorten_counts  | No | Yes (cannot do unless sombody helps)
 
+
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
+    
 - <http://dev.bitly.com/nsq.html>  
     + None endpoints are implemented here. 
     
+- <http://dev.bitly.com/organization_metrics.html>
+    + None endpoints are implemented here.
+
 - At the moment **no OAuth support** -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth), which requires `Generic Access Token` from <https://bitly.com/a/oauth_apps>
 
 - Additionally, only a **small subset of input paramaters** has been implemented. 
