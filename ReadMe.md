@@ -63,8 +63,8 @@ Based on <http://dev.bitly.com/>
 <http://dev.bitly.com/domains.html> | Implemented Yes/No | Premium
 ------------- | ------------- | -------------
 /v3/bitly_pro_domain  | Yes| No
-/v3/user/tracking_domain_clicks  | No | Yes (unless sombody helps, cannot do)
-/v3/user/tracking_domain_shorten_counts  | No | Yes (unless sombody helps, cannot do)
+/v3/user/tracking_domain_clicks  | No | Yes (cannot do unless sombody helps)
+/v3/user/tracking_domain_shorten_counts  | No | Yes (cannot do unless sombody helps)
 
 - <http://dev.bitly.com/links.html>
     + None endpoints are implemented here. 
