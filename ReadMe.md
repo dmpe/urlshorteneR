@@ -57,13 +57,13 @@ Based on <http://dev.bitly.com/>
 
 
 - <http://dev.bitly.com/links.html>
-    + None endpoints are implemented here. 
+    + None endpoints are implemented here, because there is no use-case from my point of view. Per request can implement, however. 
     
 - <http://dev.bitly.com/nsq.html>  
-    + None endpoints are implemented here. 
+    + None endpoints are implemented here, because all are premium. 
     
 - <http://dev.bitly.com/organization_metrics.html>
-    + None endpoints are implemented here.
+    + None endpoints are implemented here, because all are premium.
 
 - At the moment **no OAuth support** -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth), which requires `Generic Access Token` from <https://bitly.com/a/oauth_apps>
 
