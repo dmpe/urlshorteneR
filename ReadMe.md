@@ -49,15 +49,8 @@ Based on <http://dev.bitly.com/>
 /v3/user/shorten_counts | Yes
 
 
-<http://dev.bitly.com/organization_metrics.html> | Implemented Yes/No | Premium
-------------- | ------------- | -------------
-/v3/organization/brand_messages  | No | Yes
-/v3/organization/clicks  | No | Yes
-/v3/organization/intersecting_links | No  | Yes
-/v3/organization/leaderboard  | No  | Yes
-/v3/organization/missed_opportunities | No  | Yes
-/v3/organization/popular_links | No  | Yes
-/v3/organization/shorten_counts | No  | Yes
+- <http://dev.bitly.com/organization_metrics.html>
+    + None endpoints are implemented here.
 
 
 <http://dev.bitly.com/domains.html> | Implemented Yes/No | Premium
