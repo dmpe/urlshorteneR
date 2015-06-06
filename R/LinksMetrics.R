@@ -9,6 +9,8 @@
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
 #' value for each period of time.
 #' 
+#' @todo Improve documentation here
+#' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
