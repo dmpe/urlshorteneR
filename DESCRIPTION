@@ -1,25 +1,26 @@
 Package: RBitly
 Type: Package
 Title: R Package for Accessing Bit.ly API
-Description: Package allowing users to access Bit.ly API and retreive many useful statistics.
+Description: Package allowing users to access Bit.ly API (https://bitly.com/) and retreive many useful statistics.
 Version: 0.3.7
 Date: 2015-06-05
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"))
     )
 Maintainer: John Malc <cincenko@outlook.com>
-Depends:
-  R (>= 3.2.0)
-Imports:
+Depends: 
+  R (>= 3.0.0)
+Imports: 
   httr (>= 0.6.0),
   RCurl (>= 1.95-4.6),
   jsonlite (>= 0.9.15), 
   stringr (>= 1.0.0)
-Suggests:
+Suggests: 
   roxygen2 (>= 4.1.0), 
   curl,
   knitr,
-  testthat
+  testthat,
+  secure
 VignetteBuilder: knitr
 License: MIT + file LICENSE
 URL: https://github.com/dmpe/rbitly

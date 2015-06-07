@@ -1,6 +1,5 @@
 R package for Bit.ly & Bitly.com & j.mp and other custom domains
 ============
-Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 [![Build Status](https://travis-ci.org/dmpe/rbitly.svg?branch=master)](https://travis-ci.org/dmpe/rbitly)
 [![Coverage Status](https://coveralls.io/repos/dmpe/rbitly/badge.svg)](https://coveralls.io/r/dmpe/rbitly)
@@ -12,7 +11,7 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 Use devtools to install the development version from Github:
 
 ```
-devtools::install_github('dmpe/rbitly', build_vignettes = FALSE)
+devtools::install_github("dmpe/rbitly"", build_vignettes = TRUE)
 ```
 
 ### Help needed !!!
@@ -77,6 +76,10 @@ Based on <http://dev.bitly.com/>
 
 - Additionally, only a **small subset of input paramaters** has been implemented. 
 
+### Looking for examples ?
+
+Then check the vignette in `vignettes` folder.
+
 ### How to Contribute
 
 - Fork the repository
@@ -89,11 +92,13 @@ Want a direct push access? No problem, just let me know.
 
 ### Special Thanks to:
 
-- Myself ([@dmpe](https://www.github.com/dmpe)) :yum:
-- Somewhat (well, quite a lot) inspired by [Quandl Api R](https://github.com/quandl/R-package/)
+- Developed by myself ([@dmpe](https://www.github.com/dmpe)) :yum:.
+- Somewhat inspired by [Quandl R API](https://github.com/quandl/R-package/).
 
-
-
+## Meta
+- Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License).
+- Please report bugs in <https://github.com/dmpe/rbitly/issues>.
+<!-- [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org) -->
 
 
 

@@ -11,6 +11,6 @@ library(stringr)
 context("Testing API")
 
 test_that("Login using username and password", {
-  apikey <- returnApiKey("asdgasdgadgsdfgasdf@yahoo.com", "qwert123456!")
+  apikey <- rbitlyApi_up("asdgasdgadgsdfgasdf@yahoo.com", "qwert123456!")
   expect_equal(nchar(apikey), 40)
 })

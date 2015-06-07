@@ -15,7 +15,7 @@ This package allows you to download your data and many useful statistics from [B
 
 For that there are **two ways**. The first one is to go to <https://bitly.com/a/oauth_apps> and generate one yourself. Then you will need to execute `rbitlyApi("Your Generic Access Token")` method. This is a **requirenment** to work with all functions in this package. 
 
-Or (e.g. when you are lazy etc.) by using your username and password you can automatically acquire and set your API Key. Meaning you can execute `returnApiKey("YourUsername", "YourPassword")` which not only will get your API Key (just in the case you will need it) but also, using the method above, "store" it R. 
+Or (e.g. when you are lazy etc.) by using your username and password you can automatically acquire and set your API Key. Meaning you can execute `rbitlyApi_up("YourUsername", "YourPassword")` which not only will get your API Key (just in the case you will need it) but also, using the method above, "store" it R. 
 
 Either one is OK. Choose the one which is more convenient to you. 
 

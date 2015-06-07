@@ -27,9 +27,9 @@ bitly_pro_domain <- function(domain) {
   df.bitly_pro_domain.data <- df.bitly_pro_domain$data
   
   if (df.bitly_pro_domain.data$bitly_pro_domain == FALSE) {
-    cat("A short domain:", df.bitly_pro_domain.data$domain, "is NOT a valid bitly pro domain")
+    message("A short domain: ", df.bitly_pro_domain.data$domain, " is NOT a valid bitly pro domain")
   } else {
-    cat("A short domain:", df.bitly_pro_domain.data$domain, "is a valid bitly pro domain")
+    message("A short domain: ", df.bitly_pro_domain.data$domain, " is a valid bitly pro domain")
   }
   
 }

@@ -1,4 +1,5 @@
 ## ------------------------------------------------------------------------
+library(RBitly)
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 
 user.metrics.popular_links(unit = "month", units = -1, limit = 100)

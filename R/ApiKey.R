@@ -1,9 +1,12 @@
 rbitly.api.auth_token <- NA
 rbitly.api.version <- "v3"
 
-#' @title Assign rbitly token
+#' @title Assign Bit.ly API token
 #' 
 #' @param auth_token - Passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.
+#' 
+#' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
+#' @seealso See \url{http://dev.bitly.com/authentication.html}
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
@@ -17,13 +20,14 @@ rbitlyApi <- function(auth_token) {
 }
 
 
-#' @title Create API Key using username and password
+#' @title Get & return & assign Bit.ly API token using username and password
 #' 
 #' @description This method is for the case when the user doesn't know what is his/her "Generic Access Token". 
 #' When inserting username/email and password it will
 #' return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
+#' @seealso See \url{http://dev.bitly.com/authentication.html}
 #' 
 #' @param username - the username or an email
 #' @param password - the password
@@ -33,12 +37,12 @@ rbitlyApi <- function(auth_token) {
 #' 
 #' @examples 
 #' \donttest{
-#' returnApiKey("YourUsername", "YourPassword")
+#' rbitlyApi_up("YourUsername", "YourPassword")
 #' }
 #' 
 #' @import httr
 #' @export
-returnApiKey <- function(username, password) {
+rbitlyApi_up <- function(username, password) {
   
   access_token.url <- "https://api-ssl.bitly.com/oauth/access_token"
   autenticate <-  authenticate(username, password)
@@ -59,6 +63,8 @@ returnApiKey <- function(username, password) {
 #' @import httr
 #' @import jsonlite
 #' @import stringr
+#' 
+#' @noRd
 doRequest <- function(url, authcode = rbitlyApi()) {
   
   if (is.na(authcode)) {

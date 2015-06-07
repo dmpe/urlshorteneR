@@ -2,7 +2,7 @@
 % Please edit documentation in R/ApiKey.R
 \name{rbitlyApi}
 \alias{rbitlyApi}
-\title{Assign rbitly token}
+\title{Assign Bit.ly API token}
 \usage{
 rbitlyApi(auth_token)
 }
@@ -10,9 +10,14 @@ rbitlyApi(auth_token)
 \item{auth_token}{- Passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.}
 }
 \description{
-Assign rbitly token
+Assign Bit.ly API token
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+}
+\seealso{
+See \url{http://dev.bitly.com/rate_limiting.html}
+
+See \url{http://dev.bitly.com/authentication.html}
 }
 

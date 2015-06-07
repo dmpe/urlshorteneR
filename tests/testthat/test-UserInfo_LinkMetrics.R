@@ -16,8 +16,7 @@ test_that("Return information about a user.", {
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
   user.linkH <- user.linkHistory()
-  expect_named(user.linkH, c("keyword_link","archived", "user_ts" ,"title", "created_at", "modified_at", 
-                      "private", "aggregate_link", "long_url", "client_id", "link", "note"))
+  expect_more_than(length(user.linkH), 10)
 })
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
