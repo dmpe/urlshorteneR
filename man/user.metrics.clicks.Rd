@@ -10,17 +10,20 @@ user.metrics.clicks(limit = 1000, unit = c("minute", "hour", "day", "week",
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
-value for each period of time.}
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the maximum
+value for units is 60.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return all units of time.}
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
+units of time.}
 
-\item{rollup}{- true or false. Return data for multiple units rolled up to a single result instead of a separate value for each period of time.}
+\item{rollup}{- true or false. Return data for multiple units rolled up to a single result instead
+of a separate value for each period of time.}
 }
 \value{
 dt - a unix timestamp representing the beginning of this unit.
 
-day_start - a unix timestamp representing the beginning of the specified day (ONLY returned if unit is not specified).
+day_start - a unix timestamp representing the beginning of the specified day (ONLY returned
+if unit is not specified).
 
 clicks - the number of clicks on this user's links in the specified timeframe.
 }
@@ -28,7 +31,8 @@ clicks - the number of clicks on this user's links in the specified timeframe.
 Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
 }
 \note{
-without the parameter unit this endpoint returns a legacy response format which assumes rollup=false, unit=day and units=7.
+without the parameter unit this endpoint returns a legacy response format which assumes
+rollup=false, unit=day and units=7.
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
