@@ -30,6 +30,9 @@ Then check the vignette in `vignettes` folder.
 
 Want a direct push access? No problem, just let me know.
 
+**Also**:
+ - Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
 ### Special Thanks to:
 
 - Developed by ([@dmpe](https://www.github.com/dmpe)) :yum: and others.
