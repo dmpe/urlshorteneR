@@ -67,7 +67,7 @@ both columns (!) are character type
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-user.info()
+user_Info()
 }
 \seealso{
 See \url{http://dev.bitly.com/user_info.html#v3_user_info}

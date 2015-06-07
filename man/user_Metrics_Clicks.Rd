@@ -36,8 +36,8 @@ rollup=false, unit=day and units=7.
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
-user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
+user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "true")
+user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "false")
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}

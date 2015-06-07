@@ -6,7 +6,7 @@
 \usage{
 user_Metrics_ReferringDomains(limit = 1000, unit = c("minute", "hour",
   "day", "week", "month"), rollup = c("false", "true"), units = -1,
-  exclude_social_networks = c("true", "false"), login = NULL)
+  login = NULL, exclude_social_networks = c("true", "false"))
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -20,11 +20,11 @@ instead of a separate value for each period of time.}
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return
 all units of time.}
 
-\item{exclude_social_networks}{- true (default) or false. If true, exclude domains that are
-part of a social network that bitly tracks.}
-
 \item{login}{- an optional string consisting of the account name used to report the appropriate
 statistics; defaults to the current user.}
+
+\item{exclude_social_networks}{- true (default) or false. If true, exclude domains that are
+part of a social network that bitly tracks.}
 }
 \value{
 clicks - the number of clicks referred from this URL.
@@ -40,11 +40,11 @@ When a unit is specified (always the case), rollup is always (!) true.
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true")
-user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "false")
-user.metrics.referring_domains(unit = "day", units = -1, limit = 100,
+user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true")
+user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "false")
+user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100,
 exclude_social_networks = "false")
-user.metrics.referring_domains(unit = "day", units = -1, limit = 100,
+user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100,
 exclude_social_networks = "true")
 }
 \seealso{

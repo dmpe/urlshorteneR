@@ -28,7 +28,7 @@ This replaces the realtime_links endpoint.
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-user.metrics.popular_links(unit = "day", units = -1, limit = 100)
+user_Metrics_PopularLinks(unit = "day", units = -1, limit = 100)
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}

@@ -34,9 +34,9 @@ Returns the number of Bitlinks created in a given time period by the authenticat
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-user.metrics.shorten_counts(unit = "day", units = -1, limit = 100, rollup = "true")
-user.metrics.shorten_counts(unit = "day", units = -1, limit = 100, rollup = "false")
-user.metrics.shorten_counts(unit = "day", units = -1, limit = 100)
+user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")
+user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "false")
+user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100)
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
