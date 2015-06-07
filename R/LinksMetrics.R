@@ -1,6 +1,6 @@
 #' @title Returns numbers of click on a link.
 #' 
-#' Returns the number of clicks on a single Bitlink of the authenticated user.
+#' @description Returns the number of clicks on a single Bitlink of the authenticated user.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 #' 
@@ -48,7 +48,7 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 
 #' @title Returns metrics about the countries from a link.
 #' 
-#' Returns metrics about the countries referring click traffic to a single Bitlink.
+#' @description Returns metrics about the countries referring click traffic to a single Bitlink.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
 #' 
@@ -94,7 +94,7 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 
 #' @title Returns users who have encoded this long URL.
 #' 
-#' Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).
+#' @description Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders}
 #' 
@@ -138,7 +138,7 @@ link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expan
 
 #' @title Returns the number of users who have shortened a link.
 #' 
-#' Returns the number of users who have shortened (encoded) a single Bitlink.
+#' @description Returns the number of users who have shortened (encoded) a single Bitlink.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}
 #' 
@@ -171,7 +171,7 @@ link.metrics.encoders_count <- function(link) {
 
 #' @title Returns users who have encoded this link.
 #' 
-#' Returns users who have encoded this link (optionally only those in the requesting user's social graph), 
+#' @description Returns users who have encoded this link (optionally only those in the requesting user's social graph), 
 #' sorted by the number of clicks on each encoding user's link.
 #' 
 #' @seealso See \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count}
@@ -216,7 +216,7 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
 
 #' @title Returns metrics about the domains referring click traffic to a link.
 #' 
-#' Returns metrics about the domains referring click traffic to a single Bitlink.
+#' @description Returns metrics about the domains referring click traffic to a single Bitlink.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referring_domains}
 #' 
@@ -258,7 +258,7 @@ link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute"
 }
 
 
-#' Returns metrics about the pages referring click traffic to a single Bitlink.
+#' @title Returns metrics about the pages referring click traffic to a single Bitlink.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
 #' 
@@ -296,7 +296,9 @@ link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 }
 
 
-#' Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.
+#' @title Returns metrics about the pages referring click traffic to a single Bitlink.
+#' 
+#' @description Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
 #' 
