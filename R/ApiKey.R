@@ -17,7 +17,10 @@ rbitlyApi <- function(auth_token) {
 }
 
 
-#' This method is for the case when the user doesn't know what is his/her "Generic Access Token". When inserting username/email and password it will
+#' @title Create API Key using username and password
+#' 
+#' This method is for the case when the user doesn't know what is his/her "Generic Access Token". 
+#' When inserting username/email and password it will
 #' return the key and assign it using \code{\link{rbitlyApi}} method in the namespace.
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
@@ -25,7 +28,8 @@ rbitlyApi <- function(auth_token) {
 #' @param username - the username or an email
 #' @param password - the password
 #' 
-#' @return api key - user's API Key. As described, it is not necessary to use rbitlyApi("api key") as this is done automatically
+#' @return api key - user's API Key. As described, it is not necessary to use rbitlyApi("api key") 
+#' as this is done automatically
 #' 
 #' @examples 
 #' \donttest{
@@ -63,7 +67,7 @@ doRequest <- function(url, authcode = rbitlyApi()) {
     createdUrl <- paste(url, authcode, sep = "&access_token=")
     
     # fail to parse content correctly
-    if(str_detect(url, "v3/user/info")) {
+    if (str_detect(url, "v3/user/info")) {
       
       json_response <- fromJSON(createdUrl)
       return(json_response)

@@ -7,6 +7,14 @@ Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 
 ----------------
 
+### Installing (not yet on CRAN)
+
+Use devtools to install the development version from Github:
+
+```
+devtools::install_github('dmpe/rbitly', build_vignettes = FALSE)
+```
+
 ### Help needed !!!
 
 - Testers (with the enterprise account too). Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
@@ -68,14 +76,6 @@ Based on <http://dev.bitly.com/>
 - At the moment **no OAuth support** -> only basic [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth), which requires `Generic Access Token` from <https://bitly.com/a/oauth_apps>
 
 - Additionally, only a **small subset of input paramaters** has been implemented. 
-
-### Installing (not yet on CRAN)
-
-Use devtools to install the development version from Github:
-
-```
-devtools::install_github('dmpe/rbitly', build_vignettes = FALSE)
-```
 
 ### How to Contribute
 

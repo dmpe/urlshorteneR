@@ -29,4 +29,7 @@ link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, li
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 }
+\todo{
+Improve documentation here
+}
 
