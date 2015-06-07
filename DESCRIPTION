@@ -19,8 +19,7 @@ Suggests:
   roxygen2 (>= 4.1.0), 
   curl,
   knitr,
-  testthat,
-  secure
+  testthat
 VignetteBuilder: knitr
 License: MIT + file LICENSE
 URL: https://github.com/dmpe/rbitly
