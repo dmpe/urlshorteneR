@@ -46,22 +46,22 @@ test_that("Returns users who have encoded this long URL (optionally only those i
 })
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
-  lmebc <- link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
+  lmebc <- link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
   expect_named(lmebc, c("count", "link", "user", "ts")) # "url" doens't need to be in there (semi-optional)
 })
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
-  lmrd <- link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  lmrd <- link_Metrics_ReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
   expect_named(lmrd, c("domain", "clicks")) # "url" doens't need to be in there (semi-optional)
 })
 
 test_that("Returns metrics about the pages referring click traffic to a single Bitlink.", {
-  lmr <- link.metrics.referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  lmr <- link_Metrics_Referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
   expect_named(lmr, c( "referrer", "clicks"))
 })
 
 test_that("Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.", {
-  lmrbd <- link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  lmrbd <- link_Metrics_ReferrersByDomain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
   expect_named(lmrbd, c( "referrer", "clicks", "type"))
 })
 

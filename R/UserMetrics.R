@@ -297,7 +297,7 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
   # call method from ApiKey.R
   df_user_metrics_shorten_counts <- doRequest(created_URL)
   
-  if (rollup.matched == "false") {
+  if (rollup_matched == "false") {
     df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts
     df_user.metrics_shorten_counts_data$dt <- as.POSIXct(as.integer(df_user.metrics_shorten_counts_data$dt), 
                                                       origin = "1970-01-01", tz = "UTC")
