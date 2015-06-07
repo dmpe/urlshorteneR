@@ -98,7 +98,7 @@ Want a direct push access? No problem, just let me know.
 ## Meta
 - Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License).
 - Please report bugs in <https://github.com/dmpe/rbitly/issues>.
-<!-- [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org) -->
+<!-- [sdfsadf![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org) -->
 
 
 
