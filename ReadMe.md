@@ -28,14 +28,14 @@ Then check the vignette in `vignettes` folder.
 - Fork the repository
 - Create and switch to a new branch `git checkout -b [name_of_your_new_branch]`
 - Do the changes (i.e. edit files)
-- Push remote branch to your github `git remote add [name_of_your_remote]` & `git push origin [name_of_your_remote]`
+- Push remote branch to your github `git remote add -t [name_of_your_remote]` & `git push -u origin [name_of_your_remote]`
 - Create a new pull request (to my `master` branch)
 
 Want a direct push access? No problem, just let me know.
 
 ### Special Thanks to:
 
-- Developed by myself ([@dmpe](https://www.github.com/dmpe)) :yum:.
+- Developed by ([@dmpe](https://www.github.com/dmpe)) :yum: and others.
 - Somewhat inspired by [Quandl R API](https://github.com/quandl/R-package/).
 
 ## Meta
