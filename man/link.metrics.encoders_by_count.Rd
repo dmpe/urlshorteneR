@@ -2,7 +2,10 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.encoders_by_count}
 \alias{link.metrics.encoders_by_count}
-\title{Returns users who have encoded this link (optionally only those in the requesting user's social graph), sorted by the number of clicks on each encoding user's link.}
+\title{Returns users who have encoded this link.
+
+Returns users who have encoded this link (optionally only those in the requesting user's social graph),
+sorted by the number of clicks on each encoding user's link.}
 \usage{
 link.metrics.encoders_by_count(link, limit = 100, my_network = "false",
   expand_user = "false", subaccounts = "false")
@@ -10,22 +13,27 @@ link.metrics.encoders_by_count(link, limit = 100, my_network = "false",
 \arguments{
 \item{link}{- a Bitlink.}
 
-\item{limit}{- integer in the range 1:100 that specifies the number of records to return (default:100).}
+\item{limit}{- integer in the range 1:100 that specifies the number of records to return (default:100)}
 
 \item{my_network}{true or false (default) - restrict to my network}
 
 \item{expand_user}{false (always default) - include display names of encoders}
 
-\item{subaccounts}{(only available to enterprise accounts) false (always default) - restrict to this enterprise account and its subaccounts}
+\item{subaccounts}{(only available to enterprise accounts) false (always default) - restrict to
+this enterprise account and its subaccounts}
 }
 \value{
 entries - a mapping of link, user, and ts (when the Bitlink was created).
 }
 \description{
-Returns users who have encoded this link (optionally only those in the requesting user's social graph), sorted by the number of clicks on each encoding user's link.
+Returns users who have encoded this link.
+
+Returns users who have encoded this link (optionally only those in the requesting user's social graph),
+sorted by the number of clicks on each encoding user's link.
 }
 \note{
-- The response will only contain users whose links have gotten at least one click, and will not contain any users whose links are private.
+- The response will only contain users whose links have gotten at least one click, and
+will not contain any users whose links are private.
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

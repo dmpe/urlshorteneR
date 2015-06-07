@@ -2,7 +2,9 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.referring_domains}
 \alias{link.metrics.referring_domains}
-\title{Returns metrics about the domains referring click traffic to a single Bitlink.}
+\title{Returns metrics about the domains referring click traffic to a link.
+
+Returns metrics about the domains referring click traffic to a single Bitlink.}
 \usage{
 link.metrics.referring_domains(link, limit = 1000, unit = c("minute",
   "hour", "day", "week", "month"), units = -1)
@@ -12,10 +14,11 @@ link.metrics.referring_domains(link, limit = 1000, unit = c("minute",
 
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
-value for each period of time.}
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the
+maximum value for units is 60.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return all units of time.}
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
+units of time.}
 }
 \value{
 clicks - the number of clicks referred from this domain.
@@ -25,6 +28,8 @@ domain - the domain referring clicks.
 url - the complete URL of the domain referring clicks.
 }
 \description{
+Returns metrics about the domains referring click traffic to a link.
+
 Returns metrics about the domains referring click traffic to a single Bitlink.
 }
 \examples{

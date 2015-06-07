@@ -2,8 +2,7 @@
 % Please edit documentation in R/Domains.R
 \name{bitly_pro_domain}
 \alias{bitly_pro_domain}
-\title{Query whether a given domain is a valid bitly pro domain. Keep in mind that bitly custom short domains are
-restricted to less than 15 characters in length.}
+\title{Validate given domain for PRO features}
 \usage{
 bitly_pro_domain(domain)
 }
@@ -16,14 +15,11 @@ bitly_pro_domain - 0 or 1 designating whether this is a current bitly domain.
 domain - an echo back of the request parameter.
 }
 \description{
-Query whether a given domain is a valid bitly pro domain. Keep in mind that bitly custom short domains are
-restricted to less than 15 characters in length.
+Query whether a given domain is a valid bitly pro domain. Keep in mind that bitly custom
+short domains are restricted to less than 15 characters in length.
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 bitly_pro_domain(domain = "nytidsfds.ms")
-}
-\todo{
-testing
 }
 
