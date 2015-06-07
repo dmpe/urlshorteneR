@@ -1,8 +1,8 @@
-R package for Bit.ly & Bitly.com & j.mp and other custom domains
-============
-
 [![Build Status](https://travis-ci.org/dmpe/rbitly.svg?branch=master)](https://travis-ci.org/dmpe/rbitly)
 [![Coverage Status](https://coveralls.io/repos/dmpe/rbitly/badge.svg)](https://coveralls.io/r/dmpe/rbitly)
+
+R package for Bit.ly & Bitly.com & j.mp and other custom domains
+=======
 
 ----------------
 
