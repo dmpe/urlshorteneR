@@ -11,13 +11,12 @@ R package for Bit.ly & Bitly.com & j.mp and other custom domains
 Use devtools to install the development version from Github:
 
 ```
-devtools::install_github("dmpe/rbitly"", build_vignettes = TRUE)
+devtools::install_github("dmpe/rbitly", build_vignettes = TRUE)
 ```
 
 ### Help needed !!!
 
 - Testers (with the enterprise account too). Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
-
 
 ### Looking for examples ?
 

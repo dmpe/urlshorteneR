@@ -1,5 +1,5 @@
-rbitly.api.auth_token <- NA
-rbitly.api.version <- "v3"
+rbitly_api_auth_token <- NA
+rbitly_api_version <- "v3"
 
 #' @title Assign Bit.ly API token
 #' 
@@ -14,9 +14,9 @@ rbitly.api.version <- "v3"
 #' @export 
 rbitlyApi <- function(auth_token) {
   if (!missing(auth_token)) {
-    assignInMyNamespace('rbitly.api.auth_token', auth_token)
+    assignInMyNamespace('rbitly_api_auth_token', auth_token)
   }
-  invisible(rbitly.api.auth_token)
+  invisible(rbitly_api_auth_token)
 }
 
 
@@ -44,15 +44,15 @@ rbitlyApi <- function(auth_token) {
 #' @export
 rbitlyApi_up <- function(username, password) {
   
-  access_token.url <- "https://api-ssl.bitly.com/oauth/access_token"
+  access_token_url <- "https://api-ssl.bitly.com/oauth/access_token"
   autenticate <- authenticate(username, password)
   
-  req <- POST(access_token.url, autenticate, encode = "multipart")
+  req <- POST(access_token_url, autenticate, encode = "multipart")
   
-  valueOfApiKey <- content(req)
-  rbitlyApi(valueOfApiKey)
+  API_Key <- content(req)
+  rbitlyApi(API_Key)
   
-  return(valueOfApiKey)
+  return(API_Key)
 }
 
 #' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
@@ -65,23 +65,23 @@ rbitlyApi_up <- function(username, password) {
 #' @import stringr
 #' 
 #' @noRd
-doRequest <- function(url, authcode = rbitlyApi()) {
+doRequest <- function(url, auth_code = rbitlyApi()) {
   
-  if (is.na(authcode)) {
+  if (is.na(auth_code)) {
     stop("Please assign your API Key ('Generic Access Token') ")
   } else {
-    createdUrl <- paste(url, authcode, sep = "&access_token=")
+    created_URL <- paste(url, auth_code, sep = "&access_token=")
     
     # fails to parse content correctly
     if (str_detect(url, "v3/user/info")) {
       
-      json_response <- fromJSON(createdUrl)
+      json_response <- fromJSON(created_URL)
       return(json_response)
       
     } else {
       
-      returnGetRequest <- GET(createdUrl)
-      text_response <- content(returnGetRequest, as = "text")
+      return_request <- GET(created_URL)
+      text_response <- content(return_request, as = "text")
       json_response <- fromJSON(text_response)
       return(json_response)
     }
