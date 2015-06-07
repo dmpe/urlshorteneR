@@ -1,15 +1,18 @@
+#' @title Returns numbers of click on a link.
+#' 
 #' Returns the number of clicks on a single Bitlink of the authenticated user.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
-#' @param rollup - true (always default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
-#' value for each period of time.
+#' @param rollup - true (always default) or false.  Return data for multiple units rolled up to a 
+#' single result instead of a separate value for each period of time.
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all 
+#' units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
+#' maximum value for units is 60. 
 #' 
-#' @todo Improve documentation here
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
@@ -17,12 +20,14 @@
 #' 
 #' @import RCurl
 #' @export
-link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1, rollup="true") {
+link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+                                units = -1, rollup="true") {
   unit.matched <- match.arg(unit)
   
   link.metrics.clicks.url <- "https://api-ssl.bitly.com/v3/link/clicks"
   
-  createdUrl <- paste(link.metrics.clicks.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
+  createdUrl <- paste(link.metrics.clicks.url, "?link=", curlEscape(link), "&limit=", limit, 
+                      "&unit=", unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -30,8 +35,9 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
   
   df.link.metrics.clicks.data <- df.link.metrics.clicks$data
   
-  if(!is.null(df.link.metrics.clicks.data$unit_reference_ts)) {
-    df.link.metrics.clicks.data$unit_reference_ts <- as.POSIXct(df.link.metrics.clicks.data$unit_reference_ts, origin = "1970-01-01", tz = "UTC")
+  if (!is.null(df.link.metrics.clicks.data$unit_reference_ts)) {
+    df.link.metrics.clicks.data$unit_reference_ts <- as.POSIXct(df.link.metrics.clicks.data$unit_reference_ts, 
+                                                                origin = "1970-01-01", tz = "UTC")
   }
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
@@ -40,16 +46,20 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 }
 
 
+#' @title Returns metrics about the countries from a link.
+#' 
 #' Returns metrics about the countries referring click traffic to a single Bitlink.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default = 1000).
-#' @param rollup - true (always default) or false.  Return data for multiple units rolled up to a single result instead of a separate value for each period of time.
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
-#' value for each period of time.
+#' @param rollup - true (always default) or false.  Return data for multiple units rolled up to a 
+#' single result instead of a separate value for each period of time.
+#' @param units - an integer representing the time units to query data for. Pass -1 to return 
+#' all units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
+#' maximum value for units is 60.
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
@@ -57,12 +67,14 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @import RCurl
 #' @export
-link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1, rollup="true") {
+link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+                                   units = -1, rollup="true") {
   unit.matched <- match.arg(unit)
   
   link.metrics.countries.url <- "https://api-ssl.bitly.com/v3/link/countries"
   
-  createdUrl <- paste(link.metrics.countries.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(link.metrics.countries.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", 
+                      unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&rollup=", rollup, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -70,8 +82,9 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
   
   df.link.metrics.countries.data <- df.link.metrics.countries$data$countries
   
-  if(!is.null(df.link.metrics.countries.data$unit_reference_ts)) {
-    df.link.metrics.countries.data$unit_reference_ts <- as.POSIXct(df.link.metrics.countries.data$unit_reference_ts, origin = "1970-01-01", tz = "UTC")
+  if (!is.null(df.link.metrics.countries.data$unit_reference_ts)) {
+    df.link.metrics.countries.data$unit_reference_ts <- as.POSIXct(df.link.metrics.countries.data$unit_reference_ts,
+                                                                   origin = "1970-01-01", tz = "UTC")
   }
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
@@ -79,6 +92,8 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
   return(df.link.metrics.countries.data)
 }
 
+#' @title Returns users who have encoded this long URL.
+#' 
 #' Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders}
@@ -87,8 +102,10 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @param link - a Bitlink.
 #' @param my_network (optional) true or false (default) - restrict to my network.
-#' @param subaccounts (optional, only available to enterprise accounts) false (always default) - restrict to this enterprise account and its subaccounts
-#' @param limit - (optional) integer in the range of 1 to 25 that specifies the number of records to return (default: 25).
+#' @param subaccounts (optional, only available to enterprise accounts) false (always default) - 
+#' restrict to this enterprise account and its subaccounts
+#' @param limit - (optional) integer in the range of 1 to 25 that specifies the number of records 
+#' to return (default: 25).
 #' @param expand_user (optional) true or false (default) - include display names of encoders.
 #' 
 #' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
@@ -99,10 +116,12 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @import RCurl
 #' @export
-link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expand_user = "false", subaccounts = "false") {
+link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expand_user = "false", 
+                                  subaccounts = "false") {
   link.metrics.encoders.url <- "https://api-ssl.bitly.com/v3/link/encoders"
   
-  createdUrl <- paste(link.metrics.encoders.url, "?link=", curlEscape(link), "&my_network=", my_network, "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
+  createdUrl <- paste(link.metrics.encoders.url, "?link=", curlEscape(link), "&my_network=", my_network,
+                      "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -110,12 +129,15 @@ link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expan
   
   df.link.metrics.encoders.data <- df.link.metrics.encoders$data$entries
   
-  df.link.metrics.encoders.data$ts <- as.POSIXct(as.integer(df.link.metrics.encoders.data$ts), origin = "1970-01-01", tz = "UTC")
+  df.link.metrics.encoders.data$ts <- as.POSIXct(as.integer(df.link.metrics.encoders.data$ts),
+                                                 origin = "1970-01-01", tz = "UTC")
   
   return(df.link.metrics.encoders.data)
 }
 
 
+#' @title Returns the number of users who have shortened a link.
+#' 
 #' Returns the number of users who have shortened (encoded) a single Bitlink.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}
@@ -147,16 +169,21 @@ link.metrics.encoders_count <- function(link) {
   return(df.link.metrics.encoders_count.data)
 }
 
-#' Returns users who have encoded this link (optionally only those in the requesting user's social graph), sorted by the number of clicks on each encoding user's link.
+#' @title Returns users who have encoded this link.
+#' 
+#' Returns users who have encoded this link (optionally only those in the requesting user's social graph), 
+#' sorted by the number of clicks on each encoding user's link.
 #' 
 #' @seealso See \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count}
 #' 
-#' @note - The response will only contain users whose links have gotten at least one click, and will not contain any users whose links are private.
+#' @note - The response will only contain users whose links have gotten at least one click, and 
+#' will not contain any users whose links are private.
 #' 
 #' @param link - a Bitlink.
 #' @param my_network true or false (default) - restrict to my network
-#' @param subaccounts (only available to enterprise accounts) false (always default) - restrict to this enterprise account and its subaccounts
-#' @param limit - integer in the range 1:100 that specifies the number of records to return (default:100).
+#' @param subaccounts (only available to enterprise accounts) false (always default) - restrict to 
+#' this enterprise account and its subaccounts
+#' @param limit - integer in the range 1:100 that specifies the number of records to return (default:100)
 #' @param expand_user false (always default) - include display names of encoders
 #'
 #' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
@@ -167,32 +194,38 @@ link.metrics.encoders_count <- function(link) {
 #' 
 #' @import RCurl
 #' @export
-link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "false", expand_user = "false", subaccounts = "false") {
+link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "false", expand_user = "false", 
+                                           subaccounts = "false") {
   
   link.metrics.encoders_by_count.url <- "https://api-ssl.bitly.com/v3/link/encoders_by_count"
   
-  createdUrl <- paste(link.metrics.encoders_by_count.url, "?link=", curlEscape(link), "&limit=", limit, "&my_network=", my_network, "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
+  createdUrl <- paste(link.metrics.encoders_by_count.url, "?link=", curlEscape(link), "&limit=", limit, 
+                      "&my_network=", my_network, "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
   df.link.metrics.encoders_by_count <- doRequest(createdUrl)
   
   df.link.metrics.encoders_by_count.data <- data.frame(df.link.metrics.encoders_by_count$data$encoders_by_count)
-  df.link.metrics.encoders_by_count.data$ts <- as.POSIXct(as.integer(df.link.metrics.encoders_by_count.data$ts), origin = "1970-01-01", tz = "UTC")
+  df.link.metrics.encoders_by_count.data$ts <- as.POSIXct(as.integer(df.link.metrics.encoders_by_count.data$ts), 
+                                                          origin = "1970-01-01", tz = "UTC")
   
   return(df.link.metrics.encoders_by_count.data)
 }
 
 
+#' @title Returns metrics about the domains referring click traffic to a link.
+#' 
 #' Returns metrics about the domains referring click traffic to a single Bitlink.
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referring_domains}
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
-#' value for each period of time.
+#' @param units - an integer representing the time units to query data for. Pass -1 to return all 
+#' units of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
+#' maximum value for units is 60.
 #' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return domain - the domain referring clicks.
@@ -204,12 +237,14 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
 #' 
 #' @import RCurl
 #' @export
-link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+                                           units = -1) {
   unit.matched <- match.arg(unit)
   
   link.metrics.referring_domains.url <- "https://api-ssl.bitly.com/v3/link/referring_domains"
   
-  createdUrl <- paste(link.metrics.referring_domains.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(link.metrics.referring_domains.url, "?link=", curlEscape(link), "&limit=", 
+                      limit, "&unit=", unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
