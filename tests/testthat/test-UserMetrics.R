@@ -50,7 +50,7 @@ test_that("Returns aggregate metrics about the domains referring click traffic t
 
 test_that("Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.", {
 
-  expect_message(user.metrics.referring_domains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true")
+  expect_message(user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true")
                  , "You have zero referring domains given your function input.") 
 })
 

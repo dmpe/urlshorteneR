@@ -97,7 +97,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
     
   } else {
     # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-    df_user_metrics_countries_data <- data.frame(sapply(df_user_metrics_countries_data,c))
+    df_user_metrics_countries_data <- data.frame(sapply(df_user_metrics_countries_data, c))
   }
   
   return(df_user_metrics_countries_data)
@@ -180,13 +180,13 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
   
   if (rollup == "true") {
-    df_user_metrics_referrers_data <- data.frame(t(sapply(df_user_metrics_referrers_data,c)))
+    df_user_metrics_referrers_data <- data.frame(t(sapply(df_user_metrics_referrers_data, c)))
     
   } else {
     # No way I can check at the moment 
     
     # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-    df_user_metrics_referrers_data <- data.frame(t(sapply(df_user_metrics_referrers_data,c)))
+    df_user_metrics_referrers_data <- data.frame(t(sapply(df_user_metrics_referrers_data, c)))
   }
   
   return(df_user_metrics_referrers_data)
@@ -303,7 +303,7 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
                                                       origin = "1970-01-01", tz = "UTC")
     
   } else {
-    df_user.metrics_shorten_counts_data <- data.frame(t(sapply(df_user_metrics_shorten_counts$data,c)))
+    df_user.metrics_shorten_counts_data <- data.frame(t(sapply(df_user_metrics_shorten_counts$data, c)))
   }
   
   return(df_user.metrics_shorten_counts_data)

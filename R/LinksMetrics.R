@@ -13,36 +13,35 @@
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
 #' maximum value for units is 60. 
 #' 
-#' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @importFrom curl curl_escape
 #' @export
-link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                 units = -1, rollup="true") {
-  unit.matched <- match.arg(unit)
+  unit_matched <- match.arg(unit)
   
-  link.metrics.clicks.url <- "https://api-ssl.bitly.com/v3/link/clicks"
+  link_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/link/clicks"
   
-  createdUrl <- paste(link.metrics.clicks.url, "?link=", curl_escape(link), "&limit=", limit, 
-                      "&unit=", unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(link_metrics_clicks_url, "?link=", curl_escape(link), "&limit=", limit, 
+                      "&unit=", unit_matched, "&units=", units, "&rollup=", rollup, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.clicks <- doRequest(createdUrl)
+  df.link_metrics_clicks <- doRequest(created_URL)
   
-  df.link.metrics.clicks.data <- df.link.metrics.clicks$data
+  df.link_metrics_clicks_data <- df.link_metrics_clicks$data
   
-  if (!is.null(df.link.metrics.clicks.data$unit_reference_ts)) {
-    df.link.metrics.clicks.data$unit_reference_ts <- as.POSIXct(df.link.metrics.clicks.data$unit_reference_ts, 
+  if (!is.null(df.link_metrics_clicks_data$unit_reference_ts)) {
+    df.link_metrics_clicks_data$unit_reference_ts <- as.POSIXct(df.link_metrics_clicks_data$unit_reference_ts, 
                                                                 origin = "1970-01-01", tz = "UTC")
   }
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.link.metrics.clicks.data <- data.frame(t(sapply(df.link.metrics.clicks.data,c)))
-  return(df.link.metrics.clicks.data)
+  df.link_metrics_clicks_data <- data.frame(t(sapply(df.link_metrics_clicks_data, c)))
+  return(df.link_metrics_clicks_data)
 }
 
 
@@ -63,33 +62,33 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @importFrom curl curl_escape
 #' @export
-link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                    units = -1, rollup="true") {
-  unit.matched <- match.arg(unit)
+  unit_matched <- match.arg(unit)
   
-  link.metrics.countries.url <- "https://api-ssl.bitly.com/v3/link/countries"
+  link_metrics_countries_url <- "https://api-ssl.bitly.com/v3/link/countries"
   
-  createdUrl <- paste(link.metrics.countries.url, "?link=", curl_escape(link), "&limit=", limit, "&unit=", 
-                      unit.matched, "&units=", units, sep = "")
-  createdUrl <- paste(createdUrl, "&rollup=", rollup, "&format=json", sep = "")
+  created_URL <- paste(link_metrics_countries_url, "?link=", curl_escape(link), "&limit=", limit, "&unit=", 
+                      unit_matched, "&units=", units, sep = "")
+  created_URL <- paste(created_URL, "&rollup=", rollup, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.countries <- doRequest(createdUrl)
+  df_link_metrics_countries <- doRequest(created_URL)
   
-  df.link.metrics.countries.data <- df.link.metrics.countries$data$countries
+  df_link_metrics_countries_data <- df_link_metrics_countries$data$countries
   
-  if (!is.null(df.link.metrics.countries.data$unit_reference_ts)) {
-    df.link.metrics.countries.data$unit_reference_ts <- as.POSIXct(df.link.metrics.countries.data$unit_reference_ts,
+  if (!is.null(df_link_metrics_countries_data$unit_reference_ts)) {
+    df_link_metrics_countries_data$unit_reference_ts <- as.POSIXct(df_link_metrics_countries_data$unit_reference_ts,
                                                                    origin = "1970-01-01", tz = "UTC")
   }
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.link.metrics.countries.data <- data.frame(sapply(df.link.metrics.countries.data,c))
-  return(df.link.metrics.countries.data)
+  df_link_metrics_countries_data <- data.frame(sapply(df_link_metrics_countries_data, c))
+  return(df_link_metrics_countries_data)
 }
 
 #' @title Returns users who have encoded this long URL.
@@ -112,27 +111,27 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.encoders(link = "http://bit.ly/DPetrov")
+#' link_Metrics_Encoders(link = "http://bit.ly/DPetrov")
 #' 
 #' @importFrom curl curl_escape
 #' @export
-link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expand_user = "false", 
+link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand_user = "false", 
                                   subaccounts = "false") {
-  link.metrics.encoders.url <- "https://api-ssl.bitly.com/v3/link/encoders"
+  link_metrics_encoders_url <- "https://api-ssl.bitly.com/v3/link/encoders"
   
-  createdUrl <- paste(link.metrics.encoders.url, "?link=", curl_escape(link), "&my_network=", my_network,
+  created_URL <- paste(link_metrics_encoders_url, "?link=", curl_escape(link), "&my_network=", my_network,
                       "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.encoders <- doRequest(createdUrl)
+  df_link_metrics_encoders <- doRequest(created_URL)
   
-  df.link.metrics.encoders.data <- df.link.metrics.encoders$data$entries
+  df_link_metrics_encoders_data <- df_link_metrics_encoders$data$entries
   
-  df.link.metrics.encoders.data$ts <- as.POSIXct(as.integer(df.link.metrics.encoders.data$ts),
+  df_link_metrics_encoders_data$ts <- as.POSIXct(as.integer(df_link_metrics_encoders_data$ts),
                                                  origin = "1970-01-01", tz = "UTC")
   
-  return(df.link.metrics.encoders.data)
+  return(df_link_metrics_encoders_data)
 }
 
 
@@ -149,24 +148,23 @@ link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expan
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.encoders_count(link = "http://bit.ly/DPetrov")
+#' link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
 #' 
 #' @importFrom curl curl_escape
 #' @export
-link.metrics.encoders_count <- function(link) {
-  link.metrics.encoders_count.url <- "https://api-ssl.bitly.com/v3/link/encoders_count"
+link_Metrics_EncodersCount <- function(link) {
+  link_metrics_encoders_count_url <- "https://api-ssl.bitly.com/v3/link/encoders_count"
   
-  createdUrl <- paste(link.metrics.encoders_count.url, "?link=", curl_escape(link), sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(link_metrics_encoders_count_url, "?link=", curl_escape(link), sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.encoders_count <- doRequest(createdUrl)
-  
-  df.link.metrics.encoders_count.data <- df.link.metrics.encoders_count$data
+  df_link_metrics_encoders_count <- doRequest(created_URL)
+  df_link_metrics_encoders_count_data <- df_link_metrics_encoders_count$data
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.link.metrics.encoders_count.data <- data.frame(t(sapply(df.link.metrics.encoders_count.data,c)))
-  return(df.link.metrics.encoders_count.data)
+  df_link_metrics_encoders_count_data <- data.frame(t(sapply(df_link_metrics_encoders_count_data, c)))
+  return(df_link_metrics_encoders_count_data)
 }
 
 #' @title Returns users who have encoded this link.
@@ -199,12 +197,12 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
   
   link.metrics.encoders_by_count.url <- "https://api-ssl.bitly.com/v3/link/encoders_by_count"
   
-  createdUrl <- paste(link.metrics.encoders_by_count.url, "?link=", curl_escape(link), "&limit=", limit, 
+  created_URL <- paste(link.metrics.encoders_by_count.url, "?link=", curl_escape(link), "&limit=", limit, 
                       "&my_network=", my_network, "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.encoders_by_count <- doRequest(createdUrl)
+  df.link.metrics.encoders_by_count <- doRequest(created_URL)
   
   df.link.metrics.encoders_by_count.data <- data.frame(df.link.metrics.encoders_by_count$data$encoders_by_count)
   df.link.metrics.encoders_by_count.data$ts <- as.POSIXct(as.integer(df.link.metrics.encoders_by_count.data$ts), 
@@ -239,16 +237,16 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
 #' @export
 link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                            units = -1) {
-  unit.matched <- match.arg(unit)
+  unit_matched <- match.arg(unit)
   
   link.metrics.referring_domains.url <- "https://api-ssl.bitly.com/v3/link/referring_domains"
   
-  createdUrl <- paste(link.metrics.referring_domains.url, "?link=", curl_escape(link), "&limit=", 
-                      limit, "&unit=", unit.matched, "&units=", units, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(link.metrics.referring_domains.url, "?link=", curl_escape(link), "&limit=", 
+                      limit, "&unit=", unit_matched, "&units=", units, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.referring_domains <- doRequest(createdUrl)
+  df.link.metrics.referring_domains <- doRequest(created_URL)
   
   df.link.metrics.referring_domains.data <- df.link.metrics.referring_domains$data$referring_domains
   
@@ -279,16 +277,16 @@ link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute"
 #' @export
 link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    units = -1) {
-  unit.matched <- match.arg(unit)
+  unit_matched <- match.arg(unit)
   
   link.metrics.referrers.url <- "https://api-ssl.bitly.com/v3/link/referrers"
   
-  createdUrl <- paste(link.metrics.referrers.url, "?link=", curl_escape(link), "&limit=", limit, 
-                      "&unit=", unit.matched, "&units=", units, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(link.metrics.referrers.url, "?link=", curl_escape(link), "&limit=", limit, 
+                      "&unit=", unit_matched, "&units=", units, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.referrers <- doRequest(createdUrl)
+  df.link.metrics.referrers <- doRequest(created_URL)
   
   df.link.metrics.referrers.data <- df.link.metrics.referrers$data$referrers
   
@@ -322,16 +320,16 @@ link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #' @export
 link.metrics.referrers_by_domain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                              units = -1) {
-  unit.matched <- match.arg(unit)
+  unit_matched <- match.arg(unit)
   
   link.metrics.referrers_by_domain.url <- "https://api-ssl.bitly.com/v3/link/referrers_by_domain"
   
-  createdUrl <- paste(link.metrics.referrers_by_domain.url, "?link=", curl_escape(link), "&limit=", 
-                      limit, "&unit=", unit.matched, "&units=", units, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(link.metrics.referrers_by_domain.url, "?link=", curl_escape(link), "&limit=", 
+                      limit, "&unit=", unit_matched, "&units=", units, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.link.metrics.referrers_by_domain <- doRequest(createdUrl)
+  df.link.metrics.referrers_by_domain <- doRequest(created_URL)
   
   df.link.metrics.referrers_by_domain.data <- df.link.metrics.referrers_by_domain$data$referrers
   

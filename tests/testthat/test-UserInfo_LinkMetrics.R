@@ -26,22 +26,22 @@ test_that("Returns entries from a user's link history in reverse chronological o
 context("Link Metrics")
 
 test_that("Returns the number of clicks on a single Bitlink.", {
-  lmc <- link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  lmc <- link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
   expect_equal(dim(lmc)[[2]], 5)
 })
 
 test_that("Returns metrics about the countries referring click traffic to a single Bitlink.", {
-  lmcc <- link.metrics.countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  lmcc <- link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
   expect_named(lmcc, c("country", "clicks"))
 })
 
 test_that("Returns the number of users who have shortened (encoded) a single Bitlink.", {
-  lmec <- link.metrics.encoders_count(link = "http://bit.ly/DPetrov")
+  lmec <- link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
   expect_named(lmec, c("count", "aggregate_link"))
 })
 
 test_that("Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).", {
-  lme <- link.metrics.encoders(link = "http://bit.ly/DPetrov", my_network = "false", limit = 25)
+  lme <- link_Metrics_Encoders(link = "http://bit.ly/DPetrov", my_network = "false", limit = 25)
   expect_named(lme, c("link", "user", "ts")) 
 })
 
