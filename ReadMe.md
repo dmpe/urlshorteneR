@@ -4,8 +4,6 @@
 R package for Bit.ly & Bitly.com & j.mp and other custom domains
 =======
 
-----------------
-
 ### Installing (not yet on CRAN)
 
 Use devtools to install the development version from Github:
