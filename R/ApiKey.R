@@ -1,7 +1,7 @@
 rbitly.api.auth_token <- NA
 rbitly.api.version <- "v3"
 
-#' Assign rbitly token
+#' @title Assign rbitly token
 #' 
 #' @param auth_token - Passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.
 #' 
@@ -51,7 +51,7 @@ returnApiKey <- function(username, password) {
   return(valueOfApiKey)
 }
 
-#' Generalized function for executing GET requests by always appending user's Bit.ly API Key.
+#' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
 #' 
 #' @param url - which is used for the request
 #' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}

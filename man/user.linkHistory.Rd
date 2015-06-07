@@ -8,13 +8,17 @@ user.linkHistory(limit = 100, private = "off", archived = "both",
   expand_client_id = "false")
 }
 \arguments{
-\item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max number of results to return.}
+\item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max
+number of results to return.}
 
-\item{private}{- on, off and both (default) whether to include or exclude private history entries. (on = return only private history entries)}
+\item{private}{- on, off and both (default) whether to include or exclude private history
+entries. (on = return only private history entries)}
 
-\item{archived}{- on, off (default) or both whether to include or exclude archived history entries. (on = return only archived history entries)}
+\item{archived}{- on, off (default) or both whether to include or exclude archived history
+entries. (on = return only archived history entries)}
 
-\item{expand_client_id}{- true or false (always default) whether to provide additional information about encoding application.}
+\item{expand_client_id}{- true or false (always default) whether to provide additional
+information about encoding application.}
 }
 \value{
 link - the Bitlink specific to this user and this long_url.
@@ -39,7 +43,9 @@ note - the user-provided note, if set.
 
 shares - a list of share actions (for the authenticated user only)
 
-client_id - the oauth client ID of the app that shortened/saved this link on behalf of the user. If expand_client_id is set to false (only currently supported), this will be a string corresponding to the client_id of the encoding oauth application.
+client_id - the oauth client ID of the app that shortened/saved this link on behalf of
+the user. If expand_client_id is set to false (only currently supported), this will be a string
+corresponding to the client_id of the encoding oauth application.
 }
 \description{
 Returns entries from a user's link history in reverse chronological order.

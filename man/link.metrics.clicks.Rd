@@ -2,9 +2,7 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.clicks}
 \alias{link.metrics.clicks}
-\title{Returns numbers of click on a link.
-
-Returns the number of clicks on a single Bitlink of the authenticated user.}
+\title{Returns numbers of click on a link.}
 \usage{
 link.metrics.clicks(link, limit = 1000, unit = c("minute", "hour", "day",
   "week", "month"), units = -1, rollup = "true")
@@ -24,8 +22,6 @@ units of time.}
 single result instead of a separate value for each period of time.}
 }
 \description{
-Returns numbers of click on a link.
-
 Returns the number of clicks on a single Bitlink of the authenticated user.
 }
 \examples{

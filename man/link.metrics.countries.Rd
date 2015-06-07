@@ -2,9 +2,7 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.countries}
 \alias{link.metrics.countries}
-\title{Returns metrics about the countries from a link.
-
-Returns metrics about the countries referring click traffic to a single Bitlink.}
+\title{Returns metrics about the countries from a link.}
 \usage{
 link.metrics.countries(link, limit = 1000, unit = c("minute", "hour", "day",
   "week", "month"), units = -1, rollup = "true")
@@ -24,8 +22,6 @@ all units of time.}
 single result instead of a separate value for each period of time.}
 }
 \description{
-Returns metrics about the countries from a link.
-
 Returns metrics about the countries referring click traffic to a single Bitlink.
 }
 \examples{

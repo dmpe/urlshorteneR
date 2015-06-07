@@ -2,9 +2,7 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.encoders}
 \alias{link.metrics.encoders}
-\title{Returns users who have encoded this long URL.
-
-Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).}
+\title{Returns users who have encoded this long URL.}
 \usage{
 link.metrics.encoders(link, my_network = "false", limit = 25,
   expand_user = "false", subaccounts = "false")
@@ -26,8 +24,6 @@ restrict to this enterprise account and its subaccounts}
 entries - a mapping of link, user, and ts (when the Bitlink was created).
 }
 \description{
-Returns users who have encoded this long URL.
-
 Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).
 }
 \note{

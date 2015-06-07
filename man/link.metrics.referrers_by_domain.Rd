@@ -2,7 +2,7 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.referrers_by_domain}
 \alias{link.metrics.referrers_by_domain}
-\title{Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.}
+\title{Returns metrics about the pages referring click traffic to a single Bitlink.}
 \usage{
 link.metrics.referrers_by_domain(link, limit = 1000, unit = c("minute",
   "hour", "day", "week", "month"), units = -1)
@@ -27,7 +27,8 @@ Returns metrics about the pages referring click traffic to a single Bitlink, gro
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day",
+units = -1, limit = 100)
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}

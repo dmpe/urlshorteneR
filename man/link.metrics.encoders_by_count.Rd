@@ -2,10 +2,7 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.encoders_by_count}
 \alias{link.metrics.encoders_by_count}
-\title{Returns users who have encoded this link.
-
-Returns users who have encoded this link (optionally only those in the requesting user's social graph),
-sorted by the number of clicks on each encoding user's link.}
+\title{Returns users who have encoded this link.}
 \usage{
 link.metrics.encoders_by_count(link, limit = 100, my_network = "false",
   expand_user = "false", subaccounts = "false")
@@ -26,8 +23,6 @@ this enterprise account and its subaccounts}
 entries - a mapping of link, user, and ts (when the Bitlink was created).
 }
 \description{
-Returns users who have encoded this link.
-
 Returns users who have encoded this link (optionally only those in the requesting user's social graph),
 sorted by the number of clicks on each encoding user's link.
 }

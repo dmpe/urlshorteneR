@@ -2,9 +2,7 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link.metrics.encoders_count}
 \alias{link.metrics.encoders_count}
-\title{Returns the number of users who have shortened a link.
-
-Returns the number of users who have shortened (encoded) a single Bitlink.}
+\title{Returns the number of users who have shortened a link.}
 \usage{
 link.metrics.encoders_count(link)
 }
@@ -17,8 +15,6 @@ aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 count - the number of bitly users who have shortened (encoded) this link.
 }
 \description{
-Returns the number of users who have shortened a link.
-
 Returns the number of users who have shortened (encoded) a single Bitlink.
 }
 \examples{

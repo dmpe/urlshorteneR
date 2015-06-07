@@ -277,12 +277,14 @@ link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute"
 #' 
 #' @import RCurl
 #' @export
-link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+                                   units = -1) {
   unit.matched <- match.arg(unit)
   
   link.metrics.referrers.url <- "https://api-ssl.bitly.com/v3/link/referrers"
   
-  createdUrl <- paste(link.metrics.referrers.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(link.metrics.referrers.url, "?link=", curlEscape(link), "&limit=", limit, 
+                      "&unit=", unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -313,16 +315,19 @@ link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day", 
+#' units = -1, limit = 100)
 #' 
 #' @import RCurl
 #' @export
-link.metrics.referrers_by_domain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), units = -1) {
+link.metrics.referrers_by_domain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+                                             units = -1) {
   unit.matched <- match.arg(unit)
   
   link.metrics.referrers_by_domain.url <- "https://api-ssl.bitly.com/v3/link/referrers_by_domain"
   
-  createdUrl <- paste(link.metrics.referrers_by_domain.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", unit.matched, "&units=", units, sep = "")
+  createdUrl <- paste(link.metrics.referrers_by_domain.url, "?link=", curlEscape(link), "&limit=", 
+                      limit, "&unit=", unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
