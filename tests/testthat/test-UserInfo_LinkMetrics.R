@@ -10,18 +10,17 @@ rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 context("User Info")
 
 test_that("Return information about a user.", {
-  ui <- user.info()
+  ui <- user_Info()
   expect_equal(dim(ui)[[2]], 2)
 })
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
-  user.linkH <- user.linkHistory()
+  user.linkH <- user_LinkHistory()
   expect_more_than(length(user.linkH), 10)
 })
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
-  user.tdl <- user.tracking_domain_list()
-  expect_message(user.tracking_domain_list(), "It seems that you don't have any tracking domains.")
+  expect_message(user_TrackingDomains(), "It seems that you don't have any tracking domains.")
 })
 
 context("Link Metrics")

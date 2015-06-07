@@ -17,37 +17,37 @@
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "true")
-#' user.metrics.clicks(unit = "day", units = -1, limit = 100, rollup = "false")
+#' user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "true")
+#' user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
 #' @note without the parameter unit this endpoint returns a legacy response format which assumes 
 #' rollup=false, unit=day and units=7.
 #' 
 #' @export
-user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                                units = -1, rollup = c("false", "true")) {
-  unit.matched <- match.arg(unit)
-  rollup.matched <- match.arg(rollup)
+user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+                               units = -1, rollup = c("false", "true")) {
+  unit_matched <- match.arg(unit)
+  rollup_matched <- match.arg(rollup)
   
-  user.metrics.clicks.url <- "https://api-ssl.bitly.com/v3/user/clicks"
+  user_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/user/clicks"
   
-  createdUrl <- paste(user.metrics.clicks.url, "?limit=", limit, "&unit=", unit.matched, 
-                      "&units=", units, "&rollup=", rollup.matched, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(user_metrics_clicks_url, "?limit=", limit, "&unit=", unit_matched, 
+                       "&units=", units, "&rollup=", rollup_matched, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.user.metrics.clicks <- doRequest(createdUrl)
-  df.user.metrics.clicks.data <- df.user.metrics.clicks$data$user_clicks
+  df_user_metrics_clicks <- doRequest(created_URL)
+  df_user_metrics_clicks_data <- df_user_metrics_clicks$data$user_clicks
   
   if (rollup == "true") {
     
     # no data frame
-    return(df.user.metrics.clicks.data)
+    return(df_user_metrics_clicks_data)
     
   } else {
-    df.user.metrics.clicks.data$dt <- as.POSIXct(as.integer(df.user.metrics.clicks.data$dt), 
+    df_user_metrics_clicks_data$dt <- as.POSIXct(as.integer(df_user_metrics_clicks_data$dt), 
                                                  origin = "1970-01-01", tz = "UTC")
-    return(df.user.metrics.clicks.data)
+    return(df_user_metrics_clicks_data)
   }
 }
 
@@ -75,19 +75,19 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' user.metrics.countries(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
 #' @export
-user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    rollup = c("false", "true"), units = -1) {
   unit.matched <- match.arg(unit)
   rollup.matched <- match.arg(rollup)
   
   user.metrics.countries.url <- "https://api-ssl.bitly.com/v3/user/countries"
   
-  createdUrl <- paste(user.metrics.countries.url, "?limit=", limit, "&unit=", unit.matched, 
-                      "&units=", units, "&rollup=", rollup.matched, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(user.metrics.countries.url, "?limit=", limit, "&unit=", unit.matched, 
+                       "&units=", units, "&rollup=", rollup.matched, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  df.user.metrics.countries <- doRequest(createdUrl)
+  df.user.metrics.countries <- doRequest(created_URL)
   
   df.user.metrics.countries.data <- df.user.metrics.countries$data$user_countries
   
@@ -122,18 +122,18 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' user.metrics.popular_links(unit = "day", units = -1, limit = 100)
 #' 
 #' @export
-user.metrics.popular_links <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                        units = -1) {
   unit.matched <- match.arg(unit)
   
   user.metrics.popular_links.url <- "https://api-ssl.bitly.com/v3/user/popular_links"
   
-  createdUrl <- paste(user.metrics.popular_links.url, "?limit=", limit, "&unit=", unit.matched, 
-                      "&units=", units, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(user.metrics.popular_links.url, "?limit=", limit, "&unit=", unit.matched, 
+                       "&units=", units, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  user.metrics.popular_links <- doRequest(createdUrl)
+  user.metrics.popular_links <- doRequest(created_URL)
   
   user.metrics.popular_links.data <- user.metrics.popular_links$data$popular_links
   
@@ -165,19 +165,19 @@ user.metrics.popular_links <- function(limit = 1000, unit = c("minute", "hour", 
 #' user.metrics.referrers(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
 #' @export
-user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    rollup = c("false", "true"), units = -1) {
   unit.matched <- match.arg(unit)
   rollup.matched <- match.arg(rollup)
   
   user.metrics.referrers.url <- "https://api-ssl.bitly.com/v3/user/referrers"
   
-  createdUrl <- paste(user.metrics.referrers.url, "?limit=", limit, "&unit=", unit.matched, 
-                      "&units=", units, "&rollup=", rollup.matched, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(user.metrics.referrers.url, "?limit=", limit, "&unit=", unit.matched, 
+                       "&units=", units, "&rollup=", rollup.matched, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  user.metrics.referrers.url <- doRequest(createdUrl)
+  user.metrics.referrers.url <- doRequest(created_URL)
   
   user.metrics.referrers.data <- user.metrics.referrers.url$data$user_referrers
   
@@ -229,7 +229,7 @@ user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' exclude_social_networks = "true")
 #' 
 #' @export
-user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                            rollup = c("false", "true"), units = -1, 
                                            exclude_social_networks = c("true", "false"), login=NULL) {
   
@@ -239,13 +239,13 @@ user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hou
   
   user.metrics.referring_domains.url <- "https://api-ssl.bitly.com/v3/user/referring_domains"
   
-  createdUrl <- paste(user.metrics.referring_domains.url, "?limit=", limit, "&unit=", unit.matched, 
-                      "&units=", units, "&rollup=", rollup.matched, sep = "")
-  createdUrl <- paste(createdUrl, "&exclude_social_networks=", exclude_social_networks.matched, 
-                      "&login=", login, "&format=json", sep = "")
+  created_URL <- paste(user.metrics.referring_domains.url, "?limit=", limit, "&unit=", unit.matched, 
+                       "&units=", units, "&rollup=", rollup.matched, sep = "")
+  created_URL <- paste(created_URL, "&exclude_social_networks=", exclude_social_networks.matched, 
+                       "&login=", login, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  user.metrics.referring_domains <- doRequest(createdUrl)
+  user.metrics.referring_domains <- doRequest(created_URL)
   
   user.metrics.referring_domains.data <- user.metrics.referring_domains$data$user_referring_domains
   
@@ -285,7 +285,7 @@ user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hou
 #' user.metrics.shorten_counts(unit = "day", units = -1, limit = 100)
 #' 
 #' @export
-user.metrics.shorten_counts <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                         rollup = c("false", "true"), units = -1) {
   
   unit.matched <- match.arg(unit)
@@ -293,12 +293,12 @@ user.metrics.shorten_counts <- function(limit = 1000, unit = c("minute", "hour",
   
   user.metrics.shorten_counts.url <- "https://api-ssl.bitly.com/v3/user/shorten_counts"
   
-  createdUrl <- paste(user.metrics.shorten_counts.url, "?limit=", limit, "&unit=", unit.matched, 
-                      "&units=", units, "&rollup=", rollup.matched, sep = "")
-  createdUrl <- paste(createdUrl, "&format=json", sep = "")
+  created_URL <- paste(user.metrics.shorten_counts.url, "?limit=", limit, "&unit=", unit.matched, 
+                       "&units=", units, "&rollup=", rollup.matched, sep = "")
+  created_URL <- paste(created_URL, "&format=json", sep = "")
   
   # call method from ApiKey.R
-  user.metrics.shorten_counts <- doRequest(createdUrl)
+  user.metrics.shorten_counts <- doRequest(created_URL)
   
   if (rollup.matched == "false") {
     user.metrics.shorten_counts.data <- user.metrics.shorten_counts$data$user_shorten_counts

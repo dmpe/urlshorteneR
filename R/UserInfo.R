@@ -40,30 +40,31 @@
 #' 
 #' @examples 
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' user.info() 
+#' user_Info() 
 #' 
 #' @import stringr
 #' 
 #' @export
-user.info <- function() {
-  user.info.url <- "https://api-ssl.bitly.com/v3/user/info"
+user_Info <- function() {
   
-  createdUrl <- paste(user.info.url, "?format=json", sep = "")
+  user_info_url <- "https://api-ssl.bitly.com/v3/user/info"
+  
+  created_URL <- paste(user_info_url, "?format=json", sep = "")
   
   # dont use httr package, as it will fail into "Error in parse_string(txt, bigint_as_char) : 
   # lexical error: invalid char in json text."
-  df.user.info.data <- doRequest(createdUrl)
+  df_user_info <- doRequest(created_URL)
   
-  df.user.info.data <- data.frame(ReturnValues = unlist(df.user.info.data$data))
-  df.user.info.data$ReturnValues <- str_trim(as.character(df.user.info.data$ReturnValues))
-  df.user.info.data$ReturnValuesDescription <- rownames(df.user.info.data)
-  rownames(df.user.info.data) <- NULL
+  df_user_info_data <- data.frame(ReturnValues = unlist(df_user_info$data))
+  df_user_info_data$ReturnValues <- str_trim(as.character(df_user_info_data$ReturnValues))
+  df_user_info_data$ReturnValuesDescription <- rownames(df_user_info_data)
+  rownames(df_user_info_data) <- NULL
   
   # convert to readable format 
-  df.user.info.data[5,1] <- as.character(as.POSIXct(as.integer(df.user.info.data[5, 1]), 
+  df_user_info_data[5, 1] <- as.character(as.POSIXct(as.integer(df_user_info_data[5, 1]), 
                                                     origin = "1970-01-01", tz = "UTC"))
   
-  return(df.user.info.data)
+  return(df_user_info_data)
 }
 
 #' @title Returns entries from a user's link history in reverse chronological order.
@@ -97,25 +98,25 @@ user.info <- function() {
 #' 
 #' @examples 
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' user.linkHistory() 
+#' user_LinkHistory() 
 #'
 #' @export
-user.linkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false") {
+user_LinkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false") {
   
-  user.linkHistory.url <- "https://api-ssl.bitly.com/v3/user/link_history"
+  user_linkHistory_url <- "https://api-ssl.bitly.com/v3/user/link_history"
   
-  createdUrl <- paste(user.linkHistory.url, "?limit=", limit, "&private=", private, "&archived=", archived, sep = "")
-  createdUrl <- paste(createdUrl, "&expand_client_id=", expand_client_id, "&format=json", sep = "")
+  created_URL <- paste(user_linkHistory_url, "?limit=", limit, "&private=", private, "&archived=", archived, sep = "")
+  created_URL <- paste(created_URL, "&expand_client_id=", expand_client_id, "&format=json", sep = "")
   
-  df.all <- doRequest(createdUrl)
-  df.all.history <- df.all$data$link_history
+  df_history <- doRequest(created_URL)
+  df_history_data <- df_history$data$link_history
   
-  df.all.history$user_ts <- as.POSIXct(df.all.history$user_ts, origin = "1970-01-01", tz = "UTC")
-  df.all.history$created_at <- as.POSIXct(df.all.history$created_at, origin = "1970-01-01", tz = "UTC")
-  df.all.history$modified_at <- as.POSIXct(df.all.history$modified_at, origin = "1970-01-01", tz = "UTC")
-  df.all.history$tags <- NULL
+  df_history_data$user_ts <- as.POSIXct(df_history_data$user_ts, origin = "1970-01-01", tz = "UTC")
+  df_history_data$created_at <- as.POSIXct(df_history_data$created_at, origin = "1970-01-01", tz = "UTC")
+  df_history_data$modified_at <- as.POSIXct(df_history_data$modified_at, origin = "1970-01-01", tz = "UTC")
+  df_history_data$tags <- NULL
   
-  return(df.all.history)
+  return(df_history_data)
 }
 
 #' @title Returns a list of tracking domains a user has configured.
@@ -126,22 +127,23 @@ user.linkHistory <- function(limit = 100, private = "off", archived = "both", ex
 #'
 #' @examples 
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' user.tracking_domain_list()
+#' user_TrackingDomains()
 #' 
 #' @export
-user.tracking_domain_list <- function() {
-  user.tracking_domain_list.url <- "https://api-ssl.bitly.com/v3/user/tracking_domain_list"
+user_TrackingDomains <- function() {
   
-  createdUrl <- paste(user.tracking_domain_list.url, "?format=json", sep = "")
+  user_tracking_domain_list_url <- "https://api-ssl.bitly.com/v3/user/tracking_domain_list"
   
-  df.tracking_domain_list <- doRequest(createdUrl)
-  df.tracking_domain_list <- df.tracking_domain_list$data$tracking_domains
+  created_URL <- paste(user_tracking_domain_list_url, "?format=json", sep = "")
   
-  if (!length(df.tracking_domain_list) == 0) {
+  df_tracking_domain_list <- doRequest(created_URL)
+  df_tracking_domain_list_data <- df_tracking_domain_list$data$tracking_domains
+  
+  if (!length(df_tracking_domain_list_data) == 0) {
     
     # create and return a data frame from a transposed list
-    df.tracking_domain_list <- data.frame(t(sapply(df.tracking_domain_list,c)))
-    return(df.tracking_domain_list)
+    df_tracking_domain_list_data <- data.frame(t(sapply(df_tracking_domain_list_data,c)))
+    return(df_tracking_domain_list_data)
     
   } else  {
     message("It seems that you don't have any tracking domains.")
