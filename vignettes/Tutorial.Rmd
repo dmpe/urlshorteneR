@@ -4,55 +4,69 @@ author: "dmpe"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Tutorial for RBitly}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+This package allows you to download your data and many useful statistics from [Bit.ly](https://www.bit.ly) account. To begin with, there is one requirement and that is to gain your API Key - or in the speech of the company - "Generic Access Token". 
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+## Authentication
 
-## Vignette Info
+For that there are **two ways**. The first one is to go to <https://bitly.com/a/oauth_apps> and generate one yourself. Then you will need to execute `rbitlyApi("Your Generic Access Token")` method. This is a **requirenment** to work with all functions in this package. 
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+Or (e.g. when you are lazy etc.) by using your username and password you can automatically acquire and set your API Key. Meaning you can execute `returnApiKey("YourUsername", "YourPassword")` which not only will get your API Key (just in the case you will need it) but also, using the method above, "store" it R. 
 
-## Styles
+Either one is OK. Choose the one which is more convenient to you. 
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+## An Example for User Metrics
 
-## Figures
+First of all see here <http://dev.bitly.com/user_metrics.html>. Beware not all methods are implemented. To see which ones are, please read `ReadMe.md` file (and file an issue <https://github.com/dmpe/rbitly/issues>).
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+This returns my most-clicked Bit.ly links (ordered by number of clicks) in a given time period.
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r}
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+
+user.metrics.popular_links(unit = "month", units = -1, limit = 100)
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+## An Example for Link Metrics
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+First of all see here <http://dev.bitly.com/link_metrics.html>. All methods are implemented here!
 
-## More Examples
+This returns users who have encoded `http://bit.ly/DPetrov` link sorted by the number of clicks on each encoding user's link.
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r}
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 ```
 
-Also a quote using `>`:
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+## An Example for User Info/History
+
+First of all see here <http://dev.bitly.com/user_info.html>. Beware not all methods are implemented. 
+
+The first method returns an information about myself, whereas the second one returns a list of tracking domains I have configured (I have none).
+
+```{r}
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+user.info()
+
+user.tracking_domain_list()
+```
+
+
+## An Example for Domains
+
+First of all see here <http://dev.bitly.com/domains.html>. Beware not all methods are implemented. 
+
+This will query whether a given domain is a valid bitly pro domain (nyti.ms is). 
+
+```{r}
+rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+bitly_pro_domain(domain = "nyti.ms")
+```
+
