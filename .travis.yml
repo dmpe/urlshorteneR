@@ -9,8 +9,6 @@ r_github_packages:
   - yihui/knitr
   - jeroenooms/curl
   - jeroenooms/jsonlite
-  - s-u/PKI
-  - hadley/secure
 
 notifications:
   email:

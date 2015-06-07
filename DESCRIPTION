@@ -12,12 +12,11 @@ Depends:
   R (>= 3.0.0)
 Imports: 
   httr (>= 0.6.0),
-  RCurl (>= 1.95-4.6),
+  curl (>= 0.8),
   jsonlite (>= 0.9.15), 
   stringr (>= 1.0.0)
 Suggests: 
   roxygen2 (>= 4.1.0), 
-  curl,
   knitr,
   testthat
 VignetteBuilder: knitr

@@ -18,7 +18,7 @@
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                 units = -1, rollup="true") {
@@ -26,7 +26,7 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
   
   link.metrics.clicks.url <- "https://api-ssl.bitly.com/v3/link/clicks"
   
-  createdUrl <- paste(link.metrics.clicks.url, "?link=", curlEscape(link), "&limit=", limit, 
+  createdUrl <- paste(link.metrics.clicks.url, "?link=", curl_escape(link), "&limit=", limit, 
                       "&unit=", unit.matched, "&units=", units, "&rollup=", rollup, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
@@ -65,7 +65,7 @@ link.metrics.clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                    units = -1, rollup="true") {
@@ -73,7 +73,7 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
   
   link.metrics.countries.url <- "https://api-ssl.bitly.com/v3/link/countries"
   
-  createdUrl <- paste(link.metrics.countries.url, "?link=", curlEscape(link), "&limit=", limit, "&unit=", 
+  createdUrl <- paste(link.metrics.countries.url, "?link=", curl_escape(link), "&limit=", limit, "&unit=", 
                       unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&rollup=", rollup, "&format=json", sep = "")
   
@@ -114,13 +114,13 @@ link.metrics.countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.encoders(link = "http://bit.ly/DPetrov")
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expand_user = "false", 
                                   subaccounts = "false") {
   link.metrics.encoders.url <- "https://api-ssl.bitly.com/v3/link/encoders"
   
-  createdUrl <- paste(link.metrics.encoders.url, "?link=", curlEscape(link), "&my_network=", my_network,
+  createdUrl <- paste(link.metrics.encoders.url, "?link=", curl_escape(link), "&my_network=", my_network,
                       "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
@@ -151,12 +151,12 @@ link.metrics.encoders <- function(link,  my_network = "false", limit = 25, expan
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.encoders_count(link = "http://bit.ly/DPetrov")
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.encoders_count <- function(link) {
   link.metrics.encoders_count.url <- "https://api-ssl.bitly.com/v3/link/encoders_count"
   
-  createdUrl <- paste(link.metrics.encoders_count.url, "?link=", curlEscape(link), sep = "")
+  createdUrl <- paste(link.metrics.encoders_count.url, "?link=", curl_escape(link), sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
   # call method from ApiKey.R
@@ -192,14 +192,14 @@ link.metrics.encoders_count <- function(link) {
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.encoders_by_count(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "false", expand_user = "false", 
                                            subaccounts = "false") {
   
   link.metrics.encoders_by_count.url <- "https://api-ssl.bitly.com/v3/link/encoders_by_count"
   
-  createdUrl <- paste(link.metrics.encoders_by_count.url, "?link=", curlEscape(link), "&limit=", limit, 
+  createdUrl <- paste(link.metrics.encoders_by_count.url, "?link=", curl_escape(link), "&limit=", limit, 
                       "&my_network=", my_network, "&expand_user=", expand_user, "&subaccounts=", subaccounts, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
@@ -235,7 +235,7 @@ link.metrics.encoders_by_count <- function(link, limit = 100, my_network = "fals
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.referring_domains(link = "http://bit.ly/DPetrov", unit = "day",units = -1, limit = 100)
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                            units = -1) {
@@ -243,7 +243,7 @@ link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute"
   
   link.metrics.referring_domains.url <- "https://api-ssl.bitly.com/v3/link/referring_domains"
   
-  createdUrl <- paste(link.metrics.referring_domains.url, "?link=", curlEscape(link), "&limit=", 
+  createdUrl <- paste(link.metrics.referring_domains.url, "?link=", curl_escape(link), "&limit=", 
                       limit, "&unit=", unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
@@ -275,7 +275,7 @@ link.metrics.referring_domains <- function(link, limit = 1000, unit = c("minute"
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link.metrics.referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    units = -1) {
@@ -283,7 +283,7 @@ link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour"
   
   link.metrics.referrers.url <- "https://api-ssl.bitly.com/v3/link/referrers"
   
-  createdUrl <- paste(link.metrics.referrers.url, "?link=", curlEscape(link), "&limit=", limit, 
+  createdUrl <- paste(link.metrics.referrers.url, "?link=", curl_escape(link), "&limit=", limit, 
                       "&unit=", unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   
@@ -318,7 +318,7 @@ link.metrics.referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #' link.metrics.referrers_by_domain(link = "http://bit.ly/DPetrov", unit = "day", 
 #' units = -1, limit = 100)
 #' 
-#' @import RCurl
+#' @importFrom curl curl_escape
 #' @export
 link.metrics.referrers_by_domain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                              units = -1) {
@@ -326,7 +326,7 @@ link.metrics.referrers_by_domain <- function(link, limit = 1000, unit = c("minut
   
   link.metrics.referrers_by_domain.url <- "https://api-ssl.bitly.com/v3/link/referrers_by_domain"
   
-  createdUrl <- paste(link.metrics.referrers_by_domain.url, "?link=", curlEscape(link), "&limit=", 
+  createdUrl <- paste(link.metrics.referrers_by_domain.url, "?link=", curl_escape(link), "&limit=", 
                       limit, "&unit=", unit.matched, "&units=", units, sep = "")
   createdUrl <- paste(createdUrl, "&format=json", sep = "")
   

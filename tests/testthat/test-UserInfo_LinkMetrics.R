@@ -1,7 +1,7 @@
 library(testthat)
 library(RBitly)
 library(httr)
-library(RCurl)
+library(curl)
 library(jsonlite)
 library(stringr)
 

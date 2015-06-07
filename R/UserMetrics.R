@@ -23,7 +23,6 @@
 #' @note without the parameter unit this endpoint returns a legacy response format which assumes 
 #' rollup=false, unit=day and units=7.
 #' 
-#' @import RCurl
 #' @export
 user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                 units = -1, rollup = c("false", "true")) {
@@ -75,7 +74,6 @@ user.metrics.clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' user.metrics.countries(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user.metrics.countries(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
-#' @import RCurl
 #' @export
 user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    rollup = c("false", "true"), units = -1) {
@@ -103,8 +101,6 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
   }
   
   return(df.user.metrics.countries.data)
-  
-  
 }
 
 #' @title Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.
@@ -125,7 +121,6 @@ user.metrics.countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user.metrics.popular_links(unit = "day", units = -1, limit = 100)
 #' 
-#' @import RCurl
 #' @export
 user.metrics.popular_links <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                        units = -1) {
@@ -169,7 +164,6 @@ user.metrics.popular_links <- function(limit = 1000, unit = c("minute", "hour", 
 #' user.metrics.referrers(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user.metrics.referrers(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
-#' @import RCurl
 #' @export
 user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    rollup = c("false", "true"), units = -1) {
@@ -234,7 +228,6 @@ user.metrics.referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' user.metrics.referring_domains(unit = "day", units = -1, limit = 100, 
 #' exclude_social_networks = "true")
 #' 
-#' @import RCurl
 #' @export
 user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                            rollup = c("false", "true"), units = -1, 
@@ -291,7 +284,6 @@ user.metrics.referring_domains <- function(limit = 1000, unit = c("minute", "hou
 #' user.metrics.shorten_counts(unit = "day", units = -1, limit = 100, rollup = "false")
 #' user.metrics.shorten_counts(unit = "day", units = -1, limit = 100)
 #' 
-#' @import RCurl
 #' @export
 user.metrics.shorten_counts <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                         rollup = c("false", "true"), units = -1) {
@@ -318,9 +310,5 @@ user.metrics.shorten_counts <- function(limit = 1000, unit = c("minute", "hour",
   }
   
   return(user.metrics.shorten_counts.data)
-  
 }
-
-
-
 
