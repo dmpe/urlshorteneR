@@ -31,12 +31,11 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
   
   user_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/user/clicks"
   
-  created_URL <- paste(user_metrics_clicks_url, "?limit=", limit, "&unit=", unit_matched, 
-                       "&units=", units, "&rollup=", rollup_matched, sep = "")
-  created_URL <- paste(created_URL, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+                rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_clicks <- doRequest(created_URL)
+  df_user_metrics_clicks <- doRequest(user_metrics_clicks_url, query)
   df_user_metrics_clicks_data <- df_user_metrics_clicks$data$user_clicks
   
   if (rollup == "true") {
@@ -56,13 +55,10 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
 #'
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return 
-#' all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
-#' maximum value for units is 60.
-#' @param rollup - true or false. Return data for multiple units rolled up to a single result 
-#' instead of a separate value for each period of time.
+#' @inheritParams limit
+#' @inheritParams units 
+#' @inheritParams unit
+#' @inheritParams rollup
 #' 
 #' @return clicks - the number of clicks referred from this country.
 #' @return country - the two-letter code of the referring country.
@@ -82,12 +78,11 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
   
   user_metrics_countries_url <- "https://api-ssl.bitly.com/v3/user/countries"
   
-  created_URL <- paste(user_metrics_countries_url, "?limit=", limit, "&unit=", unit_matched, 
-                       "&units=", units, "&rollup=", rollup_matched, sep = "")
-  created_URL <- paste(created_URL, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+                rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_countries <- doRequest(created_URL)
+  df_user_metrics_countries <- doRequest(user_metrics_countries_url, query)
   
   df_user_metrics_countries_data <- df_user_metrics_countries$data$user_countries
   
@@ -107,10 +102,9 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
 #'
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
-#' maximum value for units is 60.
+#' @inheritParams limit
+#' @inheritParams units 
+#' @inheritParams unit
 #' 
 #' @return link - a Bitlink.
 #' @return clicks - the number of clicks on that Bitlink in the specified timeframe.
@@ -128,12 +122,10 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
   
   user_metrics_popular_links_url <- "https://api-ssl.bitly.com/v3/user/popular_links"
   
-  created_URL <- paste(user_metrics_popular_links_url, "?limit=", limit, "&unit=", unit_matched, 
-                       "&units=", units, sep = "")
-  created_URL <- paste(created_URL, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_user_metrics_popular_links <- doRequest(created_URL)
+  df_user_metrics_popular_links <- doRequest(user_metrics_popular_links_url, query)
   df_user_metrics_popular_links_data <- df_user_metrics_popular_links$data$popular_links
   
   return(df_user_metrics_popular_links_data)
@@ -145,13 +137,10 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
 #'
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return 
-#' all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
-#' maximum value for units is 60.
-#' @param rollup - true or false. Return data for multiple units rolled up to a single result 
-#' instead of a separate value for each period of time.
+#' @inheritParams limit
+#' @inheritParams units 
+#' @inheritParams unit
+#' @inheritParams rollup
 #' 
 #' @return clicks - the number of clicks referred from this URL.
 #' @return referrer - the URL referring clicks.
@@ -171,12 +160,11 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
   
   user_metrics_referrers_url <- "https://api-ssl.bitly.com/v3/user/referrers"
   
-  created_URL <- paste(user_metrics_referrers_url, "?limit=", limit, "&unit=", unit_matched, 
-                       "&units=", units, "&rollup=", rollup_matched, sep = "")
-  created_URL <- paste(created_URL, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+                rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_referrers <- doRequest(created_URL)
+  df_user_metrics_referrers <- doRequest(user_metrics_referrers_url, query)
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
   
   if (rollup == "true") {
@@ -200,13 +188,11 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referring_domains}
 #'
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return 
-#' all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
-#' maximum value for units is 60.
-#' @param rollup - true or false. Return data for multiple units rolled up to a single result 
-#' instead of a separate value for each period of time.
+#' @inheritParams limit
+#' @inheritParams units 
+#' @inheritParams unit
+#' @inheritParams rollup
+#' 
 #' @param exclude_social_networks - true (default) or false. If true, exclude domains that are 
 #' part of a social network that bitly tracks.
 #' @param login - an optional string consisting of the account name used to report the appropriate
@@ -233,17 +219,15 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
   
   unit_matched <- match.arg(unit)
   rollup_matched <- match.arg(rollup)
-  exclude_social_networks.matched <- match.arg(exclude_social_networks)
+  exclude_social_networks_matched <- match.arg(exclude_social_networks)
   
   user_metrics_referring_domains_url <- "https://api-ssl.bitly.com/v3/user/referring_domains"
   
-  created_URL <- paste(user_metrics_referring_domains_url, "?limit=", limit, "&unit=", unit_matched, 
-                       "&units=", units, "&rollup=", rollup_matched, sep = "")
-  created_URL <- paste(created_URL, "&exclude_social_networks=", exclude_social_networks.matched, 
-                       "&login=", login, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, login = login,
+                rollup = rollup_matched, exclude_social_networks = exclude_social_networks_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_referring_domains <- doRequest(created_URL)
+  df_user_metrics_referring_domains <- doRequest(user_metrics_referring_domains_url, query)
   df_user_metrics_referring_domains_data <- df_user_metrics_referring_domains$data$user_referring_domains
   
   if (length(df_user_metrics_referring_domains_data) == 0) {
@@ -260,20 +244,15 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
 #'
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all 
-#' units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
-#' maximum value for units is 60.
-#' value for each period of time.
-#' @param rollup - true or false (default). Return data for multiple units rolled up to a single 
-#' result instead of a separate value for each period of time.
+#' @inheritParams limit
+#' @inheritParams units 
+#' @inheritParams unit
+#' @inheritParams rollup
 #' 
 #' @return tz_offset - the offset for the specified timezone, in hours.
 #' @return unit - an echo of the specified unit value.
 #' @return units - an echo of the specified units value.
 #' @return user_shorten_counts - the number of shortens made by the specified user in the specified time.
-#' 
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
@@ -290,12 +269,11 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
   
   user_metrics_shorten_counts_url <- "https://api-ssl.bitly.com/v3/user/shorten_counts"
   
-  created_URL <- paste(user_metrics_shorten_counts_url, "?limit=", limit, "&unit=", unit_matched, 
-                       "&units=", units, "&rollup=", rollup_matched, sep = "")
-  created_URL <- paste(created_URL, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+                rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_shorten_counts <- doRequest(created_URL)
+  df_user_metrics_shorten_counts <- doRequest(user_metrics_shorten_counts_url, query)
   
   if (rollup_matched == "false") {
     df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts

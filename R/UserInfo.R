@@ -71,7 +71,6 @@ user_Info <- function() {
 #' 
 #' @param limit - optional integer in the range 1 to 100; default: 100, specifying the max 
 #' number of results to return.
-#' 
 #' @param expand_client_id - true or false (always default) whether to provide additional 
 #' information about encoding application. 
 #' @param archived - on, off (default) or both whether to include or exclude archived history 
@@ -103,10 +102,9 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
   
   user_linkHistory_url <- "https://api-ssl.bitly.com/v3/user/link_history"
   
-  created_URL <- paste(user_linkHistory_url, "?limit=", limit, "&private=", private, "&archived=", archived, sep = "")
-  created_URL <- paste(created_URL, "&expand_client_id=", expand_client_id, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), limit = limit, private = private, archived = archived, expand_client_id = expand_client_id)
   
-  df_history <- doRequest(created_URL)
+  df_history <- doRequest(user_linkHistory_url, query)
   df_history_data <- df_history$data$link_history
   
   df_history_data$user_ts <- as.POSIXct(df_history_data$user_ts, origin = "1970-01-01", tz = "UTC")
@@ -132,9 +130,9 @@ user_TrackingDomains <- function() {
   
   user_tracking_domain_list_url <- "https://api-ssl.bitly.com/v3/user/tracking_domain_list"
   
-  created_URL <- paste(user_tracking_domain_list_url, "?format=json", sep = "")
+  query <- list(access_token = rbitlyApi())
   
-  df_tracking_domain_list <- doRequest(created_URL)
+  df_tracking_domain_list <- doRequest(user_tracking_domain_list_url, query)
   df_tracking_domain_list_data <- df_tracking_domain_list$data$tracking_domains
   
   if (!length(df_tracking_domain_list_data) == 0) {

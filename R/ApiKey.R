@@ -55,7 +55,7 @@ rbitlyApi_up <- function(username, password) {
   return(API_Key)
 }
 
-#' @title Generalized function for executing GET (with body params) requests by always appending user's Bit.ly API Key.
+#' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
 #' 
 #' @param url - which is used for the request
 #' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}
@@ -64,7 +64,7 @@ rbitlyApi_up <- function(username, password) {
 #' @import jsonlite
 #' 
 #' @noRd
-doRequest <- function(url, queryParameters, auth_code = rbitlyApi()) {
+doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi()) {
   
   if (is.na(auth_code)) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key. 

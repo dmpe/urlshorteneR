@@ -13,17 +13,17 @@
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' bitly_pro_domain(domain = "nytidsfds.ms") 
+#' bitly_pro_domain(domain = "nyti.ms") 
 #'
 #' @export
 bitly_pro_domain <- function(domain) {
   
   bitly_pro_domain_url <- "https://api-ssl.bitly.com/v3/bitly_pro_domain"
   
-  created_URL <- paste(bitly_pro_domain_url, "?domain=", domain, sep = "")
-  created_URL <- paste(created_URL, "&format=json", sep = "")
+  query <- list(access_token = rbitlyApi(), domain = domain)
   
   # call method from ApiKey.R
-  df_bitly_pro_domain <- doRequest(created_URL)
+  df_bitly_pro_domain <- doRequest(bitly_pro_domain_url, query)
   df_bitly_pro_domain_data <- df_bitly_pro_domain$data
   
   if (df_bitly_pro_domain_data$bitly_pro_domain == FALSE) {
