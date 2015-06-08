@@ -18,7 +18,7 @@ maximum value for units is 60.}
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
 
-\item{rollup}{- true (always default) or false.  Return data for multiple units rolled up to a
+\item{rollup}{- true (default) or false.  Return data for multiple units rolled up to a
 single result instead of a separate value for each period of time.}
 }
 \description{

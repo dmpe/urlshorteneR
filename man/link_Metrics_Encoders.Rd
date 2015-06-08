@@ -10,14 +10,14 @@ link_Metrics_Encoders(link, my_network = "false", limit = 25,
 \arguments{
 \item{link}{- a Bitlink.}
 
-\item{my_network}{(optional) true or false (default) - restrict to my network.}
+\item{my_network}{- true or false (default) restrict to my network.}
 
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{expand_user}{(optional) true or false (default) - include display names of encoders.}
+\item{expand_user}{- true or false (default) include display names of encoders.}
 
-\item{subaccounts}{(optional, only available to enterprise accounts) false (always default) -
-restrict to this enterprise account and its subaccounts}
+\item{subaccounts}{- (only available to enterprise accounts) false (always default) restrict to
+this enterprise account and its subaccounts}
 }
 \value{
 entries - a mapping of link, user, and ts (when the Bitlink was created).

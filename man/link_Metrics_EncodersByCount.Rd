@@ -12,11 +12,11 @@ link_Metrics_EncodersByCount(link, limit = 100, my_network = "false",
 
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{my_network}{true or false (default) - restrict to my network}
+\item{my_network}{- true or false (default) restrict to my network}
 
-\item{expand_user}{false (always default) - include display names of encoders}
+\item{expand_user}{- false (always default) include display names of encoders}
 
-\item{subaccounts}{(only available to enterprise accounts) false (always default) - restrict to
+\item{subaccounts}{- (only available to enterprise accounts) false (always default) restrict to
 this enterprise account and its subaccounts}
 }
 \value{
