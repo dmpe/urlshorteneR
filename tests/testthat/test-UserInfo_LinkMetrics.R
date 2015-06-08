@@ -1,7 +1,6 @@
 library(testthat)
 library(RBitly)
 library(httr)
-library(curl)
 library(jsonlite)
 library(stringr)
 
@@ -36,7 +35,7 @@ test_that("Returns metrics about the countries referring click traffic to a sing
 })
 
 test_that("Returns the number of users who have shortened (encoded) a single Bitlink.", {
-  lmec <- link_Metrics_EncodersCount(link = "on.natgeo.com/1bEVhwE")
+  lmec <- link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
   expect_named(lmec, c("count", "aggregate_link"))
 })
 

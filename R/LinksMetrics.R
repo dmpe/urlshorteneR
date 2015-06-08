@@ -141,7 +141,7 @@ link_Metrics_EncodersCount <- function(link) {
   
   link_metrics_encoders_count_url <- "https://api-ssl.bitly.com/v3/link/encoders_count"
   
-  query <- list(access_token = rbitlyApi())
+  query <- list(access_token = rbitlyApi(), link = link)
   
   # call method from ApiKey.R
   df_link_metrics_encoders_count <- doRequest(link_metrics_encoders_count_url, query)
