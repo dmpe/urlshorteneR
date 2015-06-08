@@ -7,7 +7,6 @@ r_github_packages:
   - hadley/httr
   - jimhester/covr
   - yihui/knitr
-  - jeroenooms/curl
   - jeroenooms/jsonlite
 
 notifications:

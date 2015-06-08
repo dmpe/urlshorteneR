@@ -17,7 +17,6 @@
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                 units = -1, rollup = "true") {
@@ -56,7 +55,6 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                    units = -1, rollup = "true") {
@@ -102,7 +100,6 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Encoders(link = "http://bit.ly/DPetrov")
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand_user = "false", 
                                   subaccounts = "false") {
@@ -139,7 +136,6 @@ link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_EncodersCount <- function(link) {
   
@@ -178,7 +174,6 @@ link_Metrics_EncodersCount <- function(link) {
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false", expand_user = "false", 
                                            subaccounts = "false") {
@@ -215,7 +210,6 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_ReferringDomains(link = "http://bit.ly/DPetrov", unit = "day",units = -1, limit = 100)
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                            units = -1) {
@@ -249,7 +243,6 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    units = -1) {
@@ -286,7 +279,6 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #' link_Metrics_ReferrersByDomain(link = "http://bit.ly/DPetrov", unit = "day", 
 #' units = -1, limit = 100)
 #' 
-#' @importFrom curl curl_escape
 #' @export
 link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                              units = -1) {
