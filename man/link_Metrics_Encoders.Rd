@@ -12,8 +12,7 @@ link_Metrics_Encoders(link, my_network = "false", limit = 25,
 
 \item{my_network}{(optional) true or false (default) - restrict to my network.}
 
-\item{limit}{- (optional) integer in the range of 1 to 25 that specifies the number of records
-to return (default: 25).}
+\item{limit}{- 1 to 1000 (default=1000).}
 
 \item{expand_user}{(optional) true or false (default) - include display names of encoders.}
 

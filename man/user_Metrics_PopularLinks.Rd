@@ -10,10 +10,11 @@ user_Metrics_PopularLinks(limit = 1000, unit = c("minute", "hour", "day",
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the
-maximum value for units is 60.}
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the maximum
+value for units is 60.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return all units of time.}
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
+units of time.}
 }
 \value{
 link - a Bitlink.

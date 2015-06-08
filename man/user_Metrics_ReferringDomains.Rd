@@ -11,14 +11,14 @@ user_Metrics_ReferringDomains(limit = 1000, unit = c("minute", "hour",
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the
-maximum value for units is 60.}
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the maximum
+value for units is 60.}
 
-\item{rollup}{- true or false. Return data for multiple units rolled up to a single result
-instead of a separate value for each period of time.}
+\item{rollup}{- true or false. Return data for multiple units rolled up to a single result instead
+of a separate value for each period of time.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return
-all units of time.}
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
+units of time.}
 
 \item{login}{- an optional string consisting of the account name used to report the appropriate
 statistics; defaults to the current user.}

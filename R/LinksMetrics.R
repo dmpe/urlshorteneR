@@ -51,14 +51,7 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
 #' 
-#' @param link - a Bitlink.
-#' @param limit - 1 to 1000 (default = 1000).
-#' @param rollup - true (always default) or false.  Return data for multiple units rolled up to a 
-#' single result instead of a separate value for each period of time.
-#' @param units - an integer representing the time units to query data for. Pass -1 to return 
-#' all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
-#' maximum value for units is 60.
+#' @inheritParams link_Metrics_Clicks
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
@@ -99,12 +92,10 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @note Some users may not be returned from this call depending on Bitlink privacy settings.
 #' 
-#' @param link - a Bitlink.
+#' @inheritParams link_Metrics_Clicks
 #' @param my_network (optional) true or false (default) - restrict to my network.
 #' @param subaccounts (optional, only available to enterprise accounts) false (always default) - 
 #' restrict to this enterprise account and its subaccounts
-#' @param limit - (optional) integer in the range of 1 to 25 that specifies the number of records 
-#' to return (default: 25).
 #' @param expand_user (optional) true or false (default) - include display names of encoders.
 #' 
 #' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
@@ -141,7 +132,7 @@ link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}
 #' 
-#' @param link - a Bitlink.
+#' @inheritParams link_Metrics_Clicks
 #' 
 #' @return aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 #' @return count - the number of bitly users who have shortened (encoded) this link.
@@ -177,11 +168,10 @@ link_Metrics_EncodersCount <- function(link) {
 #' @note - The response will only contain users whose links have gotten at least one click, and 
 #' will not contain any users whose links are private.
 #' 
-#' @param link - a Bitlink.
+#' @inheritParams link_Metrics_Clicks
 #' @param my_network true or false (default) - restrict to my network
 #' @param subaccounts (only available to enterprise accounts) false (always default) - restrict to 
 #' this enterprise account and its subaccounts
-#' @param limit - integer in the range 1:100 that specifies the number of records to return (default:100)
 #' @param expand_user false (always default) - include display names of encoders
 #'
 #' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
@@ -218,12 +208,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referring_domains}
 #' 
-#' @param link - a Bitlink.
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all 
-#' units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
-#' maximum value for units is 60.
+#' @inheritParams link_Metrics_Clicks
 #' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return domain - the domain referring clicks.
@@ -260,11 +245,7 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
 #' 
-#' @param link - a Bitlink.
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
-#' value for each period of time.
+#' @inheritParams link_Metrics_Clicks
 #' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return referrer - the URL referring clicks.
@@ -302,11 +283,7 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
 #' 
-#' @param link - a Bitlink.
-#' @param limit - 1 to 1000 (default=1000).
-#' @param units - an integer representing the time units to query data for. Pass -1 to return all units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum value for units is 60.
-#' value for each period of time.
+#' @inheritParams link_Metrics_Clicks
 #' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return referrer - the URL referring clicks.

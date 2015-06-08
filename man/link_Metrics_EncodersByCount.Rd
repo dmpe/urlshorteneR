@@ -10,7 +10,7 @@ link_Metrics_EncodersByCount(link, limit = 100, my_network = "false",
 \arguments{
 \item{link}{- a Bitlink.}
 
-\item{limit}{- integer in the range 1:100 that specifies the number of records to return (default:100)}
+\item{limit}{- 1 to 1000 (default=1000).}
 
 \item{my_network}{true or false (default) - restrict to my network}
 

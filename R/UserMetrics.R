@@ -55,10 +55,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
 #'
-#' @inheritParams limit
-#' @inheritParams units 
-#' @inheritParams unit
-#' @inheritParams rollup
+#' @inheritParams user_Metrics_Clicks
 #' 
 #' @return clicks - the number of clicks referred from this country.
 #' @return country - the two-letter code of the referring country.
@@ -102,9 +99,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
 #'
-#' @inheritParams limit
-#' @inheritParams units 
-#' @inheritParams unit
+#' @inheritParams user_Metrics_Clicks
 #' 
 #' @return link - a Bitlink.
 #' @return clicks - the number of clicks on that Bitlink in the specified timeframe.
@@ -137,10 +132,7 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
 #'
-#' @inheritParams limit
-#' @inheritParams units 
-#' @inheritParams unit
-#' @inheritParams rollup
+#' @inheritParams user_Metrics_Clicks
 #' 
 #' @return clicks - the number of clicks referred from this URL.
 #' @return referrer - the URL referring clicks.
@@ -188,10 +180,7 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referring_domains}
 #'
-#' @inheritParams limit
-#' @inheritParams units 
-#' @inheritParams unit
-#' @inheritParams rollup
+#' @inheritParams user_Metrics_Clicks
 #' 
 #' @param exclude_social_networks - true (default) or false. If true, exclude domains that are 
 #' part of a social network that bitly tracks.
@@ -244,10 +233,7 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
 #'
-#' @inheritParams limit
-#' @inheritParams units 
-#' @inheritParams unit
-#' @inheritParams rollup
+#' @inheritParams user_Metrics_Clicks
 #' 
 #' @return tz_offset - the offset for the specified timezone, in hours.
 #' @return unit - an echo of the specified unit value.
