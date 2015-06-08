@@ -49,12 +49,10 @@ user_Info <- function() {
   
   user_info_url <- "https://api-ssl.bitly.com/v3/user/info"
   
-  created_URL <- paste(user_info_url, "?format=json", sep = "")
-  
-  # dont use httr package, as it will fail into "Error in parse_string(txt, bigint_as_char) : 
-  # lexical error: invalid char in json text."
-  df_user_info <- doRequest(created_URL)
-  
+  query <- list(access_token = rbitlyApi())
+
+  df_user_info <- doRequest(user_info_url, query)
+
   df_user_info_data <- data.frame(ReturnValues = unlist(df_user_info$data))
   df_user_info_data$ReturnValues <- str_trim(as.character(df_user_info_data$ReturnValues))
   df_user_info_data$ReturnValuesDescription <- rownames(df_user_info_data)

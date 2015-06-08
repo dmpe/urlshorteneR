@@ -55,37 +55,26 @@ rbitlyApi_up <- function(username, password) {
   return(API_Key)
 }
 
-#' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
+#' @title Generalized function for executing GET (with body params) requests by always appending user's Bit.ly API Key.
 #' 
 #' @param url - which is used for the request
 #' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}
 #' 
 #' @import httr
 #' @import jsonlite
-#' @import stringr
 #' 
 #' @noRd
-doRequest <- function(url, auth_code = rbitlyApi()) {
+doRequest <- function(url, queryParameters, auth_code = rbitlyApi()) {
   
   if (is.na(auth_code)) {
+    # actually unnecessary; flawn logic because queryParameters will always contain API Key. 
+    # Yet for making sure that user has set it, I'll let it go
     stop("Please assign your API Key ('Generic Access Token') ")
   } else {
-    created_URL <- paste(url, auth_code, sep = "&access_token=")
     
-    # fails to parse content correctly
-    if (str_detect(url, "v3/user/info")) {
-      
-      json_response <- fromJSON(created_URL)
-      return(json_response)
-      
-    } else {
-      
-      return_request <- GET(created_URL)
-      text_response <- content(return_request, as = "text")
-      json_response <- fromJSON(text_response)
-      return(json_response)
-    }
+    return_request <- GET(url, query = queryParameters)
+    text_response <- content(return_request, as = "text")
+    json_response <- fromJSON(text_response)
+    return(json_response)
   }
 }
-
-
