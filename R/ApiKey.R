@@ -73,6 +73,9 @@ doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi()) {
   } else {
     
     return_request <- GET(url, query = queryParameters)
+    
+    # according to https://github.com/hadley/httr/issues/241#issuecomment-110384690
+    stop_for_status(return_request)
     text_response <- content(return_request, as = "text")
     json_response <- fromJSON(text_response)
     return(json_response)
