@@ -13,7 +13,7 @@ rbitlyApi_up(username, password)
 }
 \value{
 api key - user's API Key. As described, it is not necessary to use rbitlyApi("api key")
-as this is done automatically
+as this is done automatically.
 }
 \description{
 This method is for the case when the user doesn't know what is his/her "Generic Access Token".

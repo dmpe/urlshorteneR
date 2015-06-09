@@ -27,7 +27,7 @@ Returns users who have encoded this link (optionally only those in the requestin
 sorted by the number of clicks on each encoding user's link.
 }
 \note{
-- The response will only contain users whose links have gotten at least one click, and
+The response will only contain users whose links have gotten at least one click, and
 will not contain any users whose links are private.
 }
 \examples{

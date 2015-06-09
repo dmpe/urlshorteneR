@@ -33,7 +33,7 @@ rbitlyApi <- function(auth_token) {
 #' @param password - the password
 #' 
 #' @return api key - user's API Key. As described, it is not necessary to use rbitlyApi("api key") 
-#' as this is done automatically
+#' as this is done automatically.
 #' 
 #' @examples 
 #' \donttest{

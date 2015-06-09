@@ -22,6 +22,8 @@ display_name - (optional) the user's display name, if set.
 share_accounts - (optional) a list of the share accounts (Twitter or Facebook) linked to
 the user's account.
 
+NOTICE: Only included in requests for a user's own info.
+
 apiKey - the user's bitly API key.
 
 is_enterprise - 0 or 1 to indicate if this account is signed up for Bitly Brand Tools.
@@ -38,6 +40,8 @@ new links.
 
 domain_preference_options - A list of the valid short domains that this account can
 choose as a default.
+
+NOTICE: Only included for enterprise accounts (is_enterprise == 1 or has_master == 1).
 
 sub_accounts - (optional) list of accounts associated with this account.
 
@@ -59,11 +63,7 @@ account.
 Return or update information about a user.
 }
 \note{
-Only included in requests for a user's own info
-
-Only included for enterprise accounts (is_enterprise == 1 or has_master == 1)
-
-both columns (!) are character type
+Both returned columns (!) are character type.
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

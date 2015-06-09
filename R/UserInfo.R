@@ -11,7 +11,7 @@
 #' @return share_accounts - (optional) a list of the share accounts (Twitter or Facebook) linked to 
 #' the user's account.
 
-#' @note Only included in requests for a user's own info
+#' @return NOTICE: Only included in requests for a user's own info.
 #'
 #' @return apiKey - the user's bitly API key.
 #' @return is_enterprise - 0 or 1 to indicate if this account is signed up for Bitly Brand Tools.
@@ -24,8 +24,7 @@
 #' @return domain_preference_options - A list of the valid short domains that this account can 
 #' choose as a default.
 #'
-#' @note Only included for enterprise accounts (is_enterprise == 1 or has_master == 1)
-#' @note both columns (!) are character type
+#' @return NOTICE: Only included for enterprise accounts (is_enterprise == 1 or has_master == 1).
 #' 
 #' @return sub_accounts - (optional) list of accounts associated with this account.
 #' @return e2e_domains - (optional) list of domains associated with this custom_short_domain.
@@ -38,6 +37,8 @@
 #' @return bbt_start_date - (optional) the date for when this account became a Bitly Brand Tools 
 #' account.
 #' 
+#' @note Both returned columns (!) are character type.
+#'
 #' @examples 
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Info() 
