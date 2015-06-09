@@ -139,7 +139,7 @@ user_TrackingDomains <- function() {
   if (!length(df_tracking_domain_list_data) == 0) {
     
     # create and return a data frame from a transposed list
-    df_tracking_domain_list_data <- data.frame(t(sapply(df_tracking_domain_list_data,c)))
+    df_tracking_domain_list_data <- data.frame(t(sapply(df_tracking_domain_list_data, c)))
     return(df_tracking_domain_list_data)
     
   } else  {
