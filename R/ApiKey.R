@@ -68,16 +68,16 @@ doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi()) {
   
   if (is.na(auth_code)) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key. 
-    # Yet for making sure that user has set it, I'll let it go
+    # Yet for making sure that the user has set it, I'll let it go
     stop("Please assign your API Key ('Generic Access Token') ")
   } else {
     
     return_request <- GET(url, query = queryParameters)
-    
-    # according to https://github.com/hadley/httr/issues/241#issuecomment-110384690
     stop_for_status(return_request)
     text_response <- content(return_request, as = "text")
     json_response <- fromJSON(text_response)
     return(json_response)
   }
 }
+
+
