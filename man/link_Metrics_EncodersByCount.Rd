@@ -20,7 +20,8 @@ link_Metrics_EncodersByCount(link, limit = 100, my_network = "false",
 this enterprise account and its subaccounts}
 }
 \value{
-entries - a mapping of link, user, and ts (when the Bitlink was created).
+entries - a mapping of link, user, and ts (when the Bitlink was created) and possible
+more depending on input parameters.
 }
 \description{
 Returns users who have encoded this link (optionally only those in the requesting user's social graph),
@@ -33,6 +34,7 @@ will not contain any users whose links are private.
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
+link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100, expand_user = "true")
 }
 \seealso{
 See \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count}

@@ -46,6 +46,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
   } else {
     df_user_metrics_clicks_data$dt <- as.POSIXct(as.integer(df_user_metrics_clicks_data$dt), 
                                                  origin = "1970-01-01", tz = "UTC")
+    # sapply(df_user_metrics_clicks_data, class)
     return(df_user_metrics_clicks_data)
   }
 }
@@ -65,33 +66,23 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_Countries(unit = "day", units = -1, limit = 100, rollup = "true")
-#' user_Metrics_Countries(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
 #' @export
 user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                                   rollup = c("false", "true"), units = -1) {
+                                   rollup = "true", units = -1) {
   unit_matched <- match.arg(unit)
-  rollup_matched <- match.arg(rollup)
-  
+
   user_metrics_countries_url <- "https://api-ssl.bitly.com/v3/user/countries"
   
   query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
-                rollup = rollup_matched)
+                rollup = rollup)
   
   # call method from ApiKey.R
   df_user_metrics_countries <- doRequest(user_metrics_countries_url, query)
   
   df_user_metrics_countries_data <- df_user_metrics_countries$data$user_countries
   
-  # More testing required
-  if (rollup == "true") {
-    return(df_user_metrics_countries_data)
-    
-  } else {
-    # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-    df_user_metrics_countries_data <- data.frame(sapply(df_user_metrics_countries_data, c))
-  }
-  
+  # sapply(df_user_metrics_countries_data, class)
   return(df_user_metrics_countries_data)
 }
 

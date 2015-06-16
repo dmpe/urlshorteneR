@@ -113,6 +113,7 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
   df_history_data$modified_at <- as.POSIXct(df_history_data$modified_at, origin = "1970-01-01", tz = "UTC")
   df_history_data$tags <- NULL
   
+  # sapply(df_history_data, class)
   return(df_history_data)
 }
 
@@ -138,8 +139,11 @@ user_TrackingDomains <- function() {
   
   if (!length(df_tracking_domain_list_data) == 0) {
     
-    # create and return a data frame from a transposed list
+    # rather guessing at the moment
     df_tracking_domain_list_data <- data.frame(t(sapply(df_tracking_domain_list_data, c)))
+    
+    sapply(df_tracking_domain_list_data, class)
+    
     return(df_tracking_domain_list_data)
     
   } else  {

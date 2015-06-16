@@ -157,6 +157,7 @@ link_Metrics_EncodersCount <- function(link) {
   df_link_metrics_encoders_count_data <- data.frame(t(sapply(df_link_metrics_encoders_count_data, c)),  stringsAsFactors = FALSE)
   df_link_metrics_encoders_count_data$count <- as.integer(df_link_metrics_encoders_count_data$count)
   
+  # sapply(df_link_metrics_encoders_count_data, class)
   return(df_link_metrics_encoders_count_data)
 }
 
@@ -171,16 +172,19 @@ link_Metrics_EncodersCount <- function(link) {
 #' will not contain any users whose links are private.
 #' 
 #' @inheritParams link_Metrics_Clicks
+#' 
 #' @param my_network - true or false (default) restrict to my network
 #' @param subaccounts - (only available to enterprise accounts) false (always default) restrict to 
 #' this enterprise account and its subaccounts
 #' @param expand_user - false (always default) include display names of encoders
 #'
-#' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
+#' @return entries - a mapping of link, user, and ts (when the Bitlink was created) and possible 
+#' more depending on input parameters.
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
+#' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100) 
+#' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100, expand_user = "true")
 #' 
 #' @export
 link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false", expand_user = "false", 
@@ -198,6 +202,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
   df_link_metrics_encoders_by_count_data$ts <- as.POSIXct(as.integer(df_link_metrics_encoders_by_count_data$ts), 
                                                           origin = "1970-01-01", tz = "UTC")
   
+  # sapply(df_link_metrics_encoders_by_count_data, class)
   return(df_link_metrics_encoders_by_count_data)
 }
 
@@ -216,7 +221,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' link_Metrics_ReferringDomains(link = "http://bit.ly/DPetrov", unit = "day",units = -1, limit = 100)
+#' link_Metrics_ReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
 link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
@@ -229,11 +234,10 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
   
   # call method from ApiKey.R
   df_link_metrics_referring_domains <- doRequest(link_metrics_referring_domains_url, query)
-  
   df_link_metrics_referring_domains_data <- df_link_metrics_referring_domains$data$referring_domains
   
-  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df_link_metrics_referring_domains_data <- data.frame(t(sapply(df_link_metrics_referring_domains_data,c)))
+  # sapply(df_link_metrics_referring_domains_data, class)
+  
   return(df_link_metrics_referring_domains_data)
 }
 
@@ -265,8 +269,8 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
   
   df_link_metrics_referrers_data <- df_link_metrics_referrers$data$referrers
   
-  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df_link_metrics_referrers_data <- data.frame(t(sapply(df_link_metrics_referrers_data, c)))
+  # sapply(df_link_metrics_referrers_data, class)
+  
   return(df_link_metrics_referrers_data)
 }
 
@@ -304,8 +308,12 @@ link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute"
   # https://stackoverflow_com/questions/4227223/r-list-to-data-frame
   df_link_metrics_referrers_by_domain_data <- data.frame(t(sapply(df_link_metrics_referrers_by_domain_data, c)))
   
-  # just guessing at the moment
   df_link_metrics_referrers_by_domain_data$type <- rownames(df_link_metrics_referrers_by_domain_data) 
+  df_link_metrics_referrers_by_domain_data$referrer <- as.character(df_link_metrics_referrers_by_domain_data$referrer)
+  df_link_metrics_referrers_by_domain_data$clicks <- as.integer(df_link_metrics_referrers_by_domain_data$clicks)
+  
+  # sapply(df_link_metrics_referrers_by_domain_data, class)
+  
   return(df_link_metrics_referrers_by_domain_data)
 }
 

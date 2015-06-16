@@ -5,7 +5,7 @@
 \title{Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.}
 \usage{
 user_Metrics_Countries(limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), rollup = c("false", "true"), units = -1)
+  "week", "month"), rollup = "true", units = -1)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -33,7 +33,6 @@ When a unit is specified (always the case), rollup is always (!) true.
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_Metrics_Countries(unit = "day", units = -1, limit = 100, rollup = "true")
-user_Metrics_Countries(unit = "day", units = -1, limit = 100, rollup = "false")
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}

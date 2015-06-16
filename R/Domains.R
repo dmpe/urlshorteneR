@@ -31,5 +31,6 @@ bitly_pro_domain <- function(domain) {
   } else {
     message("A short domain: ", df_bitly_pro_domain_data$domain, " is a valid bitly pro domain")
   }
+  # sapply(df_bitly_pro_domain_data, class)
   
 }
