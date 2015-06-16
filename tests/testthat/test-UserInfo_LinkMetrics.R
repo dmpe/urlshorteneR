@@ -26,7 +26,12 @@ context("Link Metrics")
 
 test_that("Returns the number of clicks on a single Bitlink.", {
   lmc <- link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-  expect_equal(dim(lmc)[[2]], 5)
+  expect_equal(lmc, 4)
+})
+
+test_that("Returns the number of clicks on a single Bitlink.", {
+  lmc <- link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, rollup = "false")
+  expect_named(lmc, c("dt", "clicks"))
 })
 
 test_that("Returns metrics about the countries referring click traffic to a single Bitlink.", {
@@ -34,14 +39,14 @@ test_that("Returns metrics about the countries referring click traffic to a sing
   expect_named(lmcc, c("country", "clicks"))
 })
 
-test_that("Returns the number of users who have shortened (encoded) a single Bitlink.", {
-  lmec <- link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
-  expect_named(lmec, c("count", "aggregate_link"))
-})
-
 test_that("Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).", {
   lme <- link_Metrics_Encoders(link = "http://bit.ly/DPetrov", my_network = "false", limit = 25)
   expect_named(lme, c("link", "user", "ts")) 
+})
+
+test_that("Returns the number of users who have shortened (encoded) a single Bitlink.", {
+  lmec <- link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
+  expect_named(lmec, c("count", "aggregate_link"))
 })
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {

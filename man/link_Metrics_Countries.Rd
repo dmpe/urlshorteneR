@@ -5,7 +5,7 @@
 \title{Returns metrics about the countries from a link.}
 \usage{
 link_Metrics_Countries(link, limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), units = -1, rollup = "true")
+  "week", "month"), units = -1)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -17,9 +17,11 @@ maximum value for units is 60.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
+}
+\value{
+clicks - the number of clicks referred from this country.
 
-\item{rollup}{- true (default) or false.  Return data for multiple units rolled up to a
-single result instead of a separate value for each period of time.}
+country - the two-letter code of the referring country.
 }
 \description{
 Returns metrics about the countries referring click traffic to a single Bitlink.

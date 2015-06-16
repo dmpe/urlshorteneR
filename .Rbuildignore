@@ -1,7 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.httr-oauth$
-man-roxygen/
 .travis.yml
 .DS_Store
 ReadMe.md

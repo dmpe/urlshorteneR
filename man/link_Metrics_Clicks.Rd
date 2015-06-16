@@ -21,6 +21,11 @@ units of time.}
 \item{rollup}{- true (default) or false.  Return data for multiple units rolled up to a
 single result instead of a separate value for each period of time.}
 }
+\value{
+clicks - the number of clicks on the specified Bitlink.
+
+dt - time in UTC format (only when rollup = "false")
+}
 \description{
 Returns the number of clicks on a single Bitlink of the authenticated user.
 }

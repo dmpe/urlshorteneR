@@ -15,7 +15,7 @@ Tested on Ubuntu 14.10 Server (!) and Windows 10 (64 bit on [Revolution R Open](
 
 ### Help needed !!!
 
-- Testers (with the enterprise account too). Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
+- Testers with the enterprise accounts. Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
 
 ### Looking for examples ?
 

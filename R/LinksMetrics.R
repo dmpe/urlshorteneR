@@ -14,6 +14,9 @@
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
 #' maximum value for units is 60. 
 #' 
+#' @return clicks - the number of clicks on the specified Bitlink.
+#' @return dt - time in UTC format (only when rollup = "false")
+#' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
@@ -31,16 +34,19 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
   # call method from ApiKey.R
   df.link_metrics_clicks <- doRequest(link_metrics_clicks_url, query)
   
-  df.link_metrics_clicks_data <- df.link_metrics_clicks$data
+  df.link_metrics_clicks_data <- df.link_metrics_clicks$data$link_clicks
   
-  if (!is.null(df.link_metrics_clicks_data$unit_reference_ts)) {
-    df.link_metrics_clicks_data$unit_reference_ts <- as.POSIXct(df.link_metrics_clicks_data$unit_reference_ts, 
-                                                                origin = "1970-01-01", tz = "UTC")
+  if (rollup == "true") {
+    return(df.link_metrics_clicks_data)
+    
+  } else {
+    df.link_metrics_clicks_data$dt <- as.POSIXct(df.link_metrics_clicks_data$dt, origin = "1970-01-01", tz = "UTC")
   }
   
-  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df.link_metrics_clicks_data <- data.frame(t(sapply(df.link_metrics_clicks_data, c)))
+  # sapply(df.link_metrics_clicks_data, class)
+  
   return(df.link_metrics_clicks_data)
+  
 }
 
 
@@ -52,32 +58,28 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @inheritParams link_Metrics_Clicks
 #' 
+#' @return clicks - the number of clicks referred from this country.
+#' @return country - the two-letter code of the referring country.
+#' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
 link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
-                                   units = -1, rollup = "true") {
+                                   units = -1) {
   unit_matched <- match.arg(unit)
   
   link_metrics_countries_url <- "https://api-ssl.bitly.com/v3/link/countries"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units, 
-                rollup = rollup)
+  query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
   df_link_metrics_countries <- doRequest(link_metrics_countries_url, query)
   
   df_link_metrics_countries_data <- df_link_metrics_countries$data$countries
   
-  if (!is.null(df_link_metrics_countries_data$unit_reference_ts)) {
-    df_link_metrics_countries_data$unit_reference_ts <- as.POSIXct(df_link_metrics_countries_data$unit_reference_ts,
-                                                                   origin = "1970-01-01", tz = "UTC")
-  }
-  
-  # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df_link_metrics_countries_data <- data.frame(sapply(df_link_metrics_countries_data, c))
+  # sapply(df_link_metrics_countries_data, class)
   return(df_link_metrics_countries_data)
 }
 
@@ -90,16 +92,19 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' @note Some users may not be returned from this call depending on Bitlink privacy settings.
 #' 
 #' @inheritParams link_Metrics_Clicks
+#' 
 #' @param my_network - true or false (default) restrict to my network.
 #' @param subaccounts - (only available to enterprise accounts) false (always default) restrict to 
 #' this enterprise account and its subaccounts
 #' @param expand_user - true or false (default) include display names of encoders.
 #' 
-#' @return entries - a mapping of link, user, and ts (when the Bitlink was created).
+#' @return entries - a mapping of link, user, and ts (when the Bitlink was created) and possible 
+#' more depending on input parameters.
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Encoders(link = "http://bit.ly/DPetrov")
+#' link_Metrics_Encoders(link = "http://bit.ly/DPetrov", expand_user = "true", my_network = "false")
 #' 
 #' @export
 link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand_user = "false", 
@@ -117,7 +122,7 @@ link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand
   
   df_link_metrics_encoders_data$ts <- as.POSIXct(as.integer(df_link_metrics_encoders_data$ts),
                                                  origin = "1970-01-01", tz = "UTC")
-  
+  # sapply(df_link_metrics_encoders_data, class)
   return(df_link_metrics_encoders_data)
 }
 
@@ -149,7 +154,9 @@ link_Metrics_EncodersCount <- function(link) {
   df_link_metrics_encoders_count_data <- df_link_metrics_encoders_count$data
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df_link_metrics_encoders_count_data <- data.frame(t(sapply(df_link_metrics_encoders_count_data, c)))
+  df_link_metrics_encoders_count_data <- data.frame(t(sapply(df_link_metrics_encoders_count_data, c)),  stringsAsFactors = FALSE)
+  df_link_metrics_encoders_count_data$count <- as.integer(df_link_metrics_encoders_count_data$count)
+  
   return(df_link_metrics_encoders_count_data)
 }
 
