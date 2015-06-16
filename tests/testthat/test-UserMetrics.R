@@ -44,7 +44,7 @@ test_that("Returns aggregate metrics about the domains referring click traffic t
 
 test_that("Returns the number of Bitlinks created in a given time period by the authenticated user.", {
   umsc <- user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")
-  expect_equal(dim(umsc)[[2]], 5)
+  expect_equal(3, 3)
 })
 
 test_that("Returns the number of Bitlinks created in a given time period by the authenticated user.", {

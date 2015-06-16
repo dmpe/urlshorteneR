@@ -154,7 +154,8 @@ link_Metrics_EncodersCount <- function(link) {
   df_link_metrics_encoders_count_data <- df_link_metrics_encoders_count$data
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-  df_link_metrics_encoders_count_data <- data.frame(t(sapply(df_link_metrics_encoders_count_data, c)),  stringsAsFactors = FALSE)
+  df_link_metrics_encoders_count_data <- data.frame(t(sapply(df_link_metrics_encoders_count_data, c)),  
+                                                    stringsAsFactors = FALSE)
   df_link_metrics_encoders_count_data$count <- as.integer(df_link_metrics_encoders_count_data$count)
   
   # sapply(df_link_metrics_encoders_count_data, class)
@@ -184,7 +185,8 @@ link_Metrics_EncodersCount <- function(link) {
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100) 
-#' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100, expand_user = "true")
+#' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100, 
+#' expand_user = "true")
 #' 
 #' @export
 link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false", expand_user = "false", 

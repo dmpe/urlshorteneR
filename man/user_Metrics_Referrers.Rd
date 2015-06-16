@@ -33,7 +33,6 @@ When a unit is specified (always the case), rollup is always (!) true.
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
-user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "false")
 }
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
