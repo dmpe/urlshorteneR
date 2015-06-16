@@ -114,6 +114,8 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
   df_user_metrics_popular_links <- doRequest(user_metrics_popular_links_url, query)
   df_user_metrics_popular_links_data <- df_user_metrics_popular_links$data$popular_links
   
+  # sapply(df_user_metrics_popular_links_data, class)
+  
   return(df_user_metrics_popular_links_data)
   
 }
@@ -133,35 +135,24 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
-#' user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
 #' @export
 user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    rollup = c("false", "true"), units = -1) {
   unit_matched <- match.arg(unit)
-  rollup_matched <- match.arg(rollup)
-  
+
   user_metrics_referrers_url <- "https://api-ssl.bitly.com/v3/user/referrers"
   
   query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
-                rollup = rollup_matched)
+                rollup = rollup)
   
   # call method from ApiKey.R
   df_user_metrics_referrers <- doRequest(user_metrics_referrers_url, query)
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
-  
-  if (rollup == "true") {
-    df_user_metrics_referrers_data <- data.frame(t(sapply(df_user_metrics_referrers_data, c)))
-    
-  } else {
-    # No way I can check at the moment 
-    
-    # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
-    df_user_metrics_referrers_data <- data.frame(t(sapply(df_user_metrics_referrers_data, c)))
-  }
+
+  # sapply(df_user_metrics_referrers_data, class)
   
   return(df_user_metrics_referrers_data)
-  
 }
 
 #' @title Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks. 
@@ -215,6 +206,8 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
     message("You have zero referring domains given your function input.")
   }
   
+  # sapply(df_user_metrics_referring_domains_data, class)
+  
   return(df_user_metrics_referring_domains_data)
   
 }
@@ -251,15 +244,17 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
   
   # call method from ApiKey.R
   df_user_metrics_shorten_counts <- doRequest(user_metrics_shorten_counts_url, query)
+  df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts
   
   if (rollup_matched == "false") {
-    df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts
     df_user.metrics_shorten_counts_data$dt <- as.POSIXct(as.integer(df_user.metrics_shorten_counts_data$dt), 
                                                       origin = "1970-01-01", tz = "UTC")
     
   } else {
-    df_user.metrics_shorten_counts_data <- data.frame(t(sapply(df_user_metrics_shorten_counts$data, c)))
+    df_user.metrics_shorten_counts_data
   }
+  
+  # sapply(df_user.metrics_shorten_counts_data, class)
   
   return(df_user.metrics_shorten_counts_data)
 }
