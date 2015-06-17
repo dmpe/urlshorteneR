@@ -115,7 +115,6 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
   df_user_metrics_popular_links_data <- df_user_metrics_popular_links$data$popular_links
   
   # sapply(df_user_metrics_popular_links_data, class)
-  
   return(df_user_metrics_popular_links_data)
   
 }
@@ -151,7 +150,6 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
 
   # sapply(df_user_metrics_referrers_data, class)
-  
   return(df_user_metrics_referrers_data)
 }
 
@@ -207,7 +205,6 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
   }
   
   # sapply(df_user_metrics_referring_domains_data, class)
-  
   return(df_user_metrics_referring_domains_data)
   
 }
@@ -255,7 +252,6 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
   }
   
   # sapply(df_user.metrics_shorten_counts_data, class)
-  
   return(df_user.metrics_shorten_counts_data)
 }
 

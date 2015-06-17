@@ -9,22 +9,22 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This package allows you to download your data and many useful statistics from [Bit.ly](https://www.bit.ly) account. To begin with, there is one requirement and that is to gain your API Key - or in the speech of the company - "Generic Access Token". 
+This package is wrapping [Bit.ly](https://www.bit.ly) API. To begin downloading usefull statistics about your Bit.ly links, there is one requirement which is to gain your API Key (no OAuth support at this time) - so-called "Generic Access Token". 
 
 ## Authentication
 
 For that there are **two ways**. The first one is to go to <https://bitly.com/a/oauth_apps> and generate one yourself. Then you will need to execute `rbitlyApi("Your Generic Access Token")` method. This is a **requirenment** to work with all functions in this package. 
 
-Or (e.g. when you are lazy etc.) by using your username and password you can automatically acquire and set your API Key. Meaning you can execute `rbitlyApi_up("YourUsername", "YourPassword")` which not only will get your API Key (just in the case you will need it) but also, using the method above, "store" it R. 
+**Or** you can retrieve your "Generic Access Token" using your username and password to the account which automatically sets your API Key. Meaning you can execute `rbitlyApi_up("YourUsername", "YourPassword")` which not only will print your API Key (just in the case you will need it) but also, using the method above, "store" it R. 
 
 Either one is OK. Choose the one which is more convenient to you. 
 
 
 ## An Example for User Metrics
 
-First of all see here <http://dev.bitly.com/user_metrics.html>. Beware not all methods are implemented. To see which ones are, please read `ReadMe.md` file (and file an issue <https://github.com/dmpe/rbitly/issues>).
+Official API documentation <http://dev.bitly.com/user_metrics.html>.
 
-This returns my most-clicked Bit.ly links (ordered by number of clicks) in a given time period.
+Method below returns my most-clicked Bit.ly links (ordered by number of clicks) in a given time period.
 
 ```{r}
 library(RBitly)
@@ -36,7 +36,7 @@ user_Metrics_PopularLinks(unit = "month", units = -1, limit = 100)
 
 ## An Example for Link Metrics
 
-First of all see here <http://dev.bitly.com/link_metrics.html>. All methods are implemented here!
+Official API documentation <http://dev.bitly.com/link_metrics.html>.
 
 This returns users who have encoded `http://bit.ly/DPetrov` link sorted by the number of clicks on each encoding user's link.
 
@@ -48,7 +48,7 @@ link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false
 
 ## An Example for User Info/History
 
-First of all see here <http://dev.bitly.com/user_info.html>. Beware not all methods are implemented. 
+Official API documentation <http://dev.bitly.com/user_info.html>. 
 
 The first method returns an information about myself, whereas the second one returns a list of tracking domains I have configured (I have none).
 
@@ -62,9 +62,9 @@ user_TrackingDomains()
 
 ## An Example for Domains
 
-First of all see here <http://dev.bitly.com/domains.html>. Beware not all methods are implemented. 
+Official API documentation <http://dev.bitly.com/domains.html>. 
 
-This will query whether a given domain is a valid bitly pro domain (nyti.ms is). 
+This will query whether a given domain is a valid Bit.ly PRO domain (nyti.ms is). 
 
 ```{r}
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

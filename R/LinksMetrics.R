@@ -4,7 +4,6 @@
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 #' 
-#' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
 #' @param rollup - true (default) or false.  Return data for multiple units rolled up to a 
