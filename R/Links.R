@@ -3,7 +3,8 @@
 #' @seealso See \url{http://dev.bitly.com/links.html#v3_link_lookup}
 #'
 #' @param url - one or more long URLs to lookup.
-#'
+#' @showRequestURL - show URL which has been build and requested from server. For debug purposes
+#' 
 #' @return url - an echo back of the url parameter.
 #' @return aggregate_link - the corresponding bitly aggregate link (global hash).
 #' 
