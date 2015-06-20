@@ -9,17 +9,18 @@
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' links_Lookup(url = "http://www.seznam.cz/") 
-#' links_Lookup(url = list(url = "http://www.seznam.cz/", url = "http://www.seznamSSS.cz/"))
+#' links_Lookup(url = "http://www.seznam.cz/")
+#' links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE) 
+#' 
 #' @export
-links_Lookup <- function(url, showRequestURL = FALSE) {
+links_Lookup <- function(url, ..., showRequestURL = FALSE) {
   
   links_lookup_url <- "https://api-ssl.bitly.com/v3/link/lookup"
   
-  query <- list(access_token = rbitlyApi(), url = url)
+  query <- list(access_token = rbitlyApi(), url = url, ...)
   
-  # call method from ApiKey.R
-  df_link_lookup <- doRequest(links_lookup_url, query, showRequestURL)
+  # call method from ApbiKey.R
+  df_link_lookup <- doRequest(links_lookup_url, query, showURL = showRequestURL)
   df_link_lookup_data <- df_link_lookup$data$link_lookup
   
   # sapply(df_link_lookup_data, class)

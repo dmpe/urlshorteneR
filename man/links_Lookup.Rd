@@ -4,7 +4,7 @@
 \alias{links_Lookup}
 \title{Query for a Bitlink based on a long URL.}
 \usage{
-links_Lookup(url, showRequestURL = FALSE)
+links_Lookup(url, ..., showRequestURL = FALSE)
 }
 \arguments{
 \item{url}{- one or more long URLs to lookup.}
@@ -20,7 +20,7 @@ Query for a Bitlink based on a long URL.
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 links_Lookup(url = "http://www.seznam.cz/")
-links_Lookup(url = list(url = "http://www.seznam.cz/", url = "http://www.seznamSSS.cz/"))
+links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE)
 }
 \seealso{
 See \url{http://dev.bitly.com/links.html#v3_link_lookup}
