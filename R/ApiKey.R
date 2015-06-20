@@ -59,12 +59,14 @@ rbitlyApi_up <- function(username, password) {
 #' 
 #' @param url - which is used for the request
 #' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}
+#' @param queryParameters - parameters that are used for building a URL
+#' @param showRequestURL - for debugging purposes only: it shows what URL has been called
 #' 
 #' @import httr
 #' @import jsonlite
 #' 
 #' @noRd
-doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi()) {
+doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi(), showRequestURL = FALSE) {
   
   if (is.na(auth_code)) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key. 
@@ -76,6 +78,9 @@ doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi()) {
     stop_for_status(return_request)
     text_response <- content(return_request, as = "text")
     json_response <- fromJSON(text_response)
+    if(showRequestURL == TRUE) {
+      print("The requested URL has been this: " + url)
+    }
     return(json_response)
   }
 }
