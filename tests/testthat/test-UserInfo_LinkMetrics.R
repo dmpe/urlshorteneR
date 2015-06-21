@@ -26,7 +26,7 @@ context("Link Metrics")
 
 test_that("Returns the number of clicks on a single Bitlink.", {
   lmc <- link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-  expect_equal(lmc, 4)
+  expect_equal(lmc, 6)
 })
 
 test_that("Returns the number of clicks on a single Bitlink.", {
