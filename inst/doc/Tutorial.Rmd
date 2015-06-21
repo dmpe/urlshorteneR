@@ -71,8 +71,8 @@ rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 bitly_pro_domain(domain = "nyti.ms")
 ```
 
+-------------
 
------------------
 ### What has (not) been implemented:
 
 Based on <http://dev.bitly.com/>
@@ -118,9 +118,19 @@ Based on <http://dev.bitly.com/>
 /v3/user/tracking_domain_shorten_counts  | **NOT** | Yes (cannot do unless sombody helps)
 
 
-- <http://dev.bitly.com/links.html>
-    + None endpoints are implemented here, because there is no use-case from my point of view. Per request can implement them, however. 
-    
+<http://dev.bitly.com/links.html> | Implemented Yes/No | Premium
+------------- | ------------- | -------------
+/v3/expand  | Yes 
+/v3/info  | Yes 
+/v3/link/lookup  |  Yes
+/v3/shorten  | **NOT**  | No
+/v3/user/link_edit  | **NOT**  | No
+/v3/user/link_lookup  | **NOT**  | No
+/v3/user/link_save | **NOT**  | No
+/v3/user/save_custom_domain_keyword | **NOT**  | Yes
+
+
+
 - <http://dev.bitly.com/nsq.html>  
     + None endpoints are implemented here, because all are premium. Addionally, this is only for the [NSQ](http://nsq.io/) platform.
     

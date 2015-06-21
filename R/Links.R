@@ -33,7 +33,10 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' @title Used to return the page title for a given Bitlink.
 #' 
 #' @seealso See \url{http://dev.bitly.com/links.html#v3_info}
-#'
+#' 
+#' @note Either shortUrl or hash must be given as a parameter (or both).
+#' @note The maximum number of shortUrl and hash parameters is 15.
+#' 
 #' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
 #' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.
 #' @param expand_user - optional true|false (default) - include extra user info in response.
@@ -56,7 +59,7 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' links_Info(shortUrl = "http://bit.ly/DPetrov")
 #' links_Info(hash = "DPetrov", showRequestURL = TRUE) 
 #' links_Info(hash = "DPetrov", expand_user = "true")
-#' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+#' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") # hash is the one which is only returned 
 #' 
 #' @export
 links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
@@ -81,6 +84,53 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
 
 
 
+#' @title Given a bitly URL or hash (or multiple), returns the target (long) URL.
+#' 
+#' @seealso See \url{http://dev.bitly.com/links.html#v3_expand}
+#'
+#' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
+#' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' 
+#' @section TODO: or more URLs  
+#' 
+#' @note Either shortUrl or hash must be given as a parameter.
+#' @note The maximum number of shortUrl and hash parameters is 15.
+#' 
+#' @return short_url - this is an echo back of the shortUrl request parameter.
+#' @return hash - this is an echo back of the hash request parameter.
+#' @return user_hash - the corresponding bitly user identifier.
+#' @return global_hash - the corresponding bitly aggregate identifier.
+#' @return error - indicates there was an error retrieving data for a given shortUrl or hash. An 
+#' example error is "NOT_FOUND".
+#' @return long_url - the URL that the requested short_url or hash points to.
+#' 
+#' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' links_Expand(shortUrl = "http://bit.ly/DPetrov")
+#' links_Expand(hash = "DPetrov", showRequestURL = TRUE) 
+#' links_Expand(hash = "DPetrov")
+#' links_Expand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+#' 
+#' @export
+links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE) {
+  
+  links_expand_url <- "https://api-ssl.bitly.com/v3/expand"
+  
+  if (is.null(hashIN)) {
+    query <- list(access_token = rbitlyApi(), shortUrl = shortUrl)
+  } else {
+    query <- list(access_token = rbitlyApi(), hash = hashIN)
+  }
+  
+  # call method from ApbiKey.R
+  df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
+  
+  df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
+
+  # sapply(df_link_expand_data, class)
+  return(df_link_expand_data)
+}
 
 
 
