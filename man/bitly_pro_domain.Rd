@@ -4,10 +4,12 @@
 \alias{bitly_pro_domain}
 \title{Validate given domain for PRO features}
 \usage{
-bitly_pro_domain(domain)
+bitly_pro_domain(domain, showRequestURL = FALSE)
 }
 \arguments{
 \item{domain}{- A short domain. ie: nyti.ms.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 bitly_pro_domain - 0 or 1 designating whether this is a current bitly domain.

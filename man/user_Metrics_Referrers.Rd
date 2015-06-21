@@ -5,7 +5,8 @@
 \title{Returns aggregate metrics about the pages referring click traffic to all of the authenticated user's Bitlinks.}
 \usage{
 user_Metrics_Referrers(limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), rollup = c("false", "true"), units = -1)
+  "week", "month"), rollup = c("false", "true"), units = -1,
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -18,6 +19,8 @@ of a separate value for each period of time.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 clicks - the number of clicks referred from this URL.

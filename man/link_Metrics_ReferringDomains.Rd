@@ -5,7 +5,7 @@
 \title{Returns metrics about the domains referring click traffic to a link.}
 \usage{
 link_Metrics_ReferringDomains(link, limit = 1000, unit = c("minute", "hour",
-  "day", "week", "month"), units = -1)
+  "day", "week", "month"), units = -1, showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -17,6 +17,8 @@ maximum value for units is 60.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 clicks - the number of clicks referred from this domain.

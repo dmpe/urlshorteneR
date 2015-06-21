@@ -4,10 +4,12 @@
 \alias{link_Metrics_EncodersCount}
 \title{Returns the number of users who have shortened a link.}
 \usage{
-link_Metrics_EncodersCount(link)
+link_Metrics_EncodersCount(link, showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.

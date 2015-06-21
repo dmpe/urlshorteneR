@@ -5,7 +5,7 @@
 \title{Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.}
 \usage{
 user_Metrics_PopularLinks(limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), units = -1)
+  "week", "month"), units = -1, showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -15,6 +15,8 @@ value for units is 60.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 link - a Bitlink.

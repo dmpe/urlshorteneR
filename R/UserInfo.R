@@ -1,4 +1,6 @@
 #' @title Return or update information about a user.
+#' 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #'
 #' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_info}
 #'
@@ -46,13 +48,13 @@
 #' @import stringr
 #' 
 #' @export
-user_Info <- function() {
+user_Info <- function(showRequestURL = FALSE) {
   
   user_info_url <- "https://api-ssl.bitly.com/v3/user/info"
   
   query <- list(access_token = rbitlyApi())
 
-  df_user_info <- doRequest(user_info_url, query)
+  df_user_info <- doRequest(user_info_url, query, showURL = showRequestURL)
 
   df_user_info_data <- data.frame(ReturnValues = unlist(df_user_info$data))
   df_user_info_data$ReturnValues <- str_trim(as.character(df_user_info_data$ReturnValues))
@@ -78,7 +80,8 @@ user_Info <- function() {
 #' entries. (on = return only archived history entries)
 #' @param private - on, off and both (default) whether to include or exclude private history 
 #' entries. (on = return only private history entries)
-#' 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#'
 #' @return link - the Bitlink specific to this user and this long_url.
 #' @return aggregate_link - the global bitly identifier for this long_url.
 #' @return long_url - the original long URL.
@@ -99,13 +102,14 @@ user_Info <- function() {
 #' user_LinkHistory() 
 #'
 #' @export
-user_LinkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false") {
+user_LinkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false", 
+                             showRequestURL = FALSE) {
   
   user_linkHistory_url <- "https://api-ssl.bitly.com/v3/user/link_history"
   
   query <- list(access_token = rbitlyApi(), limit = limit, private = private, archived = archived, expand_client_id = expand_client_id)
   
-  df_history <- doRequest(user_linkHistory_url, query)
+  df_history <- doRequest(user_linkHistory_url, query, showURL = showRequestURL)
   df_history_data <- df_history$data$link_history
   
   df_history_data$user_ts <- as.POSIXct(df_history_data$user_ts, origin = "1970-01-01", tz = "UTC")
@@ -119,6 +123,8 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
 
 #' @title Returns a list of tracking domains a user has configured.
 #' 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#'
 #' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}
 #' 
 #' @return tracking_domains - a list of tracking domains configured for the authenticated user.
@@ -128,11 +134,11 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
 #' user_TrackingDomains()
 #' 
 #' @export
-user_TrackingDomains <- function() {
+user_TrackingDomains <- function(showRequestURL = FALSE) {
   
   user_tracking_domain_list_url <- "https://api-ssl.bitly.com/v3/user/tracking_domain_list"
   
-  query <- list(access_token = rbitlyApi())
+  query <- list(access_token = rbitlyApi(), showURL = showRequestURL)
   
   df_tracking_domain_list <- doRequest(user_tracking_domain_list_url, query)
   df_tracking_domain_list_data <- df_tracking_domain_list$data$tracking_domains

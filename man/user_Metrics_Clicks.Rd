@@ -5,7 +5,8 @@
 \title{Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.}
 \usage{
 user_Metrics_Clicks(limit = 1000, unit = c("minute", "hour", "day", "week",
-  "month"), units = -1, rollup = c("false", "true"))
+  "month"), units = -1, rollup = c("false", "true"),
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -18,6 +19,8 @@ units of time.}
 
 \item{rollup}{- true or false. Return data for multiple units rolled up to a single result instead
 of a separate value for each period of time.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 dt - a unix timestamp representing the beginning of this unit.

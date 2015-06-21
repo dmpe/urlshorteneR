@@ -5,7 +5,7 @@
 \title{Returns numbers of click on a link.}
 \usage{
 link_Metrics_Clicks(link, limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), units = -1, rollup = "true")
+  "week", "month"), units = -1, rollup = "true", showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -20,6 +20,8 @@ units of time.}
 
 \item{rollup}{- true (default) or false.  Return data for multiple units rolled up to a
 single result instead of a separate value for each period of time.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 clicks - the number of clicks on the specified Bitlink.

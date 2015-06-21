@@ -12,6 +12,7 @@
 #' units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
 #' maximum value for units is 60. 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
 #' @return clicks - the number of clicks on the specified Bitlink.
 #' @return dt - time in UTC format (only when rollup = "false")
@@ -22,7 +23,7 @@
 #' 
 #' @export
 link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
-                                units = -1, rollup = "true") {
+                                units = -1, rollup = "true", showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
   link_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/link/clicks"
@@ -31,7 +32,7 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df.link_metrics_clicks <- doRequest(link_metrics_clicks_url, query)
+  df.link_metrics_clicks <- doRequest(link_metrics_clicks_url, query, showURL = showRequestURL)
   
   df.link_metrics_clicks_data <- df.link_metrics_clicks$data$link_clicks
   
@@ -66,7 +67,7 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @export
 link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
-                                   units = -1) {
+                                   units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
   link_metrics_countries_url <- "https://api-ssl.bitly.com/v3/link/countries"
@@ -74,7 +75,7 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
   query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_countries <- doRequest(link_metrics_countries_url, query)
+  df_link_metrics_countries <- doRequest(link_metrics_countries_url, query, showURL = showRequestURL)
   
   df_link_metrics_countries_data <- df_link_metrics_countries$data$countries
   
@@ -107,7 +108,7 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @export
 link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand_user = "false", 
-                                  subaccounts = "false") {
+                                  subaccounts = "false", showRequestURL = FALSE) {
   
   link_metrics_encoders_url <- "https://api-ssl.bitly.com/v3/link/encoders"
   
@@ -115,7 +116,7 @@ link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders <- doRequest(link_metrics_encoders_url, query)
+  df_link_metrics_encoders <- doRequest(link_metrics_encoders_url, query, showURL = showRequestURL)
   
   df_link_metrics_encoders_data <- df_link_metrics_encoders$data$entries
   
@@ -142,14 +143,14 @@ link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand
 #' link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
 #' 
 #' @export
-link_Metrics_EncodersCount <- function(link) {
+link_Metrics_EncodersCount <- function(link, showRequestURL = FALSE) {
   
   link_metrics_encoders_count_url <- "https://api-ssl.bitly.com/v3/link/encoders_count"
   
   query <- list(access_token = rbitlyApi(), link = link)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders_count <- doRequest(link_metrics_encoders_count_url, query)
+  df_link_metrics_encoders_count <- doRequest(link_metrics_encoders_count_url, query, showURL = showRequestURL)
   df_link_metrics_encoders_count_data <- df_link_metrics_encoders_count$data
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
@@ -189,7 +190,7 @@ link_Metrics_EncodersCount <- function(link) {
 #' 
 #' @export
 link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false", expand_user = "false", 
-                                           subaccounts = "false") {
+                                           subaccounts = "false", showRequestURL = FALSE) {
   
   link_metrics_encoders_by_count_url <- "https://api-ssl.bitly.com/v3/link/encoders_by_count"
   
@@ -197,7 +198,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders_by_count <- doRequest(link_metrics_encoders_by_count_url, query)
+  df_link_metrics_encoders_by_count <- doRequest(link_metrics_encoders_by_count_url, query, showURL = showRequestURL)
   
   df_link_metrics_encoders_by_count_data <- data.frame(df_link_metrics_encoders_by_count$data$encoders_by_count)
   df_link_metrics_encoders_by_count_data$ts <- as.POSIXct(as.integer(df_link_metrics_encoders_by_count_data$ts), 
@@ -226,7 +227,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
 #' 
 #' @export
 link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                                           units = -1) {
+                                           units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
   link_metrics_referring_domains_url <- "https://api-ssl.bitly.com/v3/link/referring_domains"
@@ -234,7 +235,7 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
   query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referring_domains <- doRequest(link_metrics_referring_domains_url, query)
+  df_link_metrics_referring_domains <- doRequest(link_metrics_referring_domains_url, query, showURL = showRequestURL)
   df_link_metrics_referring_domains_data <- df_link_metrics_referring_domains$data$referring_domains
   
   # sapply(df_link_metrics_referring_domains_data, class)
@@ -258,7 +259,7 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
 #' 
 #' @export
 link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                                   units = -1) {
+                                   units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
   link_metrics_referrers_url <- "https://api-ssl.bitly.com/v3/link/referrers"
@@ -266,7 +267,7 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
   query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referrers <- doRequest(link_metrics_referrers_url, query)
+  df_link_metrics_referrers <- doRequest(link_metrics_referrers_url, query, showURL = showRequestURL)
   
   df_link_metrics_referrers_data <- df_link_metrics_referrers$data$referrers
   
@@ -294,7 +295,7 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #' 
 #' @export
 link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                                             units = -1) {
+                                             units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
   link_metrics_referrers_by_domain_url <- "https://api-ssl.bitly.com/v3/link/referrers_by_domain"
@@ -302,7 +303,7 @@ link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute"
   query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referrers_by_domain <- doRequest(link_metrics_referrers_by_domain_url, query)
+  df_link_metrics_referrers_by_domain <- doRequest(link_metrics_referrers_by_domain_url, query, showURL = showRequestURL)
   
   df_link_metrics_referrers_by_domain_data <- df_link_metrics_referrers_by_domain$data$referrers
   

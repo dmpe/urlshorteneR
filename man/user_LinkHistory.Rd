@@ -5,7 +5,7 @@
 \title{Returns entries from a user's link history in reverse chronological order.}
 \usage{
 user_LinkHistory(limit = 100, private = "off", archived = "both",
-  expand_client_id = "false")
+  expand_client_id = "false", showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max
@@ -19,6 +19,8 @@ entries. (on = return only archived history entries)}
 
 \item{expand_client_id}{- true or false (always default) whether to provide additional
 information about encoding application.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 link - the Bitlink specific to this user and this long_url.

@@ -5,7 +5,8 @@
 \title{Returns the number of Bitlinks created in a given time period by the authenticated user.}
 \usage{
 user_Metrics_ShortenCounts(limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), rollup = c("false", "true"), units = -1)
+  "week", "month"), rollup = c("false", "true"), units = -1,
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -18,6 +19,8 @@ of a separate value for each period of time.}
 
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 tz_offset - the offset for the specified timezone, in hours.

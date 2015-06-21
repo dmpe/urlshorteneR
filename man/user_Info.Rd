@@ -4,7 +4,10 @@
 \alias{user_Info}
 \title{Return or update information about a user.}
 \usage{
-user_Info()
+user_Info(showRequestURL = FALSE)
+}
+\arguments{
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 login - the specified bitly login or the login of the authenticated user.

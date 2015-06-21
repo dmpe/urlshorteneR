@@ -5,7 +5,7 @@
 \title{Returns users who have encoded this link.}
 \usage{
 link_Metrics_EncodersByCount(link, limit = 100, my_network = "false",
-  expand_user = "false", subaccounts = "false")
+  expand_user = "false", subaccounts = "false", showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -18,6 +18,8 @@ link_Metrics_EncodersByCount(link, limit = 100, my_network = "false",
 
 \item{subaccounts}{- (only available to enterprise accounts) false (always default) restrict to
 this enterprise account and its subaccounts}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 entries - a mapping of link, user, and ts (when the Bitlink was created) and possible

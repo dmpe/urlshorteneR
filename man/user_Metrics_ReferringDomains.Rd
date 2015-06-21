@@ -6,7 +6,8 @@
 \usage{
 user_Metrics_ReferringDomains(limit = 1000, unit = c("minute", "hour",
   "day", "week", "month"), rollup = c("false", "true"), units = -1,
-  login = NULL, exclude_social_networks = c("true", "false"))
+  login = NULL, exclude_social_networks = c("true", "false"),
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -25,6 +26,8 @@ statistics; defaults to the current user.}
 
 \item{exclude_social_networks}{- true (default) or false. If true, exclude domains that are
 part of a social network that bitly tracks.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 clicks - the number of clicks referred from this URL.

@@ -9,6 +9,7 @@
 #' value for units is 60.
 #' @param rollup - true or false. Return data for multiple units rolled up to a single result instead 
 #' of a separate value for each period of time.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
 #' @return dt - a unix timestamp representing the beginning of this unit.
 #' @return day_start - a unix timestamp representing the beginning of the specified day (ONLY returned 
@@ -25,7 +26,7 @@
 #' 
 #' @export
 user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                               units = -1, rollup = c("false", "true")) {
+                               units = -1, rollup = c("false", "true"), showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   rollup_matched <- match.arg(rollup)
   
@@ -35,7 +36,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
                 rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_clicks <- doRequest(user_metrics_clicks_url, query)
+  df_user_metrics_clicks <- doRequest(user_metrics_clicks_url, query, showURL = showRequestURL)
   df_user_metrics_clicks_data <- df_user_metrics_clicks$data$user_clicks
   
   if (rollup == "true") {
@@ -55,7 +56,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' @title Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
-#'
+#'  
 #' @inheritParams user_Metrics_Clicks
 #' 
 #' @return clicks - the number of clicks referred from this country.
@@ -69,7 +70,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' 
 #' @export
 user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                                   rollup = "true", units = -1) {
+                                   rollup = "true", units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
 
   user_metrics_countries_url <- "https://api-ssl.bitly.com/v3/user/countries"
@@ -78,7 +79,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_countries <- doRequest(user_metrics_countries_url, query)
+  df_user_metrics_countries <- doRequest(user_metrics_countries_url, query, showURL = showRequestURL)
   
   df_user_metrics_countries_data <- df_user_metrics_countries$data$user_countries
   
@@ -103,7 +104,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' 
 #' @export
 user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
-                                       units = -1) {
+                                       units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
   user_metrics_popular_links_url <- "https://api-ssl.bitly.com/v3/user/popular_links"
@@ -111,7 +112,7 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
   query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_user_metrics_popular_links <- doRequest(user_metrics_popular_links_url, query)
+  df_user_metrics_popular_links <- doRequest(user_metrics_popular_links_url, query, showURL = showRequestURL)
   df_user_metrics_popular_links_data <- df_user_metrics_popular_links$data$popular_links
   
   # sapply(df_user_metrics_popular_links_data, class)
@@ -137,7 +138,7 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @export
 user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
-                                   rollup = c("false", "true"), units = -1) {
+                                   rollup = c("false", "true"), units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
 
   user_metrics_referrers_url <- "https://api-ssl.bitly.com/v3/user/referrers"
@@ -146,7 +147,7 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_referrers <- doRequest(user_metrics_referrers_url, query)
+  df_user_metrics_referrers <- doRequest(user_metrics_referrers_url, query, showURL = showRequestURL)
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
 
   # sapply(df_user_metrics_referrers_data, class)
@@ -184,7 +185,7 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' @export
 user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                            rollup = c("false", "true"), units = -1, login = NULL, 
-                                           exclude_social_networks = c("true", "false")) {
+                                           exclude_social_networks = c("true", "false"), showRequestURL = FALSE) {
   
   unit_matched <- match.arg(unit)
   rollup_matched <- match.arg(rollup)
@@ -196,7 +197,7 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
                 rollup = rollup_matched, exclude_social_networks = exclude_social_networks_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_referring_domains <- doRequest(user_metrics_referring_domains_url, query)
+  df_user_metrics_referring_domains <- doRequest(user_metrics_referring_domains_url, query, showURL = showRequestURL)
   df_user_metrics_referring_domains_data <- df_user_metrics_referring_domains$data$user_referring_domains
   
   if (length(df_user_metrics_referring_domains_data) == 0) {
@@ -229,7 +230,7 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
 #' 
 #' @export
 user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
-                                        rollup = c("false", "true"), units = -1) {
+                                        rollup = c("false", "true"), units = -1, showRequestURL = FALSE) {
   
   unit_matched <- match.arg(unit)
   rollup_matched <- match.arg(rollup)
@@ -237,10 +238,10 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
   user_metrics_shorten_counts_url <- "https://api-ssl.bitly.com/v3/user/shorten_counts"
   
   query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
-                rollup = rollup_matched)
+                rollup = rollup_matched, showURL = showRequestURL)
   
   # call method from ApiKey.R
-  df_user_metrics_shorten_counts <- doRequest(user_metrics_shorten_counts_url, query)
+  df_user_metrics_shorten_counts <- doRequest(user_metrics_shorten_counts_url, query, showURL = showRequestURL)
   df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts
   
   if (rollup_matched == "false") {
