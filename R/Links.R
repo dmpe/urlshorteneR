@@ -34,7 +34,7 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' 
 #' @seealso See \url{http://dev.bitly.com/links.html#v3_info}
 #'
-#' @param hash - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
+#' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
 #' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.
 #' @param expand_user - optional true|false (default) - include extra user info in response.
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
