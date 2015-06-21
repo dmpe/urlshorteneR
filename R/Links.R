@@ -3,7 +3,7 @@
 #' @seealso See \url{http://dev.bitly.com/links.html#v3_link_lookup}
 #'
 #' @param url - one or more long URLs to lookup.
-#' @showRequestURL - show URL which has been build and requested from server. For debug purposes
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
 #' @return url - an echo back of the url parameter.
 #' @return aggregate_link - the corresponding bitly aggregate link (global hash).
@@ -14,11 +14,11 @@
 #' links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE) 
 #' 
 #' @export
-links_Lookup <- function(url, ..., showRequestURL = FALSE) {
+links_Lookup <- function(url, showRequestURL = FALSE) {
   
   links_lookup_url <- "https://api-ssl.bitly.com/v3/link/lookup"
   
-  query <- list(access_token = rbitlyApi(), url = url, ...)
+  query <- list(access_token = rbitlyApi(), url = url)
   
   # call method from ApbiKey.R
   df_link_lookup <- doRequest(links_lookup_url, query, showURL = showRequestURL)
