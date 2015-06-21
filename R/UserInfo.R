@@ -142,7 +142,7 @@ user_TrackingDomains <- function() {
     # rather guessing at the moment
     df_tracking_domain_list_data <- data.frame(t(sapply(df_tracking_domain_list_data, c)))
     
-    sapply(df_tracking_domain_list_data, class)
+    # sapply(df_tracking_domain_list_data, class)
     
     return(df_tracking_domain_list_data)
     

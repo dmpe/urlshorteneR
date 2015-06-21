@@ -15,7 +15,10 @@ test_that("Query for a Bitlink based on a long URL.", {
 })
 
 
-
+test_that("Query for a Bitlink based on a long URL.", {
+  ll <- links_Info(url = "http://www.google.com/")
+  expect_equal(dim(ll)[[2]], 2)
+})
 
 
 

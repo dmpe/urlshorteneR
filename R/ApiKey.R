@@ -79,8 +79,8 @@ doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi(), show
     text_response <- content(return_request, as = "text")
     json_response <- fromJSON(text_response)
     
-    if(identical(showURL, TRUE)) {
-      cat("The requested URL has been this: ", as.character(url), "\n")
+    if (identical(showURL, TRUE)) {
+      cat("The requested URL has been this: ", as.character(return_request$request$opts$url), "\n")
     }
     return(json_response)
   }
