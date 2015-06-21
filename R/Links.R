@@ -72,7 +72,7 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
   # call method from ApbiKey.R
   df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
   
-  df_user_info_data <- data.frame(t(sapply(df_link_info$data$info, c)), stringsAsFactors = FALSE)
+  df_user_info_data <- data.frame(t(sapply(unlist(df_link_info$data$info), c)), stringsAsFactors = FALSE)
   df_user_info_data$created_at <- as.POSIXct(as.integer(df_user_info_data$created_at), origin = "1970-01-01", tz = "UTC")
   
   # sapply(df_link_info_data, class)
