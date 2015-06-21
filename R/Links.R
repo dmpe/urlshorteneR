@@ -51,7 +51,8 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' @return error - indicates there was an error retrieving data for a given shortUrl or hash. An 
 #' example error is "NOT_FOUND".
 #' @return title - the HTML page title for the destination page (when available).
-#' @return created_by - the bitly username that originally shortened this link, if the link is public. Otherwise, null.
+#' @return created_by - the bitly username that originally shortened this link, if the 
+#' link is public. Otherwise, null.
 #' @return created_at - the epoch timestamp when this Bitlink was created.
 #' 
 #' @examples
@@ -59,7 +60,8 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' links_Info(shortUrl = "http://bit.ly/DPetrov")
 #' links_Info(hash = "DPetrov", showRequestURL = TRUE) 
 #' links_Info(hash = "DPetrov", expand_user = "true")
-#' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") # hash is the one which is only returned 
+#' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") # hash is the one which 
+#' is only returned 
 #' 
 #' @export
 links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
@@ -76,7 +78,8 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
   df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
   
   df_user_info_data <- data.frame(t(sapply(unlist(df_link_info$data$info), c)), stringsAsFactors = FALSE)
-  df_user_info_data$created_at <- as.POSIXct(as.integer(df_user_info_data$created_at), origin = "1970-01-01", tz = "UTC")
+  df_user_info_data$created_at <- as.POSIXct(as.integer(df_user_info_data$created_at), 
+                                             origin = "1970-01-01", tz = "UTC")
   
   # sapply(df_link_info_data, class)
   return(df_user_info_data)
@@ -127,7 +130,7 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
   df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
   
   df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
-
+  
   # sapply(df_link_expand_data, class)
   return(df_link_expand_data)
 }
