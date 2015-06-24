@@ -17,7 +17,7 @@ Tested on Ubuntu 15.04 Server (!) and Windows 10 (64 bit on [Revolution R Open](
 
 - Testers with the enterprise accounts. Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
 
-### Looking for examples ?
+### Looking for examples and current status of implementation ?
 
 Then check the vignette in `vignettes` folder.
 

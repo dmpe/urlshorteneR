@@ -60,8 +60,7 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' links_Info(shortUrl = "http://bit.ly/DPetrov")
 #' links_Info(hash = "DPetrov", showRequestURL = TRUE) 
 #' links_Info(hash = "DPetrov", expand_user = "true")
-#' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") # hash is the one which 
-#' is only returned 
+#' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") ## hash is the one which is only returned 
 #' 
 #' @export
 links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
@@ -146,6 +145,7 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' a custom short domain. The default for this parameter is the short domain selected by each 
 #' user in their bitly account settings. Passing a specific domain via this parameter will override
 #' the default settings.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
 #' @note The bitly API does not support shortening more than one long URL with a single API call. 
 #' Meaning 1 Long URL = 1 Function call. 

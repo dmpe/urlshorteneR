@@ -123,7 +123,7 @@ Based on <http://dev.bitly.com/>
 /v3/expand  | Yes 
 /v3/info  | Yes 
 /v3/link/lookup  |  Yes
-/v3/shorten  | **NOT**  | No
+/v3/shorten  | **NOT**  | Future
 /v3/user/link_edit  | **NOT**  | No
 /v3/user/link_lookup  | **NOT**  | No
 /v3/user/link_save | **NOT**  | No

@@ -13,6 +13,8 @@ links_Shorten(longUrl, domain = NULL, showRequestURL = FALSE)
 a custom short domain. The default for this parameter is the short domain selected by each
 user in their bitly account settings. Passing a specific domain via this parameter will override
 the default settings.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
 new_hash - designates if this is the first time this long_url was shortened by this user.
