@@ -170,10 +170,8 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' links_Expand(shortUrl = "http://bit.ly/DPetrov")
-#' links_Expand(hash = "DPetrov", showRequestURL = TRUE) 
-#' links_Expand(hash = "DPetrov")
-#' links_Expand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+#' ## links_Shorten(longUrl = "http://slovnik.seznam.cz/")
+#' ## links_Shorten(longUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
 #' 
 #' @export
 links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {

@@ -31,6 +31,9 @@ dt - time in UTC format (only when rollup = "false")
 \description{
 Returns the number of clicks on a single Bitlink of the authenticated user.
 }
+\section{TODO}{
+ or more URLs  UP to 15
+}
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
