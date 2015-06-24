@@ -9,6 +9,7 @@ R package for Bit.ly & Bitly.com & j.mp and other custom domains
 Use devtools to install the development version from Github:
 
 ```
+library(devtools)
 devtools::install_github("dmpe/rbitly", build_vignettes = TRUE)
 ```
 Tested on Ubuntu 15.04 Server (!) and Windows 10 (64 bit on [Revolution R Open](http://mran.revolutionanalytics.com/download/))
