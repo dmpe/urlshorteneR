@@ -170,27 +170,23 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
-#' ## links_Shorten(longUrl = "http://slovnik.seznam.cz/")
-#' ## links_Shorten(longUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+#' links_Shorten(longUrl = "http://slovnik.seznam.cz/")
+#' links_Shorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423", domain = "j.mp")
 #' 
 #' @export
 links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
   
-  links_expand_url <- "https://api-ssl.bitly.com/v3/shorten"
+  links_shorten_url <- "https://api-ssl.bitly.com/v3/shorten"
+
+  query <- list(access_token = rbitlyApi(), longUrl = longUrl, domain = domain)
+
+  # call method from ApbiKey.R unlist
+  df_link_shorten <- doRequest(links_shorten_url, query, showURL = showRequestURL)
+ 
+  df_link_shorten_data <- data.frame(t(sapply(df_link_shorten$data, c)), stringsAsFactors = FALSE)
   
-#   if (is.null(hashIN)) {
-#     query <- list(access_token = rbitlyApi(), shortUrl = shortUrl)
-#   } else {
-#     query <- list(access_token = rbitlyApi(), hash = hashIN)
-#   }
-#   
-#   # call method from ApbiKey.R
-#   df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
-#   
-#   df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
-#   
-#   # sapply(df_link_expand_data, class)
-#   return(df_link_expand_data)
+  # sapply(df_link_shorten_data, class)
+  return(df_link_shorten_data)
 }
 
 

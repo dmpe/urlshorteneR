@@ -28,7 +28,11 @@ test_that("Given a bitly URL or hash (or multiple), returns the target (long) UR
   expect_named(le2, c("short_url", "long_url", "user_hash", "global_hash"))
 })
 
-
-
+test_that("Given a bitly URL or hash (or multiple), returns the target (long) URL.", {
+  ls <- links_Shorten(longUrl = "http://slovnik.seznam.cz/")
+  ls2 <- links_Shorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423", domain = "j.mp")
+  expect_equal(dim(ls)[[2]], 5)
+  expect_named(ls2, c("long_url", "url", "hash", "global_hash", "new_hash"))
+})
 
 

@@ -279,10 +279,8 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 }
 
 
-#' @title Returns metrics about the pages referring click traffic to a single Bitlink.
-#' 
-#' @description Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.
-#' 
+#' @title Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.
+#'  
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
 #' 
 #' @inheritParams link_Metrics_Clicks

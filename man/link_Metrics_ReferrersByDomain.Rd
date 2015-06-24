@@ -2,7 +2,7 @@
 % Please edit documentation in R/LinksMetrics.R
 \name{link_Metrics_ReferrersByDomain}
 \alias{link_Metrics_ReferrersByDomain}
-\title{Returns metrics about the pages referring click traffic to a single Bitlink.}
+\title{Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.}
 \usage{
 link_Metrics_ReferrersByDomain(link, limit = 1000, unit = c("minute",
   "hour", "day", "week", "month"), units = -1, showRequestURL = FALSE)
