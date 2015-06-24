@@ -36,7 +36,7 @@ Either shortUrl or hash must be given as a parameter.
 The maximum number of shortUrl and hash parameters is 15.
 }
 \section{TODO}{
- or more URLs
+ or more URLs  Up TO 15
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

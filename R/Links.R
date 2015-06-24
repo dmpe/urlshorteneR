@@ -5,7 +5,7 @@
 #' @param url - one long URLs to lookup.
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
-#' @section TODO: or more URLs  
+#' @section TODO: or more URLs  UP to 15
 #'  
 #' @return url - an echo back of the url parameter.
 #' @return aggregate_link - the corresponding bitly aggregate link (global hash).
@@ -95,7 +95,7 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
 #' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
-#' @section TODO: or more URLs  
+#' @section TODO: or more URLs  Up TO 15
 #' 
 #' @note Either shortUrl or hash must be given as a parameter.
 #' @note The maximum number of shortUrl and hash parameters is 15.
@@ -136,6 +136,64 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 }
 
 
+#' @title Given a long URL, returns a Bitlink.
+#' 
+#' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
+#' @seealso See \url{http://dev.bitly.com/links.html#v3_shorten}
+#'
+#' @param longUrl - a long URL to be shortened (example: http://betaworks.com/).
+#' @param domain - (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or 
+#' a custom short domain. The default for this parameter is the short domain selected by each 
+#' user in their bitly account settings. Passing a specific domain via this parameter will override
+#' the default settings.
+#' 
+#' @note The bitly API does not support shortening more than one long URL with a single API call. 
+#' Meaning 1 Long URL = 1 Function call. 
+#' @note Long URLs should be URL-encoded. You can not include a longUrl in the request 
+#' that has &, ?, #, or other reserved parameters without first encoding it.
+#' @note The default value for the domain parameter is selected by each user from within their bitly 
+#' account settings at \url{https://bitly.com/a/settings/advanced}.
+#' @note Long URLs should not contain spaces: any longUrl with spaces will be rejected. All spaces 
+#' should be either percent encoded %20 or plus encoded +. Note that tabs, newlines and trailing 
+#' spaces are all indications of errors. Please remember to strip leading and trailing whitespace 
+#' from any user input before shortening.
+#' 
+#' @return new_hash - designates if this is the first time this long_url was shortened by this user. 
+#' The return value will equal 1 the first time a long_url is shortened. It will also then be added to the user history.
+#' @return hash - a bitly identifier for long_url which is unique to the given account.
+#' @return long_url - an echo back of the longUrl request parameter. This may not always be equal to 
+#' the URL requested, as some URL normalization may occur (e.g., due to encoding differences, or case 
+#' differences in the domain). This long_url will always be functionally identical the the request parameter. 
+#' @return global_hash - a bitly identifier for long_url which can be used to track aggregate stats 
+#' across all Bitlinks that point to the same long_url.
+#' @return url - the actual Bitlink that should be used, and is a unique value for the given Bitly account.
+#' 
+#' @examples
+#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' links_Expand(shortUrl = "http://bit.ly/DPetrov")
+#' links_Expand(hash = "DPetrov", showRequestURL = TRUE) 
+#' links_Expand(hash = "DPetrov")
+#' links_Expand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+#' 
+#' @export
+links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
+  
+  links_expand_url <- "https://api-ssl.bitly.com/v3/shorten"
+  
+#   if (is.null(hashIN)) {
+#     query <- list(access_token = rbitlyApi(), shortUrl = shortUrl)
+#   } else {
+#     query <- list(access_token = rbitlyApi(), hash = hashIN)
+#   }
+#   
+#   # call method from ApbiKey.R
+#   df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
+#   
+#   df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
+#   
+#   # sapply(df_link_expand_data, class)
+#   return(df_link_expand_data)
+}
 
 
 

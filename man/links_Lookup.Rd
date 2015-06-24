@@ -20,7 +20,7 @@ aggregate_link - the corresponding bitly aggregate link (global hash).
 Query for a Bitlink based on a long URL.
 }
 \section{TODO}{
- or more URLs
+ or more URLs  UP to 15
 }
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

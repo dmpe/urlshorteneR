@@ -30,7 +30,8 @@ example error is "NOT_FOUND".
 
 title - the HTML page title for the destination page (when available).
 
-created_by - the bitly username that originally shortened this link, if the link is public. Otherwise, null.
+created_by - the bitly username that originally shortened this link, if the
+link is public. Otherwise, null.
 
 created_at - the epoch timestamp when this Bitlink was created.
 }
@@ -50,7 +51,8 @@ rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 links_Info(shortUrl = "http://bit.ly/DPetrov")
 links_Info(hash = "DPetrov", showRequestURL = TRUE)
 links_Info(hash = "DPetrov", expand_user = "true")
-links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") # hash is the one which is only returned
+links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") # hash is the one which
+is only returned
 }
 \seealso{
 See \url{http://dev.bitly.com/links.html#v3_info}
