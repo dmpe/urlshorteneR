@@ -66,7 +66,8 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-#' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, showRequestURL= TRUE)
+#' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, 
+#' showRequestURL= TRUE)
 #' 
 #' @export
 link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
@@ -88,7 +89,8 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
 
 #' @title Returns users who have encoded this long URL.
 #' 
-#' @description Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).
+#' @description Returns users who have encoded this long URL (optionally only those in the requesting 
+#' user's social graph).
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders}
 #' 
@@ -167,8 +169,8 @@ link_Metrics_EncodersCount <- function(link, showRequestURL = FALSE) {
 
 #' @title Returns users who have encoded this link.
 #' 
-#' @description Returns users who have encoded this link (optionally only those in the requesting user's social graph), 
-#' sorted by the number of clicks on each encoding user's link.
+#' @description Returns users who have encoded this link (optionally only those in the requesting 
+#' user's social graph), sorted by the number of clicks on each encoding user's link.
 #' 
 #' @seealso See \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count}
 #' 

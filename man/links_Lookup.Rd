@@ -9,7 +9,9 @@ links_Lookup(url, showRequestURL = FALSE)
 \arguments{
 \item{url}{- one long URLs to lookup.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.
+
+The problem is to have data structure which permits many same keys but different values}
 }
 \value{
 url - an echo back of the url parameter.
@@ -19,13 +21,16 @@ aggregate_link - the corresponding bitly aggregate link (global hash).
 \description{
 Query for a Bitlink based on a long URL.
 }
-\section{TODO}{
- or more URLs  UP to 15
-}
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 links_Lookup(url = "http://www.seznam.cz/")
 links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE)
+
+## manyUrls <- list("http://www.seznam.cz/", "http://www.seznamasdas.cz/",
+## "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt")
+## for (u in 1:length(manyUrls)) {
+## print(links_Lookup(url = manyUrls[[u]], showRequestURL = TRUE))
+## }
 }
 \seealso{
 See \url{http://dev.bitly.com/links.html#v3_link_lookup}

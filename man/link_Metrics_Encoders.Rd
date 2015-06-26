@@ -26,7 +26,8 @@ entries - a mapping of link, user, and ts (when the Bitlink was created) and pos
 more depending on input parameters.
 }
 \description{
-Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).
+Returns users who have encoded this long URL (optionally only those in the requesting
+user's social graph).
 }
 \note{
 Some users may not be returned from this call depending on Bitlink privacy settings.

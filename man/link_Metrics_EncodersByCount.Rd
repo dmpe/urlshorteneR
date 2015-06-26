@@ -26,8 +26,8 @@ entries - a mapping of link, user, and ts (when the Bitlink was created) and pos
 more depending on input parameters.
 }
 \description{
-Returns users who have encoded this link (optionally only those in the requesting user's social graph),
-sorted by the number of clicks on each encoding user's link.
+Returns users who have encoded this link (optionally only those in the requesting
+user's social graph), sorted by the number of clicks on each encoding user's link.
 }
 \note{
 The response will only contain users whose links have gotten at least one click, and
