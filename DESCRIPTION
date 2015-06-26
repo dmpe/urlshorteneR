@@ -1,7 +1,7 @@
 Package: RBitly
 Type: Package
 Title: R Package for Accessing Bit.ly API
-Description: Allows users to access Bit.ly API (https://bitly.com/) and retreive many useful statistics.
+Description: Allows users to access 'Bit.ly API' http://dev.bitly.com/ and retreive many useful statistics.
 Version: 0.5.0
 Date: 2015-06-21
 Authors@R: c(
@@ -11,7 +11,7 @@ Maintainer: John Malc <cincenko@outlook.com>
 Depends: 
   R (>= 3.2.0)
 Imports: 
-  httr (>= 0.6.1),
+  httr (>= 1.0.0),
   jsonlite (>= 0.9.16), 
   stringr (>= 1.0.0)
 Suggests: 
