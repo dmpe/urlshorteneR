@@ -51,7 +51,9 @@ rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 links_Info(shortUrl = "http://bit.ly/DPetrov")
 links_Info(hash = "DPetrov", showRequestURL = TRUE)
 links_Info(hash = "DPetrov", expand_user = "true")
-links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") ## hash is the one which is only returned
+
+## hash is the one which is only returned. Dont use
+links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov")
 }
 \seealso{
 See \url{http://dev.bitly.com/links.html#v3_info}

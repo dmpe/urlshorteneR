@@ -31,6 +31,7 @@ Returns metrics about the countries referring click traffic to a single Bitlink.
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, showRequestURL= TRUE)
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
