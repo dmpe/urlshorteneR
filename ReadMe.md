@@ -6,23 +6,23 @@ R package for Bit.ly & Bitly.com & j.mp and other custom domains
 
 ### Installing (not yet on CRAN)
 
-Use devtools to install the development version from Github:
+Use `devtools` to install the latest version from Github:
 
 ```
 library(devtools)
 devtools::install_github("dmpe/rbitly", build_vignettes = TRUE)
 ```
-Tested on Ubuntu 15.04 Server (!) and Windows 10 (64 bit on [Revolution R Open](http://mran.revolutionanalytics.com/download/))
+Tested on Ubuntu 15.04 Server (!) and Windows 10 (64 bit using [Revolution R Open](http://mran.revolutionanalytics.com/download/))
 
 ### Help needed !!!
 
-- Testers with the enterprise accounts. Please install and try using it. Then report bugs in <https://github.com/dmpe/rbitly/issues>
+- Testers with the "enterprise" accounts. Please try using it and then report bugs in <https://github.com/dmpe/rbitly/issues>
 
-### Looking for examples and current status of implementation ?
+### Looking for examples and current implementation status ?
 
-Then check the vignette in `vignettes` folder.
+Check the vignette in `vignettes` folder.
 
-### How to Contribute
+### How to contribute 
 
 - Fork the repository
 - Create and switch to a new branch `git checkout -b [name_of_your_new_branch]`
@@ -30,7 +30,7 @@ Then check the vignette in `vignettes` folder.
 - Push remote branch to your github `git remote add -t [name_of_your_remote]` & `git push -u origin [name_of_your_remote]`
 - Create a new pull request (to my `master` branch)
 
-Want a direct push access? No problem, just let me know.
+Want a direct push access? No problem, just let me know and become a :family:.
 
 **Also**:
  - Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
@@ -43,10 +43,5 @@ Want a direct push access? No problem, just let me know.
 ## Meta
 - Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License).
 - Please report bugs in <https://github.com/dmpe/rbitly/issues>.
-
-<!-- [![ropensci_footer](sdffgdgsghttp://ropensci.org/public_images/github_footer.png)](http://ropensci.org) -->
-
-
-
 
 
