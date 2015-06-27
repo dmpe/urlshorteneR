@@ -44,6 +44,11 @@ links_Expand(shortUrl = "http://bit.ly/DPetrov")
 links_Expand(hash = "DPetrov", showRequestURL = TRUE)
 links_Expand(hash = "DPetrov")
 links_Expand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+
+## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
+## for (u in 1:length(manyHashes)) {
+##   print(links_Expand(hashIN = manyHashes[[u]], showRequestURL = TRUE))
+## }
 }
 \seealso{
 See \url{http://dev.bitly.com/links.html#v3_expand}

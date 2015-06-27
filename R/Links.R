@@ -4,9 +4,7 @@
 #'
 #' @param url - one long URLs to lookup.
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
-#'   
-#' The problem is to have data structure which permits many same keys but different values
-#'   
+#'      
 #' @return url - an echo back of the url parameter.
 #' @return aggregate_link - the corresponding bitly aggregate link (global hash).
 #' 
@@ -18,7 +16,7 @@
 #' ## manyUrls <- list("http://www.seznam.cz/", "http://www.seznamasdas.cz/", 
 #' ## "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt")
 #' ## for (u in 1:length(manyUrls)) {
-#' ## print(links_Lookup(url = manyUrls[[u]], showRequestURL = TRUE))
+#' ##    print(links_Lookup(url = manyUrls[[u]], showRequestURL = TRUE))
 #' ## }
 #' 
 #' @export
@@ -47,9 +45,7 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.
 #' @param expand_user - optional true|false (default) - include extra user info in response.
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
-#' 
-#' @section TODO: or more URLs  
-#' 
+#'  
 #' @return short_url - this is an echo back of the shortUrl request parameter.
 #' @return hash - this is an echo back of the hash request parameter.
 #' @return user_hash - the corresponding bitly user identifier.
@@ -69,6 +65,11 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' 
 #' ## hash is the one which is only returned. Dont use
 #' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") 
+#' 
+#' ## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
+#' ## for (u in 1:length(manyHashes)) {
+#' ##   print(links_Info(hashIN = manyHashes[[u]], showRequestURL = TRUE))
+#' ## }
 #' 
 #' @export
 links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
@@ -121,6 +122,11 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
 #' links_Expand(hash = "DPetrov", showRequestURL = TRUE) 
 #' links_Expand(hash = "DPetrov")
 #' links_Expand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+#' 
+#' ## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
+#' ## for (u in 1:length(manyHashes)) {
+#' ##   print(links_Expand(hashIN = manyHashes[[u]], showRequestURL = TRUE))
+#' ## }
 #' 
 #' @export
 links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE) {

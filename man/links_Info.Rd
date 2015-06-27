@@ -43,9 +43,6 @@ Either shortUrl or hash must be given as a parameter (or both).
 
 The maximum number of shortUrl and hash parameters is 15.
 }
-\section{TODO}{
- or more URLs
-}
 \examples{
 rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 links_Info(shortUrl = "http://bit.ly/DPetrov")
@@ -54,6 +51,11 @@ links_Info(hash = "DPetrov", expand_user = "true")
 
 ## hash is the one which is only returned. Dont use
 links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov")
+
+## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
+## for (u in 1:length(manyHashes)) {
+##   print(links_Info(hashIN = manyHashes[[u]], showRequestURL = TRUE))
+## }
 }
 \seealso{
 See \url{http://dev.bitly.com/links.html#v3_info}
