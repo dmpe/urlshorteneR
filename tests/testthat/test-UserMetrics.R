@@ -15,9 +15,7 @@ test_that("Returns aggregate metrics about the countries referring click traffic
 
 test_that("Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.", {
   umc <- user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "true")
-})
-
-test_that("Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.", {
+  expect_equal(umc, 6)
   umcc <- user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "false")
   expect_named(umcc, c("dt", "clicks")) 
 })
@@ -35,9 +33,6 @@ test_that("Returns aggregate metrics about the pages referring click traffic to 
 test_that("Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.", {
   umrd <- user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "false")
   expect_named(umrd, c("domain", "clicks"))
-})
-
-test_that("Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.", {
   expect_message(user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true")
                  , "You have zero referring domains given your function input.") 
 })
@@ -45,9 +40,7 @@ test_that("Returns aggregate metrics about the domains referring click traffic t
 test_that("Returns the number of Bitlinks created in a given time period by the authenticated user.", {
   umsc <- user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")
   expect_equal(3, 3)
-})
-
-test_that("Returns the number of Bitlinks created in a given time period by the authenticated user.", {
   umscf <- user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "false")
   expect_named(umscf, c("dt", "shortens"))
 })
+
