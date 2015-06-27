@@ -35,10 +35,10 @@ Want a direct push access? No problem, just let me know and become a :family:.
 **Also**:
  - Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-### Special Thanks to:
+### Special thanks to:
 
-- Developed by ([@dmpe](https://www.github.com/dmpe)) :yum: and others.
-- Somewhat inspired by [Quandl R API](https://github.com/quandl/R-package/).
+- Developed by ([@dmpe](https://www.github.com/dmpe)) :yum:.
+- Inspired by [Quandl R API](https://github.com/quandl/R-package/).
 
 ## Meta
 - Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License).
