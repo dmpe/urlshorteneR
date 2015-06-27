@@ -13,11 +13,13 @@
 #' links_Lookup(url = "http://www.seznam.cz/")
 #' links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE) 
 #'
-#' ## manyUrls <- list("http://www.seznam.cz/", "http://www.seznamasdas.cz/", 
-#' ## "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt")
-#' ## for (u in 1:length(manyUrls)) {
-#' ##    print(links_Lookup(url = manyUrls[[u]], showRequestURL = TRUE))
-#' ## }
+#' \dontrun{ 
+#' manyUrls <- list("http://www.seznam.cz/", "http://www.seznamasdas.cz/", 
+#' "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt")
+#' for (u in 1:length(manyUrls)) {
+#'    print(links_Lookup(url = manyUrls[[u]], showRequestURL = TRUE))
+#' }
+#' }
 #' 
 #' @export
 links_Lookup <- function(url, showRequestURL = FALSE) {

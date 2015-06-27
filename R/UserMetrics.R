@@ -217,10 +217,8 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
 #'
 #' @inheritParams user_Metrics_Clicks
 #' 
-#' @return tz_offset - the offset for the specified timezone, in hours.
-#' @return unit - an echo of the specified unit value.
-#' @return units - an echo of the specified units value.
-#' @return user_shorten_counts - the number of shortens made by the specified user in the specified time.
+#' @return dt - datetime when shortens had been made.
+#' @return shortens - the number of shortens made by the specified user in the specified time.
 #' 
 #' @examples
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")

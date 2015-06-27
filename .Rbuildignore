@@ -3,5 +3,4 @@
 ^\.httr-oauth$
 .travis.yml
 .DS_Store
-ReadMe.md
 ^CONDUCT\.md$

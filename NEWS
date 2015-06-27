@@ -2,4 +2,5 @@ For the current development, the user can
 see: https://github.com/dmpe/rbitly
 
 ###
-July 2015 - Initial CRAN Release
+July 2015 - Initial CRAN Release.
+          - Majority of methods are implemented and ready to use.

@@ -23,13 +23,9 @@ units of time.}
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
-tz_offset - the offset for the specified timezone, in hours.
+dt - datetime when shortens had been made.
 
-unit - an echo of the specified unit value.
-
-units - an echo of the specified units value.
-
-user_shorten_counts - the number of shortens made by the specified user in the specified time.
+shortens - the number of shortens made by the specified user in the specified time.
 }
 \description{
 Returns the number of Bitlinks created in a given time period by the authenticated user.
