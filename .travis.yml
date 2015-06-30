@@ -9,7 +9,11 @@ r_github_packages:
   - yihui/knitr
   - jeroenooms/jsonlite
   - jeroenooms/curl
-
+  
+env:
+ global:
+   - CRAN: http://cran.rstudio.com
+   
 notifications:
   email:
     on_success: never
