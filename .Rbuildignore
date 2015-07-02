@@ -3,4 +3,5 @@
 ^\.httr-oauth$
 .travis.yml
 .DS_Store
+LICENSE
 ^CONDUCT\.md$
