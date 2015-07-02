@@ -42,7 +42,7 @@ Want a direct push access? No problem, just let me know and become a :family:.
 - Inspired by [Quandl R API](https://github.com/quandl/R-package/).
 
 ## Meta
-- Licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License).
+- Licensed under [Apache License 2.0](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
 - Please report bugs in <https://github.com/dmpe/rbitly/issues>.
 
 
