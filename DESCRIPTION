@@ -1,7 +1,7 @@
 Package: RBitly
 Type: Package
 Title: R Wrapper for the Bit.ly API
-Description: Allows users accessing 'Bit.ly API' http://dev.bitly.com/ and retreive many useful statistics.
+Description: Allows users accessing 'Bit.ly API' http://dev.bitly.com/ and retrieve many useful statistics.
 Version: 0.6.0
 Date: 2015-07-02
 Authors@R: c(
