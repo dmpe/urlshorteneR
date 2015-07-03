@@ -12,9 +12,10 @@ rbitly_api_version <- "v3"
 #' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' 
 #' @export 
+#' @importFrom utils assignInMyNamespace
 rbitlyApi <- function(auth_token) {
   if (!missing(auth_token)) {
-    assignInMyNamespace('rbitly_api_auth_token', auth_token)
+    assignInMyNamespace("rbitly_api_auth_token", auth_token)
   }
   invisible(rbitly_api_auth_token)
 }

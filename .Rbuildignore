@@ -5,3 +5,5 @@
 .DS_Store
 LICENSE
 ^CONDUCT\.md$
+^revdep$
+^cran-comments\.md$
