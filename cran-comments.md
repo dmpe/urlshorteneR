@@ -21,6 +21,10 @@ Found the following (possibly) invalid URLs:
     The canonical URL of the CRAN page for a package is 
     http://cran.r-project.org/package=pkgname
 
+
+## Downstream dependencies
+There are currently no downstream dependencies for this package, because it is the initial release.
+
 ## Resubmission
 This is a resubmission. In this version I have:
 
