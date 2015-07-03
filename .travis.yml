@@ -9,10 +9,13 @@ r_github_packages:
   - yihui/knitr
   - jeroenooms/jsonlite
   - jeroenooms/curl
-  
+
+# https://github.com/travis-ci/travis-ci/issues/4125  
 env:
- global:
-   - CRAN: http://cran.rstudio.com
+  global:
+    - NOT_CRAN=true
+    
+before_install: echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
    
 notifications:
   email:
