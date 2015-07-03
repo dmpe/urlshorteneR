@@ -1,5 +1,5 @@
 ## Test environments
-* linux: R 3.2.1 (and travis) @ Ubuntu 15.04
+* local linux: R 3.2.1 (and travis) @ Ubuntu 15.04
 * windows: Revolution R Pro 3.2.0 @ Windows 8.1
 
 ## R CMD check results
@@ -17,9 +17,9 @@ Found the following (possibly) invalid URLs:
     Status: 404
     Message: Not Found
     CRAN URL not in canonical form
-
-  The canonical URL of the CRAN page for a package is 
-  http://cran.r-project.org/package=pkgname
+    
+    The canonical URL of the CRAN page for a package is 
+    http://cran.r-project.org/package=pkgname
 
 ## Resubmission
 This is a resubmission. In this version I have:
@@ -30,4 +30,4 @@ This is a resubmission. In this version I have:
 
 * rbitlyApi: no visible global function definition for ‘assignInMyNamespace’:
 Undefined global functions or variables:
-    - @Mr. Hornik: Here I haven't been able to reproduce this note/error/warning, neither with --as-cran nor with some other options. Thus, I am unsure what my solution should be. However, I have added `@importFrom utils assignInMyNamespace` to the NAMESPACE. 
+    - @ Mr. Hornik: Here I haven't been able to reproduce this note, neither with --as-cran nor with some other options. Thus, I am unsure what my solution should be. However, I have added `@importFrom utils assignInMyNamespace` to the NAMESPACE. 
