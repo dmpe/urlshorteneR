@@ -5,7 +5,7 @@ warnings_are_errors: false
 r_github_packages:
   - hadley/testthat
   - hadley/httr
-  - hadley/roxygen2
+  - klutometis/roxygen
   - hadley/stringr
   - jimhester/covr
   - yihui/knitr
