@@ -5,9 +5,9 @@
 R package for Bit.ly & Bitly.com & j.mp and other custom domains
 =======
 
-### Installing (not yet on CRAN)
+### Installing
 
-Use `devtools` to install the latest version from Github:
+Either see CRAN or use `devtools` to install the latest version from Github:
 
 ```
 library(devtools)
