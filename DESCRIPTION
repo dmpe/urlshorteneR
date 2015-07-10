@@ -2,12 +2,11 @@ Package: RBitly
 Type: Package
 Title: R Wrapper for the Bit.ly API
 Description: Allows users accessing 'Bit.ly API' http://dev.bitly.com/ and retrieve many useful statistics.
-Version: 0.6.1
-Date: 2015-07-02
+Version: 0.6.2
+Date: 2015-07-15
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
-Maintainer: John Malc <cincenko@outlook.com>
 Depends: 
   R (>= 3.2.0)
 Imports: 
