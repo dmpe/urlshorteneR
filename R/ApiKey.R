@@ -82,7 +82,7 @@ doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi(), show
     
     if (identical(showURL, TRUE)) {
       # was return_request$request$opts$url
-      cat("The requested URL has been this: ", as.character(return_request$request$url), "\n") 
+      cat("The requested URL has been this: ", return_request$request$url, "\n") 
     }
     return(json_response)
   }
