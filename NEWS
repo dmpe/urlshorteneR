@@ -2,7 +2,8 @@ For the current development, the user can
 see: https://github.com/dmpe/rbitly
 
 ###
-Sept. 2015 - Smaller tweaks which do not impact functionality of RBitly
-
+Sept. 2015 - Smaller tweaks which do not impact any functionality of RBitly
+           - Bring up-to-date with R releases
+           
 July 2015 - Initial CRAN Release.
           - Majority of methods are implemented and ready to use.
