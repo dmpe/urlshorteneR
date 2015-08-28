@@ -42,7 +42,7 @@
 #' @note Both returned columns (!) are character type.
 #'
 #' @examples 
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Info() 
 #' 
 #' @import stringr
@@ -52,7 +52,7 @@ user_Info <- function(showRequestURL = FALSE) {
   
   user_info_url <- "https://api-ssl.bitly.com/v3/user/info"
   
-  query <- list(access_token = rbitlyApi())
+  query <- list(access_token = auth_bitly(NULL))
 
   df_user_info <- doRequest(user_info_url, query, showURL = showRequestURL)
 
@@ -98,7 +98,7 @@ user_Info <- function(showRequestURL = FALSE) {
 #' corresponding to the client_id of the encoding oauth application.
 #' 
 #' @examples 
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_LinkHistory() 
 #'
 #' @export
@@ -107,7 +107,7 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
   
   user_linkHistory_url <- "https://api-ssl.bitly.com/v3/user/link_history"
   
-  query <- list(access_token = rbitlyApi(), limit = limit, private = private, archived = archived, expand_client_id = expand_client_id)
+  query <- list(access_token = auth_bitly(NULL), limit = limit, private = private, archived = archived, expand_client_id = expand_client_id)
   
   df_history <- doRequest(user_linkHistory_url, query, showURL = showRequestURL)
   df_history_data <- df_history$data$link_history
@@ -130,7 +130,7 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
 #' @return tracking_domains - a list of tracking domains configured for the authenticated user.
 #'
 #' @examples 
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_TrackingDomains()
 #' 
 #' @export
@@ -138,7 +138,7 @@ user_TrackingDomains <- function(showRequestURL = FALSE) {
   
   user_tracking_domain_list_url <- "https://api-ssl.bitly.com/v3/user/tracking_domain_list"
   
-  query <- list(access_token = rbitlyApi(), showURL = showRequestURL)
+  query <- list(access_token = auth_bitly(NULL), showURL = showRequestURL)
   
   df_tracking_domain_list <- doRequest(user_tracking_domain_list_url, query)
   df_tracking_domain_list_data <- df_tracking_domain_list$data$tracking_domains

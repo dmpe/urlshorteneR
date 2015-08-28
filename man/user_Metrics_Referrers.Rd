@@ -34,7 +34,7 @@ Returns aggregate metrics about the pages referring click traffic to all of the 
 When a unit is specified (always the case), rollup is always (!) true.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
 }
 \seealso{

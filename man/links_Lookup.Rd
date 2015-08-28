@@ -20,7 +20,7 @@ aggregate_link - the corresponding bitly aggregate link (global hash).
 Query for a Bitlink based on a long URL.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 links_Lookup(url = "http://www.seznam.cz/")
 links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE)
 

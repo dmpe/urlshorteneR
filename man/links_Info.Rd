@@ -44,7 +44,7 @@ Either shortUrl or hash must be given as a parameter (or both).
 The maximum number of shortUrl and hash parameters is 15.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 links_Info(shortUrl = "http://bit.ly/DPetrov")
 links_Info(hash = "DPetrov", showRequestURL = TRUE)
 links_Info(hash = "DPetrov", expand_user = "true")

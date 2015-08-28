@@ -53,7 +53,7 @@ corresponding to the client_id of the encoding oauth application.
 Returns entries from a user's link history in reverse chronological order.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_LinkHistory()
 }
 \seealso{

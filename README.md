@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/dmpe/rbitly/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/rbitly?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RBitly)](http://cran.r-project.org/package=RBitly)
 
-R package for Bit.ly & Bitly.com & j.mp and other custom domains
+R package for Bit.ly & Bitly.com & j.mp & Ow.ly (:new:) and other custom domains
 =======
 
 ### Installing

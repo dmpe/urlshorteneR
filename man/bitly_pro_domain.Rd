@@ -21,7 +21,7 @@ Query whether a given domain is a valid bitly pro domain. Keep in mind that bitl
 short domains are restricted to less than 15 characters in length.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 bitly_pro_domain(domain = "nytidsfds.ms")
 bitly_pro_domain(domain = "nyti.ms", showRequestURL = TRUE)
 }

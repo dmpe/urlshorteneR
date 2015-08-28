@@ -42,7 +42,7 @@ user may choose to view the metrics of any account belonging to the master accou
 When a unit is specified (always the case), rollup is always (!) true.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true")
 user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "false")
 user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100,

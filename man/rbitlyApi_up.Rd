@@ -12,7 +12,7 @@ rbitlyApi_up(username, password)
 \item{password}{- the password}
 }
 \value{
-api key - user's API Key. As described, it is not necessary to use rbitlyApi("api key")
+api key - user's API Key. As described, it is not necessary to use auth_bitly("api key")
 as this is done automatically.
 }
 \description{

@@ -9,7 +9,7 @@
 #' @return aggregate_link - the corresponding bitly aggregate link (global hash).
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' links_Lookup(url = "http://www.seznam.cz/")
 #' links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE) 
 #'
@@ -26,7 +26,7 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
   
   links_lookup_url <- "https://api-ssl.bitly.com/v3/link/lookup"
   
-  query <- list(access_token = rbitlyApi(), url = url)
+  query <- list(access_token = auth_bitly(NULL), url = url)
   
   # call method from ApbiKey.R
   df_link_lookup <- doRequest(links_lookup_url, query, showURL = showRequestURL)
@@ -60,7 +60,7 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' @return created_at - the epoch timestamp when this Bitlink was created.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' links_Info(shortUrl = "http://bit.ly/DPetrov")
 #' links_Info(hash = "DPetrov", showRequestURL = TRUE) 
 #' links_Info(hash = "DPetrov", expand_user = "true")
@@ -79,9 +79,9 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
   links_info_url <- "https://api-ssl.bitly.com/v3/info"
   
   if (is.null(hashIN)) {
-    query <- list(access_token = rbitlyApi(), shortUrl = shortUrl, expand_user = expand_user)
+    query <- list(access_token = auth_bitly(NULL), shortUrl = shortUrl, expand_user = expand_user)
   } else {
-    query <- list(access_token = rbitlyApi(), hash = hashIN, expand_user = expand_user)
+    query <- list(access_token = auth_bitly(NULL), hash = hashIN, expand_user = expand_user)
   }
   
   # call method from ApbiKey.R
@@ -119,7 +119,7 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
 #' @return long_url - the URL that the requested short_url or hash points to.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' links_Expand(shortUrl = "http://bit.ly/DPetrov")
 #' links_Expand(hash = "DPetrov", showRequestURL = TRUE) 
 #' links_Expand(hash = "DPetrov")
@@ -136,9 +136,9 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
   links_expand_url <- "https://api-ssl.bitly.com/v3/expand"
   
   if (is.null(hashIN)) {
-    query <- list(access_token = rbitlyApi(), shortUrl = shortUrl)
+    query <- list(access_token = auth_bitly(NULL), shortUrl = shortUrl)
   } else {
-    query <- list(access_token = rbitlyApi(), hash = hashIN)
+    query <- list(access_token = auth_bitly(NULL), hash = hashIN)
   }
   
   # call method from ApbiKey.R
@@ -185,7 +185,7 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' @return url - the actual Bitlink that should be used, and is a unique value for the given Bitly account.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' links_Shorten(longUrl = "http://slovnik.seznam.cz/")
 #' links_Shorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423", domain = "j.mp")
 #' 
@@ -194,7 +194,7 @@ links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
   
   links_shorten_url <- "https://api-ssl.bitly.com/v3/shorten"
 
-  query <- list(access_token = rbitlyApi(), longUrl = longUrl, domain = domain)
+  query <- list(access_token = auth_bitly(NULL), longUrl = longUrl, domain = domain)
 
   # call method from ApbiKey.R unlist
   df_link_shorten <- doRequest(links_shorten_url, query, showURL = showRequestURL)
@@ -206,16 +206,111 @@ links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
 }
 
 
+##############################
+##          Ow.ly           ##
+##############################
 
 
+#' @title Given a long URL, returns a Owlink.
+#' 
+#' @seealso See \url{http://ow.ly/api-docs#shorten}
+#'
+#' @param longUrl - a long URL to be shortened (example: http://betaworks.com/).
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' 
+#' @description Given a full URL, returns an ow.ly short URL. Currently the API only supports 
+#' shortening a single URL per API call. Your API Key controls whether the short url returned is 
+#' a static value (default), or whether it's always a unique value. See the Authentication \link{rbitlyApi} section 
+#' above for more details.
+#' 
+#' @return Returns short url data on success
+#' 
+#' @export
+links_ShortenOwly <- function(longUrl, showRequestURL = FALSE) {
+
+  links_shorten_url <- "http://ow.ly/api/1.1/url/shorten"
+  
+  query <- list(access_token = auth_owly(NULL), longUrl = longUrl)
+  
+  # call method from ApiKey.R unlist
+  df_link_shorten <- doRequest(links_shorten_url, query, showURL = showRequestURL)
+  
+  df_link_shorten_data <- data.frame(t(sapply(df_link_shorten$data, c)), stringsAsFactors = FALSE)
+}
 
 
+#' @title Given a owly URL, returns the target (long) URL.
+#' 
+#' @seealso See \url{http://ow.ly/api-docs#expand}
+#'
+#' @param shortUrl - a short URL to be expanded
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' 
+#' @description Given an ow.ly URL, returns the original full URL. 
+#' 
+#' @return Returns the original url.
+#' 
+#' @export
+links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
+  
+  links_expand_url <- "http://ow.ly/api/1.1/url/expand"
+  
+  query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl)
+  
+  # call method from ApiKey.R unlist
+  df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
+  
+  df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
+}
 
+#' @title Given a owly URL, returns information about it.
+#' 
+#' @seealso See \url{http://ow.ly/api-docs#info}
+#'
+#' @param shortUrl - a short URL 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' 
+#' @description Given an ow.ly URL, returns information about the page, including the original URL,
+#' the HTML title, total clicks, and the "votes" value for the link (votes may be a positive or negative value).
+#' 
+#' @return Returns full short url data on success.
+#' 
+#' @export
+links_InfoOwly <- function(shortUrl, showRequestURL = FALSE) {
+  links_info_url <- "http://ow.ly/api/1.1/url/info"
+  
+  query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl)
+ 
+  # call method from ApiKey.R unlist
+  df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
+  
+}
 
-
-
-
-
-
-
+#' @title Given a owly URL, returns the number of clicks on it.
+#' 
+#' @seealso See \url{http://ow.ly/api-docs#clickStats}
+#'
+#' @param shortUrl - a short URL 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' 
+#' @description Given an ow.ly URL, returns an array of dates and the number of clicks on that date. 
+#' The default behavior is to return all dates/clicks for that short URL. You can optionally specify 
+#' a date range to retrieve a subset of the data.
+#' Date fields must be in the following format: YYYY-MM-DD HH:MM:SS
+#'
+#' @return Returns click data for the given time period on success.
+#' 
+#' @export
+links_clickStatsOwly <- function(shortUrl, from = "", to = "", showRequestURL = FALSE) {
+  links_clickstats_url <- "http://ow.ly/api/1.1/url/info"
+  
+  query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl, from = from, to = to)
+  
+  # call method from ApiKey.R unlist
+  df_link_clickstats <- doRequest(links_clickstats_url, query, showURL = showRequestURL)
+  
+  
+  
+  
+}
 

@@ -17,7 +17,7 @@
 #' @return clicks - the number of clicks on this user's links in the specified timeframe.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
@@ -32,7 +32,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
   
   user_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/user/clicks"
   
-  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+  query <- list(access_token = auth_bitly(NULL), limit = limit, unit = unit_matched, units = units, 
                 rollup = rollup_matched)
   
   # call method from ApiKey.R
@@ -65,7 +65,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_Countries(unit = "day", units = -1, limit = 100, rollup = "true")
 #' 
 #' @export
@@ -75,7 +75,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
 
   user_metrics_countries_url <- "https://api-ssl.bitly.com/v3/user/countries"
   
-  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+  query <- list(access_token = auth_bitly(NULL), limit = limit, unit = unit_matched, units = units, 
                 rollup = rollup)
   
   # call method from ApiKey.R
@@ -99,7 +99,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' @note This replaces the realtime_links endpoint.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_PopularLinks(unit = "day", units = -1, limit = 100)
 #' 
 #' @export
@@ -109,7 +109,7 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
   
   user_metrics_popular_links_url <- "https://api-ssl.bitly.com/v3/user/popular_links"
   
-  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units)
+  query <- list(access_token = auth_bitly(NULL), limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
   df_user_metrics_popular_links <- doRequest(user_metrics_popular_links_url, query, showURL = showRequestURL)
@@ -133,7 +133,7 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
 #' 
 #' @export
@@ -143,7 +143,7 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 
   user_metrics_referrers_url <- "https://api-ssl.bitly.com/v3/user/referrers"
   
-  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+  query <- list(access_token = auth_bitly(NULL), limit = limit, unit = unit_matched, units = units, 
                 rollup = rollup)
   
   # call method from ApiKey.R
@@ -174,7 +174,7 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "false")
 #' user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, 
@@ -193,7 +193,7 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
   
   user_metrics_referring_domains_url <- "https://api-ssl.bitly.com/v3/user/referring_domains"
   
-  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, login = login,
+  query <- list(access_token = auth_bitly(NULL), limit = limit, unit = unit_matched, units = units, login = login,
                 rollup = rollup_matched, exclude_social_networks = exclude_social_networks_matched)
   
   # call method from ApiKey.R
@@ -221,7 +221,7 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
 #' @return shortens - the number of shortens made by the specified user in the specified time.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")
 #' user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "false")
 #' user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100)
@@ -235,7 +235,7 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
   
   user_metrics_shorten_counts_url <- "https://api-ssl.bitly.com/v3/user/shorten_counts"
   
-  query <- list(access_token = rbitlyApi(), limit = limit, unit = unit_matched, units = units, 
+  query <- list(access_token = auth_bitly(NULL), limit = limit, unit = unit_matched, units = units, 
                 rollup = rollup_matched, showURL = showRequestURL)
   
   # call method from ApiKey.R

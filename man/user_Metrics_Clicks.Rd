@@ -38,7 +38,7 @@ without the parameter unit this endpoint returns a legacy response format which 
 rollup=false, unit=day and units=7.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "true")
 user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "false")
 }

@@ -1,23 +1,53 @@
 rbitly_api_auth_token <- NA
-rbitly_api_version <- "v3"
 
-#' @title Assign Bit.ly API token
+Bitly_api_version <- "v3"
+Owly_api_version <- "v1.1"
+
+#' @title Assign Bit.ly/Ow.ly API token
 #' 
-#' @param auth_token - Passed parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}.
+#' @param auth_token/x - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}} and 
+#' or Ow.ly API key \url{http://ow.ly/api-docs}
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
 #' @seealso See \url{http://dev.bitly.com/authentication.html}
+#' @seealso See \url{http://ow.ly/api-docs}
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' ## rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909") # now deprecated
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ") # use this for Bit.ly access
 #' 
 #' @export 
 #' @importFrom utils assignInMyNamespace
 rbitlyApi <- function(auth_token) {
-  if (!missing(auth_token)) {
-    assignInMyNamespace("rbitly_api_auth_token", auth_token)
-  }
-  invisible(rbitly_api_auth_token)
+  .Deprecated(new = "auth_bitly", msg = "This method is now deprecated; please use auth_bitly or auth_owly. Thank you!")
+  #   if (!missing(auth_token)) {
+  #     assignInMyNamespace("rbitly_api_auth_token", auth_token)
+  #   }
+  #   invisible(rbitly_api_auth_token)
+}
+
+#' @rdname rbitlyApi
+#' @export
+auth_bitly <- function(auth_token) {
+  tmp <- if (is.null(auth_token)) {
+    Sys.getenv("Bit.ly", "")
+  } else auth_token
+  
+  if (tmp == "") {
+    getOption("Bit.ly", stop("you need to set up your bit.ly api key"))
+  } else tmp
+}
+
+#' @rdname rbitlyApi
+#' @export
+auth_owly <- function(x) {
+  tmp <- if (is.null(x)) {
+    Sys.getenv("Ow.ly", "")
+  } else x
+  
+  if (tmp == "") {
+    getOption("Ow.ly",  stop("you need to set up your ow.ly api key"))
+  } else tmp
 }
 
 
@@ -33,7 +63,7 @@ rbitlyApi <- function(auth_token) {
 #' @param username - the username or an email
 #' @param password - the password
 #' 
-#' @return api key - user's API Key. As described, it is not necessary to use rbitlyApi("api key") 
+#' @return api key - user's API Key. As described, it is not necessary to use auth_bitly("api key") 
 #' as this is done automatically.
 #' 
 #' @examples 
@@ -51,7 +81,7 @@ rbitlyApi_up <- function(username, password) {
   req <- POST(access_token_url, autenticate, encode = "multipart")
   
   API_Key <- content(req)
-  rbitlyApi(API_Key)
+  auth_bitly(API_Key)
   
   return(API_Key)
 }
@@ -67,12 +97,12 @@ rbitlyApi_up <- function(username, password) {
 #' @import jsonlite
 #' 
 #' @noRd
-doRequest <- function(url, queryParameters = NULL, auth_code = rbitlyApi(), showURL = NULL) {
+doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
   
-  if (is.na(auth_code)) {
+  if (is.na(auth_bitly(NULL)) & is.na(auth_owly(NULL))) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key. 
     # Yet for making sure that the user has set it, I'll let it go
-    stop("Please assign your API Key ('Generic Access Token') ", call. = FALSE)
+    stop("Please assign on of two API keys", call. = FALSE)
   } else {
     
     return_request <- GET(url, query = queryParameters)

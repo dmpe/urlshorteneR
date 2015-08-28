@@ -16,7 +16,7 @@ tracking_domains - a list of tracking domains configured for the authenticated u
 Returns a list of tracking domains a user has configured.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_TrackingDomains()
 }
 \seealso{

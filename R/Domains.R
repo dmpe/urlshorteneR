@@ -12,7 +12,7 @@
 #' @return domain - an echo back of the request parameter.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' bitly_pro_domain(domain = "nytidsfds.ms") 
 #' bitly_pro_domain(domain = "nyti.ms", showRequestURL = TRUE) 
 #'
@@ -21,7 +21,7 @@ bitly_pro_domain <- function(domain, showRequestURL = FALSE) {
   
   bitly_pro_domain_url <- "https://api-ssl.bitly.com/v3/bitly_pro_domain"
   
-  query <- list(access_token = rbitlyApi(), domain = domain)
+  query <- list(access_token = auth_bitly(NULL), domain = domain)
   
   # call method from ApiKey.R
   df_bitly_pro_domain <- doRequest(bitly_pro_domain_url, query, showURL = showRequestURL)

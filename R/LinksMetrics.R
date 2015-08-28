@@ -20,7 +20,7 @@
 #' @return dt - time in UTC format (only when rollup = "false")
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
@@ -30,7 +30,7 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
   
   link_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/link/clicks"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units, 
+  query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units, 
                 rollup = rollup)
   
   # call method from ApiKey.R
@@ -64,7 +64,7 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
 #' @return country - the two-letter code of the referring country.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' link_Metrics_Countries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, 
 #' showRequestURL= TRUE)
@@ -76,7 +76,7 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
   
   link_metrics_countries_url <- "https://api-ssl.bitly.com/v3/link/countries"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
+  query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
   df_link_metrics_countries <- doRequest(link_metrics_countries_url, query, showURL = showRequestURL)
@@ -107,7 +107,7 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
 #' more depending on input parameters.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Encoders(link = "http://bit.ly/DPetrov")
 #' link_Metrics_Encoders(link = "http://bit.ly/DPetrov", expand_user = "true", my_network = "false")
 #' 
@@ -117,7 +117,7 @@ link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand
   
   link_metrics_encoders_url <- "https://api-ssl.bitly.com/v3/link/encoders"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, my_network = my_network, 
+  query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, my_network = my_network, 
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
@@ -144,7 +144,7 @@ link_Metrics_Encoders <- function(link, my_network = "false", limit = 25, expand
 #' @return count - the number of bitly users who have shortened (encoded) this link.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_EncodersCount(link = "http://bit.ly/DPetrov")
 #' 
 #' @export
@@ -152,7 +152,7 @@ link_Metrics_EncodersCount <- function(link, showRequestURL = FALSE) {
   
   link_metrics_encoders_count_url <- "https://api-ssl.bitly.com/v3/link/encoders_count"
   
-  query <- list(access_token = rbitlyApi(), link = link)
+  query <- list(access_token = auth_bitly(NULL), link = link)
   
   # call method from ApiKey.R
   df_link_metrics_encoders_count <- doRequest(link_metrics_encoders_count_url, query, showURL = showRequestURL)
@@ -188,7 +188,7 @@ link_Metrics_EncodersCount <- function(link, showRequestURL = FALSE) {
 #' more depending on input parameters.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100) 
 #' link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100, 
 #' expand_user = "true")
@@ -199,7 +199,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
   
   link_metrics_encoders_by_count_url <- "https://api-ssl.bitly.com/v3/link/encoders_by_count"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, my_network = my_network, 
+  query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, my_network = my_network, 
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
@@ -227,7 +227,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
 #' @return url - the complete URL of the domain referring clicks.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_ReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
@@ -237,7 +237,7 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
   
   link_metrics_referring_domains_url <- "https://api-ssl.bitly.com/v3/link/referring_domains"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
+  query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
   df_link_metrics_referring_domains <- doRequest(link_metrics_referring_domains_url, query, showURL = showRequestURL)
@@ -259,7 +259,7 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
 #' @return referrer - the URL referring clicks.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_Referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
@@ -269,7 +269,7 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
   
   link_metrics_referrers_url <- "https://api-ssl.bitly.com/v3/link/referrers"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
+  query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
   df_link_metrics_referrers <- doRequest(link_metrics_referrers_url, query, showURL = showRequestURL)
@@ -292,7 +292,7 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #' @return referrer - the URL referring clicks.
 #' 
 #' @examples
-#' rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 #' link_Metrics_ReferrersByDomain(link = "http://bit.ly/DPetrov", unit = "day", 
 #' units = -1, limit = 100)
 #' 
@@ -303,7 +303,7 @@ link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute"
   
   link_metrics_referrers_by_domain_url <- "https://api-ssl.bitly.com/v3/link/referrers_by_domain"
   
-  query <- list(access_token = rbitlyApi(), link = link, limit = limit, unit = unit_matched, units = units)
+  query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
   df_link_metrics_referrers_by_domain <- doRequest(link_metrics_referrers_by_domain_url, query, showURL = showRequestURL)

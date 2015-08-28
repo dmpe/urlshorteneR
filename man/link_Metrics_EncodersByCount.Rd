@@ -34,7 +34,7 @@ The response will only contain users whose links have gotten at least one click,
 will not contain any users whose links are private.
 }
 \examples{
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
 link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100,
 expand_user = "true")
