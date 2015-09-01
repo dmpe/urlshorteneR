@@ -2,7 +2,7 @@
 % Please edit documentation in R/Links.R
 \name{links_ExpandOwly}
 \alias{links_ExpandOwly}
-\title{Given a owly URL, returns the target (long) URL.}
+\title{Given an ow.ly URL, returns the target (long) URL.}
 \usage{
 links_ExpandOwly(shortUrl, showRequestURL = FALSE)
 }

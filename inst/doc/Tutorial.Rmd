@@ -21,6 +21,7 @@ For that there are **two ways**.
 
 Either one is OK. Choose the one which is more convenient to you. 
 
+# Bit.ly
 
 ## An Example for User Metrics
 
@@ -30,7 +31,15 @@ Method below returns my most-clicked Bit.ly links (ordered by number of clicks) 
 
 ```{r}
 library(RBitly)
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
+
+## Old
+## rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909") # Now officially deprecated
+
+## Now
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ")
+
+
+
 
 user_Metrics_PopularLinks(unit = "month", units = -1, limit = 100)
 ```
@@ -43,7 +52,6 @@ Official API documentation <http://dev.bitly.com/link_metrics.html>.
 This returns users who have encoded `http://bit.ly/DPetrov` link sorted by the number of clicks on each encoding user's link.
 
 ```{r}
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 ```
 
@@ -55,7 +63,6 @@ Official API documentation <http://dev.bitly.com/user_info.html>.
 The first method returns an information about myself, whereas the second one returns a list of tracking domains I have configured (I have none).
 
 ```{r}
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 user_Info()
 
 user_TrackingDomains()
@@ -69,9 +76,40 @@ Official API documentation <http://dev.bitly.com/domains.html>.
 This will query whether a given domain is a valid Bit.ly PRO domain (nyti.ms is). 
 
 ```{r}
-rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909")
 bitly_pro_domain(domain = "nyti.ms")
 ```
+
+# Ow.ly
+
+## An example for 
+
+```{r}
+
+# links_ShortenOwly()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -------------
 

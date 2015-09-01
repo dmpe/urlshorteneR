@@ -18,7 +18,8 @@ the default settings.}
 }
 \value{
 new_hash - designates if this is the first time this long_url was shortened by this user.
-The return value will equal 1 the first time a long_url is shortened. It will also then be added to the user history.
+The return value will equal 1 the first time a long_url is shortened. It will also then be added
+to the user history.
 
 hash - a bitly identifier for long_url which is unique to the given account.
 

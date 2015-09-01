@@ -175,7 +175,8 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' from any user input before shortening.
 #' 
 #' @return new_hash - designates if this is the first time this long_url was shortened by this user. 
-#' The return value will equal 1 the first time a long_url is shortened. It will also then be added to the user history.
+#' The return value will equal 1 the first time a long_url is shortened. It will also then be added 
+#' to the user history.
 #' @return hash - a bitly identifier for long_url which is unique to the given account.
 #' @return long_url - an echo back of the longUrl request parameter. This may not always be equal to 
 #' the URL requested, as some URL normalization may occur (e.g., due to encoding differences, or case 
@@ -211,7 +212,7 @@ links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
 ##############################
 
 
-#' @title Given a long URL, returns a Owlink.
+#' @title Given a long URL, returns a Ow.ly link.
 #' 
 #' @seealso See \url{http://ow.ly/api-docs#shorten}
 #'
@@ -223,7 +224,7 @@ links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
 #' a static value (default), or whether it's always a unique value. See the Authentication \link{rbitlyApi} section 
 #' above for more details.
 #' 
-#' @return Returns short url data on success
+#' @return Returns short URL on success
 #' 
 #' @export
 links_ShortenOwly <- function(longUrl, showRequestURL = FALSE) {
@@ -235,11 +236,14 @@ links_ShortenOwly <- function(longUrl, showRequestURL = FALSE) {
   # call method from ApiKey.R unlist
   df_link_shorten <- doRequest(links_shorten_url, query, showURL = showRequestURL)
   
-  df_link_shorten_data <- data.frame(t(sapply(df_link_shorten$data, c)), stringsAsFactors = FALSE)
+  # to be validated with the API Key, if ever
+  df_link_shorten_data <- df_link_shorten$results
+  
+  return(df_link_shorten_data)
 }
 
 
-#' @title Given a owly URL, returns the target (long) URL.
+#' @title Given an ow.ly URL, returns the target (long) URL.
 #' 
 #' @seealso See \url{http://ow.ly/api-docs#expand}
 #'
@@ -260,10 +264,13 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
   # call method from ApiKey.R unlist
   df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
   
-  df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
+  # to be validated with the API Key, if ever
+  df_link_expand_data <- df_link_expand$results$longUrl
+  
+  return(df_link_expand_data)
 }
 
-#' @title Given a owly URL, returns information about it.
+#' @title Given a ow.ly URL, returns information about it.
 #' 
 #' @seealso See \url{http://ow.ly/api-docs#info}
 #'
@@ -272,6 +279,11 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
 #' 
 #' @description Given an ow.ly URL, returns information about the page, including the original URL,
 #' the HTML title, total clicks, and the "votes" value for the link (votes may be a positive or negative value).
+#' 
+#' @examples 
+#' \dontrun{
+#' links_InfoOwly("http://ow.ly/RE1wg")
+#' }
 #' 
 #' @return Returns full short url data on success.
 #' 
@@ -283,6 +295,12 @@ links_InfoOwly <- function(shortUrl, showRequestURL = FALSE) {
  
   # call method from ApiKey.R unlist
   df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
+  
+  # to be validated with the API Key, if ever. Check types
+  df_link_info_data <- df_link_info$results
+  # sapply(df_link_info_data, class)
+  
+  return(df_link_info_data)
   
 }
 
@@ -309,8 +327,11 @@ links_clickStatsOwly <- function(shortUrl, from = "", to = "", showRequestURL = 
   # call method from ApiKey.R unlist
   df_link_clickstats <- doRequest(links_clickstats_url, query, showURL = showRequestURL)
   
+  # to be validated with the API Key, if ever. Here definitelly wrong. 
+  df_link_clickstats_data <- df_link_clickstats$results
+  # sapply(df_link_clickstats_data, class)
   
-  
+  return(df_link_clickstats_data)
   
 }
 

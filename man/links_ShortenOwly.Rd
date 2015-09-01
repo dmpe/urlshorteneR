@@ -2,7 +2,7 @@
 % Please edit documentation in R/Links.R
 \name{links_ShortenOwly}
 \alias{links_ShortenOwly}
-\title{Given a long URL, returns a Owlink.}
+\title{Given a long URL, returns a Ow.ly link.}
 \usage{
 links_ShortenOwly(longUrl, showRequestURL = FALSE)
 }
@@ -12,7 +12,7 @@ links_ShortenOwly(longUrl, showRequestURL = FALSE)
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
 \value{
-Returns short url data on success
+Returns short URL on success
 }
 \description{
 Given a full URL, returns an ow.ly short URL. Currently the API only supports

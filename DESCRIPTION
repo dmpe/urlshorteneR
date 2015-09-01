@@ -1,9 +1,9 @@
 Package: RBitly
 Type: Package
 Title: R Wrapper for the Bit.ly API and Ow.ly
-Description: Allows users accessing 'Bit.ly API' http://dev.bitly.com/ and retrieve many useful statistics. Now, additionally supports 'Ow.ly' http://ow.ly/api-docs.
-Version: 0.7
-Date: 2015-08-21
+Description: Allows users accessing 'Bit.ly API' http://dev.bitly.com/ and retrieve many useful statistics. Now, additionally supports 'Ow.ly' http://ow.ly/api-docs, experimentally.
+Version: 0.7.1
+Date: 2015-09-01
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )

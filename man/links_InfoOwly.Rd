@@ -2,7 +2,7 @@
 % Please edit documentation in R/Links.R
 \name{links_InfoOwly}
 \alias{links_InfoOwly}
-\title{Given a owly URL, returns information about it.}
+\title{Given a ow.ly URL, returns information about it.}
 \usage{
 links_InfoOwly(shortUrl, showRequestURL = FALSE)
 }
@@ -17,6 +17,11 @@ Returns full short url data on success.
 \description{
 Given an ow.ly URL, returns information about the page, including the original URL,
 the HTML title, total clicks, and the "votes" value for the link (votes may be a positive or negative value).
+}
+\examples{
+\dontrun{
+links_InfoOwly("http://ow.ly/RE1wg")
+}
 }
 \seealso{
 See \url{http://ow.ly/api-docs#info}
