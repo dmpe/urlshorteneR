@@ -322,4 +322,36 @@ link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute"
   return(df_link_metrics_referrers_by_domain_data)
 }
 
+#' @title Given a owly URL, returns the number of clicks on it.
+#' 
+#' @seealso See \url{http://ow.ly/api-docs#clickStats}
+#'
+#' @param shortUrl - a short URL 
+#' @param from - an optional string for specifing data range
+#' @param to - an optional string for specifing data range
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' 
+#' @description Given an ow.ly URL, returns an array of dates and the number of clicks on that date. 
+#' The default behavior is to return all dates/clicks for that short URL. You can optionally specify 
+#' a date range to retrieve a subset of the data.
+#' Date fields must be in the following format: YYYY-MM-DD HH:MM:SS
+#' This is higly experimental ! Please report bugs if there are any. 
+#' 
+#' @return Returns click data for the given time period on success.
+#' 
+#' @export
+link_Metrics_Owly <- function(shortUrl, from = "", to = "", showRequestURL = FALSE) {
+  links_clickstats_url <- "http://ow.ly/api/1.1/url/info"
+  
+  query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl, from = from, to = to)
+  
+  # call method from ApiKey.R unlist
+  df_link_clickstats <- doRequest(links_clickstats_url, query, showURL = showRequestURL)
+  
+  # to be validated with the API Key, if ever. Here definitelly wrong. 
+  df_link_clickstats_data <- df_link_clickstats$results
+  # sapply(df_link_clickstats_data, class)
+  
+  return(df_link_clickstats_data)
+}
 

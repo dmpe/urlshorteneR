@@ -7,3 +7,4 @@ LICENSE
 ^CONDUCT\.md$
 ^revdep$
 ^cran-comments\.md$
+^.*\.o$

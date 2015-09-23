@@ -16,6 +16,7 @@ Returns the original url.
 }
 \description{
 Given an ow.ly URL, returns the original full URL.
+This is higly experimental ! Please report bugs if there are any.
 }
 \seealso{
 See \url{http://ow.ly/api-docs#expand}

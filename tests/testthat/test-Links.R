@@ -4,7 +4,7 @@ library(httr)
 library(jsonlite)
 library(stringr)
 
-options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "", Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
 
 context("Links Bit.ly")
 
@@ -55,10 +55,17 @@ test_that("Given a bitly URL or hash (or multiple), returns the target (long) UR
 
 
 
+context("Links Goo.gl")
 
+test_that("expanding does work", {
+  g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = TRUE)
+  expect_output(g1$longUrl, "http://www.bi-verdict.com/fileadmin/FreeAnalyses/consolidations.htm")
+}) 
 
-
-
+test_that("shorting does work", {
+  g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert", showRequestURL = T)
+  expect_output(g2$id, "https://goo.gl/YhtZe")
+}) 
 
 
 

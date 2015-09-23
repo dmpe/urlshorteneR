@@ -96,6 +96,40 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
 }
 
 
+#' @title Given a ow.ly URL, returns information about it.
+#' 
+#' @seealso See \url{http://ow.ly/api-docs#info}
+#'
+#' @param shortUrl - a short URL 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' 
+#' @description Given an ow.ly URL, returns information about the page, including the original URL,
+#' the HTML title, total clicks, and the "votes" value for the link (votes may be a positive or negative value).
+#' This is higly experimental ! Please report bugs if there are any. 
+#' 
+#' @examples 
+#' \dontrun{
+#' links_InfoOwly("http://ow.ly/RE1wg")
+#' }
+#' 
+#' @return Returns full short url data on success.
+#' 
+#' @export
+links_InfoOwly <- function(shortUrl, showRequestURL = FALSE) {
+  links_info_url <- "http://ow.ly/api/1.1/url/info"
+  
+  query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl)
+  
+  # call method from ApiKey.R
+  df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
+  
+  # to be validated with the API Key, if ever. Check types
+  df_link_info_data <- df_link_info$results
+  # sapply(df_link_info_data, class)
+  
+  return(df_link_info_data)
+  
+}
 
 #' @title Given a bitly URL or hash (or multiple), returns the target (long) URL.
 #' 
@@ -151,8 +185,8 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 }
 
 
-#' @title Given a long URL, returns a Bitlink.
-#' 
+#' @title Given a long URL, returns a short Bit.ly link.
+#'
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
 #' @seealso See \url{http://dev.bitly.com/links.html#v3_shorten}
 #'
@@ -211,8 +245,7 @@ links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
 ##          Ow.ly           ##
 ##############################
 
-
-#' @title Given a long URL, returns a Ow.ly link.
+#' @title Given a long URL, returns a short Ow.ly link.
 #' 
 #' @seealso See \url{http://ow.ly/api-docs#shorten}
 #'
@@ -222,7 +255,8 @@ links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
 #' @description Given a full URL, returns an ow.ly short URL. Currently the API only supports 
 #' shortening a single URL per API call. Your API Key controls whether the short url returned is 
 #' a static value (default), or whether it's always a unique value. See the Authentication \link{rbitlyApi} section 
-#' above for more details.
+#' for more details.
+#' This is higly experimental ! Please report bugs if there are any. 
 #' 
 #' @return Returns short URL on success
 #' 
@@ -251,6 +285,7 @@ links_ShortenOwly <- function(longUrl, showRequestURL = FALSE) {
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
 #' @description Given an ow.ly URL, returns the original full URL. 
+#' This is higly experimental ! Please report bugs if there are any. 
 #' 
 #' @return Returns the original url.
 #' 
@@ -270,68 +305,96 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
   return(df_link_expand_data)
 }
 
-#' @title Given a ow.ly URL, returns information about it.
-#' 
-#' @seealso See \url{http://ow.ly/api-docs#info}
+
+############################ 
+##         Goo.gl         ##
+############################
+
+#' @title Expand a short URL to a longer one
 #'
-#' @param shortUrl - a short URL 
+#' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#shorten}
+#' @seealso See \url{https://developers.google.com/url-shortener/v1/url/get}
+#'
+#' @param shortUrl - The short URL, including the protocol. 
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#'
+#' @description For the given short URL, the url.get method returns the corresponding long URL and the status.
 #' 
-#' @description Given an ow.ly URL, returns information about the page, including the original URL,
-#' the HTML title, total clicks, and the "votes" value for the link (votes may be a positive or negative value).
+#' @section Quotas: By default, your registered project gets 1,000,000 requests per day for the URL 
+#' Shortener API (\url{https://console.developers.google.com/})
 #' 
 #' @examples 
-#' \dontrun{
-#' links_InfoOwly("http://ow.ly/RE1wg")
-#' }
+#' g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = TRUE)
 #' 
-#' @return Returns full short url data on success.
+#' @return id - is the short URL you passed in.
+#' @return longUrl - is the long URL to which it expands. Note that longUrl may not be present in 
+#' the response, for example, if status is "REMOVED".
+#' @return status - is "OK" for most URLs. If Google believes that the URL is fishy, status may be 
+#' something else, such as "MALWARE".
 #' 
 #' @export
-links_InfoOwly <- function(shortUrl, showRequestURL = FALSE) {
-  links_info_url <- "http://ow.ly/api/1.1/url/info"
+links_ExpandGoogl <- function(shortUrl = "", showRequestURL = FALSE) {
+  links_expand_url <- "https://www.googleapis.com/urlshortener/v1/url"
   
-  query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl)
- 
-  # call method from ApiKey.R unlist
-  df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
+  query <- list(key = auth_googl(NULL), shortUrl = shortUrl)
   
-  # to be validated with the API Key, if ever. Check types
-  df_link_info_data <- df_link_info$results
-  # sapply(df_link_info_data, class)
+  # call method from ApiKey.R
+  df_link_expand <- doRequest(links_expand_url, queryParameters = query, showURL = showRequestURL)
+  df_link_expand_data <- data.frame(df_link_expand, stringsAsFactors = FALSE)
   
-  return(df_link_info_data)
-  
+  return(df_link_expand_data)
+
 }
 
-#' @title Given a owly URL, returns the number of clicks on it.
+
+#' @title Given a long URL, returns a short Goo.gl link.
 #' 
-#' @seealso See \url{http://ow.ly/api-docs#clickStats}
-#'
-#' @param shortUrl - a short URL 
+#' @seealso See \url{https://developers.google.com/url-shortener/v1/url/insert}
+#' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#shorten}
+#' @seealso See \url{http://stackoverflow.com/a/13168073}
+#' 
+#' @param longUrl - a long URL to be shortened (example: http://betaworks.com/).
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
-#' @description Given an ow.ly URL, returns an array of dates and the number of clicks on that date. 
-#' The default behavior is to return all dates/clicks for that short URL. You can optionally specify 
-#' a date range to retrieve a subset of the data.
-#' Date fields must be in the following format: YYYY-MM-DD HH:MM:SS
-#'
-#' @return Returns click data for the given time period on success.
+#' @description Given a full URL, returns an goo.gl short URL. The returned resource contains the 
+#' short URL and the long URL. Note that the returned long URL may be loosely canonicalized, e.g. 
+#' to convert "google.com" into "http://google.com/". See the Authentication 
+#' \link{rbitlyApi} section for more details.
+#' 
+#' @return id is the short URL that expands to the long URL you provided. If your request includes 
+#' an auth token, then this URL will be unique. If not, then it might be reused from a previous 
+#' request to shorten the same URL.
+#' @return longURL - longUrl is the long URL to which it expands. In most cases, this will be the 
+#' same as the URL you provided. In some cases, the server may canonicalize the URL. For instance, 
+#' if you pass http://www.google.com, the server will add a trailing slash.
+#' 
+#' @examples 
+#' g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 #' 
 #' @export
-links_clickStatsOwly <- function(shortUrl, from = "", to = "", showRequestURL = FALSE) {
-  links_clickstats_url <- "http://ow.ly/api/1.1/url/info"
+links_ShortenGoogl <- function(longUrl = "", showRequestURL = FALSE) {
+  links_shorten_url <- paste0("https://www.googleapis.com/urlshortener/v1/url?key=", auth_googl(NULL))
   
-  query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl, from = from, to = to)
+  resource <- paste0("{'longUrl':", paste0("'",longUrl,"'}"))
   
-  # call method from ApiKey.R unlist
-  df_link_clickstats <- doRequest(links_clickstats_url, query, showURL = showRequestURL)
+  # call method from ApiKey.R 
+  df_link_shorten <- doRequestPOST(links_shorten_url, queryParameters = resource, showURL = showRequestURL)
   
-  # to be validated with the API Key, if ever. Here definitelly wrong. 
-  df_link_clickstats_data <- df_link_clickstats$results
-  # sapply(df_link_clickstats_data, class)
+  df_link_shorten_data <- data.frame(df_link_shorten, stringsAsFactors = FALSE)
   
-  return(df_link_clickstats_data)
-  
+  # sapply(df_link_shorten_data, class)
+  return(df_link_shorten_data)
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Links.R
 \name{links_Shorten}
 \alias{links_Shorten}
-\title{Given a long URL, returns a Bitlink.}
+\title{Given a long URL, returns a short Bit.ly link.}
 \usage{
 links_Shorten(longUrl, domain = NULL, showRequestURL = FALSE)
 }
@@ -33,7 +33,7 @@ across all Bitlinks that point to the same long_url.
 url - the actual Bitlink that should be used, and is a unique value for the given Bitly account.
 }
 \description{
-Given a long URL, returns a Bitlink.
+Given a long URL, returns a short Bit.ly link.
 }
 \note{
 The bitly API does not support shortening more than one long URL with a single API call.

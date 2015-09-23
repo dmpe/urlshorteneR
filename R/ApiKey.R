@@ -2,19 +2,23 @@ rbitly_api_auth_token <- NA
 
 Bitly_api_version <- "v3"
 Owly_api_version <- "v1.1"
+Googl_api_version <- "v1"
 
-#' @title Assign Bit.ly/Ow.ly API token
+
+#' @title Assign Bit.ly/Ow.ly/Goo.gl API token
 #' 
-#' @param auth_token/x - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}} and 
-#' or Ow.ly API key \url{http://ow.ly/api-docs}
+#' @param auth_token/x - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}, 
+#' Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key  \url{https://console.developers.google.com/project}
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
 #' @seealso See \url{http://dev.bitly.com/authentication.html}
 #' @seealso See \url{http://ow.ly/api-docs}
+#' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#APIKey}
 #' 
 #' @examples
 #' ## rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909") # now deprecated
-#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ") # use this for Bit.ly access
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ", 
+#' Goo.gl = "") # use this for Bit.ly access
 #' 
 #' @export 
 #' @importFrom utils assignInMyNamespace
@@ -47,6 +51,18 @@ auth_owly <- function(x) {
   
   if (tmp == "") {
     getOption("Ow.ly",  stop("you need to set up your ow.ly api key"))
+  } else tmp
+}
+
+#' @rdname rbitlyApi
+#' @export
+auth_googl <- function(x) {
+  tmp <- if (is.null(x)) {
+    Sys.getenv("Goo.gl", "")
+  } else x
+  
+  if (tmp == "") {
+    getOption("Goo.gl",  stop("you need to set up your Goo.gl api key"))
   } else tmp
 }
 
@@ -86,7 +102,7 @@ rbitlyApi_up <- function(username, password) {
   return(API_Key)
 }
 
-#' @title Generalized function for executing GET requests by always appending user's Bit.ly API Key.
+#' @title Generalized function for executing GET requests by always appending user's API Key.
 #' 
 #' @param url - which is used for the request
 #' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}
@@ -99,10 +115,10 @@ rbitlyApi_up <- function(username, password) {
 #' @noRd
 doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
   
-  if (is.na(auth_bitly(NULL)) & is.na(auth_owly(NULL))) {
+  if (is.na(auth_bitly(NULL)) & is.na(auth_owly(NULL)) & is.na(auth_googl(NULL)) ) {
     # actually unnecessary; flawn logic because queryParameters will always contain API Key. 
     # Yet for making sure that the user has set it, I'll let it go
-    stop("Please assign on of two API keys", call. = FALSE)
+    stop("Please assign on of three API keys", call. = FALSE)
   } else {
     
     return_request <- GET(url, query = queryParameters)
@@ -120,3 +136,33 @@ doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
 }
 
 
+#' @title Generalized function for executing POST requests (mostly for Goo.gl)
+#' 
+#' @param url - which is used for the request
+#' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}
+#' @param queryParameters - parameters that are used for building a URL
+#' @param showURL - for debugging purposes only: it shows what URL has been called
+#' 
+#' @import httr
+#' @import jsonlite
+#' 
+#' @noRd
+doRequestPOST <- function(url, queryParameters = NULL, showURL = NULL) {
+  
+  if (is.na(auth_bitly(NULL)) & is.na(auth_owly(NULL)) & is.na(auth_googl(NULL)) ) {
+    stop("Please assign on of three API keys", call. = FALSE)
+  } else {
+    
+    return_request <- POST(url, encode = "json", content_type_json(), body = queryParameters)
+    stop_for_status(return_request)
+    text_response <- content(return_request, as = "text")
+    json_response <- fromJSON(text_response)
+    
+    if (identical(showURL, TRUE)) {
+      # was return_request$request$opts$url
+      cat("The requested URL has been this: ", return_request$request$url, "\n") 
+    }
+    return(json_response)
+  }
+  
+}

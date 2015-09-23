@@ -17,6 +17,7 @@ Returns full short url data on success.
 \description{
 Given an ow.ly URL, returns information about the page, including the original URL,
 the HTML title, total clicks, and the "votes" value for the link (votes may be a positive or negative value).
+This is higly experimental ! Please report bugs if there are any.
 }
 \examples{
 \dontrun{

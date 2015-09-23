@@ -2,7 +2,7 @@
 % Please edit documentation in R/Links.R
 \name{links_ShortenOwly}
 \alias{links_ShortenOwly}
-\title{Given a long URL, returns a Ow.ly link.}
+\title{Given a long URL, returns a short Ow.ly link.}
 \usage{
 links_ShortenOwly(longUrl, showRequestURL = FALSE)
 }
@@ -18,7 +18,8 @@ Returns short URL on success
 Given a full URL, returns an ow.ly short URL. Currently the API only supports
 shortening a single URL per API call. Your API Key controls whether the short url returned is
 a static value (default), or whether it's always a unique value. See the Authentication \link{rbitlyApi} section
-above for more details.
+for more details.
+This is higly experimental ! Please report bugs if there are any.
 }
 \seealso{
 See \url{http://ow.ly/api-docs#shorten}

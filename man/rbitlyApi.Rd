@@ -2,26 +2,30 @@
 % Please edit documentation in R/ApiKey.R
 \name{rbitlyApi}
 \alias{auth_bitly}
+\alias{auth_googl}
 \alias{auth_owly}
 \alias{rbitlyApi}
-\title{Assign Bit.ly/Ow.ly API token}
+\title{Assign Bit.ly/Ow.ly/Goo.gl API token}
 \usage{
 rbitlyApi(auth_token)
 
 auth_bitly(auth_token)
 
 auth_owly(x)
+
+auth_googl(x)
 }
 \arguments{
-\item{auth_token/x}{- parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}} and
-or Ow.ly API key \url{http://ow.ly/api-docs}}
+\item{auth_token/x}{- parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}},
+Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key  \url{https://console.developers.google.com/project}}
 }
 \description{
-Assign Bit.ly/Ow.ly API token
+Assign Bit.ly/Ow.ly/Goo.gl API token
 }
 \examples{
 ## rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909") # now deprecated
-options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ") # use this for Bit.ly access
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ",
+Goo.gl = "") # use this for Bit.ly access
 }
 \seealso{
 See \url{http://dev.bitly.com/rate_limiting.html}
@@ -29,5 +33,7 @@ See \url{http://dev.bitly.com/rate_limiting.html}
 See \url{http://dev.bitly.com/authentication.html}
 
 See \url{http://ow.ly/api-docs}
+
+See \url{https://developers.google.com/url-shortener/v1/getting_started#APIKey}
 }
 
