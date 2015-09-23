@@ -12,7 +12,6 @@
 #' @return display_name - (optional) the user's display name, if set.
 #' @return share_accounts - (optional) a list of the share accounts (Twitter or Facebook) linked to 
 #' the user's account.
-
 #' @return NOTICE: Only included in requests for a user's own info.
 #'
 #' @return apiKey - the user's bitly API key.
@@ -25,7 +24,6 @@
 #' new links.
 #' @return domain_preference_options - A list of the valid short domains that this account can 
 #' choose as a default.
-#'
 #' @return NOTICE: Only included for enterprise accounts (is_enterprise == 1 or has_master == 1).
 #' 
 #' @return sub_accounts - (optional) list of accounts associated with this account.
@@ -53,9 +51,9 @@ user_Info <- function(showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v3/user/info"
   
   query <- list(access_token = auth_bitly(NULL))
-
+  
   df_user_info <- doRequest(user_info_url, query, showURL = showRequestURL)
-
+  
   df_user_info_data <- data.frame(ReturnValues = unlist(df_user_info$data))
   df_user_info_data$ReturnValues <- str_trim(as.character(df_user_info_data$ReturnValues))
   df_user_info_data$ReturnValuesDescription <- rownames(df_user_info_data)
@@ -63,7 +61,7 @@ user_Info <- function(showRequestURL = FALSE) {
   
   # convert to readable format 
   df_user_info_data[5, 1] <- as.character(as.POSIXct(as.integer(df_user_info_data[5, 1]), 
-                                                    origin = "1970-01-01", tz = "UTC"))
+                                                     origin = "1970-01-01", tz = "UTC"))
   
   return(df_user_info_data)
 }
@@ -157,3 +155,51 @@ user_TrackingDomains <- function(showRequestURL = FALSE) {
   }
   
 }
+
+
+#' @title Retrieves a list of URLs shortened by the authenticated user.
+#' 
+#' @seealso See \url{https://developers.google.com/url-shortener/v1/url/list}
+#' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#history}
+#' 
+#' @description returns a paginated list of information about short URLs created by a user, 
+#' sorted in reverse chronological order. Each returned resource contains the short URL, 
+#' long URL, creation timestamp, and status.
+#' 
+#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param projection - an optional (!) information to return : "ANALYTICS_CLICKS" - Returns short 
+#' URL click counts. OR "FULL" - Returns full analytics information.
+#'
+#' @return totalItems - is an approximate number of items in the user's entire history.
+#' @return nextPageToken - is an opaque string you can use to get the next page of history. 
+#' It looks a lot like an ISO 8601 formatted date right now, but you should not count on that 
+#' being true. The nextPageToken will be present on all but the last page
+#' @return long_url - items contains the list of entries for the first "page" of the user's history,
+#' in order of descending creation time. The values for each entry are the same as specified in 
+#' the Analytics section \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
+#' 
+#' @examples 
+#' options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
+#' user_LinkHistoryGoogl(showRequestURL = TRUE) 
+#' user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE) 
+#' 
+#' @section TODO Will require OAUTH 2.0
+#' 
+#' @export
+user_LinkHistoryGoogl <- function(projection = "", showRequestURL = FALSE) {
+  
+  user_linkHistory_url <- "https://www.googleapis.com/urlshortener/v1/url/history"
+  
+  query <- list(key = auth_googl(NULL), projection = projection)
+  
+  df_history <- doRequest(user_linkHistory_url, queryParameters = query, showURL = showRequestURL)
+  
+  df_history_data 
+    
+    # sapply(df_history_data, class)
+    return(df_history_data)
+}
+
+
+
+

@@ -1,9 +1,8 @@
-rbitly_api_auth_token <- NA
-
-Bitly_api_version <- "v3"
-Owly_api_version <- "v1.1"
-Googl_api_version <- "v1"
-
+# rbitly_api_auth_token <- NA
+# 
+# Bitly_api_version <- "v3"
+# Owly_api_version <- "v1.1"
+# Googl_api_version <- "v1"
 
 #' @title Assign Bit.ly/Ow.ly/Goo.gl API token
 #' 
@@ -115,12 +114,6 @@ rbitlyApi_up <- function(username, password) {
 #' @noRd
 doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
   
-  if (is.na(auth_bitly(NULL)) & is.na(auth_owly(NULL)) & is.na(auth_googl(NULL)) ) {
-    # actually unnecessary; flawn logic because queryParameters will always contain API Key. 
-    # Yet for making sure that the user has set it, I'll let it go
-    stop("Please assign on of three API keys", call. = FALSE)
-  } else {
-    
     return_request <- GET(url, query = queryParameters)
     stop_for_status(return_request)
     text_response <- content(return_request, as = "text")
@@ -131,7 +124,6 @@ doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
       cat("The requested URL has been this: ", return_request$request$url, "\n") 
     }
     return(json_response)
-  }
   
 }
 
@@ -149,10 +141,6 @@ doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
 #' @noRd
 doRequestPOST <- function(url, queryParameters = NULL, showURL = NULL) {
   
-  if (is.na(auth_bitly(NULL)) & is.na(auth_owly(NULL)) & is.na(auth_googl(NULL)) ) {
-    stop("Please assign on of three API keys", call. = FALSE)
-  } else {
-    
     return_request <- POST(url, encode = "json", content_type_json(), body = queryParameters)
     stop_for_status(return_request)
     text_response <- content(return_request, as = "text")
@@ -163,6 +151,5 @@ doRequestPOST <- function(url, queryParameters = NULL, showURL = NULL) {
       cat("The requested URL has been this: ", return_request$request$url, "\n") 
     }
     return(json_response)
-  }
   
 }

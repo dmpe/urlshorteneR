@@ -317,7 +317,10 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
 #'
 #' @param shortUrl - The short URL, including the protocol. 
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
-#'
+#' @param projection - "FULL" - returns the creation timestamp and all available analytics (default) OR
+#' "ANALYTICS_CLICKS" - returns only click counts OR "ANALYTICS_TOP_STRINGS" - returns only top 
+#' string counts (e.g. referrers, countries, etc)
+#' 
 #' @description For the given short URL, the url.get method returns the corresponding long URL and the status.
 #' 
 #' @section Quotas: By default, your registered project gets 1,000,000 requests per day for the URL 
@@ -325,22 +328,28 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
 #' 
 #' @examples 
 #' g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = TRUE)
+#' g4 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", projection = "FULL", showRequestURL = TRUE)
+#'
+#' @note Returns a dataframe of expanded short URL and a list of its analytics.
 #' 
 #' @return id - is the short URL you passed in.
 #' @return longUrl - is the long URL to which it expands. Note that longUrl may not be present in 
 #' the response, for example, if status is "REMOVED".
 #' @return status - is "OK" for most URLs. If Google believes that the URL is fishy, status may be 
 #' something else, such as "MALWARE".
-#' 
+#'
 #' @export
-links_ExpandGoogl <- function(shortUrl = "", showRequestURL = FALSE) {
+links_ExpandGoogl <- function(shortUrl = "", projection = "", showRequestURL = FALSE) {
   links_expand_url <- "https://www.googleapis.com/urlshortener/v1/url"
   
-  query <- list(key = auth_googl(NULL), shortUrl = shortUrl)
+  query <- list(key = auth_googl(NULL), shortUrl = shortUrl, projection = projection)
   
   # call method from ApiKey.R
   df_link_expand <- doRequest(links_expand_url, queryParameters = query, showURL = showRequestURL)
-  df_link_expand_data <- data.frame(df_link_expand, stringsAsFactors = FALSE)
+  df_link_expand_data_analytics <- df_link_expand$analytics
+  df_link_expand$analytics <- NULL
+  df_link_expand_data <- list(original_data = data.frame(df_link_expand, stringsAsFactors = FALSE),
+                              analytics = df_link_expand_data_analytics)
   
   return(df_link_expand_data)
 

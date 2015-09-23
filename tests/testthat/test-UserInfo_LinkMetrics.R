@@ -4,7 +4,7 @@ library(httr)
 library(jsonlite)
 library(stringr)
 
-options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
+options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "", Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
 
 context("User Info")
 
@@ -17,6 +17,11 @@ test_that("Returns entries from a user's link history in reverse chronological o
   user.linkH <- user_LinkHistory()
   expect_more_than(length(user.linkH), 10)
   expect_message(user_TrackingDomains(), "It seems that you don't have any tracking domains.")
+})
+
+test_that("Returns entries from a user's link history from Google.", {
+  g3 <- user_LinkHistoryGoogl()
+  expect_more_than(length(g3), 10)
 })
 
 context("Link Metrics")

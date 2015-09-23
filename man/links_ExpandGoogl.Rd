@@ -4,10 +4,14 @@
 \alias{links_ExpandGoogl}
 \title{Expand a short URL to a longer one}
 \usage{
-links_ExpandGoogl(shortUrl = "", showRequestURL = FALSE)
+links_ExpandGoogl(shortUrl = "", projection = "", showRequestURL = FALSE)
 }
 \arguments{
 \item{shortUrl}{- The short URL, including the protocol.}
+
+\item{projection}{- "FULL" - returns the creation timestamp and all available analytics (default) OR
+"ANALYTICS_CLICKS" - returns only click counts OR "ANALYTICS_TOP_STRINGS" - returns only top
+string counts (e.g. referrers, countries, etc)}
 
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
 }
@@ -29,6 +33,7 @@ Shortener API (\url{https://console.developers.google.com/})
 }
 \examples{
 g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = TRUE)
+g4 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", projection = "FULL", showRequestURL = TRUE)
 }
 \seealso{
 See \url{https://developers.google.com/url-shortener/v1/getting_started#shorten}
