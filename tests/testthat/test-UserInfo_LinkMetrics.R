@@ -19,10 +19,10 @@ test_that("Returns entries from a user's link history in reverse chronological o
   expect_message(user_TrackingDomains(), "It seems that you don't have any tracking domains.")
 })
 
-test_that("Returns entries from a user's link history from Google.", {
-  g3 <- user_LinkHistoryGoogl()
-  expect_more_than(length(g3), 10)
-})
+# test_that("Returns entries from a user's link history from Google.", {
+#   g3 <- user_LinkHistoryGoogl()
+#   expect_more_than(length(g3), 10)
+# })
 
 context("Link Metrics")
 
