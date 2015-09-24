@@ -32,7 +32,7 @@ dt - time in UTC format (only when rollup = "false")
 Returns the number of clicks on a single Bitlink of the authenticated user.
 }
 \section{TODO}{
- or more URLs  UP to 15
+ or more URLs up to 15
 }
 \examples{
 options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")

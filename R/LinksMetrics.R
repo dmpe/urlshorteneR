@@ -4,7 +4,7 @@
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 #' 
-#' @section TODO: or more URLs  UP to 15
+#' @section TODO: or more URLs up to 15
 #' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
