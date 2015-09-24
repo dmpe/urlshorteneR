@@ -327,8 +327,9 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
 #' Shortener API (\url{https://console.developers.google.com/})
 #' 
 #' @examples 
-#' g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = TRUE)
-#' g4 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", projection = "FULL", showRequestURL = TRUE)
+#' options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
+#' g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
+#' g4 <- links_ExpandGoogl(shortUrl="http://goo.gl/vM0w4",projection = "FULL",showRequestURL = TRUE)
 #'
 #' @note Returns a dataframe of expanded short URL and a list of its analytics.
 #' 
@@ -378,6 +379,7 @@ links_ExpandGoogl <- function(shortUrl = "", projection = NULL, showRequestURL =
 #' if you pass http://www.google.com, the server will add a trailing slash.
 #' 
 #' @examples 
+#' options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
 #' g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 #' 
 #' @export

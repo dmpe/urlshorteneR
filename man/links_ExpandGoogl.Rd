@@ -36,8 +36,9 @@ Returns a dataframe of expanded short URL and a list of its analytics.
 Shortener API (\url{https://console.developers.google.com/})
 }
 \examples{
-g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = TRUE)
-g4 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", projection = "FULL", showRequestURL = TRUE)
+options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
+g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
+g4 <- links_ExpandGoogl(shortUrl="http://goo.gl/vM0w4",projection = "FULL",showRequestURL = TRUE)
 }
 \seealso{
 See \url{https://developers.google.com/url-shortener/v1/getting_started#shorten}

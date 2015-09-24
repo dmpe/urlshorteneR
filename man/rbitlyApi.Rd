@@ -11,12 +11,12 @@ rbitlyApi(auth_token)
 
 auth_bitly(auth_token)
 
-auth_owly(x)
+auth_owly(auth_token)
 
-auth_googl(x)
+auth_googl(auth_token)
 }
 \arguments{
-\item{auth_token/x}{- parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}},
+\item{auth_token}{- parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}},
 Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key  \url{https://console.developers.google.com/project}}
 }
 \description{

@@ -6,7 +6,7 @@
 
 #' @title Assign Bit.ly/Ow.ly/Goo.gl API token
 #' 
-#' @param auth_token/x - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}, 
+#' @param auth_token - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}, 
 #' Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key  \url{https://console.developers.google.com/project}
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
@@ -43,10 +43,10 @@ auth_bitly <- function(auth_token) {
 
 #' @rdname rbitlyApi
 #' @export
-auth_owly <- function(x) {
-  tmp <- if (is.null(x)) {
+auth_owly <- function(auth_token) {
+  tmp <- if (is.null(auth_token)) {
     Sys.getenv("Ow.ly", "")
-  } else x
+  } else auth_token
   
   if (tmp == "") {
     getOption("Ow.ly",  stop("you need to set up your ow.ly api key"))
@@ -55,10 +55,10 @@ auth_owly <- function(x) {
 
 #' @rdname rbitlyApi
 #' @export
-auth_googl <- function(x) {
-  tmp <- if (is.null(x)) {
+auth_googl <- function(auth_token) {
+  tmp <- if (is.null(auth_token)) {
     Sys.getenv("Goo.gl", "")
-  } else x
+  } else auth_token
   
   if (tmp == "") {
     getOption("Goo.gl",  stop("you need to set up your Goo.gl api key"))

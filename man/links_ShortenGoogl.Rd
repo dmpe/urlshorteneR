@@ -27,6 +27,7 @@ to convert "google.com" into "http://google.com/". See the Authentication
 \link{rbitlyApi} section for more details.
 }
 \examples{
+options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
 g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 }
 \seealso{
