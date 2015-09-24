@@ -124,7 +124,6 @@ doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
       cat("The requested URL has been this: ", return_request$request$url, "\n") 
     }
     return(json_response)
-  
 }
 
 
@@ -151,5 +150,14 @@ doRequestPOST <- function(url, queryParameters = NULL, showURL = NULL) {
       cat("The requested URL has been this: ", return_request$request$url, "\n") 
     }
     return(json_response)
-  
 }
+
+
+.onAttach <- function(...) {
+  packageStartupMessage("This is a last release of RBitly before this package will be achieved!\n
+  RBitly will be indeed completly replaced with new package called 'urlshorteneR'.\n
+  Look up this GitHub repository and download it using devtools package\n
+  devtools:install_github('dmpe/urlshorteneR')            ")
+}
+
+

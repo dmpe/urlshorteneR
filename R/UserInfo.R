@@ -157,48 +157,48 @@ user_TrackingDomains <- function(showRequestURL = FALSE) {
 }
 
 
-#' @title Retrieves a list of URLs shortened by the authenticated user.
-#' 
-#' @seealso See \url{https://developers.google.com/url-shortener/v1/url/list}
-#' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#history}
-#' 
-#' @description returns a paginated list of information about short URLs created by a user, 
-#' sorted in reverse chronological order. Each returned resource contains the short URL, 
-#' long URL, creation timestamp, and status.
-#' 
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
-#' @param projection - an optional (!) information to return : "ANALYTICS_CLICKS" - Returns short 
-#' URL click counts. OR "FULL" - Returns full analytics information.
-#'
-#' @return totalItems - is an approximate number of items in the user's entire history.
-#' @return nextPageToken - is an opaque string you can use to get the next page of history. 
-#' It looks a lot like an ISO 8601 formatted date right now, but you should not count on that 
-#' being true. The nextPageToken will be present on all but the last page
-#' @return long_url - items contains the list of entries for the first "page" of the user's history,
-#' in order of descending creation time. The values for each entry are the same as specified in 
-#' the Analytics section \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
-#' 
-#' @examples 
-#' options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
-#' user_LinkHistoryGoogl(showRequestURL = TRUE) 
-#' user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE) 
-#' 
-#' @note Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
-#' 
-#' @export
-user_LinkHistoryGoogl <- function(projection = "", showRequestURL = FALSE) {
-  
-  user_linkHistory_url <- "https://www.googleapis.com/urlshortener/v1/url/history"
-  
-  query <- list(key = auth_googl(NULL), projection = projection)
-  
-  df_history <- doRequest(user_linkHistory_url, queryParameters = query, showURL = showRequestURL)
-  
-  df_history_data 
-    
-    # sapply(df_history_data, class)
-    return(df_history_data)
-}
+#' #' @title Retrieves a list of URLs shortened by the authenticated user.
+#' #' 
+#' #' @seealso See \url{https://developers.google.com/url-shortener/v1/url/list}
+#' #' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#history}
+#' #' 
+#' #' @description returns a paginated list of information about short URLs created by a user, 
+#' #' sorted in reverse chronological order. Each returned resource contains the short URL, 
+#' #' long URL, creation timestamp, and status.
+#' #' 
+#' #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' #' @param projection - an optional (!) information to return : "ANALYTICS_CLICKS" - Returns short 
+#' #' URL click counts. OR "FULL" - Returns full analytics information.
+#' #'
+#' #' @return totalItems - is an approximate number of items in the user's entire history.
+#' #' @return nextPageToken - is an opaque string you can use to get the next page of history. 
+#' #' It looks a lot like an ISO 8601 formatted date right now, but you should not count on that 
+#' #' being true. The nextPageToken will be present on all but the last page
+#' #' @return long_url - items contains the list of entries for the first "page" of the user's history,
+#' #' in order of descending creation time. The values for each entry are the same as specified in 
+#' #' the Analytics section \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
+#' #' 
+#' #' @examples 
+#' #' options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
+#' #' user_LinkHistoryGoogl(showRequestURL = TRUE) 
+#' #' user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE) 
+#' #' 
+#' #' @note Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
+#' #' 
+#' #' @export
+#' user_LinkHistoryGoogl <- function(projection = "", showRequestURL = FALSE) {
+#'   
+#'   user_linkHistory_url <- "https://www.googleapis.com/urlshortener/v1/url/history"
+#'   
+#'   query <- list(key = auth_googl(NULL), projection = projection)
+#'   
+#'   df_history <- doRequest(user_linkHistory_url, queryParameters = query, showURL = showRequestURL)
+#'   
+#'   df_history
+#'     
+#'     # sapply(df_history_data, class)
+#'     return(df_history_data)
+#' }
 
 
 
