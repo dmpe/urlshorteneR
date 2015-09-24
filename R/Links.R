@@ -339,7 +339,7 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
 #' something else, such as "MALWARE".
 #'
 #' @export
-links_ExpandGoogl <- function(shortUrl = "", projection = "", showRequestURL = FALSE) {
+links_ExpandGoogl <- function(shortUrl = "", projection = NULL, showRequestURL = FALSE) {
   links_expand_url <- "https://www.googleapis.com/urlshortener/v1/url"
   
   query <- list(key = auth_googl(NULL), shortUrl = shortUrl, projection = projection)

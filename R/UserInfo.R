@@ -183,7 +183,7 @@ user_TrackingDomains <- function(showRequestURL = FALSE) {
 #' user_LinkHistoryGoogl(showRequestURL = TRUE) 
 #' user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE) 
 #' 
-#' @section TODO Will require OAUTH 2.0
+#' @note Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 #' 
 #' @export
 user_LinkHistoryGoogl <- function(projection = "", showRequestURL = FALSE) {

@@ -59,7 +59,7 @@ context("Links Goo.gl")
 
 test_that("expanding does work", {
   g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = TRUE)
-  expect_output(g1$longUrl, "http://www.bi-verdict.com/fileadmin/FreeAnalyses/consolidations.htm")
+  expect_output(g1$original_data$longUrl, "http://www.bi-verdict.com/fileadmin/FreeAnalyses/consolidations.htm")
 }) 
 
 test_that("shorting does work", {

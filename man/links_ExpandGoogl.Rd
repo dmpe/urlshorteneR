@@ -4,7 +4,8 @@
 \alias{links_ExpandGoogl}
 \title{Expand a short URL to a longer one}
 \usage{
-links_ExpandGoogl(shortUrl = "", projection = "", showRequestURL = FALSE)
+links_ExpandGoogl(shortUrl = "", projection = NULL,
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{shortUrl}{- The short URL, including the protocol.}
@@ -26,6 +27,9 @@ something else, such as "MALWARE".
 }
 \description{
 For the given short URL, the url.get method returns the corresponding long URL and the status.
+}
+\note{
+Returns a dataframe of expanded short URL and a list of its analytics.
 }
 \section{Quotas}{
  By default, your registered project gets 1,000,000 requests per day for the URL

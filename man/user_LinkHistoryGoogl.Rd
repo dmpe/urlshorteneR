@@ -28,8 +28,8 @@ returns a paginated list of information about short URLs created by a user,
 sorted in reverse chronological order. Each returned resource contains the short URL,
 long URL, creation timestamp, and status.
 }
-\section{TODO Will require OAUTH 2.0}{
-
+\note{
+Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 }
 \examples{
 options(Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
