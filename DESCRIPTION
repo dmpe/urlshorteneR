@@ -1,11 +1,12 @@
-Package: RBitly
+Package: urlshorteneR
 Type: Package
-Title: R Wrapper for the Bit.ly, Ow.ly and Goo.gl API
-Description: Allows users accessing 'Bit.ly API' http://dev.bitly.com/ and retrieve many useful statistics. Additionally provides an experimental support of 'Ow.ly' http://ow.ly/api-docs and 'Goo.gl' http://goo.gl.
-Version: 0.7.2
+Title: R Wrapper for the URL shortening services including Bit.ly, Ow.ly, Goo.gl and is.gd
+Description: Allows users accessing many URL shortening services and retrieve many useful statistics.
+Version: 0.8
 Date: 2015-09-30
 Authors@R: c(
-    person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
+    person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe"),
+    person("Andrew", "Collier", role = c("aut"),  comment = "@DataWookie")
     )
 Depends: 
   R (>= 3.2.2)
@@ -19,5 +20,5 @@ Suggests:
   testthat (>= 0.10.0)
 VignetteBuilder: knitr
 License: Apache License 2.0
-URL: https://github.com/dmpe/rbitly
-BugReports: https://github.com/dmpe/rbitly/issues
+URL: https://github.com/dmpe/urlshorteneR
+BugReports: https://github.com/dmpe/urlshorteneR/issues

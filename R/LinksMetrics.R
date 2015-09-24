@@ -34,7 +34,7 @@ link_Metrics_Clicks <- function(link, limit = 1000, unit = c("minute", "hour", "
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df.link_metrics_clicks <- doRequest(link_metrics_clicks_url, query, showURL = showRequestURL)
+  df.link_metrics_clicks <- doRequest("GET", link_metrics_clicks_url, query, showURL = showRequestURL)
   
   df.link_metrics_clicks_data <- df.link_metrics_clicks$data$link_clicks
   
@@ -79,7 +79,7 @@ link_Metrics_Countries <- function(link, limit = 1000, unit = c("minute", "hour"
   query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_countries <- doRequest(link_metrics_countries_url, query, showURL = showRequestURL)
+  df_link_metrics_countries <- doRequest("GET", link_metrics_countries_url, query, showURL = showRequestURL)
   
   df_link_metrics_countries_data <- df_link_metrics_countries$data$countries
   
@@ -155,13 +155,13 @@ link_Metrics_EncodersCount <- function(link, showRequestURL = FALSE) {
   query <- list(access_token = auth_bitly(NULL), link = link)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders_count <- doRequest(link_metrics_encoders_count_url, query, showURL = showRequestURL)
+  df_link_metrics_encoders_count <- doRequest("GET", link_metrics_encoders_count_url, query, showURL = showRequestURL)
   df_link_metrics_encoders_count_data <- df_link_metrics_encoders_count$data
   
   # https://stackoverflow.com/questions/4227223/r-list-to-data-frame
   df_link_metrics_encoders_count_data <- data.frame(t(sapply(df_link_metrics_encoders_count_data, c)),  
                                                     stringsAsFactors = FALSE)
-  df_link_metrics_encoders_count_data$count <- as.integer(df_link_metrics_encoders_count_data$count)
+  df_link_metrics_encoders_count_data$count <- as.numeric(df_link_metrics_encoders_count_data$count)
   
   # sapply(df_link_metrics_encoders_count_data, class)
   return(df_link_metrics_encoders_count_data)
@@ -203,7 +203,7 @@ link_Metrics_EncodersByCount <- function(link, limit = 100, my_network = "false"
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders_by_count <- doRequest(link_metrics_encoders_by_count_url, query, showURL = showRequestURL)
+  df_link_metrics_encoders_by_count <- doRequest("GET", link_metrics_encoders_by_count_url, query, showURL = showRequestURL)
   
   df_link_metrics_encoders_by_count_data <- data.frame(df_link_metrics_encoders_by_count$data$encoders_by_count)
   df_link_metrics_encoders_by_count_data$ts <- as.POSIXct(as.integer(df_link_metrics_encoders_by_count_data$ts), 
@@ -240,7 +240,7 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
   query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referring_domains <- doRequest(link_metrics_referring_domains_url, query, showURL = showRequestURL)
+  df_link_metrics_referring_domains <- doRequest("GET", link_metrics_referring_domains_url, query, showURL = showRequestURL)
   df_link_metrics_referring_domains_data <- df_link_metrics_referring_domains$data$referring_domains
   
   # sapply(df_link_metrics_referring_domains_data, class)
@@ -272,7 +272,7 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
   query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referrers <- doRequest(link_metrics_referrers_url, query, showURL = showRequestURL)
+  df_link_metrics_referrers <- doRequest("GET", link_metrics_referrers_url, query, showURL = showRequestURL)
   
   df_link_metrics_referrers_data <- df_link_metrics_referrers$data$referrers
   
@@ -306,7 +306,7 @@ link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute"
   query <- list(access_token = auth_bitly(NULL), link = link, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referrers_by_domain <- doRequest(link_metrics_referrers_by_domain_url, query, showURL = showRequestURL)
+  df_link_metrics_referrers_by_domain <- doRequest("GET", link_metrics_referrers_by_domain_url, query, showURL = showRequestURL)
   
   df_link_metrics_referrers_by_domain_data <- df_link_metrics_referrers_by_domain$data$referrers
   
@@ -346,7 +346,7 @@ link_Metrics_Owly <- function(shortUrl, from = "", to = "", showRequestURL = FAL
   query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl, from = from, to = to)
   
   # call method from ApiKey.R unlist
-  df_link_clickstats <- doRequest(links_clickstats_url, query, showURL = showRequestURL)
+  df_link_clickstats <- doRequest("GET", links_clickstats_url, query, showURL = showRequestURL)
   
   # to be validated with the API Key, if ever. Here definitelly wrong. 
   df_link_clickstats_data <- df_link_clickstats$results

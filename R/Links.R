@@ -29,7 +29,7 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
   query <- list(access_token = auth_bitly(NULL), url = url)
   
   # call method from ApbiKey.R
-  df_link_lookup <- doRequest(links_lookup_url, query, showURL = showRequestURL)
+  df_link_lookup <- doRequest("GET", links_lookup_url, query, showURL = showRequestURL)
   df_link_lookup_data <- df_link_lookup$data$link_lookup
   
   # sapply(df_link_lookup_data, class)
@@ -85,7 +85,7 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
   }
   
   # call method from ApbiKey.R
-  df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
+  df_link_info <- doRequest("GET", links_info_url, query, showURL = showRequestURL)
   
   df_user_info_data <- data.frame(t(sapply(unlist(df_link_info$data$info), c)), stringsAsFactors = FALSE)
   df_user_info_data$created_at <- as.POSIXct(as.integer(df_user_info_data$created_at), 
@@ -121,7 +121,7 @@ links_InfoOwly <- function(shortUrl, showRequestURL = FALSE) {
   query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl)
   
   # call method from ApiKey.R
-  df_link_info <- doRequest(links_info_url, query, showURL = showRequestURL)
+  df_link_info <- doRequest("GET", links_info_url, query, showURL = showRequestURL)
   
   # to be validated with the API Key, if ever. Check types
   df_link_info_data <- df_link_info$results
@@ -176,7 +176,7 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
   }
   
   # call method from ApbiKey.R
-  df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
+  df_link_expand <- doRequest("GET", links_expand_url, query, showURL = showRequestURL)
   
   df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
   
@@ -231,8 +231,8 @@ links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
 
   query <- list(access_token = auth_bitly(NULL), longUrl = longUrl, domain = domain)
 
-  # call method from ApbiKey.R unlist
-  df_link_shorten <- doRequest(links_shorten_url, query, showURL = showRequestURL)
+  # call method from ApbiKey.R
+  df_link_shorten <- doRequest("GET", links_shorten_url, query, showURL = showRequestURL)
  
   df_link_shorten_data <- data.frame(t(sapply(df_link_shorten$data, c)), stringsAsFactors = FALSE)
   
@@ -268,7 +268,7 @@ links_ShortenOwly <- function(longUrl, showRequestURL = FALSE) {
   query <- list(access_token = auth_owly(NULL), longUrl = longUrl)
   
   # call method from ApiKey.R unlist
-  df_link_shorten <- doRequest(links_shorten_url, query, showURL = showRequestURL)
+  df_link_shorten <- doRequest("GET", links_shorten_url, query, showURL = showRequestURL)
   
   # to be validated with the API Key, if ever
   df_link_shorten_data <- df_link_shorten$results
@@ -296,8 +296,8 @@ links_ExpandOwly <- function(shortUrl, showRequestURL = FALSE) {
   
   query <- list(access_token = auth_owly(NULL), shortUrl = shortUrl)
   
-  # call method from ApiKey.R unlist
-  df_link_expand <- doRequest(links_expand_url, query, showURL = showRequestURL)
+  # call method from ApiKey.R 
+  df_link_expand <- doRequest("GET", links_expand_url, query, showURL = showRequestURL)
   
   # to be validated with the API Key, if ever
   df_link_expand_data <- df_link_expand$results$longUrl
@@ -346,7 +346,7 @@ links_ExpandGoogl <- function(shortUrl = "", projection = NULL, showRequestURL =
   query <- list(key = auth_googl(NULL), shortUrl = shortUrl, projection = projection)
   
   # call method from ApiKey.R
-  df_link_expand <- doRequest(links_expand_url, queryParameters = query, showURL = showRequestURL)
+  df_link_expand <- doRequest("GET", links_expand_url, queryParameters = query, showURL = showRequestURL)
   df_link_expand_data_analytics <- df_link_expand$analytics
   df_link_expand$analytics <- NULL
   df_link_expand_data <- list(original_data = data.frame(df_link_expand, stringsAsFactors = FALSE),
@@ -389,7 +389,7 @@ links_ShortenGoogl <- function(longUrl = "", showRequestURL = FALSE) {
   resource <- paste0("{'longUrl':", paste0("'",longUrl,"'}"))
   
   # call method from ApiKey.R 
-  df_link_shorten <- doRequestPOST(links_shorten_url, queryParameters = resource, showURL = showRequestURL)
+  df_link_shorten <- doRequest("POST", links_shorten_url, queryParameters = resource, showURL = showRequestURL)
   
   df_link_shorten_data <- data.frame(df_link_shorten, stringsAsFactors = FALSE)
   

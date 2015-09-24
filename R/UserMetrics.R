@@ -36,7 +36,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
                 rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_clicks <- doRequest(user_metrics_clicks_url, query, showURL = showRequestURL)
+  df_user_metrics_clicks <- doRequest("GET", user_metrics_clicks_url, query, showURL = showRequestURL)
   df_user_metrics_clicks_data <- df_user_metrics_clicks$data$user_clicks
   
   if (rollup == "true") {
@@ -79,7 +79,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_countries <- doRequest(user_metrics_countries_url, query, showURL = showRequestURL)
+  df_user_metrics_countries <- doRequest("GET", user_metrics_countries_url, query, showURL = showRequestURL)
   
   df_user_metrics_countries_data <- df_user_metrics_countries$data$user_countries
   
@@ -112,7 +112,7 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
   query <- list(access_token = auth_bitly(NULL), limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_user_metrics_popular_links <- doRequest(user_metrics_popular_links_url, query, showURL = showRequestURL)
+  df_user_metrics_popular_links <- doRequest("GET", user_metrics_popular_links_url, query, showURL = showRequestURL)
   df_user_metrics_popular_links_data <- df_user_metrics_popular_links$data$popular_links
   
   # sapply(df_user_metrics_popular_links_data, class)
@@ -147,7 +147,7 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_referrers <- doRequest(user_metrics_referrers_url, query, showURL = showRequestURL)
+  df_user_metrics_referrers <- doRequest("GET", user_metrics_referrers_url, query, showURL = showRequestURL)
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
 
   # sapply(df_user_metrics_referrers_data, class)
@@ -197,7 +197,7 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
                 rollup = rollup_matched, exclude_social_networks = exclude_social_networks_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_referring_domains <- doRequest(user_metrics_referring_domains_url, query, showURL = showRequestURL)
+  df_user_metrics_referring_domains <- doRequest("GET", user_metrics_referring_domains_url, query, showURL = showRequestURL)
   df_user_metrics_referring_domains_data <- df_user_metrics_referring_domains$data$user_referring_domains
   
   if (length(df_user_metrics_referring_domains_data) == 0) {
@@ -239,7 +239,7 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
                 rollup = rollup_matched, showURL = showRequestURL)
   
   # call method from ApiKey.R
-  df_user_metrics_shorten_counts <- doRequest(user_metrics_shorten_counts_url, query, showURL = showRequestURL)
+  df_user_metrics_shorten_counts <- doRequest("GET", user_metrics_shorten_counts_url, query, showURL = showRequestURL)
   df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts
   
   if (rollup_matched == "false") {

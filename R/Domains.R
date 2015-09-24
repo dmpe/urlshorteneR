@@ -24,14 +24,13 @@ bitly_pro_domain <- function(domain, showRequestURL = FALSE) {
   query <- list(access_token = auth_bitly(NULL), domain = domain)
   
   # call method from ApiKey.R
-  df_bitly_pro_domain <- doRequest(bitly_pro_domain_url, query, showURL = showRequestURL)
-  df_bitly_pro_domain_data <- df_bitly_pro_domain$data
-  
-  if (df_bitly_pro_domain_data$bitly_pro_domain == FALSE) {
-    message("A short domain: ", df_bitly_pro_domain_data$domain, " is NOT a valid bitly pro domain")
+  df_bitly_pro_domain <- doRequest("GET", bitly_pro_domain_url, query, showURL = showRequestURL)
+
+  if (df_bitly_pro_domain$data$bitly_pro_domain == FALSE) {
+    message("A short domain: ", df_bitly_pro_domain$data$domain, " is NOT a valid bitly pro domain")
   } else {
-    message("A short domain: ", df_bitly_pro_domain_data$domain, " is a valid bitly pro domain")
+    message("A short domain: ", df_bitly_pro_domain$data$domain, " is a valid bitly pro domain")
   }
-  # sapply(df_bitly_pro_domain_data, class)
+  # sapply(df_bitly_pro_domain$data, class)
   
 }

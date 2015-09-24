@@ -1,7 +1,9 @@
 For the current development, the user can 
-see: https://github.com/dmpe/rbitly
+see: https://github.com/dmpe/urlshorteneR
 
 ###
+October 2015   - First release of a new package 'urlshorteneR', which has been developed with Andrew Collier
+
 September 2015 - Smaller tweaks, which should not impact any functionality of the Bit.ly
                - Bring up-to-date with R releases
                - Added (a very) experimental support of Ow.ly (owned by Hootsuite.com). Please (!) report bugs to 

@@ -1,13 +1,14 @@
-# rbitly_api_auth_token <- NA
-# 
 # Bitly_api_version <- "v3"
 # Owly_api_version <- "v1.1"
 # Googl_api_version <- "v1"
+# Isgd_api_version <- "v2015"
 
-#' @title Assign Bit.ly/Ow.ly/Goo.gl API token
+#' @title Assign Bit.ly/Ow.ly/Goo.gl API token or authenticate using OAUTH 2
 #' 
 #' @param auth_token - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}, 
-#' Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key  \url{https://console.developers.google.com/project}
+#' Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key \url{https://console.developers.google.com/project}
+#' @param key - Client ID
+#' @param secret - Client Secret
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
 #' @seealso See \url{http://dev.bitly.com/authentication.html}
@@ -15,21 +16,33 @@
 #' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#APIKey}
 #' 
 #' @examples
-#' ## rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909") # now deprecated
-#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ", 
-#' Goo.gl = "") # use this for Bit.ly access
+#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ", Goo.gl = "")
+#' ## OR
+#' google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+#' bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' 
-#' @export 
-#' @importFrom utils assignInMyNamespace
-rbitlyApi <- function(auth_token) {
-  .Deprecated(new = "auth_bitly", msg = "This method is now deprecated; please use auth_bitly or auth_owly. Thank you!")
-  #   if (!missing(auth_token)) {
-  #     assignInMyNamespace("rbitly_api_auth_token", auth_token)
-  #   }
-  #   invisible(rbitly_api_auth_token)
+#' @import httr
+#' @export
+google_auth <- function(key = "", secret = "") {
+  google_token <- httr::oauth2.0_token(httr::oauth_endpoints("google"),
+                                       httr::oauth_app("google", key = key, secret = secret),
+                                       scope = "https://www.googleapis.com/auth/urlshortener",
+                                       cache = TRUE)
+  google_token <- readRDS('.httr-oauth')
 }
 
-#' @rdname rbitlyApi
+#' @rdname google_auth
+#' @export
+bitly_auth <- function(key = "", secret = "") {
+  bitly_token <- httr::oauth2.0_token(httr::oauth_endpoint(authorize = "https://bitly.com/oauth/authorize",
+                                                           access = "https://api-ssl.bitly.com/oauth/access_token"),
+                                      httr::oauth_app("bitly", key = key, secret = secret),
+                                      cache = TRUE)
+  bitly_token <- readRDS('.httr-oauth')
+  
+}
+
+#' @rdname google_auth
 #' @export
 auth_bitly <- function(auth_token) {
   tmp <- if (is.null(auth_token)) {
@@ -41,7 +54,7 @@ auth_bitly <- function(auth_token) {
   } else tmp
 }
 
-#' @rdname rbitlyApi
+#' @rdname google_auth
 #' @export
 auth_owly <- function(auth_token) {
   tmp <- if (is.null(auth_token)) {
@@ -53,7 +66,7 @@ auth_owly <- function(auth_token) {
   } else tmp
 }
 
-#' @rdname rbitlyApi
+#' @rdname google_auth
 #' @export
 auth_googl <- function(auth_token) {
   tmp <- if (is.null(auth_token)) {
@@ -66,42 +79,7 @@ auth_googl <- function(auth_token) {
 }
 
 
-#' @title Get & return & assign Bit.ly API token using username and password
-#' 
-#' @description This method is for the case when the user doesn't know what is his/her "Generic Access Token". 
-#' When inserting username/email and password it will return the key and assign it using 
-#' \code{\link{rbitlyApi}} method in the namespace.
-#' 
-#' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
-#' @seealso See \url{http://dev.bitly.com/authentication.html}
-#' 
-#' @param username - the username or an email
-#' @param password - the password
-#' 
-#' @return api key - user's API Key. As described, it is not necessary to use auth_bitly("api key") 
-#' as this is done automatically.
-#' 
-#' @examples 
-#' \donttest{
-#' rbitlyApi_up("YourUsername", "YourPassword")
-#' }
-#' 
-#' @import httr
-#' @export
-rbitlyApi_up <- function(username, password) {
-  
-  access_token_url <- "https://api-ssl.bitly.com/oauth/access_token"
-  autenticate <- authenticate(username, password)
-  
-  req <- POST(access_token_url, autenticate, encode = "multipart")
-  
-  API_Key <- content(req)
-  auth_bitly(API_Key)
-  
-  return(API_Key)
-}
-
-#' @title Generalized function for executing GET requests by always appending user's API Key.
+#' @title Generalized function for executing GET/POST requests
 #' 
 #' @param url - which is used for the request
 #' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}
@@ -112,52 +90,32 @@ rbitlyApi_up <- function(username, password) {
 #' @import jsonlite
 #' 
 #' @noRd
-doRequest <- function(url, queryParameters = NULL, showURL = NULL) {
+doRequest <- function(verb, url, queryParameters = NULL, showURL = NULL) {
   
-    return_request <- GET(url, query = queryParameters)
-    stop_for_status(return_request)
-    text_response <- content(return_request, as = "text")
-    json_response <- fromJSON(text_response)
-    
-    if (identical(showURL, TRUE)) {
-      # was return_request$request$opts$url
-      cat("The requested URL has been this: ", return_request$request$url, "\n") 
-    }
-    return(json_response)
-}
-
-
-#' @title Generalized function for executing POST requests (mostly for Goo.gl)
-#' 
-#' @param url - which is used for the request
-#' @param authcode - calls the rbitlyApi \code{\link{rbitlyApi}}
-#' @param queryParameters - parameters that are used for building a URL
-#' @param showURL - for debugging purposes only: it shows what URL has been called
-#' 
-#' @import httr
-#' @import jsonlite
-#' 
-#' @noRd
-doRequestPOST <- function(url, queryParameters = NULL, showURL = NULL) {
+  switch(verb,
+         "GET" = {
+           return_request <- httr::GET(url, query = queryParameters)
+         },
+         "POST" = {
+           return_request <- httr::POST(url, body = queryParameters, encode = "json", httr::content_type_json())
+         }
+  )
+  stop_for_status(return_request)
+  text_response <- content(return_request, as = "text")
+  json_response <- fromJSON(text_response)
   
-    return_request <- POST(url, encode = "json", content_type_json(), body = queryParameters)
-    stop_for_status(return_request)
-    text_response <- content(return_request, as = "text")
-    json_response <- fromJSON(text_response)
-    
-    if (identical(showURL, TRUE)) {
-      # was return_request$request$opts$url
-      cat("The requested URL has been this: ", return_request$request$url, "\n") 
-    }
-    return(json_response)
+  if (identical(showURL, TRUE)) {
+    # was return_request$request$opts$url
+    cat("The requested URL has been this: ", return_request$request$url, "\n") 
+  }
+  return(json_response)
 }
 
 
-.onAttach <- function(...) {
-  packageStartupMessage("This is a last release of RBitly before this package will be achieved!\n
-  RBitly will be indeed completly replaced with new package called 'urlshorteneR'.\n
-  Look up this GitHub repository and download it using devtools package\n
-  devtools:install_github('dmpe/urlshorteneR')            ")
-}
+
+
+
+
+
 
 

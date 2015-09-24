@@ -1,5 +1,5 @@
 ## ------------------------------------------------------------------------
-library(RBitly)
+library(urlshorteneR)
 
 ## Old
 ## rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909") # Now officially deprecated
@@ -27,6 +27,7 @@ bitly_pro_domain(domain = "nyti.ms")
 
 ## ------------------------------------------------------------------------
 g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
+g2
 g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
-
+g1
 

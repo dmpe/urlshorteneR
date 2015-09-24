@@ -52,7 +52,7 @@ user_Info <- function(showRequestURL = FALSE) {
   
   query <- list(access_token = auth_bitly(NULL))
   
-  df_user_info <- doRequest(user_info_url, query, showURL = showRequestURL)
+  df_user_info <- doRequest("GET", user_info_url, query, showURL = showRequestURL)
   
   df_user_info_data <- data.frame(ReturnValues = unlist(df_user_info$data))
   df_user_info_data$ReturnValues <- str_trim(as.character(df_user_info_data$ReturnValues))
@@ -105,9 +105,10 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
   
   user_linkHistory_url <- "https://api-ssl.bitly.com/v3/user/link_history"
   
-  query <- list(access_token = auth_bitly(NULL), limit = limit, private = private, archived = archived, expand_client_id = expand_client_id)
+  query <- list(access_token = auth_bitly(NULL), limit = limit, private = private, 
+                archived = archived, expand_client_id = expand_client_id)
   
-  df_history <- doRequest(user_linkHistory_url, query, showURL = showRequestURL)
+  df_history <- doRequest("GET", user_linkHistory_url, query, showURL = showRequestURL)
   df_history_data <- df_history$data$link_history
   
   df_history_data$user_ts <- as.POSIXct(df_history_data$user_ts, origin = "1970-01-01", tz = "UTC")
@@ -138,7 +139,7 @@ user_TrackingDomains <- function(showRequestURL = FALSE) {
   
   query <- list(access_token = auth_bitly(NULL), showURL = showRequestURL)
   
-  df_tracking_domain_list <- doRequest(user_tracking_domain_list_url, query)
+  df_tracking_domain_list <- doRequest("GET", user_tracking_domain_list_url, query)
   df_tracking_domain_list_data <- df_tracking_domain_list$data$tracking_domains
   
   if (!length(df_tracking_domain_list_data) == 0) {
