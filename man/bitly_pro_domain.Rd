@@ -2,7 +2,7 @@
 % Please edit documentation in R/Domains.R
 \name{bitly_pro_domain}
 \alias{bitly_pro_domain}
-\title{Validate given domain for PRO features}
+\title{Validate given domain for the PRO features}
 \usage{
 bitly_pro_domain(domain, showRequestURL = FALSE)
 }
@@ -21,7 +21,7 @@ Query whether a given domain is a valid bitly pro domain. Keep in mind that bitl
 short domains are restricted to less than 15 characters in length.
 }
 \examples{
-options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
+bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 bitly_pro_domain(domain = "nytidsfds.ms")
 bitly_pro_domain(domain = "nyti.ms", showRequestURL = TRUE)
 }

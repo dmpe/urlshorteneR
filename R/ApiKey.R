@@ -3,7 +3,7 @@
 # Googl_api_version <- "v1"
 # Isgd_api_version <- "v2015"
 
-#' @title Assign Bit.ly/Ow.ly/Goo.gl API token or authenticate using OAUTH 2
+#' @title Assign Bit.ly/Ow.ly/Goo.gl API tokens or authenticate using OAUTH 2
 #' 
 #' @param auth_token - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}, 
 #' Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key \url{https://console.developers.google.com/project}
@@ -16,8 +16,8 @@
 #' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#APIKey}
 #' 
 #' @examples
-#' options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ", Goo.gl = "")
-#' ## OR
+#' options(Ow.ly = "F1QH-Q64B-BSBI-JASJ")
+#' ## OR/AND
 #' google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 #' bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' 
@@ -28,8 +28,9 @@ google_auth <- function(key = "", secret = "") {
                                        httr::oauth_app("google", key = key, secret = secret),
                                        scope = "https://www.googleapis.com/auth/urlshortener",
                                        cache = TRUE)
-  google_token <- readRDS('.httr-oauth')
+  return(google_token)
 }
+
 
 #' @rdname google_auth
 #' @export
@@ -38,43 +39,18 @@ bitly_auth <- function(key = "", secret = "") {
                                                            access = "https://api-ssl.bitly.com/oauth/access_token"),
                                       httr::oauth_app("bitly", key = key, secret = secret),
                                       cache = TRUE)
-  bitly_token <- readRDS('.httr-oauth')
-  
+  return(bitly_token)
 }
 
 #' @rdname google_auth
 #' @export
-auth_bitly <- function(auth_token) {
-  tmp <- if (is.null(auth_token)) {
-    Sys.getenv("Bit.ly", "")
-  } else auth_token
-  
-  if (tmp == "") {
-    getOption("Bit.ly", stop("you need to set up your bit.ly api key"))
-  } else tmp
-}
-
-#' @rdname google_auth
-#' @export
-auth_owly <- function(auth_token) {
+owly_auth <- function(auth_token) {
   tmp <- if (is.null(auth_token)) {
     Sys.getenv("Ow.ly", "")
   } else auth_token
   
   if (tmp == "") {
     getOption("Ow.ly",  stop("you need to set up your ow.ly api key"))
-  } else tmp
-}
-
-#' @rdname google_auth
-#' @export
-auth_googl <- function(auth_token) {
-  tmp <- if (is.null(auth_token)) {
-    Sys.getenv("Goo.gl", "")
-  } else auth_token
-  
-  if (tmp == "") {
-    getOption("Goo.gl",  stop("you need to set up your Goo.gl api key"))
   } else tmp
 }
 
@@ -90,16 +66,24 @@ auth_googl <- function(auth_token) {
 #' @import jsonlite
 #' 
 #' @noRd
-doRequest <- function(verb, url, queryParameters = NULL, showURL = NULL) {
+doRequest <- function(verb, url, service, queryParameters = NULL, showURL = NULL) {
+  
+  if (service == "bitly") {
+    service_token <- bitly_token
+  } else if (service == "googl") {
+    service_token <- google_token
+  }
   
   switch(verb,
          "GET" = {
-           return_request <- httr::GET(url, query = queryParameters)
+           return_request <- httr::GET(url, query = queryParameters, config(token = service_token))
          },
          "POST" = {
-           return_request <- httr::POST(url, body = queryParameters, encode = "json", httr::content_type_json())
+           return_request <- httr::POST(url, body = queryParameters, encode = "json", 
+                                        httr::content_type_json(), config(token = service_token))
          }
   )
+  
   stop_for_status(return_request)
   text_response <- content(return_request, as = "text")
   json_response <- fromJSON(text_response)
@@ -110,12 +94,6 @@ doRequest <- function(verb, url, queryParameters = NULL, showURL = NULL) {
   }
   return(json_response)
 }
-
-
-
-
-
-
 
 
 
