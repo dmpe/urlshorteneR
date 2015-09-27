@@ -1,4 +1,4 @@
 library(testthat)
-library(RBitly)
+library(urlshorteneR)
 
-test_check("RBitly")
+# test_check("urlshorteneR")

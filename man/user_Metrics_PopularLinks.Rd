@@ -27,10 +27,10 @@ clicks - the number of clicks on that Bitlink in the specified timeframe.
 Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.
 }
 \note{
-This replaces the realtime_links endpoint.
+This has replaced the realtime_links endpoint.
 }
 \examples{
-options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909")
+bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 user_Metrics_PopularLinks(unit = "day", units = -1, limit = 100)
 }
 \seealso{

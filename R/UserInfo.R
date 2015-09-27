@@ -41,7 +41,7 @@
 #'
 #' @examples 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_Info() 
+#' uI <- user_Info() 
 #' 
 #' @import stringr
 #' 
@@ -97,7 +97,7 @@ user_Info <- function(showRequestURL = FALSE) {
 #' 
 #' @examples 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_LinkHistory() 
+#' lh <- user_LinkHistory() 
 #'
 #' @export
 user_LinkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false", 
