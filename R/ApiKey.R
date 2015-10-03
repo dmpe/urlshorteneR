@@ -154,7 +154,7 @@ doRequestPOST <- function(url, queryParameters = NULL, showURL = NULL) {
 
 
 .onAttach <- function(...) {
-  packageStartupMessage("This is a last release of RBitly before this package will be achieved!\n
+  packageStartupMessage("This is the last release of RBitly before this package will be achieved!\n
   RBitly will be completly replaced with new package called 'urlshorteneR'.\n
   Look up this GitHub repository and download it later using devtools package\n
   devtools:install_github('dmpe/urlshorteneR')            ")

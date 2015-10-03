@@ -27,6 +27,7 @@ bitly_pro_domain(domain = "nyti.ms")
 
 ## ------------------------------------------------------------------------
 g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
+g2
 g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
-
+g1
 
