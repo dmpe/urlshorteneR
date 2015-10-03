@@ -5,6 +5,7 @@ library(jsonlite)
 library(stringr)
 
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 
 context("User Info")
 
@@ -19,10 +20,10 @@ test_that("Returns entries from a user's link history in reverse chronological o
   expect_message(user_TrackingDomains(), "It seems that you don't have any tracking domains.")
 })
 
-# test_that("Returns entries from a user's link history from Google.", {
-#   g3 <- user_LinkHistoryGoogl()
-#   expect_more_than(length(g3), 10)
-# })
+test_that("Returns entries from a user's link history from Google.", {
+  g3 <- user_LinkHistoryGoogl()
+  expect_more_than(nrow(g3), 10)
+})
 
 context("Link Metrics")
 
@@ -66,5 +67,12 @@ test_that("Returns metrics about the pages referring click traffic to a single B
 test_that("Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.", {
   lmrbd <- link_Metrics_ReferrersByDomain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
   expect_named(lmrbd, c( "referrer", "clicks", "type"))
+})
+
+context("Domains")
+
+test_that("Query whether a given domain is a valid bitly pro domain. ", {
+  expect_message(bitly_pro_domain(domain = "nytidsfds.ms"), "NOT")
+  expect_message(bitly_pro_domain(domain = "nyti.ms"), "is") 
 })
 

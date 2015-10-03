@@ -6,11 +6,12 @@ October 2015   - First release of a new package 'urlshorteneR', which has been d
 
 September 2015 - Smaller tweaks, which should not impact any functionality of the Bit.ly
                - Bring up-to-date with R releases
-               - Added (a very) experimental support of Ow.ly (owned by Hootsuite.com). Please (!) report bugs to 
-                 the maintainer (see above).
+               - Added (a very) experimental support of Ow.ly (owned by Hootsuite.com). Please (!) 
+               report bugs to the maintainers (see above).
                - Added a (less experimental) support of goo.gl (owned by Google.com). 
                - This is also the last release before RBitly will get achieved. Please replace with 
                devtools:install_github('dmpe/urlshorteneR') 
+               - The former github URL was https://github.com/dmpe/rbitly
            
 July 2015 - Initial CRAN Release.
           - Majority of methods are implemented and ready to use.

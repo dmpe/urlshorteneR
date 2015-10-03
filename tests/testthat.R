@@ -1,4 +1,4 @@
 library(testthat)
 library(urlshorteneR)
 
-# test_check("urlshorteneR")
+test_check("urlshorteneR")

@@ -9,17 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
   
-  This package is wrapping [Bit.ly](https://www.bit.ly) API. In order to begin downloading usefull statistics about your Bit.ly links, there is one requirement, which is to gain your API Key (no OAuth support at this time) - so-called "Generic Access Token". 
+  This package is wrapping [Bit.ly](https://www.bitly.com) API & [Goo.gl](https://goo.gl). In order to begin shortening URLs and downloading usefull statistics, there is one requirement, which is to authenticate using OAuth2 for each service. 
   
 ## Authentication
-  
-  For that there are **two ways**. 
-  
-  1. The first one is to go to <https://bitly.com/a/oauth_apps> and generate one yourself. Then you will need to execute `rbitlyApi("Your Generic Access Token")` method. This is a **requirenment** to work with all functions in this package. 
-  
-  2. **Or** you can retrieve your "Generic Access Token" using your username and password to the account which automatically sets your API Key. Meaning you can execute `rbitlyApi_up("YourUsername", "YourPassword")` which not only will print your API Key (just in the case you will need it) but also, using the method above, "store" it R. 
-  
-  Either one is OK. Choose the one which is more convenient to you. 
+
+See \link{google_auth}
   
 # Bit.ly
   
@@ -32,11 +26,8 @@ Method below returns my most-clicked Bit.ly links (ordered by number of clicks) 
 ```{r}
 library(urlshorteneR)
 
-## Old
-## rbitlyApi("0906523ec6a8c78b33f9310e84e7a5c81e500909") # Now officially deprecated
-
-## Now
-options(Bit.ly = "0906523ec6a8c78b33f9310e84e7a5c81e500909", Ow.ly = "F1QH-Q64B-BSBI-JASJ", Goo.gl = "AIzaSyAbJt9APfph1JGIhflkoH9UuGhOACntOjw")
+# You should register a new pair of keys yourself. DO NOT USE MINE as this may not work. 
+# bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 
 user_Metrics_PopularLinks(unit = "month", units = -1, limit = 100)
 ```
@@ -76,19 +67,10 @@ This will query whether a given domain is a valid Bit.ly PRO domain (nyti.ms is)
 bitly_pro_domain(domain = "nyti.ms")
 ```
 
-# Ow.ly
-
-## An example for shortening link with Ow.ly
-
-```{r}
-# check later & helm me with your Ow.ly API key. Please do contribute back. 
-# links_ShortenOwly("")
-# link_Metrics_Owly("")
-```
-
 # Goo.gl
 
 ```{r}
+# google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 g2
 g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
@@ -180,8 +162,6 @@ Based on <http://dev.bitly.com/>
 
 - <http://dev.bitly.com/organization_metrics.html>
 + None endpoints are implemented here, because all are premium. Contact me if you need it. 
-
-- At the moment **no OAuth support** is present so that one must use [HTTP Basic Authentication Flow](http://dev.bitly.com/authentication.html#basicauth), which requires `Generic Access Token` from <https://bitly.com/a/oauth_apps> (see above).
 
 - Lastly, sometimes, only a **small subset of input paramaters** has been implemented. Again contact me and I will consider a change. 
 

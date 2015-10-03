@@ -1,25 +1,25 @@
 # Bitly_api_version <- "v3"
-# Owly_api_version <- "v1.1"
 # Googl_api_version <- "v1"
 # Isgd_api_version <- "v2015"
 
-#' @title Assign Bit.ly/Ow.ly/Goo.gl API tokens or authenticate using OAUTH 2
+#' @title Assign Bit.ly/Goo.gl API tokens using OAUTH 2
 #' 
-#' @param auth_token - parameter to set Bit.ly Generic Access Token \code{\link{rbitlyApi}}, 
-#' Ow.ly API key \url{http://ow.ly/api-docs} or Goo.gl API Key \url{https://console.developers.google.com/project}
+#' @description You must register an application in order to get Client ID and Client Secret code. 
+#' For Bit.ly, go to \url{https://bitly.com/a/oauth_apps} and in the field \code{Redirect URIs:} type
+#' for example "http://localhost:1410". 
+#' For Goo.gl API Keys you must go to the \url{https://console.developers.google.com/project}, select
+#' "APIs & auth", then "Credentials", then "add OAUTH2 client ID" and lastly you select "Type:Other". 
+#' 
 #' @param key - Client ID
 #' @param secret - Client Secret
 #' 
 #' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
 #' @seealso See \url{http://dev.bitly.com/authentication.html}
-#' @seealso See \url{http://ow.ly/api-docs}
 #' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#APIKey}
 #' 
 #' @examples
-#' options(Ow.ly = "F1QH-Q64B-BSBI-JASJ")
-#' ## OR/AND
-#' google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-#' bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' 
 #' @import httr
 #' @export
@@ -41,19 +41,6 @@ bitly_auth <- function(key = "", secret = "") {
                                       cache = TRUE)
   return(bitly_token)
 }
-
-#' @rdname google_auth
-#' @export
-owly_auth <- function(auth_token) {
-  tmp <- if (is.null(auth_token)) {
-    Sys.getenv("Ow.ly", "")
-  } else auth_token
-  
-  if (tmp == "") {
-    getOption("Ow.ly",  stop("you need to set up your ow.ly api key"))
-  } else tmp
-}
-
 
 #' @title Generalized function for executing GET/POST requests
 #' 
