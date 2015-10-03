@@ -353,7 +353,6 @@ links_ExpandGoogl <- function(shortUrl = "", projection = NULL, showRequestURL =
                               analytics = df_link_expand_data_analytics)
   
   return(df_link_expand_data)
-
 }
 
 
@@ -396,16 +395,3 @@ links_ShortenGoogl <- function(longUrl = "", showRequestURL = FALSE) {
   # sapply(df_link_shorten_data, class)
   return(df_link_shorten_data)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -354,4 +354,3 @@ link_Metrics_Owly <- function(shortUrl, from = "", to = "", showRequestURL = FAL
   
   return(df_link_clickstats_data)
 }
-

@@ -6,7 +6,7 @@ September 2015 - Smaller tweaks, which should not impact any functionality of th
                - Bring up-to-date with R releases
                - Added (a very) experimental support of Ow.ly (owned by Hootsuite.com). Please (!) report bugs to 
                  the maintainer (see above).
-               - Added a (less experimental) support of goo.gl (owned by Google.com). 
+               - Added a (less experimental, but only partial) support of goo.gl (owned by Google.com). 
                - This is also the last release before RBitly will get achieved. Please replace with 
                devtools:install_github('dmpe/urlshorteneR') 
            
