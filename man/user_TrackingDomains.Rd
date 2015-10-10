@@ -7,7 +7,8 @@
 user_TrackingDomains(showRequestURL = FALSE)
 }
 \arguments{
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server.
+For debug purposes.}
 }
 \value{
 tracking_domains - a list of tracking domains configured for the authenticated user.

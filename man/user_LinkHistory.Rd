@@ -20,7 +20,8 @@ entries. (on = return only archived history entries)}
 \item{expand_client_id}{- true or false (always default) whether to provide additional
 information about encoding application.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server.
+For debug purposes.}
 }
 \value{
 link - the Bitlink specific to this user and this long_url.
@@ -35,7 +36,8 @@ private - a true/false value indicating whether the user has made this link priv
 
 created_at - an integer unix epoch indicating when this link was shortened/encoded.
 
-user_ts - a user-provided timestamp for when this link was shortened/encoded, used for backfilling data.
+user_ts - a user-provided timestamp for when this link was shortened/encoded,
+used for backfilling data.
 
 modified_at - an integer unix epoch indicating when this link's metadata was last edited.
 

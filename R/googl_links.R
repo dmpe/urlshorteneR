@@ -17,9 +17,11 @@
 #' Shortener API (\url{https://console.developers.google.com/})
 #' 
 #' @examples 
-#' google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+#' google_token <- google_auth(
+#' key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", 
+#' secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 #' g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
-#' g4 <- links_ExpandGoogl(shortUrl="http://goo.gl/vM0w4",projection = "FULL",showRequestURL = TRUE)
+#' g4<-links_ExpandGoogl(shortUrl="http://goo.gl/vM0w4",projection = "ANALYTICS_TOP_STRINGS")
 #'
 #' @note Returns a dataframe of expanded short URL and a list of its analytics.
 #' 
@@ -69,7 +71,9 @@ links_ExpandGoogl <- function(shortUrl = "", projection = "FULL", showRequestURL
 #' if you pass http://www.google.com, the server will add a trailing slash.
 #' 
 #' @examples 
-#' google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+#' google_token <- google_auth(
+#' key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", 
+#' secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 #' g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 #' 
 #' @export
@@ -96,7 +100,8 @@ links_ShortenGoogl <- function(longUrl = "", showRequestURL = FALSE) {
 #' sorted in reverse chronological order. Each returned resource contains the short URL,
 #' long URL, creation timestamp, and status.
 #'
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug 
+#' purposes.
 #' @param projection - an optional (!) information to return : "ANALYTICS_CLICKS" - Returns short
 #' URL click counts. OR "FULL" - Returns full analytics information (default)
 #'
@@ -106,10 +111,13 @@ links_ShortenGoogl <- function(longUrl = "", showRequestURL = FALSE) {
 #' being true. The nextPageToken will be present on all but the last page
 #' @return long_url - items contains the list of entries for the first "page" of the user's history,
 #' in order of descending creation time. The values for each entry are the same as specified in
-#' the Analytics section \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
+#' the Analytics section 
+#' \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
 #'
 #' @examples
-#' google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+#' google_token <- google_auth(
+#' key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", 
+#' secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 #' user_LinkHistoryGoogl(showRequestURL = TRUE)
 #' user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE)
 #'

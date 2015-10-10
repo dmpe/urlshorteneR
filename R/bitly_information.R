@@ -1,6 +1,7 @@
 #' @title Return or update information about a user.
 #' 
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. 
+#' For debug purposes.
 #'
 #' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_info}
 #'
@@ -78,7 +79,8 @@ user_Info <- function(showRequestURL = FALSE) {
 #' entries. (on = return only archived history entries)
 #' @param private - on, off and both (default) whether to include or exclude private history 
 #' entries. (on = return only private history entries)
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. 
+#' For debug purposes.
 #'
 #' @return link - the Bitlink specific to this user and this long_url.
 #' @return aggregate_link - the global bitly identifier for this long_url.
@@ -86,7 +88,8 @@ user_Info <- function(showRequestURL = FALSE) {
 #' @return archived - a true/false value indicating whether the user has archived this link.
 #' @return private - a true/false value indicating whether the user has made this link private.
 #' @return created_at - an integer unix epoch indicating when this link was shortened/encoded.
-#' @return user_ts - a user-provided timestamp for when this link was shortened/encoded, used for backfilling data.
+#' @return user_ts - a user-provided timestamp for when this link was shortened/encoded, 
+#' used for backfilling data.
 #' @return modified_at - an integer unix epoch indicating when this link's metadata was last edited.
 #' @return title - the title for this link.
 #' @return note - the user-provided note, if set.
@@ -122,7 +125,8 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
 
 #' @title Returns a list of tracking domains a user has configured.
 #' 
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. 
+#' For debug purposes.
 #'
 #' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}
 #' 
@@ -160,11 +164,12 @@ user_TrackingDomains <- function(showRequestURL = FALSE) {
 #' 
 #' @seealso See \url{http://dev.bitly.com/domains.html#v3_bitly_pro_domain}
 #' 
-#' @description Query whether a given domain is a valid bitly pro domain. Keep in mind that bitly custom 
-#' short domains are restricted to less than 15 characters in length.
+#' @description Query whether a given domain is a valid bitly pro domain. Keep in mind that bitly 
+#' custom short domains are restricted to less than 15 characters in length.
 #'
 #' @param domain - A short domain. ie: nyti.ms.
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. 
+#' For debug purposes.
 #'
 #' @return bitly_pro_domain - 0 or 1 designating whether this is a current bitly domain.
 #' @return domain - an echo back of the request parameter.
@@ -189,6 +194,4 @@ bitly_pro_domain <- function(domain, showRequestURL = FALSE) {
   } else {
     message("A short domain: ", df_bitly_pro_domain$data$domain, " is a valid bitly pro domain")
   }
-  # sapply(df_bitly_pro_domain$data, class)
-  
 }

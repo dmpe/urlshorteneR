@@ -28,7 +28,9 @@ to convert "google.com" into "http://google.com/". See the Authentication
 \link{google_auth} section for more details.
 }
 \examples{
-google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+google_token <- google_auth(
+key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
+secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 }
 \seealso{

@@ -38,9 +38,11 @@ Returns a dataframe of expanded short URL and a list of its analytics.
 Shortener API (\url{https://console.developers.google.com/})
 }
 \examples{
-google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+google_token <- google_auth(
+key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
+secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
-g4 <- links_ExpandGoogl(shortUrl="http://goo.gl/vM0w4",projection = "FULL",showRequestURL = TRUE)
+g4<-links_ExpandGoogl(shortUrl="http://goo.gl/vM0w4",projection = "ANALYTICS_TOP_STRINGS")
 }
 \seealso{
 See \url{https://developers.google.com/url-shortener/v1/getting_started#shorten}

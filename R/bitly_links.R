@@ -44,9 +44,11 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' @note The maximum number of shortUrl and hash parameters is 15.
 #' 
 #' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
-#' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.
+#' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. 
+#' Optional.
 #' @param expand_user - optional true|false (default) - include extra user info in response.
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. 
+#' For debug purposes.
 #'  
 #' @return short_url - this is an echo back of the shortUrl request parameter.
 #' @return hash - this is an echo back of the hash request parameter.
@@ -101,8 +103,10 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
 #' @seealso See \url{http://dev.bitly.com/links.html#v3_expand}
 #'
 #' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
-#' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. 
+#' Optional.
+#' @param showRequestURL - show URL which has been build and requested from server. 
+#' For debug purposes.
 #' 
 #' @section TODO: or more URLs  Up TO 15
 #' 
@@ -160,7 +164,8 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' a custom short domain. The default for this parameter is the short domain selected by each 
 #' user in their bitly account settings. Passing a specific domain via this parameter will override
 #' the default settings.
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug 
+#' purposes.
 #' 
 #' @note The bitly API does not support shortening more than one long URL with a single API call. 
 #' Meaning 1 Long URL = 1 Function call.
@@ -179,10 +184,12 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' @return hash - a bitly identifier for long_url which is unique to the given account.
 #' @return long_url - an echo back of the longUrl request parameter. This may not always be equal to 
 #' the URL requested, as some URL normalization may occur (e.g., due to encoding differences, or case 
-#' differences in the domain). This long_url will always be functionally identical the the request parameter. 
+#' differences in the domain). This long_url will always be functionally identical the the request 
+#' parameter. 
 #' @return global_hash - a bitly identifier for long_url which can be used to track aggregate stats 
 #' across all Bitlinks that point to the same long_url.
-#' @return url - the actual Bitlink that should be used, and is a unique value for the given Bitly account.
+#' @return url - the actual Bitlink that should be used, and is a unique value for the given Bitly 
+#' account.
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")

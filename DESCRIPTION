@@ -1,9 +1,9 @@
 Package: urlshorteneR
 Type: Package
-Title: The R Wrapper for the Bit.ly, Goo.gl and is.gd URL shortening services.
-Description: Allows users accessing many URL shortening services and retrieve many useful statistics.
-Version: 0.8
-Date: 2015-09-30
+Title: The R Wrapper for the Bit.ly, Goo.gl and is.gd URL shortening services, using OAUTH2 authentication.
+Description: Allows using different URL shortening services, which also provide expanding and analytic functions. 
+Version: 0.8.1
+Date: 2015-10-10
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe"),
     person("Andrew", "Collier", role = c("aut"),  comment = "@DataWookie")
@@ -15,7 +15,7 @@ Imports:
   jsonlite (>= 0.9.17), 
   stringr (>= 1.0.0)
 Suggests: 
-  roxygen2 (>= 4.1.0), 
+  roxygen2 (>= 4.1.1), 
   knitr (>= 1.11),
   testthat (>= 0.10.0)
 VignetteBuilder: knitr

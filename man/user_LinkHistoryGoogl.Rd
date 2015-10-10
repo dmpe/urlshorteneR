@@ -10,7 +10,8 @@ user_LinkHistoryGoogl(projection = "FULL", showRequestURL = FALSE)
 \item{projection}{- an optional (!) information to return : "ANALYTICS_CLICKS" - Returns short
 URL click counts. OR "FULL" - Returns full analytics information (default)}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 totalItems - is an approximate number of items in the user's entire history.
@@ -21,7 +22,8 @@ being true. The nextPageToken will be present on all but the last page
 
 long_url - items contains the list of entries for the first "page" of the user's history,
 in order of descending creation time. The values for each entry are the same as specified in
-the Analytics section \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
+the Analytics section
+\url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
 }
 \description{
 returns a paginated list of information about short URLs created by a user,
@@ -32,7 +34,9 @@ long URL, creation timestamp, and status.
 Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 }
 \examples{
-google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
+google_token <- google_auth(
+key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
+secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 user_LinkHistoryGoogl(showRequestURL = TRUE)
 user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE)
 }

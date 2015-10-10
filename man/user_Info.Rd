@@ -7,7 +7,8 @@
 user_Info(showRequestURL = FALSE)
 }
 \arguments{
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server.
+For debug purposes.}
 }
 \value{
 login - the specified bitly login or the login of the authenticated user.

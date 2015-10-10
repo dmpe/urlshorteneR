@@ -10,11 +10,13 @@ links_Info(hashIN = NULL, shortUrl = NULL, expand_user = "true",
 \arguments{
 \item{hashIN}{- refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required}
 
-\item{shortUrl}{- refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. Optional.}
+\item{shortUrl}{- refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT.
+Optional.}
 
 \item{expand_user}{- optional true|false (default) - include extra user info in response.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server.
+For debug purposes.}
 }
 \value{
 short_url - this is an echo back of the shortUrl request parameter.

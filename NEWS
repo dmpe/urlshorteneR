@@ -2,7 +2,8 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
-October 2015   - First release of a new package 'urlshorteneR', which has been developed with Andrew Collier
+October 2015   - First release of a new package 'urlshorteneR', which has been developed with Andrew Collier. 
+               - The archieved version of RBitly can be found here: https://cran.r-project.org/src/contrib/Archive/RBitly
 
 September 2015 - Smaller tweaks, which should not impact any functionality of the Bit.ly
                - Bring up-to-date with R releases
@@ -13,5 +14,5 @@ September 2015 - Smaller tweaks, which should not impact any functionality of th
                devtools:install_github('dmpe/urlshorteneR') 
                - The former github URL was https://github.com/dmpe/rbitly
            
-July 2015 - Initial CRAN Release.
-          - Majority of methods are implemented and ready to use.
+July 2015      - Initial CRAN Release.
+               - Majority of methods are implemented and ready to use.

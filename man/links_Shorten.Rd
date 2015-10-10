@@ -14,7 +14,8 @@ a custom short domain. The default for this parameter is the short domain select
 user in their bitly account settings. Passing a specific domain via this parameter will override
 the default settings.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 new_hash - designates if this is the first time this long_url was shortened by this user.
@@ -25,12 +26,14 @@ hash - a bitly identifier for long_url which is unique to the given account.
 
 long_url - an echo back of the longUrl request parameter. This may not always be equal to
 the URL requested, as some URL normalization may occur (e.g., due to encoding differences, or case
-differences in the domain). This long_url will always be functionally identical the the request parameter.
+differences in the domain). This long_url will always be functionally identical the the request
+parameter.
 
 global_hash - a bitly identifier for long_url which can be used to track aggregate stats
 across all Bitlinks that point to the same long_url.
 
-url - the actual Bitlink that should be used, and is a unique value for the given Bitly account.
+url - the actual Bitlink that should be used, and is a unique value for the given Bitly
+account.
 }
 \description{
 Given a long URL, returns a short Bit.ly link.

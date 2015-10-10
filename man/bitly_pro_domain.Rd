@@ -9,7 +9,8 @@ bitly_pro_domain(domain, showRequestURL = FALSE)
 \arguments{
 \item{domain}{- A short domain. ie: nyti.ms.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server.
+For debug purposes.}
 }
 \value{
 bitly_pro_domain - 0 or 1 designating whether this is a current bitly domain.
@@ -17,8 +18,8 @@ bitly_pro_domain - 0 or 1 designating whether this is a current bitly domain.
 domain - an echo back of the request parameter.
 }
 \description{
-Query whether a given domain is a valid bitly pro domain. Keep in mind that bitly custom
-short domains are restricted to less than 15 characters in length.
+Query whether a given domain is a valid bitly pro domain. Keep in mind that bitly
+custom short domains are restricted to less than 15 characters in length.
 }
 \examples{
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
