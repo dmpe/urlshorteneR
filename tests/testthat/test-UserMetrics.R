@@ -15,7 +15,7 @@ test_that("Returns aggregate metrics about the countries referring click traffic
 
 test_that("Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.", {
   umc <- user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "true")
-  expect_equal(umc, 6)
+  expect_more_than(umc, 5)
   umcc <- user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "false")
   expect_named(umcc, c("dt", "clicks")) 
 })
