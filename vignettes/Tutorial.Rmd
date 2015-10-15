@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
   
-  This package is wrapping [Bit.ly](https://www.bit.ly) API, [Goo.gl](https://www.goo.gl) and [Ow.ly](http://www.ow.ly) support. In order to begin downloading usefull statistics and shortening URLs, there is one requirement, which is to gain your API Key (no OAuth support at this stage, see later with a new package called 'urlshorteneR') - so-called "Generic Access Token". 
+  This package is wrapping [Bit.ly](https://www.bit.ly) API, [Goo.gl](https://goo.gl) and [Ow.ly](http://ow.ly) support. In order to begin downloading usefull statistics and shortening URLs, there is one requirement, which is to gain your API Key (no OAuth support at this stage, see later with a new package called 'urlshorteneR') - so-called "Generic Access Token". 
   
 ## Authentication
   
