@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/dmpe/rbitly/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/rbitly?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RBitly)](http://cran.r-project.org/package=RBitly)
 
-R package for shortening URLs, supporting Bit.ly & j.mp & Ow.ly (:new:) & Goo.gl (:new:) and other custom domains
+R package for shortening URLs, supporting Bit.ly & j.mp & & Goo.gl (:new:) and other custom domains
 =======
 
 ### Installing
@@ -26,16 +26,7 @@ Check the vignette in `vignettes` folder.
 
 ### How to contribute 
 
-- Fork the repository
-- Create and switch to a new branch `git checkout -b [name_of_your_new_branch]`
-- Do the changes (i.e. edit files)
-- Push remote branch to your github `git remote add -t [name_of_your_remote]` & `git push -u origin [name_of_your_remote]`
-- Create a new pull request (to my `master` branch)
-
-Want a direct push access? No problem, just let me know and become a :family:.
-
-**Also**:
- - Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+See Contribute.md
 
 ### Special thanks to:
 
