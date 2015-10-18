@@ -1,6 +1,7 @@
 language: r
 sudo: required
 warnings_are_errors: false
+
 r_github_packages:
 - hadley/testthat
 - hadley/httr
@@ -8,18 +9,22 @@ r_github_packages:
 - hadley/stringr
 - jimhester/covr
 - yihui/knitr
+
 env:
   global:
   - NOT_CRAN=true
+  
 before_install:
 - openssl aes-256-cbc -K $encrypted_31770e7bb5d0_key -iv $encrypted_31770e7bb5d0_iv
-  -in bitly_token.rds.enc -out bitly_token.rds -d
+  -in tests/testthat/bitly_token.rds.enc -out tests/testthat/bitly_token.rds -d
 - openssl aes-256-cbc -K $encrypted_31770e7bb5d0_key -iv $encrypted_31770e7bb5d0_iv
-  -in googl_token.rds.enc -out googl_token.rds -d
+  -in tests/testthat/googl_token.rds.enc -out tests/testthat/googl_token.rds -d
 - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
+
 notifications:
   email:
     on_success: never
     on_failure: always
+
 after_success:
 - Rscript -e 'library(covr);coveralls()'
