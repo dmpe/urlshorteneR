@@ -9,11 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
   
-  This package is wrapping [Bit.ly](https://www.bitly.com) API & [Goo.gl](https://goo.gl). In order to begin shortening URLs and downloading usefull statistics, there is one requirement, which is to authenticate using OAuth2 for each service. 
+This package is wrapping [Bit.ly](https://www.bitly.com) API & [Goo.gl](https://goo.gl). In order to begin shortening URLs and downloading usefull statistics, there is one requirement, which is to authenticate using OAuth2 for each service. 
   
 ## Authentication
 
-See \link{google_auth}
+See \link{google_auth} || ??googl_auth
   
 # Bit.ly
   
@@ -29,7 +29,7 @@ library(urlshorteneR)
 # You should register a new pair of keys yourself. DO NOT USE MINE as this may not work. 
 # bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 
-user_Metrics_PopularLinks(unit = "month", units = -1, limit = 100)
+bitly_UserMetricsPopularLinks(unit = "month", units = -1, limit = 100)
 ```
 
 
@@ -40,7 +40,7 @@ Official API documentation <http://dev.bitly.com/link_metrics.html>.
 This returns users who have encoded `http://bit.ly/DPetrov` link sorted by the number of clicks on each encoding user's link.
 
 ```{r}
-link_Metrics_EncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
+bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
 ```
 
 
@@ -51,9 +51,9 @@ Official API documentation <http://dev.bitly.com/user_info.html>.
 The first method returns an information about myself, whereas the second one returns a list of tracking domains I have configured (I have none).
 
 ```{r}
-user_Info()
+bitly_UserInfo()
 
-user_TrackingDomains()
+bitly_UserTrackingDomains()
 ```
 
 
@@ -64,23 +64,23 @@ Official API documentation <http://dev.bitly.com/domains.html>.
 This will query whether a given domain is a valid Bit.ly PRO domain (nyti.ms is). 
 
 ```{r}
-bitly_pro_domain(domain = "nyti.ms")
+bitly_IsProDomain(domain = "nyti.ms")
 ```
 
 # Goo.gl
 
 ```{r}
 # google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
+g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 g2
-g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
+g1 <- googl_LinksExpand(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
 g1
 ```
 
 
 -------------
 
-### What has (not) been implemented:
+### What has (not) been implemented for Bit.ly:
 
 Based on <http://dev.bitly.com/>
 
