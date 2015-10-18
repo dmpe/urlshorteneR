@@ -29,7 +29,7 @@ country - the two-letter code of the referring country.
 Returns metrics about the countries referring click traffic to a single Bitlink.
 }
 \examples{
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+bitly_token <- bitly_auth(key = "", secret = "")
 bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100,
 showRequestURL= TRUE)

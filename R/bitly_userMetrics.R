@@ -17,7 +17,7 @@
 #' @return clicks - the number of clicks on this user's links in the specified timeframe.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "true")
 #' bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
@@ -66,11 +66,11 @@ bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "da
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_Metrics_Countries(unit = "day", units = -1, limit = 100, rollup = "true")
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_UserMetricsCountries(unit = "day", units = -1, limit = 100, rollup = "true")
 #' 
 #' @export
-user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+bitly_UserMetricsCountries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    rollup = "true", units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
 
@@ -101,11 +101,11 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' @note This has replaced the realtime_links endpoint.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_Metrics_PopularLinks(unit = "day", units = -1, limit = 100)
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_UserMetricsPopularLinks(unit = "day", units = -1, limit = 100)
 #' 
 #' @export
-user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+bitly_UserMetricsPopularLinks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                        units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
@@ -123,7 +123,8 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 }
 
 
-#' @title Returns aggregate metrics about the pages referring click traffic to all of the authenticated user's Bitlinks.
+#' @title Returns aggregate metrics about the pages referring click traffic to all of the 
+#' authenticated user's Bitlinks.
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
 #'
@@ -135,11 +136,11 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' bitly_token <- bitly_auth(key = "", secret = "")
 #' user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
 #' 
 #' @export
-user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    rollup = c("false", "true"), units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
 
@@ -156,7 +157,8 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
   return(df_user_metrics_referrers_data)
 }
 
-#' @title Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks. 
+#' @title Returns aggregate metrics about the domains referring click traffic to all of the 
+#' authenticated user's Bitlinks. 
 #' 
 #' @description If the user is a master (ent.) account, or is a subaccount with full_reports permission, the 
 #' user may choose to view the metrics of any account belonging to the master account.
@@ -176,16 +178,16 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true")
-#' user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, rollup = "false")
-#' user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, 
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true")
+#' bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "false")
+#' bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, 
 #' exclude_social_networks = "false")
-#' user_Metrics_ReferringDomains(unit = "day", units = -1, limit = 100, 
+#' bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, 
 #' exclude_social_networks = "true")
 #' 
 #' @export
-user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+bitly_UserMetricsReferringDomains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                            rollup = c("false", "true"), units = -1, login = NULL, 
                                            exclude_social_networks = c("true", "false"), showRequestURL = FALSE) {
   
@@ -224,13 +226,13 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
 #' @return shortens - the number of shortens made by the specified user in the specified time.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")
-#' user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100, rollup = "false")
-#' user_Metrics_ShortenCounts(unit = "day", units = -1, limit = 100)
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")
+#' bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100, rollup = "false")
+#' bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100)
 #' 
 #' @export
-user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+bitly_UserMetricsShortenCounts <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                         rollup = c("false", "true"), units = -1, showRequestURL = FALSE) {
   
   unit_matched <- match.arg(unit)
@@ -249,7 +251,6 @@ user_Metrics_ShortenCounts <- function(limit = 1000, unit = c("minute", "hour", 
   if (rollup_matched == "false") {
     df_user.metrics_shorten_counts_data$dt <- as.POSIXct(as.integer(df_user.metrics_shorten_counts_data$dt), 
                                                       origin = "1970-01-01", tz = "UTC")
-    
   } else {
     df_user.metrics_shorten_counts_data
   }

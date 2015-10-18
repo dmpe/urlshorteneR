@@ -20,11 +20,11 @@
 #' @return dt - time in UTC format (only when rollup = "false")
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' bitly_LinkMetricsClicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_LinksMetricsClicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
-bitly_LinkMetricsClicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
+bitly_LinksMetricsClicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
                                 units = -1, rollup = "true", showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
@@ -58,13 +58,13 @@ bitly_LinkMetricsClicks <- function(link, limit = 1000, unit = c("minute", "hour
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
 #' 
-#' @inheritParams bitly_LinkMetricsClicks
+#' @inheritParams bitly_LinksMetricsClicks
 #' 
 #' @return clicks - the number of clicks referred from this country.
 #' @return country - the two-letter code of the referring country.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, 
 #' showRequestURL= TRUE)
@@ -97,7 +97,7 @@ bitly_LinksMetricsCountries <- function(link, limit = 1000, unit = c("minute", "
 #' 
 #' @note Some users may not be returned from this call depending on Bitlink privacy settings.
 #' 
-#' @inheritParams bitly_LinkMetricsClicks
+#' @inheritParams bitly_LinksMetricsClicks
 #' 
 #' @param my_network - true or false (default) restrict to my network.
 #' @param subaccounts - (only available to enterprise accounts) false (always default) restrict to 
@@ -140,7 +140,7 @@ bitly_LinksMetricsEncoders <- function(link, my_network = "false", limit = 25, e
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}
 #' 
-#' @inheritParams bitly_LinkMetricsClicks
+#' @inheritParams bitly_LinksMetricsClicks
 #' 
 #' @return aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
 #' @return count - the number of bitly users who have shortened (encoded) this link.
@@ -180,7 +180,7 @@ bitly_LinksMetricsEncodersCount <- function(link, showRequestURL = FALSE) {
 #' @note The response will only contain users whose links have gotten at least one click, and 
 #' will not contain any users whose links are private.
 #' 
-#' @inheritParams bitly_LinkMetricsClicks
+#' @inheritParams bitly_LinksMetricsClicks
 #' 
 #' @param my_network - true or false (default) restrict to my network
 #' @param subaccounts - (only available to enterprise accounts) false (always default) restrict to 
@@ -224,18 +224,18 @@ bitly_LinksMetricsEncodersByCount <- function(link, limit = 100, my_network = "f
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referring_domains}
 #' 
-#' @inheritParams bitly_LinkMetricsClicks
+#' @inheritParams bitly_LinksMetricsClicks
 #' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return domain - the domain referring clicks.
 #' @return url - the complete URL of the domain referring clicks.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' link_Metrics_ReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_LinksMetricsReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
-link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+bitly_LinksMetricsReferringDomains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                            units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
@@ -259,17 +259,17 @@ link_Metrics_ReferringDomains <- function(link, limit = 1000, unit = c("minute",
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
 #' 
-#' @inheritParams bitly_LinkMetricsClicks
+#' @inheritParams bitly_LinksMetricsClicks
 #' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return referrer - the URL referring clicks.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' link_Metrics_Referrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' 
 #' @export
-link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                    units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
@@ -293,17 +293,17 @@ link_Metrics_Referrers <- function(link, limit = 1000, unit = c("minute", "hour"
 #'  
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
 #' 
-#' @inheritParams bitly_LinkMetricsClicks
+#' @inheritParams bitly_LinksMetricsClicks
 #' 
 #' @return clicks - the number of clicks referred from this domain.
 #' @return referrer - the URL referring clicks.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' link_Metrics_ReferrersByDomain(link = "http://bit.ly/DPetrov",unit="day",units=-1,limit = 100)
+#' bitly_token <- bitly_auth(key = "", secret = "")
+#' bitly_LinksMetricsReferrersByDomain(link = "http://bit.ly/DPetrov",unit="day",units=-1,limit = 100)
 #' 
 #' @export
-link_Metrics_ReferrersByDomain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+bitly_LinksMetricsReferrersByDomain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                              units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   
