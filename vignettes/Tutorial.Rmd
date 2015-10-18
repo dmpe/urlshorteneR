@@ -9,11 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
   
-This package is wrapping [Bit.ly](https://www.bitly.com) API & [Goo.gl](https://goo.gl). In order to begin shortening URLs and downloading usefull statistics, there is one requirement, which is to authenticate using OAuth2 for each service. 
+This package is wrapping [Bit.ly](https://www.bitly.com) API & [Goo.gl](https://goo.gl). In order to begin shortening URLs and downloading usefull statistics, there is one requirement, which is to authenticate using OAUTH2 for each service. 
   
 ## Authentication
 
-See \link{google_auth} || ??googl_auth
+See `??googl_auth`.
   
 # Bit.ly
   
@@ -24,10 +24,12 @@ Official API documentation <http://dev.bitly.com/user_metrics.html>.
 Method below returns my most-clicked Bit.ly links (ordered by number of clicks) in a given time period.
   
 ```{r}
+setwd("~/Documents/rbitly")
 library(urlshorteneR)
+library(magrittr)
 
 # You should register a new pair of keys yourself. DO NOT USE MINE as this may not work. 
-# bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+# bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 
 bitly_UserMetricsPopularLinks(unit = "month", units = -1, limit = 100)
 ```
