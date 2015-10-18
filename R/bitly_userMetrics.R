@@ -53,7 +53,8 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 }
 
 
-#' @title Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.
+#' @title Returns aggregate metrics about the countries referring click traffic to all of the 
+#' authenticated user's Bitlinks.
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
 #'  
@@ -87,7 +88,8 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
   return(df_user_metrics_countries_data)
 }
 
-#' @title Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.
+#' @title Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in 
+#' a given time period.
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
 #'

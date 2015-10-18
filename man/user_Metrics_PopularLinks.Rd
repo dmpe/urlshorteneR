@@ -2,7 +2,8 @@
 % Please edit documentation in R/bitly_userMetrics.R
 \name{user_Metrics_PopularLinks}
 \alias{user_Metrics_PopularLinks}
-\title{Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.}
+\title{Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in
+a given time period.}
 \usage{
 user_Metrics_PopularLinks(limit = 1000, unit = c("minute", "hour", "day",
   "week", "month"), units = -1, showRequestURL = FALSE)
@@ -24,7 +25,8 @@ link - a Bitlink.
 clicks - the number of clicks on that Bitlink in the specified timeframe.
 }
 \description{
-Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in a given time period.
+Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in
+a given time period.
 }
 \note{
 This has replaced the realtime_links endpoint.

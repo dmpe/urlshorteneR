@@ -22,8 +22,7 @@ For Goo.gl API Keys you must go to the \url{https://console.developers.google.co
 "APIs & auth", then "Credentials", then "add OAUTH2 client ID" and lastly you select "Type:Other".
 }
 \examples{
-google_token <- google_auth(
-key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
+google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
 secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")

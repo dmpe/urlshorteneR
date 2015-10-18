@@ -2,7 +2,8 @@
 % Please edit documentation in R/bitly_userMetrics.R
 \name{user_Metrics_Countries}
 \alias{user_Metrics_Countries}
-\title{Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.}
+\title{Returns aggregate metrics about the countries referring click traffic to all of the
+authenticated user's Bitlinks.}
 \usage{
 user_Metrics_Countries(limit = 1000, unit = c("minute", "hour", "day",
   "week", "month"), rollup = "true", units = -1, showRequestURL = FALSE)
@@ -27,7 +28,8 @@ clicks - the number of clicks referred from this country.
 country - the two-letter code of the referring country.
 }
 \description{
-Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.
+Returns aggregate metrics about the countries referring click traffic to all of the
+authenticated user's Bitlinks.
 }
 \note{
 When a unit is specified (always the case), rollup is always (!) true.

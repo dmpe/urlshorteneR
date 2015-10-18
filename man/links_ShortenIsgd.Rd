@@ -30,6 +30,6 @@ error and get an alternative choice from your app's user.}
 Given a long URL, returns a short is.gd link.
 }
 \examples{
-## asd <- links_ShortenIsgd(longUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
+## asd <- links_ShortenIsgd(longUrl = "http://debil.cz/",showRequestURL = TRUE)
 }
 

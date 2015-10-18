@@ -78,25 +78,6 @@ g1
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -------------
 
 ### What has (not) been implemented:
@@ -154,8 +135,6 @@ Based on <http://dev.bitly.com/>
 /v3/user/link_lookup  | **NOT**  | No
 /v3/user/link_save | **NOT**  | No
 /v3/user/save_custom_domain_keyword | **NOT**  | Yes
-
-
 
 - <http://dev.bitly.com/nsq.html>  
 + None endpoints are implemented here, logically, because all are "premium". Addionally, this is only for the [NSQ](http://nsq.io/) platform.
