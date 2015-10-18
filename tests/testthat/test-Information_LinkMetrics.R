@@ -10,27 +10,27 @@ google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i
 context("User Info")
 
 test_that("Return information about a user.", {
-  ui <- user_Info()
+  ui <- bitly_UserInfo()
   expect_equal(dim(ui)[[2]], 2)
 })
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
-  user.linkH <- user_LinkHistory()
+  user.linkH <- bitly_UserLinkHistory()
   expect_more_than(length(user.linkH), 10)
   expect_message(user_TrackingDomains(), "It seems that you don't have any tracking domains.")
 })
 
 test_that("Returns entries from a user's link history from Google.", {
-  g3 <- user_LinkHistoryGoogl()
+  g3 <- googl_UserLinkHistory()
   expect_more_than(nrow(g3), 10)
 })
 
 context("Link Metrics")
 
 test_that("Returns the number of clicks on a single Bitlink.", {
-  lmc <- link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+  lmc <- bitly_LinksMetricsClicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
   expect_equal(lmc, 6)
-  lmc <- link_Metrics_Clicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, rollup = "false")
+  lmc <- bitly_LinksMetricsClicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, rollup = "false")
   expect_named(lmc, c("dt", "clicks"))
 })
 
