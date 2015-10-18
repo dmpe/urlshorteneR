@@ -8,3 +8,5 @@ LICENSE
 ^revdep$
 ^cran-comments\.md$
 ^.*\.o$
+googl_token.rds.enc
+bitly_token.rds.enc
