@@ -3,7 +3,7 @@
 \name{google_auth}
 \alias{bitly_auth}
 \alias{google_auth}
-\title{Assign Bit.ly/Goo.gl API tokens using OAUTH 2}
+\title{Assign API tokens using OAUTH2}
 \usage{
 google_auth(key = "", secret = "")
 

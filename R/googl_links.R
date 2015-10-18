@@ -32,7 +32,7 @@
 #' something else, such as "MALWARE".
 #'
 #' @export
-links_ExpandGoogl <- function(shortUrl = "", projection = "FULL", showRequestURL = FALSE) {
+googl_ExpandLinks <- function(shortUrl = "", projection = "FULL", showRequestURL = FALSE) {
   links_expand_url <- "https://www.googleapis.com/urlshortener/v1/url"
   
   query <- list(key = google_token$credentials$access_token, shortUrl = shortUrl, projection = projection)
@@ -77,7 +77,7 @@ links_ExpandGoogl <- function(shortUrl = "", projection = "FULL", showRequestURL
 #' g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 #' 
 #' @export
-links_ShortenGoogl <- function(longUrl = "", showRequestURL = FALSE) {
+googl_ShortenLinks <- function(longUrl = "", showRequestURL = FALSE) {
   links_shorten_url <- paste0("https://www.googleapis.com/urlshortener/v1/url?key=", google_token$credentials$access_token)
   
   resource <- paste0("{'longUrl':", paste0("'",longUrl,"'}"))
@@ -124,7 +124,7 @@ links_ShortenGoogl <- function(longUrl = "", showRequestURL = FALSE) {
 #' @note Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 #'
 #' @export
-user_LinkHistoryGoogl <- function(projection = "FULL", showRequestURL = FALSE) {
+googl_UserLinkHistory <- function(projection = "FULL", showRequestURL = FALSE) {
   
   user_linkHistory_url <- "https://www.googleapis.com/urlshortener/v1/url/history"
   

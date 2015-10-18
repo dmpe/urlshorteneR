@@ -42,12 +42,12 @@
 #'
 #' @examples 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' uI <- user_Info() 
+#' uI <- bitly_userInfo() 
 #' 
 #' @import stringr
 #' 
 #' @export
-user_Info <- function(showRequestURL = FALSE) {
+bitly_UserInfo <- function(showRequestURL = FALSE) {
   
   user_info_url <- "https://api-ssl.bitly.com/v3/user/info"
   
@@ -100,10 +100,10 @@ user_Info <- function(showRequestURL = FALSE) {
 #' 
 #' @examples 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' lh <- user_LinkHistory() 
+#' lh <- bitly_UserLinkHistory() 
 #'
 #' @export
-user_LinkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false", 
+bitly_UserLinkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false", 
                              showRequestURL = FALSE) {
   
   user_linkHistory_url <- "https://api-ssl.bitly.com/v3/user/link_history"
@@ -134,10 +134,10 @@ user_LinkHistory <- function(limit = 100, private = "off", archived = "both", ex
 #'
 #' @examples 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_TrackingDomains()
+#' bitly_UserTrackingDomains()
 #' 
 #' @export
-user_TrackingDomains <- function(showRequestURL = FALSE) {
+bitly_UserTrackingDomains <- function(showRequestURL = FALSE) {
   
   user_tracking_domain_list_url <- "https://api-ssl.bitly.com/v3/user/tracking_domain_list"
   
@@ -176,11 +176,11 @@ user_TrackingDomains <- function(showRequestURL = FALSE) {
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' bitly_pro_domain(domain = "nytidsfds.ms") 
-#' bitly_pro_domain(domain = "nyti.ms", showRequestURL = TRUE) 
+#' bitly_IsProDomain(domain = "nytidsfds.ms") 
+#' bitly_IsProDomain(domain = "nyti.ms", showRequestURL = TRUE) 
 #'
 #' @export
-bitly_pro_domain <- function(domain, showRequestURL = FALSE) {
+bitly_IsProDomain <- function(domain, showRequestURL = FALSE) {
   
   bitly_pro_domain_url <- "https://api-ssl.bitly.com/v3/bitly_pro_domain"
   
