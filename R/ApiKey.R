@@ -18,23 +18,23 @@
 #' @seealso See \url{https://developers.google.com/url-shortener/v1/getting_started#APIKey}
 #' 
 #' @examples
-#' google_token <- google_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
+#' googl_token <- googl_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
 #' secret = "qItL-PZnm8GFxUOYM0zPVr_t")
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 #' secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' 
 #' @import httr
 #' @export
-google_auth <- function(key = "", secret = "") {
-  google_token <- httr::oauth2.0_token(httr::oauth_endpoints("google"),
+googl_auth <- function(key = "", secret = "") {
+  googl_token <- httr::oauth2.0_token(httr::oauth_endpoints("google"),
                                        httr::oauth_app("google", key = key, secret = secret),
                                        scope = "https://www.googleapis.com/auth/urlshortener",
                                        cache = TRUE)
-  return(google_token)
+  return(googl_token)
 }
 
 
-#' @rdname google_auth
+#' @rdname googl_auth
 #' @export
 bitly_auth <- function(key = "", secret = "") {
   bitly_token <- httr::oauth2.0_token(httr::oauth_endpoint(authorize = "https://bitly.com/oauth/authorize",
@@ -60,7 +60,7 @@ doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL =
   if (service == "bitly") {
     service_token <- bitly_token
   } else if (service == "googl") {
-    service_token <- google_token
+    service_token <- googl_token
   } else {
     service_token <- NULL
   }
