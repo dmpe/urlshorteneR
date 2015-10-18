@@ -34,11 +34,9 @@ long URL, creation timestamp, and status.
 Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 }
 \examples{
-google_token <- google_auth(
-key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
-secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-user_LinkHistoryGoogl(showRequestURL = TRUE)
-user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE)
+google_token <- google_auth(key = "", secret = "")
+googl_UserLinkHistory(showRequestURL = TRUE)
+googl_UserLinkHistory(projection = "FULL", showRequestURL = TRUE)
 }
 \seealso{
 See \url{https://developers.google.com/url-shortener/v1/url/list}

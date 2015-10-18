@@ -10,19 +10,19 @@
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' links_Lookup(url = "http://www.seznam.cz/")
-#' links_Lookup(url = "http://www.seznam.cz/", showRequestURL = TRUE) 
+#' bitly_LinksLookup(url = "http://www.seznam.cz/")
+#' bitly_LinksLookup(url = "http://www.seznam.cz/", showRequestURL = TRUE) 
 #'
 #' \dontrun{ 
 #' manyUrls <- list("http://www.seznam.cz/", "http://www.seznamasdas.cz/", 
 #' "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt")
 #' for (u in 1:length(manyUrls)) {
-#'    print(links_Lookup(url = manyUrls[[u]], showRequestURL = TRUE))
+#'    print(bitly_LinksLookup(url = manyUrls[[u]], showRequestURL = TRUE))
 #' }
 #' }
 #' 
 #' @export
-links_Lookup <- function(url, showRequestURL = FALSE) {
+bitly_LinksLookup <- function(url, showRequestURL = FALSE) {
   
   links_lookup_url <- "https://api-ssl.bitly.com/v3/link/lookup"
   
@@ -63,20 +63,20 @@ links_Lookup <- function(url, showRequestURL = FALSE) {
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' links_Info(shortUrl = "http://bit.ly/DPetrov")
-#' links_Info(hash = "DPetrov", showRequestURL = TRUE) 
-#' links_Info(hash = "DPetrov", expand_user = "true")
+#' bitly_LinksInfo(shortUrl = "http://bit.ly/DPetrov")
+#' bitly_LinksInfo(hash = "DPetrov", showRequestURL = TRUE) 
+#' bitly_LinksInfo(hash = "DPetrov", expand_user = "true")
 #' 
 #' ## hash is the one which is only returned. Dont use
-#' links_Info(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") 
+#' bitly_LinksInfo(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov") 
 #' 
 #' ## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
 #' ## for (u in 1:length(manyHashes)) {
-#' ##   print(links_Info(hashIN = manyHashes[[u]], showRequestURL = TRUE))
+#' ##   print(bitly_LinksInfo(hashIN = manyHashes[[u]], showRequestURL = TRUE))
 #' ## }
 #' 
 #' @export
-links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
+bitly_LinksInfo <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
   
   links_info_url <- "https://api-ssl.bitly.com/v3/info"
   
@@ -123,18 +123,18 @@ links_Info <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", sho
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' links_Expand(shortUrl = "http://bit.ly/DPetrov")
-#' links_Expand(hash = "DPetrov", showRequestURL = TRUE) 
-#' links_Expand(hash = "DPetrov")
-#' links_Expand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
+#' bitly_LinksExpand(shortUrl = "http://bit.ly/DPetrov")
+#' bitly_LinksExpand(hash = "DPetrov", showRequestURL = TRUE) 
+#' bitly_LinksExpand(hash = "DPetrov")
+#' bitly_LinksExpand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
 #' 
 #' ## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
 #' ## for (u in 1:length(manyHashes)) {
-#' ##   print(links_Expand(hashIN = manyHashes[[u]], showRequestURL = TRUE))
+#' ##   print(bitly_LinksExpand(hashIN = manyHashes[[u]], showRequestURL = TRUE))
 #' ## }
 #' 
 #' @export
-links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE) {
+bitly_LinksExpand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE) {
   
   links_expand_url <- "https://api-ssl.bitly.com/v3/expand"
   
@@ -193,11 +193,11 @@ links_Expand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' links_Shorten(longUrl = "http://slovnik.seznam.cz/")
-#' links_Shorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423", domain = "j.mp")
+#' bitly_LinksShorten(longUrl = "http://slovnik.seznam.cz/")
+#' bitly_LinksShorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423", domain = "j.mp")
 #' 
 #' @export
-links_Shorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
+bitly_LinksShorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
   
   links_shorten_url <- "https://api-ssl.bitly.com/v3/shorten"
   

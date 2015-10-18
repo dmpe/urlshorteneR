@@ -18,14 +18,14 @@
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
-#' user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "true")
-#' user_Metrics_Clicks(unit = "day", units = -1, limit = 100, rollup = "false")
+#' bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "true")
+#' bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "false")
 #' 
 #' @note without the parameter unit this endpoint returns a legacy response format which assumes 
 #' rollup=false, unit=day and units=7.
 #' 
 #' @export
-user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
+bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
                                units = -1, rollup = c("false", "true"), showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
   rollup_matched <- match.arg(rollup)
@@ -58,7 +58,7 @@ user_Metrics_Clicks <- function(limit = 1000, unit = c("minute", "hour", "day", 
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
 #'  
-#' @inheritParams user_Metrics_Clicks
+#' @inheritParams bitly_UserMetricsClicks
 #' 
 #' @return clicks - the number of clicks referred from this country.
 #' @return country - the two-letter code of the referring country.
@@ -93,7 +93,7 @@ user_Metrics_Countries <- function(limit = 1000, unit = c("minute", "hour", "day
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
 #'
-#' @inheritParams user_Metrics_Clicks
+#' @inheritParams bitly_UserMetricsClicks
 #' 
 #' @return link - a Bitlink.
 #' @return clicks - the number of clicks on that Bitlink in the specified timeframe.
@@ -127,7 +127,7 @@ user_Metrics_PopularLinks <- function(limit = 1000, unit = c("minute", "hour", "
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
 #'
-#' @inheritParams user_Metrics_Clicks
+#' @inheritParams bitly_UserMetricsClicks
 #' 
 #' @return clicks - the number of clicks referred from this URL.
 #' @return referrer - the URL referring clicks.
@@ -163,7 +163,7 @@ user_Metrics_Referrers <- function(limit = 1000, unit = c("minute", "hour", "day
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referring_domains}
 #'
-#' @inheritParams user_Metrics_Clicks
+#' @inheritParams bitly_UserMetricsClicks
 #' 
 #' @param exclude_social_networks - true (default) or false. If true, exclude domains that are 
 #' part of a social network that bitly tracks.
@@ -218,7 +218,7 @@ user_Metrics_ReferringDomains <- function(limit = 1000, unit = c("minute", "hour
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
 #'
-#' @inheritParams user_Metrics_Clicks
+#' @inheritParams bitly_UserMetricsClicks
 #' 
 #' @return dt - datetime when shortens had been made.
 #' @return shortens - the number of shortens made by the specified user in the specified time.

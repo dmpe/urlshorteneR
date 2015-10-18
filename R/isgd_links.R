@@ -17,10 +17,10 @@
 #' our usage limits page for more information on this \url{https://is.gd/usagelimits.php}.
 #' 
 #' @examples
-#' ## asd <- isgd_ShortenLinks(longUrl = "http://debil.cz/",showRequestURL = TRUE)
+#' ## asd <- isgd_LinksShorten(longUrl = "http://debil.cz/",showRequestURL = TRUE)
 #' 
 #' @export
-isgd_ShortenLinks <- function(longUrl = "", logstats = "0", shorturl = NULL, showRequestURL = FALSE) {
+isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, showRequestURL = FALSE) {
   links_shorten_url <- "http://is.gd/create.php?format=json"
   
   query <- list(url = longUrl, logstats = logstats, shorturl = shorturl)

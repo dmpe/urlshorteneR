@@ -17,11 +17,9 @@
 #' Shortener API (\url{https://console.developers.google.com/})
 #' 
 #' @examples 
-#' google_token <- google_auth(
-#' key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", 
-#' secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-#' g1 <- links_ExpandGoogl(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
-#' g4<-links_ExpandGoogl(shortUrl="http://goo.gl/vM0w4",projection = "ANALYTICS_TOP_STRINGS")
+#' google_token <- google_auth(key = "", secret = "")
+#' g1 <- googl_LinksExpand(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
+#' g4 <- googl_LinksExpand(shortUrl="http://goo.gl/vM0w4",projection = "ANALYTICS_TOP_STRINGS")
 #'
 #' @note Returns a dataframe of expanded short URL and a list of its analytics.
 #' 
@@ -32,7 +30,7 @@
 #' something else, such as "MALWARE".
 #'
 #' @export
-googl_ExpandLinks <- function(shortUrl = "", projection = "FULL", showRequestURL = FALSE) {
+googl_LinksExpand <- function(shortUrl = "", projection = "FULL", showRequestURL = FALSE) {
   links_expand_url <- "https://www.googleapis.com/urlshortener/v1/url"
   
   query <- list(key = google_token$credentials$access_token, shortUrl = shortUrl, projection = projection)
@@ -71,13 +69,11 @@ googl_ExpandLinks <- function(shortUrl = "", projection = "FULL", showRequestURL
 #' if you pass http://www.google.com, the server will add a trailing slash.
 #' 
 #' @examples 
-#' google_token <- google_auth(
-#' key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", 
-#' secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-#' g2 <- links_ShortenGoogl(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
+#' google_token <- google_auth(key = "", secret = "")
+#' g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 #' 
 #' @export
-googl_ShortenLinks <- function(longUrl = "", showRequestURL = FALSE) {
+googl_LinksShorten <- function(longUrl = "", showRequestURL = FALSE) {
   links_shorten_url <- paste0("https://www.googleapis.com/urlshortener/v1/url?key=", google_token$credentials$access_token)
   
   resource <- paste0("{'longUrl':", paste0("'",longUrl,"'}"))
@@ -115,11 +111,9 @@ googl_ShortenLinks <- function(longUrl = "", showRequestURL = FALSE) {
 #' \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
 #'
 #' @examples
-#' google_token <- google_auth(
-#' key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", 
-#' secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-#' user_LinkHistoryGoogl(showRequestURL = TRUE)
-#' user_LinkHistoryGoogl(projection = "FULL", showRequestURL = TRUE)
+#' google_token <- google_auth(key = "", secret = "")
+#' googl_UserLinkHistory(showRequestURL = TRUE)
+#' googl_UserLinkHistory(projection = "FULL", showRequestURL = TRUE)
 #'
 #' @note Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 #'
