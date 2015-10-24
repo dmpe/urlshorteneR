@@ -14,14 +14,17 @@
 #' units of time.
 #' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
 #' maximum value for units is 60. 
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug 
+#' purposes.
 #' 
 #' @return clicks - the number of clicks on the specified Bitlink.
 #' @return dt - time in UTC format (only when rollup = "false")
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsClicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' }
 #' 
 #' @export
 bitly_LinksMetricsClicks <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
@@ -64,10 +67,12 @@ bitly_LinksMetricsClicks <- function(link, limit = 1000, unit = c("minute", "hou
 #' @return country - the two-letter code of the referring country.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 #' bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100, 
 #' showRequestURL= TRUE)
+#' }
 #' 
 #' @export
 bitly_LinksMetricsCountries <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
@@ -90,8 +95,8 @@ bitly_LinksMetricsCountries <- function(link, limit = 1000, unit = c("minute", "
 
 #' @title Returns users who have encoded this long URL.
 #' 
-#' @description Returns users who have encoded this long URL (optionally only those in the requesting 
-#' user's social graph).
+#' @description Returns users who have encoded this long URL (optionally only those in 
+#' the requesting user's social graph).
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders}
 #' 
@@ -108,9 +113,11 @@ bitly_LinksMetricsCountries <- function(link, limit = 1000, unit = c("minute", "
 #' more depending on input parameters.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsEncoders(link = "http://bit.ly/DPetrov")
-#' bitly_LinksMetricsEncoders(link = "http://bit.ly/DPetrov", expand_user = "true", my_network = "false")
+#' bitly_LinksMetricsEncoders("http://bit.ly/DPetrov", expand_user = "true", my_network = "false")
+#' }
 #' 
 #' @export
 bitly_LinksMetricsEncoders <- function(link, my_network = "false", limit = 25, expand_user = "false", 
@@ -146,8 +153,10 @@ bitly_LinksMetricsEncoders <- function(link, my_network = "false", limit = 25, e
 #' @return count - the number of bitly users who have shortened (encoded) this link.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsEncodersCount(link = "http://bit.ly/DPetrov")
+#' }
 #' 
 #' @export
 bitly_LinksMetricsEncodersCount <- function(link, showRequestURL = FALSE) {
@@ -191,10 +200,12 @@ bitly_LinksMetricsEncodersCount <- function(link, showRequestURL = FALSE) {
 #' more depending on input parameters.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
-#' bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100) 
-#' bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100, 
+#' bitly_LinksMetricsEncodersByCount("http://bit.ly/DPetrov", my_network = "false", limit = 100) 
+#' bitly_LinksMetricsEncodersByCount("http://bit.ly/DPetrov", my_network = "false", limit = 100, 
 #' expand_user = "true")
+#' }
 #' 
 #' @export
 bitly_LinksMetricsEncodersByCount <- function(link, limit = 100, my_network = "false", expand_user = "false", 
@@ -231,8 +242,10 @@ bitly_LinksMetricsEncodersByCount <- function(link, limit = 100, my_network = "f
 #' @return url - the complete URL of the domain referring clicks.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsReferringDomains("http://bit.ly/DPetrov", unit = "day", units=-1, limit = 100)
+#' }
 #' 
 #' @export
 bitly_LinksMetricsReferringDomains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
@@ -265,8 +278,10 @@ bitly_LinksMetricsReferringDomains <- function(link, limit = 1000, unit = c("min
 #' @return referrer - the URL referring clicks.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov",unit = "day", units = -1, limit = 100)
+#' }
 #' 
 #' @export
 bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
@@ -300,8 +315,10 @@ bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "
 #' @return referrer - the URL referring clicks.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_LinksMetricsReferrersByDomain("http://bit.ly/DPetrov",unit="day",units=-1,limit = 100)
+#' }
 #' 
 #' @export
 bitly_LinksMetricsReferrersByDomain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 

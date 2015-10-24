@@ -41,7 +41,9 @@ The maximum number of shortUrl and hash parameters is 15.
  or more URLs  Up TO 15
 }
 \examples{
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+\dontrun{
+bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 bitly_LinksExpand(shortUrl = "http://bit.ly/DPetrov")
 bitly_LinksExpand(hash = "DPetrov", showRequestURL = TRUE)
 bitly_LinksExpand(hash = "DPetrov")
@@ -51,6 +53,7 @@ bitly_LinksExpand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
 ## for (u in 1:length(manyHashes)) {
 ##   print(bitly_LinksExpand(hashIN = manyHashes[[u]], showRequestURL = TRUE))
 ## }
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/links.html#v3_expand}

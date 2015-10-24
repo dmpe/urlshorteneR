@@ -9,7 +9,8 @@ bitly_LinksMetricsEncodersCount(link, showRequestURL = FALSE)
 \arguments{
 \item{link}{- a Bitlink.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 aggregate_link - the aggregate (global) Bitlink for the provided Bitlink.
@@ -20,8 +21,10 @@ count - the number of bitly users who have shortened (encoded) this link.
 Returns the number of users who have shortened (encoded) a single Bitlink.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "", secret = "")
 bitly_LinksMetricsEncodersCount(link = "http://bit.ly/DPetrov")
+}
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}

@@ -17,10 +17,12 @@
 #' Shortener API (\url{https://console.developers.google.com/})
 #' 
 #' @examples 
+#' \dontrun{
 #' googl_token <- googl_auth(key = "", secret = "")
 #' g1 <- googl_LinksExpand(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
 #' g4 <- googl_LinksExpand(shortUrl="http://goo.gl/vM0w4",projection = "ANALYTICS_TOP_STRINGS")
-#'
+#' }
+#' 
 #' @note Returns a dataframe of expanded short URL and a list of its analytics.
 #' 
 #' @return id - is the short URL you passed in.
@@ -33,7 +35,7 @@
 googl_LinksExpand <- function(shortUrl = "", projection = "FULL", showRequestURL = FALSE) {
   links_expand_url <- "https://www.googleapis.com/urlshortener/v1/url"
   
-  query <- list(key = google_token$credentials$access_token, shortUrl = shortUrl, projection = projection)
+  query <- list(key = googl_token$credentials$access_token, shortUrl = shortUrl, projection = projection)
   
   # call method from ApiKey.R
   df_link_expand <- doRequest("GET", links_expand_url, "googl", queryParameters = query, showURL = showRequestURL)
@@ -69,8 +71,10 @@ googl_LinksExpand <- function(shortUrl = "", projection = "FULL", showRequestURL
 #' if you pass http://www.google.com, the server will add a trailing slash.
 #' 
 #' @examples 
+#' \dontrun{
 #' googl_token <- googl_auth(key = "", secret = "")
 #' g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
+#' }
 #' 
 #' @export
 googl_LinksShorten <- function(longUrl = "", showRequestURL = FALSE) {
@@ -111,10 +115,12 @@ googl_LinksShorten <- function(longUrl = "", showRequestURL = FALSE) {
 #' \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
 #'
 #' @examples
+#' \dontrun{
 #' googl_token <- googl_auth(key = "", secret = "")
 #' googl_UserLinkHistory(showRequestURL = TRUE)
 #' googl_UserLinkHistory(projection = "FULL", showRequestURL = TRUE)
-#'
+#' }
+#' 
 #' @note Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 #'
 #' @export

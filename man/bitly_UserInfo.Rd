@@ -70,8 +70,10 @@ Return or update information about a user.
 Both returned columns (!) are character type.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 uI <- bitly_userInfo()
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/user_info.html#v3_user_info}

@@ -54,9 +54,12 @@ spaces are all indications of errors. Please remember to strip leading and trail
 from any user input before shortening.
 }
 \examples{
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+\dontrun{
+bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 bitly_LinksShorten(longUrl = "http://slovnik.seznam.cz/")
-bitly_LinksShorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423", domain = "j.mp")
+bitly_LinksShorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423",domain = "j.mp")
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/rate_limiting.html}

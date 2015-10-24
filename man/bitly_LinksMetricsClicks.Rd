@@ -22,7 +22,8 @@ units of time.}
 \item{rollup}{- true (default) or false.  Return data for multiple units rolled up to a
 single result instead of a separate value for each period of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 clicks - the number of clicks on the specified Bitlink.
@@ -36,8 +37,10 @@ Returns the number of clicks on a single Bitlink of the authenticated user.
  or more URLs up to 15
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "", secret = "")
 bitly_LinksMetricsClicks(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+}
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}

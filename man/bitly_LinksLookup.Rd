@@ -9,7 +9,8 @@ bitly_LinksLookup(url, showRequestURL = FALSE)
 \arguments{
 \item{url}{- one long URLs to lookup.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 url - an echo back of the url parameter.
@@ -20,11 +21,12 @@ aggregate_link - the corresponding bitly aggregate link (global hash).
 Query for a Bitlink based on a long URL.
 }
 \examples{
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+\dontrun{
+bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 bitly_LinksLookup(url = "http://www.seznam.cz/")
 bitly_LinksLookup(url = "http://www.seznam.cz/", showRequestURL = TRUE)
 
-\dontrun{
 manyUrls <- list("http://www.seznam.cz/", "http://www.seznamasdas.cz/",
 "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt")
 for (u in 1:length(manyUrls)) {

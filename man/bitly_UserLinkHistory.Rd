@@ -55,8 +55,10 @@ corresponding to the client_id of the encoding oauth application.
 Returns entries from a user's link history in reverse chronological order.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 lh <- bitly_UserLinkHistory()
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}

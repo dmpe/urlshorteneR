@@ -18,7 +18,8 @@ maximum value for units is 60.}
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 clicks - the number of clicks referred from this country.
@@ -29,10 +30,12 @@ country - the two-letter code of the referring country.
 Returns metrics about the countries referring click traffic to a single Bitlink.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "", secret = "")
 bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
 bitly_LinksMetricsCountries(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100,
 showRequestURL= TRUE)
+}
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}

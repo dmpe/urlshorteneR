@@ -5,21 +5,23 @@
 #' @param limit - 1 to 1000 (default=1000).
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all 
 #' units of time.
-#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the maximum 
-#' value for units is 60.
-#' @param rollup - true or false. Return data for multiple units rolled up to a single result instead 
-#' of a separate value for each period of time.
+#' @param unit - minute, hour, day, week or month, default: day; Note: when unit is minute the 
+#' maximum value for units is 60.
+#' @param rollup - true or false. Return data for multiple units rolled up to a single result 
+#' instead of a separate value for each period of time.
 #' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
 #' 
 #' @return dt - a unix timestamp representing the beginning of this unit.
-#' @return day_start - a unix timestamp representing the beginning of the specified day (ONLY returned 
-#' if unit is not specified).
+#' @return day_start - a unix timestamp representing the beginning of the specified day (ONLY 
+#' returned if unit is not specified).
 #' @return clicks - the number of clicks on this user's links in the specified timeframe.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "true")
 #' bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "false")
+#' }
 #' 
 #' @note without the parameter unit this endpoint returns a legacy response format which assumes 
 #' rollup=false, unit=day and units=7.
@@ -32,7 +34,7 @@ bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "da
   
   user_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/user/clicks"
   
-  query <- list(access_token =bitly_token$credentials$access_token, limit = limit, 
+  query <- list(access_token = bitly_token$credentials$access_token, limit = limit, 
                 unit = unit_matched, units = units, rollup = rollup_matched)
   
   # call method from ApiKey.R
@@ -66,8 +68,10 @@ bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "da
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_UserMetricsCountries(unit = "day", units = -1, limit = 100, rollup = "true")
+#' }
 #' 
 #' @export
 bitly_UserMetricsCountries <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
@@ -101,8 +105,10 @@ bitly_UserMetricsCountries <- function(limit = 1000, unit = c("minute", "hour", 
 #' @note This has replaced the realtime_links endpoint.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_UserMetricsPopularLinks(unit = "day", units = -1, limit = 100)
+#' }
 #' 
 #' @export
 bitly_UserMetricsPopularLinks <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
@@ -136,8 +142,10 @@ bitly_UserMetricsPopularLinks <- function(limit = 1000, unit = c("minute", "hour
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
+#' }
 #' 
 #' @export
 bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
@@ -160,8 +168,9 @@ bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", 
 #' @title Returns aggregate metrics about the domains referring click traffic to all of the 
 #' authenticated user's Bitlinks. 
 #' 
-#' @description If the user is a master (ent.) account, or is a subaccount with full_reports permission, the 
-#' user may choose to view the metrics of any account belonging to the master account.
+#' @description If the user is a master (ent.) account, or is a subaccount with full_reports 
+#' permission, the user may choose to view the metrics of any account belonging to the master 
+#' account.
 #' 
 #' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referring_domains}
 #'
@@ -178,6 +187,7 @@ bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", 
 #' @note When a unit is specified (always the case), rollup is always (!) true.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true")
 #' bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "false")
@@ -185,6 +195,7 @@ bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", 
 #' exclude_social_networks = "false")
 #' bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, 
 #' exclude_social_networks = "true")
+#' }
 #' 
 #' @export
 bitly_UserMetricsReferringDomains <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),
@@ -226,10 +237,12 @@ bitly_UserMetricsReferringDomains <- function(limit = 1000, unit = c("minute", "
 #' @return shortens - the number of shortens made by the specified user in the specified time.
 #' 
 #' @examples
+#' \dontrun{
 #' bitly_token <- bitly_auth(key = "", secret = "")
 #' bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")
 #' bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100, rollup = "false")
 #' bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100)
+#' }
 #' 
 #' @export
 bitly_UserMetricsShortenCounts <- function(limit = 1000, unit = c("minute", "hour", "day", "week", "month"),

@@ -22,9 +22,11 @@ Query whether a given domain is a valid bitly pro domain. Keep in mind that bitl
 custom short domains are restricted to less than 15 characters in length.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 bitly_IsProDomain(domain = "nytidsfds.ms")
 bitly_IsProDomain(domain = "nyti.ms", showRequestURL = TRUE)
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/domains.html#v3_bitly_pro_domain}

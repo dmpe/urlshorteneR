@@ -3,17 +3,19 @@
 #' @seealso See \url{http://dev.bitly.com/links.html#v3_link_lookup}
 #'
 #' @param url - one long URLs to lookup.
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug 
+#' purposes.
 #'      
 #' @return url - an echo back of the url parameter.
 #' @return aggregate_link - the corresponding bitly aggregate link (global hash).
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' \dontrun{ 
+#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
+#' secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' bitly_LinksLookup(url = "http://www.seznam.cz/")
 #' bitly_LinksLookup(url = "http://www.seznam.cz/", showRequestURL = TRUE) 
 #'
-#' \dontrun{ 
 #' manyUrls <- list("http://www.seznam.cz/", "http://www.seznamasdas.cz/", 
 #' "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt")
 #' for (u in 1:length(manyUrls)) {
@@ -62,7 +64,9 @@ bitly_LinksLookup <- function(url, showRequestURL = FALSE) {
 #' @return created_at - the epoch timestamp when this Bitlink was created.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' \dontrun{ 
+#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
+#' secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' bitly_LinksInfo(shortUrl = "http://bit.ly/DPetrov")
 #' bitly_LinksInfo(hash = "DPetrov", showRequestURL = TRUE) 
 #' bitly_LinksInfo(hash = "DPetrov", expand_user = "true")
@@ -74,6 +78,7 @@ bitly_LinksLookup <- function(url, showRequestURL = FALSE) {
 #' ## for (u in 1:length(manyHashes)) {
 #' ##   print(bitly_LinksInfo(hashIN = manyHashes[[u]], showRequestURL = TRUE))
 #' ## }
+#' }
 #' 
 #' @export
 bitly_LinksInfo <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
@@ -122,7 +127,9 @@ bitly_LinksInfo <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true"
 #' @return long_url - the URL that the requested short_url or hash points to.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' \dontrun{ 
+#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
+#' secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' bitly_LinksExpand(shortUrl = "http://bit.ly/DPetrov")
 #' bitly_LinksExpand(hash = "DPetrov", showRequestURL = TRUE) 
 #' bitly_LinksExpand(hash = "DPetrov")
@@ -132,6 +139,7 @@ bitly_LinksInfo <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true"
 #' ## for (u in 1:length(manyHashes)) {
 #' ##   print(bitly_LinksExpand(hashIN = manyHashes[[u]], showRequestURL = TRUE))
 #' ## }
+#' }
 #' 
 #' @export
 bitly_LinksExpand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE) {
@@ -192,9 +200,13 @@ bitly_LinksExpand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = F
 #' account.
 #' 
 #' @examples
-#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#' \dontrun{
+#' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
+#' secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
 #' bitly_LinksShorten(longUrl = "http://slovnik.seznam.cz/")
-#' bitly_LinksShorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423", domain = "j.mp")
+#' bitly_LinksShorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423",domain = "j.mp")
+#' }
+#' 
 #' 
 #' @export
 bitly_LinksShorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {

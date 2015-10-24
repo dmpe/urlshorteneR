@@ -17,8 +17,10 @@ tracking_domains - a list of tracking domains configured for the authenticated u
 Returns a list of tracking domains a user has configured.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 bitly_UserTrackingDomains()
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}

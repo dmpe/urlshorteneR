@@ -18,7 +18,8 @@ maximum value for units is 60.}
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 clicks - the number of clicks referred from this domain.
@@ -29,8 +30,10 @@ referrer - the URL referring clicks.
 Returns metrics about the pages referring click traffic to a single Bitlink.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "", secret = "")
 bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov",unit = "day", units = -1, limit = 100)
+}
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}

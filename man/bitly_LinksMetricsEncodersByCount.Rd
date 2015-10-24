@@ -19,7 +19,8 @@ bitly_LinksMetricsEncodersByCount(link, limit = 100, my_network = "false",
 \item{subaccounts}{- (only available to enterprise accounts) false (always default) restrict to
 this enterprise account and its subaccounts}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
+purposes.}
 }
 \value{
 entries - a mapping of link, user, and ts (when the Bitlink was created) and possible
@@ -34,10 +35,12 @@ The response will only contain users whose links have gotten at least one click,
 will not contain any users whose links are private.
 }
 \examples{
+\dontrun{
 bitly_token <- bitly_auth(key = "", secret = "")
-bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
-bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100,
+bitly_LinksMetricsEncodersByCount("http://bit.ly/DPetrov", my_network = "false", limit = 100)
+bitly_LinksMetricsEncodersByCount("http://bit.ly/DPetrov", my_network = "false", limit = 100,
 expand_user = "true")
+}
 }
 \seealso{
 See \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count}

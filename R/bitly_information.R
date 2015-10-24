@@ -41,8 +41,10 @@
 #' @note Both returned columns (!) are character type.
 #'
 #' @examples 
+#' \dontrun{ 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 #' uI <- bitly_userInfo() 
+#' }
 #' 
 #' @import stringr
 #' 
@@ -99,9 +101,11 @@ bitly_UserInfo <- function(showRequestURL = FALSE) {
 #' corresponding to the client_id of the encoding oauth application.
 #' 
 #' @examples 
+#' \dontrun{ 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 #' lh <- bitly_UserLinkHistory() 
-#'
+#' }
+#' 
 #' @export
 bitly_UserLinkHistory <- function(limit = 100, private = "off", archived = "both", expand_client_id = "false", 
                              showRequestURL = FALSE) {
@@ -133,8 +137,10 @@ bitly_UserLinkHistory <- function(limit = 100, private = "off", archived = "both
 #' @return tracking_domains - a list of tracking domains configured for the authenticated user.
 #'
 #' @examples 
+#' \dontrun{ 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 #' bitly_UserTrackingDomains()
+#' }
 #' 
 #' @export
 bitly_UserTrackingDomains <- function(showRequestURL = FALSE) {
@@ -175,10 +181,12 @@ bitly_UserTrackingDomains <- function(showRequestURL = FALSE) {
 #' @return domain - an echo back of the request parameter.
 #' 
 #' @examples
+#' \dontrun{ 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 #' bitly_IsProDomain(domain = "nytidsfds.ms") 
 #' bitly_IsProDomain(domain = "nyti.ms", showRequestURL = TRUE) 
-#'
+#' }
+#' 
 #' @export
 bitly_IsProDomain <- function(domain, showRequestURL = FALSE) {
   
