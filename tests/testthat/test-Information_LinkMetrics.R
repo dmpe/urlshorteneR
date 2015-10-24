@@ -3,10 +3,10 @@ library(urlshorteneR)
 library(httr)
 library(jsonlite)
 library(stringr)
+print(getwd())
 
-bitly_token <- readRDS("tests/testthat/bitly_token.rds")
+bitly_token <- readRDS("bitly_token.rds")
 # googl_token <- readRDS("googl_token.rds")
-
 context("User Info")
 
 test_that("Return information about a user.", {
@@ -17,7 +17,7 @@ test_that("Return information about a user.", {
 test_that("Returns entries from a user's link history in reverse chronological order.", {
   user.linkH <- bitly_UserLinkHistory()
   expect_more_than(length(user.linkH), 10)
-  expect_message(user_TrackingDomains(), "It seems that you don't have any tracking domains.")
+  expect_message(bitly_UserTrackingDomains(), "It seems that you don't have any tracking domains.")
 })
 
 test_that("Returns entries from a user's link history from Google.", {

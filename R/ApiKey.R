@@ -65,6 +65,7 @@ bitly_auth <- function(key = "", secret = "") {
 #' @import jsonlite
 #' 
 #' @noRd
+#' @keywords internal
 doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL = NULL) {
   
   if (service == "bitly") {

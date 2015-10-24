@@ -26,6 +26,7 @@ Method below returns my most-clicked Bit.ly links (ordered by number of clicks) 
 ```{r}
 library(urlshorteneR)
 library(magrittr)
+print(getwd())
 
 bitly_token <- readRDS("../tests/testthat/bitly_token.rds")
 googl_token <- readRDS("../tests/testthat/googl_token.rds")
