@@ -55,7 +55,7 @@ corresponding to the client_id of the encoding oauth application.
 Returns entries from a user's link history in reverse chronological order.
 }
 \examples{
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 lh <- bitly_UserLinkHistory()
 }
 \seealso{

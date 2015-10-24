@@ -19,12 +19,15 @@ links with statistics turned on has twice the "cost" towards our rate limit of o
 links, so leave this parameter out of your API call if you don't require statistics on usage. See
 our usage limits page for more information on this \url{https://is.gd/usagelimits.php}.}
 
-\item{shorturl}{- (optional character) You can specify the shorturl parameter if you'd like to pick a
-shortened URL instead of having is.gd randomly generate one. These must be between 5 and 30
+\item{shorturl}{- (optional character) You can specify the shorturl parameter if you'd like to
+pick a shortened URL instead of having is.gd randomly generate one. These must be between 5 and 30
 characters long and can only contain alphanumeric characters and underscores. Shortened URLs
 are case sensitive. Bear in mind that a desired short URL might already be taken (this is very
 often the case with common words) so if you're using this option be prepared to respond to an
 error and get an alternative choice from your app's user.}
+
+\item{showRequestURL}{- show URL which has been build and requested from server.
+For debug purposes.}
 }
 \description{
 Given a long URL, returns a short is.gd link.

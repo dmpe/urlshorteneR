@@ -17,7 +17,7 @@
 #' Shortener API (\url{https://console.developers.google.com/})
 #' 
 #' @examples 
-#' google_token <- google_auth(key = "", secret = "")
+#' googl_token <- googl_auth(key = "", secret = "")
 #' g1 <- googl_LinksExpand(shortUrl = "http://goo.gl/vM0w4",showRequestURL = TRUE)
 #' g4 <- googl_LinksExpand(shortUrl="http://goo.gl/vM0w4",projection = "ANALYTICS_TOP_STRINGS")
 #'
@@ -59,7 +59,7 @@ googl_LinksExpand <- function(shortUrl = "", projection = "FULL", showRequestURL
 #' @description Given a full URL, returns an goo.gl short URL. The returned resource contains the 
 #' short URL and the long URL. Note that the returned long URL may be loosely canonicalized, e.g. 
 #' to convert "google.com" into "http://google.com/". See the Authentication 
-#' \link{google_auth} section for more details.
+#' \link{googl_auth} section for more details.
 #' 
 #' @return id is the short URL that expands to the long URL you provided. If your request includes 
 #' an auth token, then this URL will be unique. If not, then it might be reused from a previous 
@@ -69,12 +69,12 @@ googl_LinksExpand <- function(shortUrl = "", projection = "FULL", showRequestURL
 #' if you pass http://www.google.com, the server will add a trailing slash.
 #' 
 #' @examples 
-#' google_token <- google_auth(key = "", secret = "")
+#' googl_token <- googl_auth(key = "", secret = "")
 #' g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 #' 
 #' @export
 googl_LinksShorten <- function(longUrl = "", showRequestURL = FALSE) {
-  links_shorten_url <- paste0("https://www.googleapis.com/urlshortener/v1/url?key=", google_token$credentials$access_token)
+  links_shorten_url <- paste0("https://www.googleapis.com/urlshortener/v1/url?key=", googl_token$credentials$access_token)
   
   resource <- paste0("{'longUrl':", paste0("'",longUrl,"'}"))
   
@@ -111,7 +111,7 @@ googl_LinksShorten <- function(longUrl = "", showRequestURL = FALSE) {
 #' \url{https://developers.google.com/url-shortener/v1/getting_started#url_analytics}.
 #'
 #' @examples
-#' google_token <- google_auth(key = "", secret = "")
+#' googl_token <- googl_auth(key = "", secret = "")
 #' googl_UserLinkHistory(showRequestURL = TRUE)
 #' googl_UserLinkHistory(projection = "FULL", showRequestURL = TRUE)
 #'
@@ -122,7 +122,7 @@ googl_UserLinkHistory <- function(projection = "FULL", showRequestURL = FALSE) {
   
   user_linkHistory_url <- "https://www.googleapis.com/urlshortener/v1/url/history"
   
-  query <- list(key = google_token$credentials$access_token, projection = projection)
+  query <- list(key = googl_token$credentials$access_token, projection = projection)
   
   df_history <- doRequest("GET", user_linkHistory_url, "googl", queryParameters = query, showURL = showRequestURL)
   

@@ -232,7 +232,7 @@ bitly_LinksMetricsEncodersByCount <- function(link, limit = 100, my_network = "f
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "", secret = "")
-#' bitly_LinksMetricsReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' bitly_LinksMetricsReferringDomains("http://bit.ly/DPetrov", unit = "day", units=-1, limit = 100)
 #' 
 #' @export
 bitly_LinksMetricsReferringDomains <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
@@ -266,7 +266,7 @@ bitly_LinksMetricsReferringDomains <- function(link, limit = 1000, unit = c("min
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "", secret = "")
-#' bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+#' bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov",unit = "day", units = -1, limit = 100)
 #' 
 #' @export
 bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 
@@ -289,7 +289,8 @@ bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "
 }
 
 
-#' @title Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.
+#' @title Returns metrics about the pages referring click traffic to a single Bitlink, grouped 
+#' by referring domain.
 #'  
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
 #' 
@@ -300,7 +301,7 @@ bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "
 #' 
 #' @examples
 #' bitly_token <- bitly_auth(key = "", secret = "")
-#' bitly_LinksMetricsReferrersByDomain(link = "http://bit.ly/DPetrov",unit="day",units=-1,limit = 100)
+#' bitly_LinksMetricsReferrersByDomain("http://bit.ly/DPetrov",unit="day",units=-1,limit = 100)
 #' 
 #' @export
 bitly_LinksMetricsReferrersByDomain <- function(link, limit = 1000, unit = c("minute", "hour", "day", "week", "month"), 

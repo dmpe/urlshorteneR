@@ -34,7 +34,7 @@ long URL, creation timestamp, and status.
 Requires that the user authenticates with his google account through OAUTH 2.0 ! Thus no API key is necessary
 }
 \examples{
-google_token <- google_auth(key = "", secret = "")
+googl_token <- googl_auth(key = "", secret = "")
 googl_UserLinkHistory(showRequestURL = TRUE)
 googl_UserLinkHistory(projection = "FULL", showRequestURL = TRUE)
 }

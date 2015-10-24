@@ -4,6 +4,7 @@
 .travis.yml
 .DS_Store
 LICENSE
+CONTRIBUTE.MD
 ^CONDUCT\.md$
 ^revdep$
 ^cran-comments\.md$

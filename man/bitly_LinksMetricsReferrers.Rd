@@ -30,7 +30,7 @@ Returns metrics about the pages referring click traffic to a single Bitlink.
 }
 \examples{
 bitly_token <- bitly_auth(key = "", secret = "")
-bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
+bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov",unit = "day", units = -1, limit = 100)
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}

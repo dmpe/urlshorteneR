@@ -25,10 +25,10 @@ if you pass http://www.google.com, the server will add a trailing slash.
 Given a full URL, returns an goo.gl short URL. The returned resource contains the
 short URL and the long URL. Note that the returned long URL may be loosely canonicalized, e.g.
 to convert "google.com" into "http://google.com/". See the Authentication
-\link{google_auth} section for more details.
+\link{googl_auth} section for more details.
 }
 \examples{
-google_token <- google_auth(key = "", secret = "")
+googl_token <- googl_auth(key = "", secret = "")
 g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 }
 \seealso{

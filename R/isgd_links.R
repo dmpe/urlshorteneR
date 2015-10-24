@@ -1,8 +1,8 @@
 #' @title Given a long URL, returns a short is.gd link.
 #' 
 #' @param longUrl - The url parameter is the address that you want to shorten. 
-#' @param shorturl - (optional character) You can specify the shorturl parameter if you'd like to pick a 
-#' shortened URL instead of having is.gd randomly generate one. These must be between 5 and 30 
+#' @param shorturl - (optional character) You can specify the shorturl parameter if you'd like to
+#' pick a shortened URL instead of having is.gd randomly generate one. These must be between 5 and 30 
 #' characters long and can only contain alphanumeric characters and underscores. Shortened URLs 
 #' are case sensitive. Bear in mind that a desired short URL might already be taken (this is very 
 #' often the case with common words) so if you're using this option be prepared to respond to an 
@@ -15,6 +15,8 @@
 #' links with statistics turned on has twice the "cost" towards our rate limit of other shortened 
 #' links, so leave this parameter out of your API call if you don't require statistics on usage. See
 #' our usage limits page for more information on this \url{https://is.gd/usagelimits.php}.
+#' @param showRequestURL - show URL which has been build and requested from server. 
+#' For debug purposes.
 #' 
 #' @examples
 #' ## asd <- isgd_LinksShorten(longUrl = "http://debil.cz/",showRequestURL = TRUE)

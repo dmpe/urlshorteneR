@@ -2,7 +2,8 @@
 % Please edit documentation in R/bitly_linksMetrics.R
 \name{bitly_LinksMetricsReferrersByDomain}
 \alias{bitly_LinksMetricsReferrersByDomain}
-\title{Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.}
+\title{Returns metrics about the pages referring click traffic to a single Bitlink, grouped
+by referring domain.}
 \usage{
 bitly_LinksMetricsReferrersByDomain(link, limit = 1000, unit = c("minute",
   "hour", "day", "week", "month"), units = -1, showRequestURL = FALSE)
@@ -26,11 +27,12 @@ clicks - the number of clicks referred from this domain.
 referrer - the URL referring clicks.
 }
 \description{
-Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.
+Returns metrics about the pages referring click traffic to a single Bitlink, grouped
+by referring domain.
 }
 \examples{
 bitly_token <- bitly_auth(key = "", secret = "")
-bitly_LinksMetricsReferrersByDomain(link = "http://bit.ly/DPetrov",unit="day",units=-1,limit = 100)
+bitly_LinksMetricsReferrersByDomain("http://bit.ly/DPetrov",unit="day",units=-1,limit = 100)
 }
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
