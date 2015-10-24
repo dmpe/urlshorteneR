@@ -8,6 +8,7 @@ r_github_packages:
 - hadley/stringr
 - jimhester/covr
 - yihui/knitr
+- rstudio/rmarkdown 
 env:
   global:
   - CRAN: http://cran.rstudio.com
