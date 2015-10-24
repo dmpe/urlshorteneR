@@ -4,8 +4,8 @@ library(httr)
 library(jsonlite)
 library(stringr)
 
-bitly_token <- readRDS("tests/testthat/bitly_token.rds")
-googl_token <- readRDS("tests/testthat/googl_token.rds")
+bitly_token <- readRDS("bitly_token.rds")
+googl_token <- readRDS("googl_token.rds")
 
 context("User Info")
 
