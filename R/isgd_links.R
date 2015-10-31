@@ -1,5 +1,7 @@
 #' @title Given a long URL, returns a short is.gd link.
 #' 
+#' @description See \url{https://is.gd/apishorteningreference.php}
+#' 
 #' @param longUrl - The url parameter is the address that you want to shorten. 
 #' @param shorturl - (optional character) You can specify the shorturl parameter if you'd like to
 #' pick a shortened URL instead of having is.gd randomly generate one. These must be between 5 and 30 

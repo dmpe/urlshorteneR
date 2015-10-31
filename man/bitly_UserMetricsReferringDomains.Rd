@@ -28,7 +28,8 @@ statistics; defaults to the current user.}
 \item{exclude_social_networks}{- true (default) or false. If true, exclude domains that are 
 part of a social network that bitly tracks.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+purposes.}
 }
 \value{
 clicks - the number of clicks referred from this URL.

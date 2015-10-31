@@ -21,12 +21,16 @@ instead of a separate value for each period of time.}
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all 
 units of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+purposes.}
 }
 \value{
 clicks - the number of clicks referred from this URL.
 
 referrer - the URL referring clicks.
+}
+\description{
+See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
 }
 \note{
 When a unit is specified (always the case), rollup is always (!) true.
@@ -37,8 +41,5 @@ bitly_token <- bitly_auth(key = "", secret = "")
 user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
 }
 

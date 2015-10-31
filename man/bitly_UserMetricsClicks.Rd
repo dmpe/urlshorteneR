@@ -20,7 +20,8 @@ units of time.}
 \item{rollup}{- true or false. Return data for multiple units rolled up to a single result 
 instead of a separate value for each period of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+purposes.}
 }
 \value{
 dt - a unix timestamp representing the beginning of this unit.
@@ -29,6 +30,9 @@ day_start - a unix timestamp representing the beginning of the specified day (ON
 returned if unit is not specified).
 
 clicks - the number of clicks on this user's links in the specified timeframe.
+}
+\description{
+See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
 }
 \note{
 without the parameter unit this endpoint returns a legacy response format which assumes 
@@ -41,8 +45,5 @@ bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "true")
 bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "false")
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
 }
 

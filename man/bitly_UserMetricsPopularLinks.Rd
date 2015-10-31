@@ -17,12 +17,16 @@ maximum value for units is 60.}
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all 
 units of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+purposes.}
 }
 \value{
 link - a Bitlink.
 
 clicks - the number of clicks on that Bitlink in the specified timeframe.
+}
+\description{
+See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
 }
 \note{
 This has replaced the realtime_links endpoint.
@@ -33,8 +37,5 @@ bitly_token <- bitly_auth(key = "", secret = "")
 bitly_UserMetricsPopularLinks(unit = "day", units = -1, limit = 100)
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
 }
 

@@ -20,12 +20,16 @@ instead of a separate value for each period of time.}
 \item{units}{- an integer representing the time units to query data for. Pass -1 to return all 
 units of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug purposes.}
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+purposes.}
 }
 \value{
 dt - datetime when shortens had been made.
 
 shortens - the number of shortens made by the specified user in the specified time.
+}
+\description{
+See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
 }
 \examples{
 \dontrun{
@@ -35,8 +39,5 @@ bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100, rollup = "
 bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100)
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
 }
 

@@ -1,6 +1,6 @@
 #' @title Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
 #' 
-#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
+#' @description See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
 #' 
 #' @param limit - 1 to 1000 (default=1000).
 #' @param units - an integer representing the time units to query data for. Pass -1 to return all 
@@ -9,7 +9,8 @@
 #' maximum value for units is 60.
 #' @param rollup - true or false. Return data for multiple units rolled up to a single result 
 #' instead of a separate value for each period of time.
-#' @param showRequestURL - show URL which has been build and requested from server. For debug purposes.
+#' @param showRequestURL - show URL which has been build and requested from server. For debug 
+#' purposes.
 #' 
 #' @return dt - a unix timestamp representing the beginning of this unit.
 #' @return day_start - a unix timestamp representing the beginning of the specified day (ONLY 
@@ -38,7 +39,7 @@ bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "da
                 unit = unit_matched, units = units, rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_clicks <- doRequest("GET", user_metrics_clicks_url, "bitly", query = query, showURL = showRequestURL)
+  df_user_metrics_clicks <- doRequest("GET", user_metrics_clicks_url, "bitly", query, showURL = showRequestURL)
   df_user_metrics_clicks_data <- df_user_metrics_clicks$data$user_clicks
   
   if (rollup == "true") {
@@ -58,7 +59,7 @@ bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "da
 #' @title Returns aggregate metrics about the countries referring click traffic to all of the 
 #' authenticated user's Bitlinks.
 #' 
-#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
+#' @description See \url{http://dev.bitly.com/user_metrics.html#v3_user_countries}
 #'  
 #' @inheritParams bitly_UserMetricsClicks
 #' 
@@ -84,7 +85,7 @@ bitly_UserMetricsCountries <- function(limit = 1000, unit = c("minute", "hour", 
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_countries <- doRequest("GET", user_metrics_countries_url, query = query, "bitly", showURL = showRequestURL)
+  df_user_metrics_countries <- doRequest("GET", user_metrics_countries_url, query, "bitly", showURL = showRequestURL)
   
   df_user_metrics_countries_data <- df_user_metrics_countries$data$user_countries
   
@@ -95,7 +96,7 @@ bitly_UserMetricsCountries <- function(limit = 1000, unit = c("minute", "hour", 
 #' @title Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in 
 #' a given time period.
 #' 
-#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
+#' @description See \url{http://dev.bitly.com/user_metrics.html#v3_user_popular_links}
 #'
 #' @inheritParams bitly_UserMetricsClicks
 #' 
@@ -120,7 +121,7 @@ bitly_UserMetricsPopularLinks <- function(limit = 1000, unit = c("minute", "hour
   query <- list(access_token = bitly_token$credentials$access_token, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_user_metrics_popular_links <- doRequest("GET", user_metrics_popular_links_url, "bitly", query = query, showURL = showRequestURL)
+  df_user_metrics_popular_links <- doRequest("GET", user_metrics_popular_links_url, "bitly", query, showURL = showRequestURL)
   df_user_metrics_popular_links_data <- df_user_metrics_popular_links$data$popular_links
   
   # sapply(df_user_metrics_popular_links_data, class)
@@ -132,7 +133,7 @@ bitly_UserMetricsPopularLinks <- function(limit = 1000, unit = c("minute", "hour
 #' @title Returns aggregate metrics about the pages referring click traffic to all of the 
 #' authenticated user's Bitlinks.
 #' 
-#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
+#' @description See \url{http://dev.bitly.com/user_metrics.html#v3_user_referrers}
 #'
 #' @inheritParams bitly_UserMetricsClicks
 #' 
@@ -158,7 +159,7 @@ bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", 
                 unit = unit_matched, units = units, rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_referrers <- doRequest("GET", user_metrics_referrers_url, "bitly", query = query, showURL = showRequestURL)
+  df_user_metrics_referrers <- doRequest("GET", user_metrics_referrers_url, "bitly", query, showURL = showRequestURL)
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
 
   # sapply(df_user_metrics_referrers_data, class)
@@ -213,7 +214,7 @@ bitly_UserMetricsReferringDomains <- function(limit = 1000, unit = c("minute", "
   
   # call method from ApiKey.R
   df_user_metrics_referring_domains <- doRequest("GET", user_metrics_referring_domains_url, "bitly",
-                                                 query = query, showURL = showRequestURL)
+                                                 query, showURL = showRequestURL)
   df_user_metrics_referring_domains_data <- df_user_metrics_referring_domains$data$user_referring_domains
   
   if (length(df_user_metrics_referring_domains_data) == 0) {
@@ -229,7 +230,7 @@ bitly_UserMetricsReferringDomains <- function(limit = 1000, unit = c("minute", "
 
 #' @title Returns the number of Bitlinks created in a given time period by the authenticated user.
 #' 
-#' @seealso See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
+#' @description See \url{http://dev.bitly.com/user_metrics.html#v3_user_shorten_counts}
 #'
 #' @inheritParams bitly_UserMetricsClicks
 #' 
@@ -257,7 +258,7 @@ bitly_UserMetricsShortenCounts <- function(limit = 1000, unit = c("minute", "hou
                 unit = unit_matched, units = units, rollup = rollup_matched, showURL = showRequestURL)
   
   # call method from ApiKey.R
-  df_user_metrics_shorten_counts <- doRequest("GET", user_metrics_shorten_counts_url, "bitly", query = query,
+  df_user_metrics_shorten_counts <- doRequest("GET", user_metrics_shorten_counts_url, "bitly", query,
                                               showURL = showRequestURL)
   df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts
   

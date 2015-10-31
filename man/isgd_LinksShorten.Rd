@@ -29,6 +29,9 @@ error and get an alternative choice from your app's user.}
 \item{showRequestURL}{- show URL which has been build and requested from server. 
 For debug purposes.}
 }
+\description{
+See \url{https://is.gd/apishorteningreference.php}
+}
 \examples{
 ## asd <- isgd_LinksShorten(longUrl = "http://debil.cz/",showRequestURL = TRUE)
 
