@@ -3,10 +3,10 @@ library(urlshorteneR)
 library(httr)
 library(jsonlite)
 library(stringr)
-print(getwd())
 
-bitly_token <- readRDS("bitly_token.rds")
+# bitly_token <- readRDS("bitly_token.rds")
 # googl_token <- readRDS("googl_token.rds")
+
 context("User Info")
 
 test_that("Return information about a user.", {

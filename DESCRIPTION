@@ -5,8 +5,8 @@ Description: Allows using different URL shortening services, which also provide
     expanding and analytic functions. Specifically developed for Bit.ly, Goo.gl
     (both OAUTH2) and is.gd (no API Key). Other can be added by request on GitHub/
     email.
-Version: 0.8.6
-Date: 2015-10-30
+Version: 0.8.7
+Date: 2015-11-10
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
@@ -17,7 +17,7 @@ Imports:
     jsonlite (>= 0.9.17),
     stringr (>= 1.0.0)
 Suggests:
-    roxygen2 (>= 4.1.1),
+    roxygen2 (>= 5.0.0),
     knitr (>= 1.11),
     testthat (>= 0.11.0)
 VignetteBuilder: knitr
