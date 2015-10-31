@@ -86,6 +86,12 @@ g1 <- googl_LinksExpand(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
 g1
 ```
 
+# Is.gd
+
+```{r}
+isgd_LinksShorten(longUrl = "http://debil.cz/", showRequestURL = TRUE)
+```
+
 
 -------------
 
