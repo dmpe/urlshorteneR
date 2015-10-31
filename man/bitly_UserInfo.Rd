@@ -63,6 +63,9 @@ account.
 bbt_start_date - (optional) the date for when this account became a Bitly Brand Tools 
 account.
 }
+\description{
+See \url{http://dev.bitly.com/user_info.html#v3_user_info}
+}
 \note{
 Both returned columns (!) are character type.
 }
@@ -72,8 +75,5 @@ bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secr
 uI <- bitly_userInfo() 
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/user_info.html#v3_user_info}
 }
 

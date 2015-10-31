@@ -3,7 +3,7 @@
 #' @param showRequestURL - show URL which has been build and requested from server. 
 #' For debug purposes.
 #'
-#' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_info}
+#' @description See \url{http://dev.bitly.com/user_info.html#v3_user_info}
 #'
 #' @return login - the specified bitly login or the login of the authenticated user.
 #' @return profile_url - URL of user's profile page.
@@ -55,7 +55,7 @@ bitly_UserInfo <- function(showRequestURL = FALSE) {
   
   query <- list(access_token = bitly_token$credentials$access_token)
   
-  df_user_info <- doRequest("GET", user_info_url, "bitly", query = query, showURL = showRequestURL)
+  df_user_info <- doRequest("GET", user_info_url, "bitly", query, showURL = showRequestURL)
   
   df_user_info_data <- data.frame(ReturnValues = unlist(df_user_info$data))
   df_user_info_data$ReturnValues <- str_trim(as.character(df_user_info_data$ReturnValues))
@@ -71,7 +71,7 @@ bitly_UserInfo <- function(showRequestURL = FALSE) {
 
 #' @title Returns entries from a user's link history in reverse chronological order.
 #' 
-#' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}
+#' @description See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}
 #' 
 #' @param limit - optional integer in the range 1 to 100; default: 100, specifying the max 
 #' number of results to return.
@@ -115,7 +115,7 @@ bitly_UserLinkHistory <- function(limit = 100, private = "off", archived = "both
   query <- list(access_token = bitly_token$credentials$access_token, limit = limit, private = private, 
                 archived = archived, expand_client_id = expand_client_id)
   
-  df_history <- doRequest("GET", user_linkHistory_url, query = query, "bitly", showURL = showRequestURL)
+  df_history <- doRequest("GET", user_linkHistory_url, query, "bitly", showURL = showRequestURL)
   df_history_data <- df_history$data$link_history
   
   df_history_data$user_ts <- as.POSIXct(df_history_data$user_ts, origin = "1970-01-01", tz = "UTC")
@@ -132,7 +132,7 @@ bitly_UserLinkHistory <- function(limit = 100, private = "off", archived = "both
 #' @param showRequestURL - show URL which has been build and requested from server. 
 #' For debug purposes.
 #'
-#' @seealso See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}
+#' @description See \url{http://dev.bitly.com/user_info.html#v3_user_tracking_domain_list}
 #' 
 #' @return tracking_domains - a list of tracking domains configured for the authenticated user.
 #'
@@ -149,7 +149,7 @@ bitly_UserTrackingDomains <- function(showRequestURL = FALSE) {
   
   query <- list(access_token = bitly_token$credentials$access_token, showURL = showRequestURL)
   
-  df_tracking_domain_list <- doRequest("GET", user_tracking_domain_list_url, query = query, "bitly")
+  df_tracking_domain_list <- doRequest("GET", user_tracking_domain_list_url, query, "bitly")
   df_tracking_domain_list_data <- df_tracking_domain_list$data$tracking_domains
   
   if (!length(df_tracking_domain_list_data) == 0) {
@@ -195,7 +195,7 @@ bitly_IsProDomain <- function(domain, showRequestURL = FALSE) {
   query <- list(access_token = bitly_token$credentials$access_token, domain = domain)
   
   # call method from ApiKey.R
-  df_bitly_pro_domain <- doRequest(verb = "GET", bitly_pro_domain_url, "bitly", query = query, showURL = showRequestURL)
+  df_bitly_pro_domain <- doRequest(verb = "GET", bitly_pro_domain_url, "bitly", query, showURL = showRequestURL)
   
   if (df_bitly_pro_domain$data$bitly_pro_domain == FALSE) {
     message("A short domain: ", df_bitly_pro_domain$data$domain, " is NOT a valid bitly pro domain")

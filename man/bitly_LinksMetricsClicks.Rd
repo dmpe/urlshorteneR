@@ -33,9 +33,6 @@ dt - time in UTC format (only when rollup = "false")
 \description{
 Returns the number of clicks on a single Bitlink of the authenticated user.
 }
-\section{TODO}{
- or more URLs up to 15
-}
 \examples{
 \dontrun{
 bitly_token <- bitly_auth(key = "", secret = "")

@@ -35,6 +35,10 @@ across all Bitlinks that point to the same long_url.
 url - the actual Bitlink that should be used, and is a unique value for the given Bitly 
 account.
 }
+\description{
+See \url{http://dev.bitly.com/rate_limiting.html} and 
+\url{http://dev.bitly.com/links.html#v3_shorten}
+}
 \note{
 The bitly API does not support shortening more than one long URL with a single API call. 
 Meaning 1 Long URL = 1 Function call.
@@ -59,10 +63,5 @@ bitly_LinksShorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423"
 }
 
 
-}
-\seealso{
-See \url{http://dev.bitly.com/rate_limiting.html}
-
-See \url{http://dev.bitly.com/links.html#v3_shorten}
 }
 

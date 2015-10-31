@@ -51,14 +51,14 @@ client_id - the oauth client ID of the app that shortened/saved this link on beh
 the user. If expand_client_id is set to false (only currently supported), this will be a string 
 corresponding to the client_id of the encoding oauth application.
 }
+\description{
+See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}
+}
 \examples{
 \dontrun{ 
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
 lh <- bitly_UserLinkHistory() 
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/user_info.html#v3_user_link_history}
 }
 

@@ -26,14 +26,14 @@ clicks - the number of clicks referred from this domain.
 
 referrer - the URL referring clicks.
 }
+\description{
+\url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
+}
 \examples{
 \dontrun{
 bitly_token <- bitly_auth(key = "", secret = "")
 bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov",unit = "day", units = -1, limit = 100)
 }
 
-}
-\seealso{
-\url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
 }
 

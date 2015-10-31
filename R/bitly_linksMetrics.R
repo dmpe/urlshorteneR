@@ -4,8 +4,6 @@
 #' 
 #' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 #' 
-#' @section TODO: or more URLs up to 15
-#' 
 #' @param link - a Bitlink.
 #' @param limit - 1 to 1000 (default=1000).
 #' @param rollup - true (default) or false.  Return data for multiple units rolled up to a 
@@ -130,7 +128,7 @@ bitly_LinksMetricsEncoders <- function(link, my_network = "false", limit = 25, e
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders <- doRequest("GET", link_metrics_encoders_url, query = query, "bitly", showURL = showRequestURL)
+  df_link_metrics_encoders <- doRequest("GET", link_metrics_encoders_url, query, "bitly", showURL = showRequestURL)
   
   df_link_metrics_encoders_data <- df_link_metrics_encoders$data$entries
   
@@ -270,7 +268,7 @@ bitly_LinksMetricsReferringDomains <- function(link, limit = 1000, unit = c("min
 
 #' @title Returns metrics about the pages referring click traffic to a single Bitlink.
 #' 
-#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
+#' @description \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers}
 #' 
 #' @inheritParams bitly_LinksMetricsClicks
 #' 
@@ -307,7 +305,7 @@ bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "
 #' @title Returns metrics about the pages referring click traffic to a single Bitlink, grouped 
 #' by referring domain.
 #'  
-#' @seealso \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
+#' @description \url{http://dev.bitly.com/link_metrics.html#v3_link_referrers_by_domain}
 #' 
 #' @inheritParams bitly_LinksMetricsClicks
 #' 

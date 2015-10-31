@@ -37,6 +37,9 @@ link is public. Otherwise, null.
 
 created_at - the epoch timestamp when this Bitlink was created.
 }
+\description{
+See \url{http://dev.bitly.com/links.html#v3_info}
+}
 \note{
 Either shortUrl or hash must be given as a parameter (or both).
 
@@ -59,8 +62,5 @@ bitly_LinksInfo(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov")
 ## }
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/links.html#v3_info}
 }
 

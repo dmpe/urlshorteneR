@@ -1,6 +1,6 @@
 #' @title Query for a Bitlink based on a long URL.
 #' 
-#' @seealso See \url{http://dev.bitly.com/links.html#v3_link_lookup}
+#' @description See \url{http://dev.bitly.com/links.html#v3_link_lookup}
 #'
 #' @param url - one long URLs to lookup.
 #' @param showRequestURL - show URL which has been build and requested from server. For debug 
@@ -40,7 +40,7 @@ bitly_LinksLookup <- function(url, showRequestURL = FALSE) {
 
 #' @title Used to return the page title for a given Bitlink.
 #' 
-#' @seealso See \url{http://dev.bitly.com/links.html#v3_info}
+#' @description See \url{http://dev.bitly.com/links.html#v3_info}
 #' 
 #' @note Either shortUrl or hash must be given as a parameter (or both).
 #' @note The maximum number of shortUrl and hash parameters is 15.
@@ -105,7 +105,7 @@ bitly_LinksInfo <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true"
 
 #' @title Given a bitly URL or hash (or multiple), returns the target (long) URL.
 #' 
-#' @seealso See \url{http://dev.bitly.com/links.html#v3_expand}
+#' @description See \url{http://dev.bitly.com/links.html#v3_expand}
 #'
 #' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
 #' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. 
@@ -164,8 +164,8 @@ bitly_LinksExpand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = F
 
 #' @title Given a long URL, returns a short Bit.ly link.
 #'
-#' @seealso See \url{http://dev.bitly.com/rate_limiting.html}
-#' @seealso See \url{http://dev.bitly.com/links.html#v3_shorten}
+#' @description See \url{http://dev.bitly.com/rate_limiting.html} and 
+#' \url{http://dev.bitly.com/links.html#v3_shorten}
 #'
 #' @param longUrl - a long URL to be shortened (example: http://betaworks.com/).
 #' @param domain - (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or 

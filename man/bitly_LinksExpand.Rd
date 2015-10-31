@@ -29,6 +29,9 @@ example error is "NOT_FOUND".
 
 long_url - the URL that the requested short_url or hash points to.
 }
+\description{
+See \url{http://dev.bitly.com/links.html#v3_expand}
+}
 \note{
 Either shortUrl or hash must be given as a parameter.
 
@@ -52,8 +55,5 @@ bitly_LinksExpand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
 ## }
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/links.html#v3_expand}
 }
 

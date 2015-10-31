@@ -17,6 +17,9 @@ url - an echo back of the url parameter.
 
 aggregate_link - the corresponding bitly aggregate link (global hash).
 }
+\description{
+See \url{http://dev.bitly.com/links.html#v3_link_lookup}
+}
 \examples{
 \dontrun{ 
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
@@ -31,8 +34,5 @@ for (u in 1:length(manyUrls)) {
 }
 }
 
-}
-\seealso{
-See \url{http://dev.bitly.com/links.html#v3_link_lookup}
 }
 
