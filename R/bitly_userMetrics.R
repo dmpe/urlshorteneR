@@ -39,7 +39,7 @@ bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "da
                 unit = unit_matched, units = units, rollup = rollup_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_clicks <- doRequest("GET", user_metrics_clicks_url, "bitly", query, showURL = showRequestURL)
+  df_user_metrics_clicks <- doRequest("GET", user_metrics_clicks_url, service = "bitly", query, showURL = showRequestURL)
   df_user_metrics_clicks_data <- df_user_metrics_clicks$data$user_clicks
   
   if (rollup == "true") {
@@ -85,7 +85,7 @@ bitly_UserMetricsCountries <- function(limit = 1000, unit = c("minute", "hour", 
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_countries <- doRequest("GET", user_metrics_countries_url, query, "bitly", showURL = showRequestURL)
+  df_user_metrics_countries <- doRequest("GET", url = user_metrics_countries_url, query, service = "bitly", showURL = showRequestURL)
   
   df_user_metrics_countries_data <- df_user_metrics_countries$data$user_countries
   
@@ -121,7 +121,7 @@ bitly_UserMetricsPopularLinks <- function(limit = 1000, unit = c("minute", "hour
   query <- list(access_token = bitly_token$credentials$access_token, limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_user_metrics_popular_links <- doRequest("GET", user_metrics_popular_links_url, "bitly", query, showURL = showRequestURL)
+  df_user_metrics_popular_links <- doRequest("GET", user_metrics_popular_links_url, service = "bitly", query, showURL = showRequestURL)
   df_user_metrics_popular_links_data <- df_user_metrics_popular_links$data$popular_links
   
   # sapply(df_user_metrics_popular_links_data, class)
@@ -159,7 +159,7 @@ bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", 
                 unit = unit_matched, units = units, rollup = rollup)
   
   # call method from ApiKey.R
-  df_user_metrics_referrers <- doRequest("GET", user_metrics_referrers_url, "bitly", query, showURL = showRequestURL)
+  df_user_metrics_referrers <- doRequest("GET", user_metrics_referrers_url, service = "bitly", query, showURL = showRequestURL)
   df_user_metrics_referrers_data <- df_user_metrics_referrers$data$user_referrers
 
   # sapply(df_user_metrics_referrers_data, class)
@@ -213,7 +213,7 @@ bitly_UserMetricsReferringDomains <- function(limit = 1000, unit = c("minute", "
                 rollup = rollup_matched, exclude_social_networks = exclude_social_networks_matched)
   
   # call method from ApiKey.R
-  df_user_metrics_referring_domains <- doRequest("GET", user_metrics_referring_domains_url, "bitly",
+  df_user_metrics_referring_domains <- doRequest("GET", user_metrics_referring_domains_url, service = "bitly",
                                                  query, showURL = showRequestURL)
   df_user_metrics_referring_domains_data <- df_user_metrics_referring_domains$data$user_referring_domains
   
@@ -258,7 +258,7 @@ bitly_UserMetricsShortenCounts <- function(limit = 1000, unit = c("minute", "hou
                 unit = unit_matched, units = units, rollup = rollup_matched, showURL = showRequestURL)
   
   # call method from ApiKey.R
-  df_user_metrics_shorten_counts <- doRequest("GET", user_metrics_shorten_counts_url, "bitly", query,
+  df_user_metrics_shorten_counts <- doRequest("GET", user_metrics_shorten_counts_url, service = "bitly", query,
                                               showURL = showRequestURL)
   df_user.metrics_shorten_counts_data <- df_user_metrics_shorten_counts$data$user_shorten_counts
   

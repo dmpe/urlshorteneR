@@ -35,7 +35,7 @@ bitly_LinksMetricsClicks <- function(link, limit = 1000, unit = c("minute", "hou
                 rollup = rollup)
   
   # call method from ApiKey.R
-  df.link_metrics_clicks <- doRequest("GET", link_metrics_clicks_url, "bitly",query, showURL = showRequestURL)
+  df.link_metrics_clicks <- doRequest("GET", link_metrics_clicks_url, service = "bitly", query, showURL = showRequestURL)
   
   df.link_metrics_clicks_data <- df.link_metrics_clicks$data$link_clicks
   
@@ -79,7 +79,7 @@ bitly_LinksMetricsCountries <- function(link, limit = 1000, unit = c("minute", "
   
   link_metrics_countries_url <- "https://api-ssl.bitly.com/v3/link/countries"
   
-  query <- list(access_token = bitly_token$credentials$access_token, link = link, "bitly", 
+  query <- list(access_token = bitly_token$credentials$access_token, link = link, service = "bitly", 
                 limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
@@ -128,7 +128,7 @@ bitly_LinksMetricsEncoders <- function(link, my_network = "false", limit = 25, e
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders <- doRequest("GET", link_metrics_encoders_url, query, "bitly", showURL = showRequestURL)
+  df_link_metrics_encoders <- doRequest("GET", link_metrics_encoders_url, query, service = "bitly", showURL = showRequestURL)
   
   df_link_metrics_encoders_data <- df_link_metrics_encoders$data$entries
   
@@ -164,7 +164,7 @@ bitly_LinksMetricsEncodersCount <- function(link, showRequestURL = FALSE) {
   query <- list(access_token = bitly_token$credentials$access_token, link = link)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders_count <- doRequest("GET", link_metrics_encoders_count_url, "bitly", 
+  df_link_metrics_encoders_count <- doRequest("GET", link_metrics_encoders_count_url, service = "bitly", 
                                               query, showURL = showRequestURL)
   df_link_metrics_encoders_count_data <- df_link_metrics_encoders_count$data
   
@@ -215,7 +215,7 @@ bitly_LinksMetricsEncodersByCount <- function(link, limit = 100, my_network = "f
                 expand_user = expand_user, subaccounts = subaccounts)
   
   # call method from ApiKey.R
-  df_link_metrics_encoders_by_count <- doRequest("GET", link_metrics_encoders_by_count_url, "bitly", 
+  df_link_metrics_encoders_by_count <- doRequest("GET", link_metrics_encoders_by_count_url, service = "bitly", 
                                                  query, showURL = showRequestURL)
   
   df_link_metrics_encoders_by_count_data <- data.frame(df_link_metrics_encoders_by_count$data$encoders_by_count)
@@ -256,7 +256,7 @@ bitly_LinksMetricsReferringDomains <- function(link, limit = 1000, unit = c("min
                 limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referring_domains <- doRequest("GET", link_metrics_referring_domains_url, "bitly", 
+  df_link_metrics_referring_domains <- doRequest("GET", link_metrics_referring_domains_url, service = "bitly", 
                                                  query, showURL = showRequestURL)
   df_link_metrics_referring_domains_data <- df_link_metrics_referring_domains$data$referring_domains
   
@@ -292,7 +292,7 @@ bitly_LinksMetricsReferrers <- function(link, limit = 1000, unit = c("minute", "
                 limit = limit, unit = unit_matched, units = units)
   
   # call method from ApiKey.R
-  df_link_metrics_referrers <- doRequest("GET", link_metrics_referrers_url, "bitly", query, showURL = showRequestURL)
+  df_link_metrics_referrers <- doRequest("GET", link_metrics_referrers_url, service = "bitly", query, showURL = showRequestURL)
   
   df_link_metrics_referrers_data <- df_link_metrics_referrers$data$referrers
   
@@ -329,7 +329,7 @@ bitly_LinksMetricsReferrersByDomain <- function(link, limit = 1000, unit = c("mi
   
   # call method from ApiKey.R
   df_link_metrics_referrers_by_domain <- doRequest("GET", link_metrics_referrers_by_domain_url, 
-                                                   "bitly", query, showURL = showRequestURL)
+                                                   service = "bitly", query, showURL = showRequestURL)
   
   df_link_metrics_referrers_by_domain_data <- df_link_metrics_referrers_by_domain$data$referrers
   
