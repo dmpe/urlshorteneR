@@ -68,12 +68,14 @@ bitly_auth <- function(key = "", secret = "") {
 #' @keywords internal
 doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL = NULL) {
   
-  if (service == "bitly") {
-    service_token <- bitly_token
-  } else if (service == "googl") {
-    service_token <- googl_token
+  service_token <- if (service == "bitly") {
+    bitly_token
+  }
+  
+  service_token <- if (service == "googl") {
+    googl_token
   } else {
-    service_token <- NULL
+    NULL
   }
   
   switch(verb,
@@ -91,7 +93,6 @@ doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL =
   json_response <- fromJSON(text_response)
   
   if (identical(showURL, TRUE)) {
-    # was return_request$request$opts$url
     cat("The requested URL has been this: ", return_request$request$url, "\n") 
   }
   return(json_response)
