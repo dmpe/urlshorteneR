@@ -39,6 +39,8 @@ isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, sho
 }
 #' @title Expand a short URL to a longer one
 #' 
+#' @inheritParams isgd_LinksShorten
+#' 
 #' @description See \url{https://is.gd/apilookupreference.php}
 #' 
 #' @examples 

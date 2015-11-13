@@ -6,7 +6,7 @@ Description: Allows using different URL shortening services, which also provide
     (both OAUTH2) and is.gd (no API Key). Other can be added by request on GitHub/
     email.
 Version: 0.8.7
-Date: 2015-11-10
+Date: 2015-11-15
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
@@ -17,11 +17,11 @@ Imports:
     jsonlite (>= 0.9.17),
     stringr (>= 1.0.0)
 Suggests:
-    roxygen2 (>= 5.0.0),
+    roxygen2 (>= 5.0.1),
     knitr (>= 1.11),
     testthat (>= 0.11.0)
 VignetteBuilder: knitr
 License: Apache License 2.0
 URL: https://github.com/dmpe/urlshorteneR
 BugReports: https://github.com/dmpe/urlshorteneR/issues
-RoxygenNote: 5.0.0
+RoxygenNote: 5.0.1
