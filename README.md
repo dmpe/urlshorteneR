@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/dmpe/rbitly.svg?branch=master)](https://travis-ci.org/dmpe/rbitly)
-[![Coverage Status](https://coveralls.io/repos/dmpe/rbitly/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/rbitly?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RBitly)](http://cran.r-project.org/package=RBitly)
+[![Build Status](https://travis-ci.org/dmpe/urlshorteneR.svg?branch=master)](https://travis-ci.org/dmpe/urlshorteneR)
+[![Coverage Status](https://coveralls.io/repos/dmpe/urlshorteneR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/urlshorteneR?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 
 R package for shortening URLs, supporting Bit.ly & j.mp & is.gd & Goo.gl and other custom domains
 =======
@@ -11,13 +11,13 @@ Either see CRAN or use `devtools` to install the latest version from Github:
 
 ```
 library(devtools)
-devtools::install_github("dmpe/rbitly", build_vignettes = TRUE)
+devtools::install_github("dmpe/urlshorteneR", build_vignettes = TRUE)
 ```
-Tested on Ubuntu 15.04 and Windows 10 (64 bit using [Revolution R Open](http://mran.revolutionanalytics.com/download/))
+Tested on Ubuntu 15.10 and Windows 10 (64 bit)
 
 ### Help needed !!!
 
-- Testers with the "enterprise" Bit.ly accounts. Please try using it and then report bugs in <https://github.com/dmpe/rbitly/issues>
+- Testers with the "enterprise" Bit.ly accounts. Please try using it and then report bugs in <https://github.com/dmpe/urlshorteneR/issues>
 - Testing Ow.ly support (this requeres their API key)
 
 ### Looking for examples and current implementation status ?
@@ -30,11 +30,10 @@ See Contribute.md
 
 ### Special thanks to:
 
-- Developed by ([@dmpe](https://www.github.com/dmpe)) :yum:.
-- Inspired by [Quandl R API](https://github.com/quandl/R-package/) (a bit). 
+- Developed by ([@dmpe](https://www.github.com/dmpe)) and [@DataWookie](https://github.com/DataWookie) :yum:.
 
 ## Meta
 - Licensed under [Apache License 2.0](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
-- Please report bugs in <https://github.com/dmpe/rbitly/issues>.
+- Please report bugs in <https://github.com/dmpe/urlshorteneR/issues>.
 
 

@@ -152,10 +152,10 @@ Based on <http://dev.bitly.com/>
 /v3/user/save_custom_domain_keyword | **NOT**  | Yes
 
 - <http://dev.bitly.com/nsq.html>  
-+ None endpoints are implemented here, logically, because all are "premium". Addionally, this is only for the [NSQ](http://nsq.io/) platform.
+    + None endpoints are implemented here, logically. This is only for the [NSQ](http://nsq.io/) platform.
 
 - <http://dev.bitly.com/organization_metrics.html>
-+ None endpoints are implemented here, because all are premium. Contact me if you need it. 
+    + None endpoints are implemented here, because all are premium. Contact me if you need it. 
 
 - Lastly, sometimes, only a **small subset of input paramaters** has been implemented. Again contact me and I will consider a change. 
 
