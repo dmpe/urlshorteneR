@@ -1,10 +1,9 @@
 Package: urlshorteneR
 Type: Package
-Title: R Wrapper for the Bit.ly, Goo.gl and is.gd URL shortening services
+Title: R Wrapper for the Bit.ly, Goo.gl and Is.gd URL Shortening Services
 Description: Allows using different URL shortening services, which also provide
     expanding and analytic functions. Specifically developed for Bit.ly, Goo.gl
-    (both OAUTH2) and is.gd (no API Key). Other can be added by request on GitHub/
-    email.
+    (both OAUTH2) and is.gd (no API Key). Other can be added by request.
 Version: 0.8.7
 Date: 2015-11-15
 Authors@R: c(
