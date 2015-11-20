@@ -11,4 +11,5 @@ CONTRIBUTE.MD
 ^.*\.o$
 googl_token.rds.enc
 bitly_token.rds.enc
-vignettes/
+/vignettes/Tutorial.Rmd
+/inst/
