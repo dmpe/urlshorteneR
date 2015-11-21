@@ -40,7 +40,7 @@ bitly_IsProDomain(domain = "nyti.ms")
 if (interactive()) {
 
 # googl_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com", secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-#
+
 g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert")
 g2
 g1 <- googl_LinksExpand(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
