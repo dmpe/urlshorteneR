@@ -80,11 +80,11 @@ doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL =
   
   switch(verb,
          "GET" = {
-           return_request <- httr::GET(url, query = queryParameters, config(token = service_token))
+           return_request <- httr::GET(url, query = queryParameters, httr::config(token = service_token))
          },
          "POST" = {
            return_request <- httr::POST(url, body = queryParameters, encode = "json", 
-                                        httr::content_type_json(), config(token = service_token))
+                                        httr::content_type_json(), httr::config(token = service_token))
          }
   )
   
@@ -92,7 +92,7 @@ doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL =
     text_response <- content(return_request, as = "text")
     json_response <- fromJSON(text_response)
     
-    if (json_response$status_code >= 400) {
+    if (is.null(json_response$status_code) == FALSE && json_response$status_code >= 400) {
       cat(json_response$status_txt, "\n")
       stop_for_status(json_response$status_code)
     }
