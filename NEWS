@@ -2,6 +2,9 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
+Februar 2016   - Update packages to their latest versions
+               - Fix this: https://github.com/dmpe/urlshorteneR/issues/9
+
 November 2015  - First release of a new package 'urlshorteneR', which has been developed with Andrew Collier. 
                - The archieved version of RBitly can be found here: https://cran.r-project.org/src/contrib/Archive/RBitly
                - All functions have been renamed in order to make them easier to differentiate and use in the future
