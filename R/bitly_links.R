@@ -215,7 +215,7 @@ bitly_LinksShorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
   
   query <- list(access_token = bitly_token$credentials$access_token, longUrl = longUrl, domain = domain)
   
-  # call method from ApbiKey.R
+  # call method from ApiKey.R
   df_link_shorten <- doRequest("GET", links_shorten_url, "bitly", query, showURL = showRequestURL)
   
   df_link_shorten_data <- data.frame(t(sapply(df_link_shorten$data, c)), stringsAsFactors = FALSE)

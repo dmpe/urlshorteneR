@@ -88,13 +88,23 @@ doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL =
          }
   )
   
-  stop_for_status(return_request)
-  text_response <- content(return_request, as = "text")
-  json_response <- fromJSON(text_response)
-  
-  if (identical(showURL, TRUE)) {
-    cat("The requested URL has been this: ", return_request$request$url, "\n") 
+  if (http_error(return_request) == FALSE) {
+    text_response <- content(return_request, as = "text")
+    json_response <- fromJSON(text_response)
+    
+    if (json_response$status_code >= 400) {
+      cat(json_response$status_txt, "\n")
+      stop_for_status(json_response$status_code)
+    }
+      
+    if (identical(showURL, TRUE)) {
+      cat("The requested URL has been this: ", return_request$request$url, "\n") 
+    }
+    
+  } else {
+    stop_for_status(return_request)
   }
+  
   return(json_response)
 }
 
