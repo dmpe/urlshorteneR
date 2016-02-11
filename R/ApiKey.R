@@ -7,10 +7,10 @@ globalVariables(c("googl_token", "bitly_token"))
 
 #' @title Assign API tokens using OAUTH2
 #' 
-#' @description You must register an application in order to get Client ID and Client Secret code. 
+#' @description You should register an application in order to get Client ID and Client Secret code. 
 #' For Bit.ly, go to \url{https://bitly.com/a/oauth_apps} and in the field \code{Redirect URIs:} 
 #' type for example "http://localhost:1410". 
-#' For Goo.gl API Keys you must go to the \url{https://console.developers.google.com/project}, 
+#' For Goo.gl API Keys you should go to the \url{https://console.developers.google.com/project}, 
 #' select "APIs & auth", then "Credentials", then "add OAUTH2 client ID" and lastly you select 
 #' "Type:Other". 
 #' 
@@ -67,7 +67,6 @@ bitly_auth <- function(key = "", secret = "") {
 #' @noRd
 #' @keywords internal
 doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL = NULL) {
-  
   service_token <- if (service == "bitly") {
     bitly_token
   }
@@ -93,8 +92,7 @@ doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL =
     json_response <- fromJSON(text_response)
     
     if (is.null(json_response$status_code) == FALSE && json_response$status_code >= 400) {
-      cat(json_response$status_txt, "\n")
-      stop_for_status(json_response$status_code)
+      stop(sprintf("(%s) - %s", json_response$status_code, json_response$status_txt), call. = FALSE)
     }
       
     if (identical(showURL, TRUE)) {

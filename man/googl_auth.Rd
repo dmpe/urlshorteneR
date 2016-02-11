@@ -15,10 +15,10 @@ bitly_auth(key = "", secret = "")
 \item{secret}{- Client Secret}
 }
 \description{
-You must register an application in order to get Client ID and Client Secret code. 
+You should register an application in order to get Client ID and Client Secret code. 
 For Bit.ly, go to \url{https://bitly.com/a/oauth_apps} and in the field \code{Redirect URIs:} 
 type for example "http://localhost:1410". 
-For Goo.gl API Keys you must go to the \url{https://console.developers.google.com/project}, 
+For Goo.gl API Keys you should go to the \url{https://console.developers.google.com/project}, 
 select "APIs & auth", then "Credentials", then "add OAUTH2 client ID" and lastly you select 
 "Type:Other".
 }
