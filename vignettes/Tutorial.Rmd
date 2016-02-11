@@ -103,8 +103,8 @@ if (interactive()) {
 }
 ```
 
-
-
+BEWARE: This will proceed only with the two real links, not with the NA, NULL or an empty string. 
+Therefore, you will recieve X number of messages describing the error. These, however, will not stop the flow of the code (i.e. are not errors). 
 
 # Goo.gl
 

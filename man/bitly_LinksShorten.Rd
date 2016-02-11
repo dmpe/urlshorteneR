@@ -40,6 +40,9 @@ See \url{http://dev.bitly.com/rate_limiting.html} and
 \url{http://dev.bitly.com/links.html#v3_shorten}
 }
 \note{
+Look in the vignette for bulk shortening of URLs. Each call of this function == 1 API call. 
+Take that into consideration due to limits etc.
+
 The bitly API does not support shortening more than one long URL with a single API call. 
 Meaning 1 Long URL = 1 Function call.
 
