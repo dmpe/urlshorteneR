@@ -92,7 +92,7 @@ doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL =
     json_response <- fromJSON(text_response)
     
     if (is.null(json_response$status_code) == FALSE && json_response$status_code >= 400) {
-      stop(sprintf("(%s) - %s", json_response$status_code, json_response$status_txt), call. = FALSE)
+      message(sprintf("Code: %s - %s", json_response$status_code, json_response$status_txt))
     }
       
     if (identical(showURL, TRUE)) {

@@ -86,6 +86,26 @@ bitly_IsProDomain(domain = "nyti.ms")
 }
 ```
 
+## An Example with a dataframe and bulk shortening 
+
+```{r}
+if (interactive()) {
+  df <- data.frame(pubDate = rep("2016-02-10", 4),
+                   link = c(NA,"http://www.opencoesione.gov.it/progetti/1misepac01_000443/",
+                            "http://www.opencoesione.gov.it/progetti/1misepac01_000031/", ""),
+                   stringsAsFactors = FALSE)
+  df
+  
+  fin = NULL
+  for (p in 1:length(df$link)) {
+    fin[[p]] <- bitly_LinksShorten(longUrl = df$link[p])
+  }
+}
+```
+
+
+
+
 # Goo.gl
 
 ```{r}
@@ -115,7 +135,7 @@ Based on <http://dev.bitly.com/>
 
 <http://dev.bitly.com/user_info.html>  | Implemented Yes/No
 ------------- | -------------
-/v3/oauth/app  | (**NOT**, see below)
+/v3/oauth/app  | **NOT**
 /v3/user/info  | Yes
 /v3/user/link_history | Yes
 /v3/user/network_history  | **NOT**
@@ -176,4 +196,6 @@ Based on <http://dev.bitly.com/>
 ### What has been implemented for Goo.gl:
 
 I believe everything. If not, let you me know.
+
+
 
