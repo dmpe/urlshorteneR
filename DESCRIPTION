@@ -3,9 +3,9 @@ Type: Package
 Title: R Wrapper for the 'Bit.ly', 'Goo.gl' and 'Is.gd' URL Shortening Services
 Description: Allows using different URL shortening services, which also provide
     expanding and analytic functions. Specifically developed for 'Bit.ly', 'Goo.gl'
-    (both OAuth2) and 'is.gd' (no API Key). Other can be added by request.
-Version: 0.9
-Date: 2016-02-13
+    (both OAuth2) and 'is.gd' (no api key). Others can be added by request.
+Version: 0.9.1
+Date: 2016-02-14
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )

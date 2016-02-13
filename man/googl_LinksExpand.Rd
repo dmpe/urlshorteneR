@@ -35,7 +35,7 @@ Returns a dataframe of expanded short URL and a list of its analytics.
 }
 \section{Quotas}{
  By default, your registered project gets 1,000,000 requests per day for the URL 
-Shortener API (\url{https://console.developers.google.com/})
+Shortener API (\code{https://console.developers.google.com/})
 }
 \examples{
 \dontrun{

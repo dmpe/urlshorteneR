@@ -5,13 +5,13 @@ globalVariables(c("googl_token", "bitly_token"))
 # Googl_api_version <- "v1"
 # Isgd_api_version <- "v2015"
 
-#' @title Assign API tokens using OAUTH2
+#' @title Assign API tokens using OAuth2.0
 #' 
 #' @description You should register an application in order to get Client ID and Client Secret code. 
 #' For Bit.ly, go to \url{https://bitly.com/a/oauth_apps} and in the field \code{Redirect URIs:} 
 #' type for example "http://localhost:1410". 
-#' For Goo.gl API Keys you should go to the \url{https://console.developers.google.com/project}, 
-#' select "APIs & auth", then "Credentials", then "add OAUTH2 client ID" and lastly you select 
+#' For Goo.gl API Keys you should go to the \code{http://console.developers.google.com/project/},
+#' select "APIs & auth", then "Credentials", then "add OAuth2.0 client ID" and lastly you select 
 #' "Type:Other". 
 #' 
 #' @param key - Client ID
