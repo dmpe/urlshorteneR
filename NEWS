@@ -4,7 +4,7 @@ see: https://github.com/dmpe/urlshorteneR
 ###
 February 2016  - Update packages to their latest versions
                - Fix this: https://github.com/dmpe/urlshorteneR/issues/9
-               - Add a message to display when packages has been loaded
+               - Add an information message to display when urlshorteneR package has been loaded
 
 November 2015  - First release of a new package 'urlshorteneR', which has been developed with Andrew Collier. 
                - The archieved version of RBitly can be found here: https://cran.r-project.org/src/contrib/Archive/RBitly
