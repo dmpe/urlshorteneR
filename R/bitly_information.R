@@ -43,7 +43,7 @@
 #' @examples 
 #' \dontrun{ 
 #' bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
-#' uI <- bitly_userInfo() 
+#' uI <- bitly_UserInfo() 
 #' }
 #' 
 #' @import stringr
