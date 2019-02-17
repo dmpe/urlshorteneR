@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/dmpe/urlshorteneR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/urlshorteneR?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 
-R package for shortening URLs, supporting Bit.ly & j.mp & is.gd & Goo.gl and other custom domains
+R package for shortening URLs, supporting Bit.ly (v3-> v4 migration underway) & j.mp & is.gd and potentially other custom domains
 =======
 
 ### Installing
@@ -18,7 +18,7 @@ Tested on Ubuntu 15.10 and Windows 10 (64 bit)
 ### Help needed !!!
 
 - Testers with the "enterprise" Bit.ly accounts. Please try using it and then report bugs in <https://github.com/dmpe/urlshorteneR/issues>
-- Testing Ow.ly support (this requeres their API key)
+- Testing Ow.ly support (this requires their API key)
 
 ### Looking for examples and current implementation status ?
 
