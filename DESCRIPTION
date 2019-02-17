@@ -23,4 +23,4 @@ VignetteBuilder: knitr
 License: Apache License 2.0
 URL: https://github.com/dmpe/urlshorteneR
 BugReports: https://github.com/dmpe/urlshorteneR/issues
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
