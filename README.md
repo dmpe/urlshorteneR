@@ -13,7 +13,81 @@ Either see CRAN or use `devtools` to install the latest version from Github:
 library(devtools)
 devtools::install_github("dmpe/urlshorteneR", build_vignettes = TRUE)
 ```
-Tested on Ubuntu 15.10 and Windows 10 (64 bit)
+
+Tested on Ubuntu 18.10 and Windows 10 (64 bit)
+
+
+## Version v3
+
+### What has (not) been implemented for Bit.ly:
+
+Based on <http://dev.bitly.com/>
+
+<http://dev.bitly.com/user_info.html>  | Implemented Yes/No
+------------- | -------------
+/v3/oauth/app  | (**NOT**, see below)
+/v3/user/info  | Yes
+/v3/user/link_history | Yes
+/v3/user/network_history  | **NOT**
+/v3/user/tracking_domain_list  | Yes
+
+<http://dev.bitly.com/link_metrics.html>  | Implemented Yes/No
+------------- | -------------
+/v3/link/clicks  | Yes
+/v3/link/countries  | Yes
+/v3/link/encoders  | Yes
+/v3/link/encoders_by_count  | Yes
+/v3/link/encoders_count  | Yes
+/v3/link/referrers  | Yes
+/v3/link/referrers_by_domain  | Yes
+/v3/link/referring_domains  | Yes
+
+
+<http://dev.bitly.com/user_metrics.html> | Implemented Yes/No | Premium
+------------- | ------------- | -------------
+/v3/user/clicks  | Yes 
+/v3/user/countries  | Yes 
+/v3/user/popular_earned_by_clicks  | **NOT**  | Yes
+/v3/user/popular_earned_by_shortens  | **NOT**  | Yes
+/v3/user/popular_links  | Yes
+/v3/user/popular_owned_by_clicks  | **NOT**  | Yes
+/v3/user/popular_owned_by_shortens | **NOT**  | Yes
+/v3/user/referrers  | Yes
+/v3/user/referring_domains | Yes
+/v3/user/shorten_counts | Yes
+
+
+<http://dev.bitly.com/domains.html> | Implemented Yes/No | Premium
+------------- | ------------- | -------------
+/v3/bitly_pro_domain  | Yes | No
+/v3/user/tracking_domain_clicks  | **NOT** | Yes (cannot do unless sombody helps)
+/v3/user/tracking_domain_shorten_counts  | **NOT** | Yes (cannot do unless sombody helps)
+
+
+<http://dev.bitly.com/links.html> | Implemented Yes/No | Premium
+------------- | ------------- | -------------
+/v3/expand  | Yes 
+/v3/info  | Yes 
+/v3/link/lookup  |  Yes
+/v3/shorten  | Yes  
+/v3/user/link_edit  | **NOT**  | No
+/v3/user/link_lookup  | **NOT**  | No
+/v3/user/link_save | **NOT**  | No
+/v3/user/save_custom_domain_keyword | **NOT**  | Yes
+
+
+- <http://dev.bitly.com/nsq.html>  
+    + None endpoints are implemented here, logically. This is only for the [NSQ](http://nsq.io/) platform.
+
+- <http://dev.bitly.com/organization_metrics.html>
+    + None endpoints are implemented here, because all are premium. Contact me if you need it. 
+
+- Lastly, sometimes, only a **small subset of input paramaters** has been implemented. Again contact me and I will consider a change. 
+
+
+
+
+
 
 ### Help needed !!!
 
