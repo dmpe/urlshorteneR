@@ -4,7 +4,8 @@
 \alias{bitly_LinksExpand}
 \title{Given a bitly URL or hash (or multiple), returns the target (long) URL.}
 \usage{
-bitly_LinksExpand(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE)
+bitly_LinksExpand(hashIN = NULL, shortUrl = NULL,
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{hashIN}{- refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required}
@@ -40,6 +41,7 @@ The maximum number of shortUrl and hash parameters is 15.
 \section{TODO}{
  or more URLs  Up TO 15
 }
+
 \examples{
 \dontrun{ 
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
@@ -56,4 +58,3 @@ bitly_LinksExpand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
 }
 
 }
-

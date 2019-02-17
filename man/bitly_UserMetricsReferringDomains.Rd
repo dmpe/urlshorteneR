@@ -5,10 +5,10 @@
 \title{Returns aggregate metrics about the domains referring click traffic to all of the 
 authenticated user's Bitlinks.}
 \usage{
-bitly_UserMetricsReferringDomains(limit = 1000, unit = c("minute", "hour",
-  "day", "week", "month"), rollup = c("false", "true"), units = -1,
-  login = NULL, exclude_social_networks = c("true", "false"),
-  showRequestURL = FALSE)
+bitly_UserMetricsReferringDomains(limit = 1000, unit = c("minute",
+  "hour", "day", "week", "month"), rollup = c("false", "true"),
+  units = -1, login = NULL, exclude_social_networks = c("true",
+  "false"), showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -59,4 +59,3 @@ exclude_social_networks = "true")
 \seealso{
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_referring_domains}
 }
-

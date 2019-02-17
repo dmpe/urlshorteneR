@@ -4,8 +4,8 @@
 \alias{bitly_LinksMetricsReferrers}
 \title{Returns metrics about the pages referring click traffic to a single Bitlink.}
 \usage{
-bitly_LinksMetricsReferrers(link, limit = 1000, unit = c("minute", "hour",
-  "day", "week", "month"), units = -1, showRequestURL = FALSE)
+bitly_LinksMetricsReferrers(link, limit = 1000, unit = c("minute",
+  "hour", "day", "week", "month"), units = -1, showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -36,4 +36,3 @@ bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov",unit = "day", units =
 }
 
 }
-

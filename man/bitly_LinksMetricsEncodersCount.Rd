@@ -30,4 +30,3 @@ bitly_LinksMetricsEncodersCount(link = "http://bit.ly/DPetrov")
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_count}
 }
-

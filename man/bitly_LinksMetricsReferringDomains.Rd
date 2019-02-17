@@ -4,8 +4,9 @@
 \alias{bitly_LinksMetricsReferringDomains}
 \title{Returns metrics about the domains referring click traffic to a link.}
 \usage{
-bitly_LinksMetricsReferringDomains(link, limit = 1000, unit = c("minute",
-  "hour", "day", "week", "month"), units = -1, showRequestURL = FALSE)
+bitly_LinksMetricsReferringDomains(link, limit = 1000,
+  unit = c("minute", "hour", "day", "week", "month"), units = -1,
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -41,4 +42,3 @@ bitly_LinksMetricsReferringDomains("http://bit.ly/DPetrov", unit = "day", units=
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_referring_domains}
 }
-

@@ -67,4 +67,3 @@ bitly_LinksShorten(longUrl = "https://travis-ci.org/dmpe/rbitly/builds/68231423"
 
 
 }
-
