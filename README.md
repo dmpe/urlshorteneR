@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/dmpe/urlshorteneR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/urlshorteneR?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 
-R package for shortening URLs, supporting Bit.ly (v3-> v4 migration underway) & j.mp & is.gd and potentially other custom domains
+R package for shortening URLs, supporting `Bit.ly` & `j.mp` & `is.gd` and `v.gd`
 =======
 
 ### Installing
@@ -21,7 +21,9 @@ Tested on Ubuntu 18.10 and Windows 10 (64 bit)
 
 ### What has (not) been implemented for Bit.ly:
 
-Based on <http://dev.bitly.com/>
+- V3-> V4 migration underway
+
+- Based on <http://dev.bitly.com/>
 
 <http://dev.bitly.com/user_info.html>  | Implemented Yes/No
 ------------- | -------------
@@ -60,8 +62,8 @@ Based on <http://dev.bitly.com/>
 <http://dev.bitly.com/domains.html> | Implemented Yes/No | Premium
 ------------- | ------------- | -------------
 /v3/bitly_pro_domain  | Yes | No
-/v3/user/tracking_domain_clicks  | **NOT** | Yes (cannot do unless sombody helps)
-/v3/user/tracking_domain_shorten_counts  | **NOT** | Yes (cannot do unless sombody helps)
+/v3/user/tracking_domain_clicks  | **NOT** | Yes (cannot do unless somebody helps)
+/v3/user/tracking_domain_shorten_counts  | **NOT** | Yes (cannot do unless somebody helps)
 
 
 <http://dev.bitly.com/links.html> | Implemented Yes/No | Premium
@@ -82,8 +84,7 @@ Based on <http://dev.bitly.com/>
 - <http://dev.bitly.com/organization_metrics.html>
     + None endpoints are implemented here, because all are premium. Contact me if you need it. 
 
-- Lastly, sometimes, only a **small subset of input paramaters** has been implemented. Again contact me and I will consider a change. 
-
+- Lastly, sometimes, only a **small subset of input paramaters** has been implemented. Again contact me and I will consider to implement them all. 
 
 
 
@@ -100,13 +101,14 @@ Check the vignette in `vignettes` folder.
 
 ### How to contribute 
 
-See Contribute.md
+See `Contribute.md`
 
 ### Special thanks to:
 
 - Developed by ([@dmpe](https://www.github.com/dmpe)) and [@DataWookie](https://github.com/DataWookie) :yum:.
 
 ## Meta
+
 - Licensed under [Apache License 2.0](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
 - Please report bugs in <https://github.com/dmpe/urlshorteneR/issues>.
 
