@@ -12,10 +12,6 @@ globalVariables(c("googl_token", "bitly_token"))
 #' Make up an \code{APPLICATION NAME:} that is unique. Unless you know to do otherwise, 
 #' type "http://localhost:1410" in both fields \code{APPLICATION LINK:} and \code{REDIRECT URIs:}.
 #' Type what you like in \code{APPLICATION DESCRIPTION}.
-#'
-#' For Goo.gl API Keys you should go to the \url{http://console.developers.google.com/project/},
-#' select "APIs & auth", then "Credentials", then "add OAuth2.0 client ID" and lastly you select 
-#' "Type:Other". 
 #' 
 #' @param key - Client ID
 #' @param secret - Client Secret
