@@ -36,4 +36,3 @@ See \url{https://is.gd/apishorteningreference.php}
 ## asd <- isgd_LinksShorten(longUrl = "http://debil.cz/",showRequestURL = TRUE)
 
 }
-

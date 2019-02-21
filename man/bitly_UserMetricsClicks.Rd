@@ -46,4 +46,3 @@ bitly_UserMetricsClicks(unit = "day", units = -1, limit = 100, rollup = "false")
 }
 
 }
-

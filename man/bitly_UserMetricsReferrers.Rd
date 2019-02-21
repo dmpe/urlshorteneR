@@ -5,8 +5,8 @@
 \title{Returns aggregate metrics about the pages referring click traffic to all of the 
 authenticated user's Bitlinks.}
 \usage{
-bitly_UserMetricsReferrers(limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), rollup = c("false", "true"), units = -1,
+bitly_UserMetricsReferrers(limit = 1000, unit = c("minute", "hour",
+  "day", "week", "month"), rollup = c("false", "true"), units = -1,
   showRequestURL = FALSE)
 }
 \arguments{
@@ -42,4 +42,3 @@ user_Metrics_Referrers(unit = "day", units = -1, limit = 100, rollup = "true")
 }
 
 }
-

@@ -40,4 +40,3 @@ bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100)
 }
 
 }
-

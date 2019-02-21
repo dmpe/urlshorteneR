@@ -5,7 +5,8 @@
 \title{Returns users who have encoded this long URL.}
 \usage{
 bitly_LinksMetricsEncoders(link, my_network = "false", limit = 25,
-  expand_user = "false", subaccounts = "false", showRequestURL = FALSE)
+  expand_user = "false", subaccounts = "false",
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -44,4 +45,3 @@ bitly_LinksMetricsEncoders("http://bit.ly/DPetrov", expand_user = "true", my_net
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders}
 }
-

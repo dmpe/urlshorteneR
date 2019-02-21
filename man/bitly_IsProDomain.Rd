@@ -32,4 +32,3 @@ bitly_IsProDomain(domain = "nyti.ms", showRequestURL = TRUE)
 \seealso{
 See \url{http://dev.bitly.com/domains.html#v3_bitly_pro_domain}
 }
-

@@ -4,8 +4,8 @@
 \alias{bitly_LinksMetricsCountries}
 \title{Returns metrics about the countries from a link.}
 \usage{
-bitly_LinksMetricsCountries(link, limit = 1000, unit = c("minute", "hour",
-  "day", "week", "month"), units = -1, showRequestURL = FALSE)
+bitly_LinksMetricsCountries(link, limit = 1000, unit = c("minute",
+  "hour", "day", "week", "month"), units = -1, showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -41,4 +41,3 @@ showRequestURL= TRUE)
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_countries}
 }
-

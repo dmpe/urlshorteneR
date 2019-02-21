@@ -43,4 +43,3 @@ bitly_LinksMetricsClicks(link = "http://bit.ly/DPetrov", unit = "day", units = -
 \seealso{
 \url{http://dev.bitly.com/link_metrics.html#v3_link_clicks}
 }
-

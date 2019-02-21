@@ -35,4 +35,3 @@ for (u in 1:length(manyUrls)) {
 }
 
 }
-
