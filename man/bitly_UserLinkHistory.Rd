@@ -4,8 +4,9 @@
 \alias{bitly_UserLinkHistory}
 \title{Returns entries from a user's link history in reverse chronological order.}
 \usage{
-bitly_UserLinkHistory(limit = 100, private = "off", archived = "both",
-  expand_client_id = "false", showRequestURL = FALSE)
+bitly_UserLinkHistory(limit = 100, private = "off",
+  archived = "both", expand_client_id = "false",
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- optional integer in the range 1 to 100; default: 100, specifying the max 
@@ -61,4 +62,3 @@ lh <- bitly_UserLinkHistory()
 }
 
 }
-

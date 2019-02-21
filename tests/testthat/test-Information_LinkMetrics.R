@@ -20,11 +20,6 @@ test_that("Returns entries from a user's link history in reverse chronological o
   expect_message(bitly_UserTrackingDomains(), "It seems that you don't have any tracking domains.")
 })
 
-test_that("Returns entries from a user's link history from Google.", {
-  g3 <- googl_UserLinkHistory()
-  expect_more_than(nrow(g3), 10)
-})
-
 context("Link Metrics")
 
 test_that("Returns the number of clicks on a single Bitlink.", {

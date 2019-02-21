@@ -38,4 +38,3 @@ bitly_UserMetricsPopularLinks(unit = "day", units = -1, limit = 100)
 }
 
 }
-

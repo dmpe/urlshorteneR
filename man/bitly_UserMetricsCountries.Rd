@@ -5,8 +5,9 @@
 \title{Returns aggregate metrics about the countries referring click traffic to all of the 
 authenticated user's Bitlinks.}
 \usage{
-bitly_UserMetricsCountries(limit = 1000, unit = c("minute", "hour", "day",
-  "week", "month"), rollup = "true", units = -1, showRequestURL = FALSE)
+bitly_UserMetricsCountries(limit = 1000, unit = c("minute", "hour",
+  "day", "week", "month"), rollup = "true", units = -1,
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
@@ -41,4 +42,3 @@ bitly_UserMetricsCountries(unit = "day", units = -1, limit = 100, rollup = "true
 }
 
 }
-

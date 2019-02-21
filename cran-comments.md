@@ -1,5 +1,5 @@
 ## Test environments
-* local linux: R 3.2.2 (and travis) @ Ubuntu 15.10
+* local linux: R 3.5.2 (and travis) @ Ubuntu 15.10
 * windows: R-devel @ Windows 10
 
 ## Archive RBitly

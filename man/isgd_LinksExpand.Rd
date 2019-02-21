@@ -24,4 +24,3 @@ See \url{https://is.gd/apilookupreference.php}
 ### isgd_LinksExpand(shorturl = "http://is.gd/4oIAXJ", showRequestURL = TRUE)
 
 }
-

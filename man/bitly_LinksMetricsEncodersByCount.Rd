@@ -4,8 +4,9 @@
 \alias{bitly_LinksMetricsEncodersByCount}
 \title{Returns users who have encoded this link.}
 \usage{
-bitly_LinksMetricsEncodersByCount(link, limit = 100, my_network = "false",
-  expand_user = "false", subaccounts = "false", showRequestURL = FALSE)
+bitly_LinksMetricsEncodersByCount(link, limit = 100,
+  my_network = "false", expand_user = "false", subaccounts = "false",
+  showRequestURL = FALSE)
 }
 \arguments{
 \item{link}{- a Bitlink.}
@@ -46,4 +47,3 @@ expand_user = "true")
 \seealso{
 See \url{http://dev.bitly.com/link_metrics.html#v3_link_encoders_by_count}
 }
-
