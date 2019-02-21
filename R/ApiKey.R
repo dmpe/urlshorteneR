@@ -11,7 +11,7 @@ globalVariables(c("googl_token", "bitly_token"))
 #' then \code{GET REGISTRATION CODE}. Open the email you will receive and click \code{COMPLETE REGISTRATION}.
 #' Make up an \code{APPLICATION NAME:} that is unique. Unless you know to do otherwise, 
 #' type "http://localhost:1410" in both fields \code{APPLICATION LINK:} and \code{REDIRECT URIs:}.
-#' Type what you like in \code{APPLICATION DESCRIPTION}.
+#' Type what you like in \code{APPLICATION DESCRIPTION:}.
 #' 
 #' @param key - Client ID
 #' @param secret - Client Secret
