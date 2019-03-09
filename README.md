@@ -1,8 +1,7 @@
-[![Build Status](https://travis-ci.org/dmpe/urlshorteneR.svg?branch=master)](https://travis-ci.org/dmpe/urlshorteneR)
 [![Coverage Status](https://coveralls.io/repos/dmpe/urlshorteneR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/urlshorteneR?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 
-R package for shortening URLs, supporting `Bit.ly` & `j.mp` & `is.gd` and `v.gd`
+R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd`
 =======
 
 ### Installing
@@ -16,14 +15,13 @@ devtools::install_github("dmpe/urlshorteneR", build_vignettes = TRUE)
 
 Tested on Ubuntu 18.10 and Windows 10 (64 bit)
 
-
 ## Version v3
 
 ### What has (not) been implemented for Bit.ly:
 
 - V3-> V4 migration underway
 
-- Based on <http://dev.bitly.com/>
+- Based on <https://dev.bitly.com/v4_documentation.html>
 
 <http://dev.bitly.com/user_info.html>  | Implemented Yes/No
 ------------- | -------------
@@ -92,7 +90,7 @@ Tested on Ubuntu 18.10 and Windows 10 (64 bit)
 
 ### Help needed !!!
 
-- Testers with the "enterprise" Bit.ly accounts. Please try using it and then report bugs in <https://github.com/dmpe/urlshorteneR/issues>
+- Testers with the "enterprise" Bit.ly accounts. 
 - Testing Ow.ly support (this requires their API key)
 
 ### Looking for examples and current implementation status ?
@@ -110,6 +108,6 @@ See `Contribute.md`
 ## Meta
 
 - Licensed under [Apache License 2.0](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
-- Please report bugs in <https://github.com/dmpe/urlshorteneR/issues>.
+- Report bugs in <https://github.com/dmpe/urlshorteneR/issues>.
 
 

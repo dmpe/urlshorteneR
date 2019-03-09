@@ -1,7 +1,7 @@
 .state <- new.env(parent = emptyenv())
-globalVariables(c("googl_token", "bitly_token"))
+globalVariables(c("bitly_token"))
 
-# Bitly_api_version <- "v3"
+# Bitly_api_version <- "v4"
 # Isgd_api_version <- "v2019"
 
 #' @title Assign API tokens using OAuth2.0
@@ -20,7 +20,7 @@ globalVariables(c("googl_token", "bitly_token"))
 #' \dontrun{
 #' bitly_token <-
 #'   bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-#'              secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+#'              secret = "e12dfc2482c76512b9a497e965abf4e082d1ffeb")
 #' }
 #' 
 #' @import httr
@@ -46,24 +46,15 @@ bitly_auth <- function(key = "", secret = "") {
 #' 
 #' @noRd
 #' @keywords internal
-doRequest <- function(verb, url, service = "", queryParameters = NULL, showURL = NULL) {
-  service_token <- if (service == "bitly") {
-    bitly_token
-  }
-  
-  service_token <- if (service == "googl") {
-    googl_token
-  } else {
-    NULL
-  }
-  
+doRequest <- function(verb, url, queryParameters = NULL, showURL = NULL) {
+
   switch(verb,
          "GET" = {
-           return_request <- httr::GET(url, query = queryParameters, httr::config(token = service_token))
+           return_request <- httr::GET(url, query = queryParameters, httr::config(token = bitly_token))
          },
          "POST" = {
            return_request <- httr::POST(url, body = queryParameters, encode = "json", 
-                                        httr::content_type_json(), httr::config(token = service_token))
+                                        httr::content_type_json(), httr::config(token = bitly_token))
          }
   )
   

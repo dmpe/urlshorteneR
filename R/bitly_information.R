@@ -51,11 +51,11 @@
 #' @export
 bitly_UserInfo <- function(showRequestURL = FALSE) {
   
-  user_info_url <- "https://api-ssl.bitly.com/v3/user/info"
+  user_info_url <- "https://api-ssl.bitly.com/v4/user"
   
   query <- list(access_token = bitly_token$credentials$access_token)
   
-  df_user_info <- doRequest("GET", user_info_url, service = "bitly", query, showURL = showRequestURL)
+  df_user_info <- doRequest("GET", user_info_url, query, showURL = showRequestURL)
   
   df_user_info_data <- data.frame(ReturnValues = unlist(df_user_info$data))
   df_user_info_data$ReturnValues <- str_trim(as.character(df_user_info_data$ReturnValues))

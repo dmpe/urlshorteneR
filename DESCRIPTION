@@ -4,7 +4,7 @@ Title: R Wrapper for the 'Bit.ly' and 'Is.gd' URL Shortening Services
 Description: Allows using different URL shortening services, which also provide
     expanding and analytic functions. Specifically developed for 'Bit.ly' (OAuth2) and 'is.gd' (no api key).
 Version: 1.0
-Date: 2019-02-14
+Date: 2019-03-14
 Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
@@ -13,7 +13,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     httr (>= 1.4.0),
-    jsonlite (>= 1.6),
+    jsonlite (>= 1.5),
     stringr (>= 1.4.0)
 Suggests:
     roxygen2 (>= 6.1.1),

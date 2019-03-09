@@ -33,7 +33,7 @@ bitly_UserMetricsClicks <- function(limit = 1000, unit = c("minute", "hour", "da
   unit_matched <- match.arg(unit)
   rollup_matched <- match.arg(rollup)
   
-  user_metrics_clicks_url <- "https://api-ssl.bitly.com/v3/user/clicks"
+  user_metrics_clicks_url <- "https://api-ssl.bitly.com/v4/user/clicks"
   
   query <- list(access_token = bitly_token$credentials$access_token, limit = limit, 
                 unit = unit_matched, units = units, rollup = rollup_matched)
@@ -79,7 +79,7 @@ bitly_UserMetricsCountries <- function(limit = 1000, unit = c("minute", "hour", 
                                    rollup = "true", units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
 
-  user_metrics_countries_url <- "https://api-ssl.bitly.com/v3/user/countries"
+  user_metrics_countries_url <- "https://api-ssl.bitly.com/v4/user/countries"
   
   query <- list(access_token =bitly_token$credentials$access_token, limit = limit, unit = unit_matched, units = units, 
                 rollup = rollup)
@@ -153,7 +153,7 @@ bitly_UserMetricsReferrers <- function(limit = 1000, unit = c("minute", "hour", 
                                    rollup = c("false", "true"), units = -1, showRequestURL = FALSE) {
   unit_matched <- match.arg(unit)
 
-  user_metrics_referrers_url <- "https://api-ssl.bitly.com/v3/user/referrers"
+  user_metrics_referrers_url <- "https://api-ssl.bitly.com/v4/user/referrers"
   
   query <- list(access_token = bitly_token$credentials$access_token, limit = limit, 
                 unit = unit_matched, units = units, rollup = rollup)
@@ -207,7 +207,7 @@ bitly_UserMetricsReferringDomains <- function(limit = 1000, unit = c("minute", "
   rollup_matched <- match.arg(rollup)
   exclude_social_networks_matched <- match.arg(exclude_social_networks)
   
-  user_metrics_referring_domains_url <- "https://api-ssl.bitly.com/v3/user/referring_domains"
+  user_metrics_referring_domains_url <- "https://api-ssl.bitly.com/v4/user/referring_domains"
   
   query <- list(access_token =bitly_token$credentials$access_token, limit = limit, unit = unit_matched, units = units, login = login,
                 rollup = rollup_matched, exclude_social_networks = exclude_social_networks_matched)
@@ -252,7 +252,7 @@ bitly_UserMetricsShortenCounts <- function(limit = 1000, unit = c("minute", "hou
   unit_matched <- match.arg(unit)
   rollup_matched <- match.arg(rollup)
   
-  user_metrics_shorten_counts_url <- "https://api-ssl.bitly.com/v3/user/shorten_counts"
+  user_metrics_shorten_counts_url <- "https://api-ssl.bitly.com/v4/user/shorten_counts"
   
   query <- list(access_token =  bitly_token$credentials$access_token, limit = limit, 
                 unit = unit_matched, units = units, rollup = rollup_matched, showURL = showRequestURL)
