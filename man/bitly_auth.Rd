@@ -4,7 +4,8 @@
 \alias{bitly_auth}
 \title{Assign API tokens using OAuth2.0}
 \usage{
-bitly_auth(key = "", secret = "")
+bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+  secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917")
 }
 \arguments{
 \item{key}{- Client ID}
@@ -16,19 +17,19 @@ You should register an application in order to get Client ID and Client Secret c
 For Bit.ly, go to \url{https://bitly.com/a/oauth_apps}. Click \code{REGISTERED OAUTH APPLICATIONS}, 
 then \code{GET REGISTRATION CODE}. Open the email you will receive and click \code{COMPLETE REGISTRATION}.
 Make up an \code{APPLICATION NAME:} that is unique. Unless you know to do otherwise, 
-type "http://localhost:1410" in both fields \code{APPLICATION LINK:} and \code{REDIRECT URIs:}.
-Type what you like in \code{APPLICATION DESCRIPTION:}.
+type "http://localhost:1410/" (slash at the end is important) in \code{REDIRECT URIs:}. For 
+\code{APPLICATION LINK:} and \code{APPLICATION DESCRIPTION:} you can type what you like.
 }
 \examples{
 \dontrun{
 bitly_token <-
   bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-             secret = "e12dfc2482c76512b9a497e965abf4e082d1ffeb")
+             secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917")
+             
+ bitly_token <- bitly_auth()
 }
 
 }
 \seealso{
-See \url{http://dev.bitly.com/rate_limiting.html}
-
-See \url{http://dev.bitly.com/authentication.html}
+See \url{https://dev.bitly.com/v4_documentation.html}
 }

@@ -5,10 +5,10 @@ Description: Allows using different URL shortening services, which also provide
     expanding and analytic functions. Specifically developed for 'Bit.ly' (OAuth2) and 'is.gd' (no api key).
 Version: 1.0
 Date: 2019-03-14
-Authors@R: c(
-    person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
-    person("Rick", "Pack", email = "rickeyhp@gmail.com", role = "ctb", comment = "@RickPack")
-)
+Authors@R: 
+   c(
+    person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe"),
+    person("Rick", "Pack", email = "rickeyhp@gmail.com", role = c("ctb"), comment = "@RickPack"))
 Maintainer: John Malc <cincenko@outlook.com>
 Encoding: UTF-8
 Depends:

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bitly_information.R
 \name{bitly_UserInfo}
 \alias{bitly_UserInfo}
-\title{Return or update information about a user.}
+\title{Retrieve information for the current authenticated user}
 \usage{
 bitly_UserInfo(showRequestURL = FALSE)
 }
@@ -13,66 +13,32 @@ For debug purposes.}
 \value{
 login - the specified bitly login or the login of the authenticated user.
 
-profile_url - URL of user's profile page.
+name - the user's full/display name
 
-profile_image - URL of user's profile image.
+default_group_guid
 
-member_since - Unix timestamp for the moment the user signed up.
+created - Timestamp for the moment the user signed up.
 
-full_name - (optional) the user's full name, if set.
+is_created
 
-display_name - (optional) the user's display name, if set.
+modified
 
-share_accounts - (optional) a list of the share accounts (Twitter or Facebook) linked to 
-the user's account.
+is_sso_user
 
-NOTICE: Only included in requests for a user's own info.
+is_2fa_enabled
 
-apiKey - the user's bitly API key.
-
-is_enterprise - 0 or 1 to indicate if this account is signed up for Bitly Brand Tools.
-
-has_master - 0 or 1 to indicate if this account is a customer sub account.
-
-custom_short_domain - A short domain registered with this account that can be used in 
-place of bit.ly for shortening links.
-
-tracking_domains - A list of domains configured for analytics tracking.
-
-default_link_privacy - public or private indicating the default privacy setting for 
-new links.
-
-domain_preference_options - A list of the valid short domains that this account can 
-choose as a default.
-
-NOTICE: Only included for enterprise accounts (is_enterprise == 1 or has_master == 1).
-
-sub_accounts - (optional) list of accounts associated with this account.
-
-e2e_domains - (optional) list of domains associated with this custom_short_domain.
-
-tracking_url_prefixes - A list of owned 3rd party urls such as Facebook tracked for 
-analytics
-
-master_account - (optional) the login of a master account, if this is associated with
-an enterprise account.
-
-enterprise_permissions - (optional) list of enterprise permissions associated with this 
-account.
-
-bbt_start_date - (optional) the date for when this account became a Bitly Brand Tools 
-account.
+email
 }
 \description{
-See \url{http://dev.bitly.com/user_info.html#v3_user_info}
+See \url{https://dev.bitly.com/v4/#operation/getUser}
 }
 \note{
 Both returned columns (!) are character type.
 }
 \examples{
 \dontrun{ 
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "")
-uI <- bitly_UserInfo() 
+     bitly_token <- bitly_auth()
+     ui <- bitly_UserInfo(showRequestURL = TRUE) 
 }
 
 }
