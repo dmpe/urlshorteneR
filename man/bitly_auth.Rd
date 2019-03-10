@@ -13,14 +13,17 @@ bitly_auth(key = "", secret = "")
 }
 \description{
 You should register an application in order to get Client ID and Client Secret code. 
-For Bit.ly, go to \url{https://bitly.com/a/oauth_apps} and in the field \code{Redirect URIs:} 
-type for example "http://localhost:1410".
+For Bit.ly, go to \url{https://bitly.com/a/oauth_apps}. Click \code{REGISTERED OAUTH APPLICATIONS}, 
+then \code{GET REGISTRATION CODE}. Open the email you will receive and click \code{COMPLETE REGISTRATION}.
+Make up an \code{APPLICATION NAME:} that is unique. Unless you know to do otherwise, 
+type "http://localhost:1410" in both fields \code{APPLICATION LINK:} and \code{REDIRECT URIs:}.
+Type what you like in \code{APPLICATION DESCRIPTION:}.
 }
 \examples{
 \dontrun{
 bitly_token <-
   bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-             secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+             secret = "e12dfc2482c76512b9a497e965abf4e082d1ffeb")
 }
 
 }
