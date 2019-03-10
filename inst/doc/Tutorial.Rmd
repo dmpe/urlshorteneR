@@ -28,8 +28,7 @@ library(urlshorteneR)
 # print(getwd())
 # 
 # btoken_path <- file.path("..", "tests", "testthat", "bitly_token.rds")
-# gtoken_path <- file.path("..", "tests", "testthat", "googl_token.rds")
- 
+
 if (interactive()) {
 
 bitly_token <- readRDS("../tests/testthat/bitly_token.rds")
