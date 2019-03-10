@@ -9,6 +9,7 @@ Authors@R: c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe")
     )
 Maintainer: John Malc <cincenko@outlook.com>
+Encoding: UTF-8
 Depends:
     R (>= 3.5.0)
 Imports:
