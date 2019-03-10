@@ -6,7 +6,7 @@ R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd`
 
 ### Installing
 
-Either see CRAN or use `devtools` to install the latest version from Github:
+Either see CRAN badge above or use `devtools` to install the latest version from Github:
 
 ```
 library(devtools)
@@ -101,9 +101,10 @@ Check the vignette in `vignettes` folder.
 
 See `Contribute.md`
 
-### Special thanks to:
+### Credits:
 
-- Developed by ([@dmpe](https://www.github.com/dmpe)) and [@DataWookie](https://github.com/DataWookie) :yum:.
+- Developed by ([@dmpe](https://www.github.com/dmpe))
+- Contributions by [@DataWookie](https://github.com/DataWookie) and [@RickPack](https://github.com/RickPack) :yum:. 
 
 ## Meta
 
