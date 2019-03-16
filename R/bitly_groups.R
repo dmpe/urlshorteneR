@@ -1,6 +1,7 @@
 #' @title Retrieve a Group 
 #' 
-#' @description Retrive details for a specific group that for instance a user can belong to.
+#' @description 
+#' Retrive details for a specific group that for instance a user can belong to.
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getGroup}
 #' 

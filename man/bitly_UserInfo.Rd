@@ -11,29 +11,26 @@ bitly_UserInfo(showRequestURL = FALSE)
 For debug purposes.}
 }
 \value{
-login - the specified bitly login or the login of the authenticated user.
+login - the specified bitly login or the login of the authenticated user
 
 name - the user's full/display name
 
-default_group_guid
+default_group_guid	- a group to which user belongs
 
-created - Timestamp for the moment the user signed up.
+created - Timestamp for the moment the user signed up (uses \code{\link[lubridate]{ymd_hms}})
 
-is_created
+is_active - whether a user profile is active
 
-modified
+modified - Timestamp of the last modification to the user profile (uses \code{\link[lubridate]{ymd_hms}})
 
-is_sso_user
+is_sso_user - is Single-Sign-On enabled for the user (PREMIUM FEATURE) ? (\href{https://support.bitly.com/hc/en-us/articles/360001482672-What-is-Single-Sign-On-SSO-}{Bit.ly SSO})
 
-is_2fa_enabled
+is_2fa_enabled - is 2 Step verification enabled ? (\href{https://support.bitly.com/hc/en-us/articles/230650187-What-is-2-step-verification-}{Bit.ly 2FA})
 
-email
+email - user's emails
 }
 \description{
 See \url{https://dev.bitly.com/v4/#operation/getUser}
-}
-\note{
-Both returned columns (!) are character type.
 }
 \examples{
 \dontrun{ 

@@ -2,17 +2,35 @@
 % Please edit documentation in R/bitly_information.R
 \name{update_user}
 \alias{update_user}
-\title{Changing your name or fetching basic user information}
+\title{Update your name and/or default group ID
+
+This will overwrite your (display) username and/or group ID you belong to.}
 \usage{
-update_user(default_group_guid = "", name = "",
+update_user(default_group_guid = NULL, name = "",
   showRequestURL = FALSE)
 }
 \arguments{
-\item{name}{}
+\item{default_group_guid}{- group id}
+
+\item{name}{- username}
 }
 \description{
-Changing your name or fetching basic user information
+Update your name and/or default group ID
+
+This will overwrite your (display) username and/or group ID you belong to.
 }
 \note{
-Applies only to the authenticated user.
+Applies only to the authenticated user:
+Changing group ID is only permitted to premium users. Thus, if you are a "free" user and will try to change your
+default group id to something else, you will get an error. In that case, only changing display name is permitted.
+}
+\examples{
+\\donotrun {
+# this applies only for "free" users
+uu <- update_user(name= "Malc")
+
+# if you are premium user, you can additionally adjust your group id
+uug <- update_user(name= "Malc", default_group_guid = "TestGroupID")
+}
+
 }

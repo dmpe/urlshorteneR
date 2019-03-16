@@ -10,7 +10,7 @@ retrieve_group(group_guid = NA)
 \item{group_guid}{- string | A GUID for a Bitly group}
 }
 \description{
-Retrive details for a group
+Retrive details for a specific group that for instance a user can belong to.
 }
 \examples{
 \dontrun {

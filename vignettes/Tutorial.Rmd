@@ -9,40 +9,42 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
   
-This package wrapps [Bit.ly](https://bitly.com) & [Goo.gl](https://goo.gl) API. In order to begin shortening URLs and downloading usefull statistics, there is one requirement, which is to authenticate using OAUTH2 for each service (of course, if you need both of them) 
-  
-## Authentication
+`urlshorteneR` wrapps 2 services [Bit.ly](https://bitly.com) and [is.gd/v.gd](https://is.gd). 
+In order to begin shortening URLs and downloading usefull statistics about short links, you have to -- in the case of <http://bit.ly> -- authenticate using oAuth2.0. 
+For is.gd/v.gd there is no authentication needed. 
 
-See `??googl_auth`. Please do not use my API Keys as they may not work properly. 
-  
 # Bit.ly
-  
-## An Example for User Metrics
-  
-Official API documentation <http://dev.bitly.com/user_metrics.html>.
-  
-Method below returns my most-clicked Bit.ly links (ordered by number of clicks) in a given time period.
-  
+
+## User Information / Authentication for Bit.ly
+
+Return some basic information about my user on Bit.ly. Additionally, is the account "premium" one?
+
 ```{r}
 library(urlshorteneR)
-# print(getwd())
-# 
-# btoken_path <- file.path("..", "tests", "testthat", "bitly_token.rds")
 
 if (interactive()) {
 
-# bitly_token <- readRDS("../tests/testthat/bitly_token.rds")
+# You can register a new pair of keys yourself - but you can also use mine - an option which is also by default
+# bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917")
 
-# You should register a new pair of keys yourself. DO NOT USE MINE as this may not work. 
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "e12dfc2482c76512b9a497e965abf4e082d1ffeb")
+bitly_token <- bitly_auth()
 
-bitly_UserMetricsPopularLinks(unit = "month", units = -1, limit = 100)
-
+ui <- bitly_UserInfo(showRequestURL = TRUE) 
+is_user_premium_account_holder()
 }
 ```
 
+We can also decide to update my username with a different one.
 
-## An Example for Link Metrics
+```{r}
+library(urlshorteneR)
+
+if (interactive()) {
+update_user(name= "John Malc", showRequestURL = TRUE)
+}
+```
+
+## Group Information
 
 Official API documentation <http://dev.bitly.com/link_metrics.html>.
 
@@ -56,7 +58,7 @@ bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "
 ```
 
 
-## An Example for User Info/History
+## Information about Organizations
 
 Official API documentation <http://dev.bitly.com/user_info.html>. 
 
@@ -72,7 +74,7 @@ bitly_UserTrackingDomains()
 ```
 
 
-## An Example for Domains
+## Bitlinks
 
 Official API documentation <http://dev.bitly.com/domains.html>. 
 
@@ -85,7 +87,7 @@ bitly_IsProDomain(domain = "nyti.ms")
 }
 ```
 
-## An Example with a dataframe and bulk shortening 
+### Custom Bitlinks
 
 ```{r}
 if (interactive()) {
@@ -104,6 +106,10 @@ if (interactive()) {
 
 BEWARE: This will proceed only with the two real links, not with the NA, NULL or an empty string. 
 Therefore, you will recieve X number of messages describing the error. These, however, will not stop the flow of the code (i.e. are not errors). 
+
+
+
+## Campaigns
 
 # Is.gd
 

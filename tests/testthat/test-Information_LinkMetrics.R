@@ -4,21 +4,28 @@ library(httr)
 library(jsonlite)
 library(stringr)
 
-# bitly_token <- readRDS("bitly_token.rds")
-# googl_token <- readRDS("googl_token.rds")
-
 context("User Info")
 
 test_that("Return information about a user.", {
   ui <- bitly_UserInfo()
-  expect_equal(dim(ui)[[2]], 2)
+  expect_equal(dim(ui)[[2]], 11)
 })
+
+test_that("User has a free/premium account", {
+  bool_val <- is_user_premium_account_holder()
+  expect_false(bool_val)
+  expect_failure(expect_true(bool_val))
+})
+
+
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
   user.linkH <- bitly_UserLinkHistory()
   expect_more_than(length(user.linkH), 10)
   expect_message(bitly_UserTrackingDomains(), "It seems that you don't have any tracking domains.")
 })
+
+
 
 context("Link Metrics")
 
