@@ -1,6 +1,6 @@
 #' @title Retrieve a Group 
 #' 
-#' @description Retrive details for a group
+#' @description Retrive details for a specific group that for instance a user can belong to.
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getGroup}
 #' 
@@ -17,13 +17,15 @@
 #' 
 #' @export
 retrieve_group <- function(group_guid = NA) {
-  
-  if(is.na(group_guid)) {
-    stop("group_guid must not be empty string/NA/NULL")
-  } else {
+  if(is.character(group_guid)) {
     group_ulr <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid)
+  } else {
+    if(is.na(group_guid) || is.null(group_guid) || group_guid == "" || is.numeric(group_guid)) {
+      stop("group_guid must not be empty string, NA or NULL")
+    }
   }
   
+  ...
   
   
   

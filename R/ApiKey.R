@@ -35,10 +35,12 @@ globalVariables(c("bitly_token"))
 #' 
 #' @examples
 #' \dontrun{
+#' #overwrite keys
 #' bitly_token <-
-#'   bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+#'  bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 #'              secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917")
 #'              
+#'  # default
 #'  bitly_token <- bitly_auth()
 #' }
 #' 

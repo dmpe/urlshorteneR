@@ -28,8 +28,7 @@ library(urlshorteneR)
 # print(getwd())
 # 
 # btoken_path <- file.path("..", "tests", "testthat", "bitly_token.rds")
-# gtoken_path <- file.path("..", "tests", "testthat", "googl_token.rds")
- 
+
 if (interactive()) {
 
 # bitly_token <- readRDS("../tests/testthat/bitly_token.rds")
@@ -38,6 +37,7 @@ if (interactive()) {
 bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "e12dfc2482c76512b9a497e965abf4e082d1ffeb")
 
 bitly_UserMetricsPopularLinks(unit = "month", units = -1, limit = 100)
+
 }
 ```
 
@@ -115,6 +115,6 @@ isgd_LinksShorten(longUrl = "http://cnn.com/", showRequestURL = TRUE)
 # V.gd
 
 ```{r}
-vd_LinksShorten(longUrl = "http://cbs.com/", showRequestURL = TRUE)
+vgd_LinksShorten(longUrl = "http://cbs.com/", showRequestURL = TRUE)
 ```
 

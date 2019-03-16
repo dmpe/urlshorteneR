@@ -4,10 +4,7 @@ library(httr)
 library(jsonlite)
 library(stringr)
 
-googl_token <- googl_auth(key = "806673580943-78jdskus76fu7r0m21erihqtltcka29i.apps.googleusercontent.com",
-             secret = "qItL-PZnm8GFxUOYM0zPVr_t")
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-             secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+bitly_token <- bitly_auth()
 
 # bitly_token <- readRDS("../bitly_token.rds")
 
