@@ -12,16 +12,24 @@ test_that("Return information about a user.", {
 })
 
 test_that("User has a free/premium account", {
-  bool_val <- is_user_premium_account_holder()
+  bool_val <- is_bitly_user_premium_holder()
   expect_false(bool_val)
   expect_failure(expect_true(bool_val))
 })
 
+context("OAUTH Application Details")
 
+test_that("Application provides some metadata", {
+  ad <- app_details()
+  expect_equal(dim(ad)[[2]], 4)
+})
+
+context("Group Information")
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
-  user.linkH <- bitly_UserLinkHistory()
-  expect_more_than(length(user.linkH), 10)
+  ui <- bitly_UserInfo()
+  user_group <- bitly_retrieve_group(ui$default_group_guid)
+  expect_equal(user_group, 10)
   expect_message(bitly_UserTrackingDomains(), "It seems that you don't have any tracking domains.")
 })
 

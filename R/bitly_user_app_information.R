@@ -3,7 +3,7 @@
 #' @param showRequestURL - show URL which has been build and requested from server. 
 #' For debug purposes.
 #'
-#' @description See \url{https://dev.bitly.com/v4/#operation/getUser}
+#' @seealso \url{https://dev.bitly.com/v4/#operation/getUser}
 #'
 #' @return login - the specified bitly login or the login of the authenticated user
 #' @return name - the user's full/display name
@@ -52,6 +52,8 @@ bitly_UserInfo <- function(showRequestURL = FALSE) {
 #' @param default_group_guid - group id
 #' @param name - username
 #' 
+#' @seealso \url{https://dev.bitly.com/v4/#operation/updateUser}
+#' 
 #' @examples 
 #' \donotrun {
 #' # this applies only for "free" users
@@ -62,7 +64,7 @@ bitly_UserInfo <- function(showRequestURL = FALSE) {
 #' }
 #' 
 #' @export 
-update_user <- function(default_group_guid = NULL, name = "", showRequestURL = FALSE) {
+bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
   
   if(!is_user_premium_account_holder()) {
@@ -80,9 +82,27 @@ update_user <- function(default_group_guid = NULL, name = "", showRequestURL = F
 
 #' Check if authenticated user holds premium account
 #' 
+#' @seealso [bitly_UserInfo()]  
+#' 
 #' @export
-is_user_premium_account_holder <- function() {
+is_bitly_user_premium_holder <- function() {
   user_profile <- bitly_UserInfo()
 
   return(user_profile$is_sso_user[[1]])
+}
+
+#' Retrieve the details for the provided OAuth App client ID
+#' 
+#' @param client_id - The client ID of an OAuth app
+#' 
+#' @export
+bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8") {
+  oauth_app_details <- paste0("https://api-ssl.bitly.com/v4/apps/", client_id)
+  
+  query <- list(access_token = bitly_token$credentials$access_token, client_id = client_id)
+  
+  df_app_details <- doRequest("GET", oauth_app_details, query, showURL = showRequestURL)
+  
+  df_app_details <- data.frame(df_app_details, stringsAsFactors = FALSE)
+  return(df_app_details)
 }

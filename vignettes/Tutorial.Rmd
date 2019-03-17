@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Tutorial for urlshorteneR}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
   
 `urlshorteneR` wrapps 2 services [Bit.ly](https://bitly.com) and [is.gd/v.gd](https://is.gd). 
@@ -15,7 +17,7 @@ For is.gd/v.gd there is no authentication needed.
 
 # Bit.ly
 
-## User Information / Authentication for Bit.ly
+## User/App Information & Authentication for Bit.ly
 
 Return some basic information about my user on Bit.ly. Additionally, is the account "premium" one?
 
@@ -30,30 +32,35 @@ if (interactive()) {
 bitly_token <- bitly_auth()
 
 ui <- bitly_UserInfo(showRequestURL = TRUE) 
-is_user_premium_account_holder()
+is_bitly_user_premium_holder()
 }
 ```
 
 We can also decide to update my username with a different one.
 
 ```{r}
-library(urlshorteneR)
-
 if (interactive()) {
 update_user(name= "John Malc", showRequestURL = TRUE)
 }
 ```
 
+And what about the metadata about our OAUTH application?
+
+```{r}
+if (interactive()) {
+app_details()
+}
+```
+
 ## Group Information
 
-Official API documentation <http://dev.bitly.com/link_metrics.html>.
-
-This returns users, who have encoded `http://bit.ly/DPetrov` link sorted by the number of clicks on each encoding user's link.
+This retrieves information about a single group that user belongs to and and then about all groups that user are associated with. 
 
 ```{r}
 if (interactive()) {
 
-bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
+retrieve_group(ui$default_group_guid)
+retrieve_groups()
 }
 ```
 
