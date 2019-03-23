@@ -1,6 +1,6 @@
 ## Test environments
-* local linux: R 3.5.3 @ Ubuntu 19.04
-* windows: R-devel @ Windows 10
+* local linux: R devel @ Ubuntu 19.04 + circle-ci
+* windows: rhub
 
 ## R CMD check results
 There were no ERRORs or WARNINGs. 

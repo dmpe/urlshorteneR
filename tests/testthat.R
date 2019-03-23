@@ -1,8 +1,6 @@
 library(testthat)
 library(urlshorteneR)
 
-if (interactive()) {
-  test_check("urlshorteneR")
-  test_package("urlshorteneR")
-}
+bitly_token <- readRDS("bitly_token.rds")
 
+test_check("urlshorteneR")

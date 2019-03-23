@@ -2,7 +2,7 @@
 % Please edit documentation in R/bitly_userMetrics.R
 \name{bitly_UserMetricsPopularLinks}
 \alias{bitly_UserMetricsPopularLinks}
-\title{Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in 
+\title{Returns the authenticated user's most-clicked Bitlinks (ordered by number of clicks) in
 a given time period.}
 \usage{
 bitly_UserMetricsPopularLinks(limit = 1000, unit = c("minute", "hour",
@@ -11,13 +11,13 @@ bitly_UserMetricsPopularLinks(limit = 1000, unit = c("minute", "hour",
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the 
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the
 maximum value for units is 60.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return all 
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 }
 \value{

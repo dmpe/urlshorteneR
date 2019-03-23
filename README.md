@@ -1,6 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/dmpe/urlshorteneR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/urlshorteneR?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
-[![Build Status](https://johnmalc.visualstudio.com/GitHubRepos/_apis/build/status/dmpe.urlshorteneR?branchName=master)](https://johnmalc.visualstudio.com/GitHubRepos/_build/latest?definitionId=3&branchName=master)
+[![CircleCI](https://circleci.com/gh/dmpe/urlshorteneR/tree/master.svg?style=svg)](https://circleci.com/gh/dmpe/urlshorteneR/tree/master)
 
 R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd`
 =======

@@ -1,7 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.httr-oauth$
-.travis.yml
 .DS_Store
 LICENSE
 CONTRIBUTE.MD
@@ -9,6 +8,5 @@ CONTRIBUTE.MD
 ^revdep$
 ^cran-comments\.md$
 ^.*\.o$
-googl_token.rds.enc
-bitly_token.rds.enc
-
+.lintr
+bitly_token.rds

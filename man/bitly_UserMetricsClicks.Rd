@@ -11,22 +11,22 @@ bitly_UserMetricsClicks(limit = 1000, unit = c("minute", "hour", "day",
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the 
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the
 maximum value for units is 60.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return all 
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
 
-\item{rollup}{- true or false. Return data for multiple units rolled up to a single result 
+\item{rollup}{- true or false. Return data for multiple units rolled up to a single result
 instead of a separate value for each period of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 }
 \value{
 dt - a unix timestamp representing the beginning of this unit.
 
-day_start - a unix timestamp representing the beginning of the specified day (ONLY 
+day_start - a unix timestamp representing the beginning of the specified day (ONLY
 returned if unit is not specified).
 
 clicks - the number of clicks on this user's links in the specified timeframe.
@@ -35,7 +35,7 @@ clicks - the number of clicks on this user's links in the specified timeframe.
 See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
 }
 \note{
-without the parameter unit this endpoint returns a legacy response format which assumes 
+without the parameter unit this endpoint returns a legacy response format which assumes
 rollup=false, unit=day and units=7.
 }
 \examples{

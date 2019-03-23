@@ -2,7 +2,7 @@
 % Please edit documentation in R/bitly_userMetrics.R
 \name{bitly_UserMetricsReferringDomains}
 \alias{bitly_UserMetricsReferringDomains}
-\title{Returns aggregate metrics about the domains referring click traffic to all of the 
+\title{Returns aggregate metrics about the domains referring click traffic to all of the
 authenticated user's Bitlinks.}
 \usage{
 bitly_UserMetricsReferringDomains(limit = 1000, unit = c("minute",
@@ -13,22 +13,22 @@ bitly_UserMetricsReferringDomains(limit = 1000, unit = c("minute",
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the 
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the
 maximum value for units is 60.}
 
-\item{rollup}{- true or false. Return data for multiple units rolled up to a single result 
+\item{rollup}{- true or false. Return data for multiple units rolled up to a single result
 instead of a separate value for each period of time.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return all 
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
 
 \item{login}{- an optional string consisting of the account name used to report the appropriate
 statistics; defaults to the current user.}
 
-\item{exclude_social_networks}{- true (default) or false. If true, exclude domains that are 
+\item{exclude_social_networks}{- true (default) or false. If true, exclude domains that are
 part of a social network that bitly tracks.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 }
 \value{
@@ -37,8 +37,8 @@ clicks - the number of clicks referred from this URL.
 referrer - the URL referring clicks.
 }
 \description{
-If the user is a master (ent.) account, or is a subaccount with full_reports 
-permission, the user may choose to view the metrics of any account belonging to the master 
+If the user is a master (ent.) account, or is a subaccount with full_reports
+permission, the user may choose to view the metrics of any account belonging to the master
 account.
 }
 \note{
@@ -49,10 +49,14 @@ When a unit is specified (always the case), rollup is always (!) true.
 bitly_token <- bitly_auth(key = "", secret = "")
 bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true")
 bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "false")
-bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, 
-exclude_social_networks = "false")
-bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, 
-exclude_social_networks = "true")
+bitly_UserMetricsReferringDomains(
+  unit = "day", units = -1, limit = 100,
+  exclude_social_networks = "false"
+)
+bitly_UserMetricsReferringDomains(
+  unit = "day", units = -1, limit = 100,
+  exclude_social_networks = "true"
+)
 }
 
 }

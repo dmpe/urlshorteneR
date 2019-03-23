@@ -51,7 +51,7 @@ test_that("Returns metrics about the countries referring click traffic to a sing
 
 test_that("Returns users who have encoded this long URL (optionally only those in the requesting user's social graph).", {
   lme <- bitly_LinksMetricsEncoders(link = "http://bit.ly/DPetrov", my_network = "false", limit = 25)
-  expect_named(lme, c("link", "user", "ts")) 
+  expect_named(lme, c("link", "user", "ts"))
 })
 
 test_that("Returns the number of users who have shortened (encoded) a single Bitlink.", {
@@ -61,28 +61,27 @@ test_that("Returns the number of users who have shortened (encoded) a single Bit
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
   lmebc <- bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
-  expect_named(lmebc, c("count", "link", "user", "ts")) 
+  expect_named(lmebc, c("count", "link", "user", "ts"))
 })
 
 test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
   lmrd <- bitly_LinksMetricsReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-  expect_named(lmrd, c("domain", "clicks")) 
+  expect_named(lmrd, c("domain", "clicks"))
 })
 
 test_that("Returns metrics about the pages referring click traffic to a single Bitlink.", {
   lmr <- bitly_LinksMetricsReferrers(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-  expect_named(lmr, c( "referrer", "clicks"))
+  expect_named(lmr, c("referrer", "clicks"))
 })
 
 test_that("Returns metrics about the pages referring click traffic to a single Bitlink, grouped by referring domain.", {
   lmrbd <- bitly_LinksMetricsReferrersByDomain(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-  expect_named(lmrbd, c( "referrer", "clicks", "type"))
+  expect_named(lmrbd, c("referrer", "clicks", "type"))
 })
 
 context("Domains")
 
 test_that("Query whether a given domain is a valid bitly pro domain. ", {
   expect_message(bitly_IsProDomain(domain = "nytidsfds.ms"), "NOT")
-  expect_message(bitly_IsProDomain(domain = "nyti.ms"), "is") 
+  expect_message(bitly_IsProDomain(domain = "nyti.ms"), "is")
 })
-

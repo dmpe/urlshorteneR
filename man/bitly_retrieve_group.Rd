@@ -14,14 +14,14 @@ Retrive details for a specific group that a user belongs to.
 }
 \section{Group}{
 
-Groups are a subdivision within an organization. A user will belong to a group within an organization. 
-Most actions on our API will be on behalf of a group. For example, when you 
+Groups are a subdivision within an organization. A user will belong to a group within an organization.
+Most actions on our API will be on behalf of a group. For example, when you
 shorten a link, it will be on behalf of a user and a group.
 }
 
 \examples{
 \dontrun{
-ui <- bitly_UserInfo(showRequestURL = TRUE) 
+ui <- bitly_UserInfo(showRequestURL = TRUE)
 rg <- bitly_retrieve_group(group_guid = ui$default_group_guid)
 }
 

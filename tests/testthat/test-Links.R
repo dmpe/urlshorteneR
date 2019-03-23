@@ -42,5 +42,4 @@ test_that("expanding does work", {
 test_that("shorting does work", {
   g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert", showRequestURL = F)
   expect_more_than(nchar(g2$id), 19)
-}) 
-
+})

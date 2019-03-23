@@ -7,14 +7,14 @@
 isgd_LinksExpand(shorturl = "", showRequestURL = FALSE)
 }
 \arguments{
-\item{shorturl}{- (optional) You can specify the shorturl parameter if you'd like to pick a 
-shortened URL instead of having is.gd randomly generate one. These must be between 
-5 and 30 characters long and can only contain alphanumeric characters and underscores. 
-Shortened URLs are case sensitive. Bear in mind that a desired short URL might already 
-be taken (this is very often the case with common words) so if you're using this option 
+\item{shorturl}{- (optional) You can specify the shorturl parameter if you'd like to pick a
+shortened URL instead of having is.gd randomly generate one. These must be between
+5 and 30 characters long and can only contain alphanumeric characters and underscores.
+Shortened URLs are case sensitive. Bear in mind that a desired short URL might already
+be taken (this is very often the case with common words) so if you're using this option
 be prepared to respond to an error and get an alternative choice from your app's user.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. 
+\item{showRequestURL}{- show URL which has been build and requested from server.
 For debug purposes.}
 }
 \description{
@@ -22,5 +22,4 @@ See \url{https://is.gd/apilookupreference.php}
 }
 \examples{
 ### isgd_LinksExpand(shorturl = "http://is.gd/4oIAXJ", showRequestURL = TRUE)
-
 }

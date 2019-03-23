@@ -11,16 +11,16 @@ bitly_UserMetricsShortenCounts(limit = 1000, unit = c("minute", "hour",
 \arguments{
 \item{limit}{- 1 to 1000 (default=1000).}
 
-\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the 
+\item{unit}{- minute, hour, day, week or month, default: day; Note: when unit is minute the
 maximum value for units is 60.}
 
-\item{rollup}{- true or false. Return data for multiple units rolled up to a single result 
+\item{rollup}{- true or false. Return data for multiple units rolled up to a single result
 instead of a separate value for each period of time.}
 
-\item{units}{- an integer representing the time units to query data for. Pass -1 to return all 
+\item{units}{- an integer representing the time units to query data for. Pass -1 to return all
 units of time.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. For debug 
+\item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 }
 \value{

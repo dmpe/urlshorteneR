@@ -12,7 +12,8 @@ editor_options:
 ---
   
 `urlshorteneR` wrapps 2 services [Bit.ly](https://bitly.com) and [is.gd/v.gd](https://is.gd). 
-In order to begin shortening URLs and downloading usefull statistics about short links, you have to -- in the case of <http://bit.ly> -- authenticate using oAuth2.0. 
+In order to begin shortening URLs and downloading usefull statistics about short links, you have to -- in the case of <http://bit.ly> -- authenticate using OAuth2.0. 
+
 For is.gd/v.gd there is no authentication needed. 
 
 # Bit.ly
@@ -24,24 +25,23 @@ Return some basic information about my user on Bit.ly. Additionally, is the acco
 ```{r}
 library(urlshorteneR)
 
-if (interactive()) {
+bitly_token <- readRDS("bitly_token.rds")
 
 # You can register a new pair of keys yourself - but you can also use mine - an option which is also by default
 # bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917")
-
-bitly_token <- bitly_auth()
+# bitly_token <- bitly_auth()
 
 ui <- bitly_UserInfo(showRequestURL = TRUE) 
 is_bitly_user_premium_holder()
-}
+
 ```
 
 We can also decide to update my username with a different one.
 
 ```{r}
-if (interactive()) {
-update_user(name= "John Malc", showRequestURL = TRUE)
-}
+
+bitly_update_user(name = "John Malc", showRequestURL = TRUE)
+
 ```
 
 And what about the metadata about our OAUTH application?

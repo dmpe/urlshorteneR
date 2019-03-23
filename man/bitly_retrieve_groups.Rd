@@ -14,8 +14,8 @@ Retrive details for all groups that a user belongs to.
 }
 \section{Group}{
 
-Groups are a subdivision within an organization. A user will belong to a group within an organization. 
-Most actions on our API will be on behalf of a group. For example, when you 
+Groups are a subdivision within an organization. A user will belong to a group within an organization.
+Most actions on our API will be on behalf of a group. For example, when you
 shorten a link, it will be on behalf of a user and a group.
 }
 

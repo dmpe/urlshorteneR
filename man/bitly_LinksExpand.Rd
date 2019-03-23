@@ -10,10 +10,10 @@ bitly_LinksExpand(hashIN = NULL, shortUrl = NULL,
 \arguments{
 \item{hashIN}{- refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required}
 
-\item{shortUrl}{- refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT. 
+\item{shortUrl}{- refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT.
 Optional.}
 
-\item{showRequestURL}{- show URL which has been build and requested from server. 
+\item{showRequestURL}{- show URL which has been build and requested from server.
 For debug purposes.}
 }
 \value{
@@ -25,7 +25,7 @@ user_hash - the corresponding bitly user identifier.
 
 global_hash - the corresponding bitly aggregate identifier.
 
-error - indicates there was an error retrieving data for a given shortUrl or hash. An 
+error - indicates there was an error retrieving data for a given shortUrl or hash. An
 example error is "NOT_FOUND".
 
 long_url - the URL that the requested short_url or hash points to.
@@ -43,11 +43,13 @@ The maximum number of shortUrl and hash parameters is 15.
 }
 
 \examples{
-\dontrun{ 
-bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
-secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899")
+\dontrun{
+bitly_token <- bitly_auth(
+  key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+  secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899"
+)
 bitly_LinksExpand(shortUrl = "http://bit.ly/DPetrov")
-bitly_LinksExpand(hash = "DPetrov", showRequestURL = TRUE) 
+bitly_LinksExpand(hash = "DPetrov", showRequestURL = TRUE)
 bitly_LinksExpand(hash = "DPetrov")
 bitly_LinksExpand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
 

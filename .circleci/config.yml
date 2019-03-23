@@ -30,9 +30,8 @@ jobs:
           no_output_timeout: 20m
           command: |
             mkdir /root/main/artifacts
-            R -e "lintr::lint_package(); library(covr); covr::coveralls(); codecov()"
+            R -e "lintr::lint_package(); library(covr); covr::coveralls()"
             R -e "devtools::install()"
-            R -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/bomrang-coverage.html', browse=FALSE)"
       - store_artifacts:
           path: /root/main/artifacts/
 destination: artifacts
