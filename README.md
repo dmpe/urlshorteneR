@@ -33,7 +33,6 @@ GET https://api-ssl.bitly.com/v4/user | Yes
 GET https://api-ssl.bitly.com/v4/groups | Yes
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | Yes
 
-
 <https://dev.bitly.com/v4/#tag/Organizations> | Implemented Yes/No
 ------------- | -------------
 GET https://dev.bitly.com/v4/#operation/getOrganization | Yes
@@ -45,8 +44,9 @@ GET https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts | Yes
 GET https://dev.bitly.com/v4/#operation/getBSDs | Yes
 
 <https://dev.bitly.com/v4/#operation/getOAuthApp> | Implemented Yes/No 
-------------- | ------------- | -------------
+------------- | ------------- 
 GET https://api-ssl.bitly.com/v4/apps/{client_id} | Yes 
+
 
 ### Help needed !!!
 
