@@ -16,8 +16,8 @@ jobs:
       - run:
           command: |
             R -e "devtools::install_deps(dependencies = TRUE)"
-            R -e "install_packages('lintr', dependencies = TRUE)"
-            R -e "install_packages('covr', dependencies = TRUE)"
+            R -e "install.packages('lintr', dependencies = TRUE)"
+            R -e "install.packages('covr', dependencies = TRUE)"
       - run:
           no_output_timeout: 30m
           command: |
