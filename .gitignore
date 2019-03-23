@@ -3,5 +3,3 @@
 .RData
 .httr-oauth
 *.html
-googl_token.rds
-bitly_token.rds

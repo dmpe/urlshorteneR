@@ -33,7 +33,6 @@ bitly_token <- readRDS("bitly_token.rds")
 
 ui <- bitly_UserInfo(showRequestURL = TRUE) 
 is_bitly_user_premium_holder()
-
 ```
 
 We can also decide to update my username with a different one.
@@ -48,7 +47,7 @@ And what about the metadata about our OAUTH application?
 
 ```{r}
 if (interactive()) {
-app_details()
+bitly_app_details()
 }
 ```
 
@@ -59,8 +58,8 @@ This retrieves information about a single group that user belongs to and and the
 ```{r}
 if (interactive()) {
 
-retrieve_group(ui$default_group_guid)
-retrieve_groups()
+bitly_retrieve_group(ui$default_group_guid)
+bitly_retrieve_groups()
 }
 ```
 
