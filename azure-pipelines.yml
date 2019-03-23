@@ -7,13 +7,23 @@ trigger:
 - master
 
 pool:
-  vmImage: 'r-devel'
+  vmImage: 'ubuntu-16.04'
+
+strategy:
+  matrix:
+    r-devel:
+      containerImage: r-devel
+    r-base:
+      containerImage: r-base
+
+container: $[ variables['containerImage'] ]
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
 - script: |
+    printenv
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
