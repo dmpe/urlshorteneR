@@ -12,9 +12,9 @@ pool:
 strategy:
   matrix:
     r-devel:
-      containerImage: r-devel
+      containerImage: r-devel:latest
     r-base:
-      containerImage: r-base
+      containerImage: r-base:latest
 
 container: $[ variables['containerImage'] ]
 
