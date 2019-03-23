@@ -21,6 +21,8 @@ container: $[ variables['containerImage'] ]
 steps:
   - script: |
       printenv
+      cd /usr/local/lib/R
+      sudo chmod o+w site-library
       Rscript -e 'install.packages(c("lintr", "covr"), repos = "http://cran.us.r-project.org")'
       Rscript -e 'lintr::lint_package()'
       Rscript -e 'library(covr)'
