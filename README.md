@@ -14,8 +14,6 @@ library(devtools)
 devtools::install_github("dmpe/urlshorteneR", build_vignettes = TRUE)
 ```
 
-Tested on Ubuntu 18.10 and Windows 10 (64 bit)
-
 ## Version v3
 
 ### What has (not) been implemented for Bit.ly:
@@ -24,7 +22,7 @@ Tested on Ubuntu 18.10 and Windows 10 (64 bit)
 
 - Based on <https://dev.bitly.com/v4_documentation.html>
 
-<https://dev.bitly.com/v4/#tag/User>  | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/User> DONE | Implemented Yes/No
 ------------- | -------------
 PATCH https://api-ssl.bitly.com/v4/user | Yes
 GET https://api-ssl.bitly.com/v4/user | Yes
@@ -34,17 +32,22 @@ GET https://api-ssl.bitly.com/v4/user | Yes
 GET https://api-ssl.bitly.com/v4/groups | Yes
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | Yes
 
-<https://dev.bitly.com/v4/#tag/Organizations> | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/Organizations> DONE | Implemented Yes/No
 ------------- | -------------
 GET https://dev.bitly.com/v4/#operation/getOrganization | Yes
 GET https://dev.bitly.com/v4/#operation/getOrganizations | Yes
 GET https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts | Yes
 
-<https://dev.bitly.com/v4/#tag/BSDs> | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/Campaigns> | Implemented Yes/No
+------------- | -------------
+GET https://dev.bitly.com/v4/#operation/getCampaigns | YES but not tested
+POST https://dev.bitly.com/v4/#operation/createCampaign | YES but not tested
+
+<https://dev.bitly.com/v4/#tag/BSDs> DONE | Implemented Yes/No
 ------------- | -------------
 GET https://dev.bitly.com/v4/#operation/getBSDs | Yes
 
-<https://dev.bitly.com/v4/#operation/getOAuthApp> | Implemented Yes/No 
+<https://dev.bitly.com/v4/#operation/getOAuthApp> DONE | Implemented Yes/No 
 ------------- | ------------- 
 GET https://api-ssl.bitly.com/v4/apps/{client_id} | Yes 
 

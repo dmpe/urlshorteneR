@@ -1,6 +1,6 @@
 #' @title Retrieve information for the current authenticated user
-#' 
-#' @param showRequestURL - show URL which has been build and requested from server. 
+#'
+#' @param showRequestURL - show URL which has been build and requested from server.
 #' For debug purposes.
 #'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getUser}
@@ -15,76 +15,77 @@
 #' @return is_2fa_enabled - is 2 Step verification enabled ? (\href{https://support.bitly.com/hc/en-us/articles/230650187-What-is-2-step-verification-}{Bit.ly 2FA})
 #' @return email - user's emails
 #'
-#' @examples 
-#' \dontrun{ 
-#'  bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret= "54987201d3599fd9a09cc80922394b0f250c7886")
-#'  ui <- bitly_UserInfo(showRequestURL = TRUE) 
+#' @examples
+#' \dontrun{
+#' bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret = "54987201d3599fd9a09cc80922394b0f250c7886")
+#' ui <- bitly_UserInfo(showRequestURL = TRUE)
 #' }
 #' 
 #' @import httr stringr lubridate
-#' 
+#'
 #' @export
 bitly_UserInfo <- function(showRequestURL = FALSE, verbose = T) {
-  
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
-  
+
   query <- list(access_token = bitly_token$credentials$access_token)
-  
+
   df_user_info <- doRequest("GET", user_info_url, query, showURL = showRequestURL, verbose)
-  
+
   df_user_info_data <- data.frame(df_user_info, stringsAsFactors = FALSE)
 
   # convert to readable format - use lubridate parse_date_time
-  df_user_info_data$created <- ymd_hms(df_user_info_data$created, tz="UTC") 
-  df_user_info_data$modified <- ymd_hms(df_user_info_data$modified, tz="UTC") 
-  
+  df_user_info_data$created <- ymd_hms(df_user_info_data$created, tz = "UTC")
+  df_user_info_data$modified <- ymd_hms(df_user_info_data$modified, tz = "UTC")
+
   return(df_user_info_data)
 }
 
 #' @title Update your name and/or default group ID
-#' 
+#'
 #' This will overwrite your (display) username and/or group ID you belong to.
-#' 
+#'
 #' @note Applies only to the authenticated user:
 #' Changing group ID is only permitted to premium users. Thus, if you are a "free" user and will try to change your
 #' default group id to something else, you will get an error. In that case, only changing display name is permitted.
-#' 
+#'
 #' @param default_group_guid - group id
 #' @param name - username
-#' 
+#'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/updateUser}
-#' 
-#' @examples 
-#' \donotrun{
+#'
+#' @examples
+#' \dontrun{
 #' # this applies only for "free" users
-#' uu <- update_user(name= "Malc")
+#' uu <- update_user(name = "Malc")
 #' 
 #' # if you are premium user, you can additionally adjust your group id
-#' uug <- bitly_update_user(name= "Malc", default_group_guid = "TestGroupID")
+#' uug <- bitly_update_user(name = "Malc", default_group_guid = "TestGroupID")
 #' }
 #' 
-#' @export 
+#' @export
 bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
-  
-  if(!is_user_premium_account_holder()) {
+
+  if (!is_user_premium_account_holder()) {
     default_group_guid <- NULL
     warning("Your account is not premium. Please report bugs in GitHub if this is not true.")
   }
-  
+
   query <- list(access_token = bitly_token$credentials$access_token)
   body <- list(name = name, default_group_guid = default_group_guid)
-  
-  df_user_info <- doRequest("PATCH", url = user_info_url, queryParameters = query, 
-                            patch_body = body, showURL = showRequestURL)
+
+  df_user_info <- doRequest("PATCH",
+    url = user_info_url, queryParameters = query,
+    patch_body = body, showURL = showRequestURL
+  )
 
   return(df_user_info)
 }
 
 #' Check if authenticated user holds premium account
-#' 
-#' @seealso [bitly_UserInfo()]  
-#' 
+#'
+#' @seealso [bitly_UserInfo()]
+#'
 #' @export
 is_bitly_user_premium_holder <- function() {
   user_profile <- bitly_UserInfo()
@@ -93,17 +94,17 @@ is_bitly_user_premium_holder <- function() {
 }
 
 #' Retrieve details for the provided OAuth App client ID
-#' 
+#'
 #' @param client_id - The client ID of an OAuth app
-#' 
+#'
 #' @export
-bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8") {
+bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
   oauth_app_details <- paste0("https://api-ssl.bitly.com/v4/apps/", client_id)
-  
+
   query <- list(access_token = bitly_token$credentials$access_token, client_id = client_id)
-  
+
   df_app_details <- doRequest("GET", oauth_app_details, query, showURL = showRequestURL)
-  
+
   df_app_details <- data.frame(df_app_details, stringsAsFactors = FALSE)
   return(df_app_details)
 }

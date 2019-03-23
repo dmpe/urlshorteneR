@@ -7,7 +7,7 @@
 bitly_UserInfo(showRequestURL = FALSE, verbose = T)
 }
 \arguments{
-\item{showRequestURL}{- show URL which has been build and requested from server. 
+\item{showRequestURL}{- show URL which has been build and requested from server.
 For debug purposes.}
 }
 \value{
@@ -33,9 +33,9 @@ email - user's emails
 Retrieve information for the current authenticated user
 }
 \examples{
-\dontrun{ 
- bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret= "54987201d3599fd9a09cc80922394b0f250c7886")
- ui <- bitly_UserInfo(showRequestURL = TRUE) 
+\dontrun{
+bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret = "54987201d3599fd9a09cc80922394b0f250c7886")
+ui <- bitly_UserInfo(showRequestURL = TRUE)
 }
 
 }
