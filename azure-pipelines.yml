@@ -16,14 +16,13 @@ strategy:
     r-base:
       containerImage: r-base:latest
 
-
 steps:
 - task: Docker@0
   displayName: 'Used R-base docker image to build R package'
   inputs: 
     containerRegistryType: "Container Registry"
     action: "Run an image"
-    imageName: $[ variables['containerImage'] ]
+    imageName: r-base
     containerCommand: 'R CMD INSTALL $PKG_TARBALL;'
 
 - script: Rscript -e 'lintr::lint_package()'
