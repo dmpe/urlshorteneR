@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/main
+    docker:
+      - image: rocker/tidyverse:latest
+      environment:
+        NOT_CRAN: true
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+            - deps1-{{ .Branch }}
+            - deps1-
+      - run:
+          command: |
+            R -e "devtools::install_deps(dependencies = TRUE)"
+            R -e "install_packages('lintr', dependencies = TRUE)"
+            R -e "install_packages('covr', dependencies = TRUE)"
+      - run:
+          no_output_timeout: 30m
+          command: |
+            R -e 'devtools::check(run_dont_test = TRUE)'
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - "/usr/local/lib/R/site-library"
+      - run:
+          no_output_timeout: 20m
+          command: |
+            mkdir /root/main/artifacts
+            R -e "lintr::lint_package(); library(covr); covr::coveralls(); codecov()"
+            R -e "devtools::install()"
+            R -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/bomrang-coverage.html', browse=FALSE)"
+      - store_artifacts:
+          path: /root/main/artifacts/
+destination: artifacts
