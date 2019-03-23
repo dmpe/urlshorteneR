@@ -3,9 +3,9 @@ jobs:
   build:
     working_directory: ~/main
     docker:
-      - image: rocker/tidyverse:latest
-      environment:
-        NOT_CRAN: true
+    - image: rocker/tidyverse:latest
+    environment:
+      NOT_CRAN: true
     steps:
       - checkout
       - restore_cache:
