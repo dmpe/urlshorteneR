@@ -25,7 +25,7 @@ Changing group ID is only permitted to premium users. Thus, if you are a "free" 
 default group id to something else, you will get an error. In that case, only changing display name is permitted.
 }
 \examples{
-\\donotrun {
+\\donotrun{
 # this applies only for "free" users
 uu <- update_user(name= "Malc")
 

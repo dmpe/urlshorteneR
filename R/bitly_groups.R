@@ -15,10 +15,9 @@
 #' @import httr jsonlite
 #' 
 #' @examples 
-#' \dontrun {
+#' \dontrun{
 #' ui <- bitly_UserInfo(showRequestURL = TRUE) 
 #' rg <- bitly_retrieve_group(group_guid = ui$default_group_guid)
-#' 
 #' }
 #' 
 #' @export
@@ -54,10 +53,8 @@ bitly_retrieve_group <- function(group_guid = NA, showRequestURL = T) {
 #' @inheritSection bitly_retrieve_group Group
 #'
 #' @examples 
-#' \dontrun {
-#' ui <- bitly_UserInfo(showRequestURL = TRUE) 
+#' \dontrun{
 #' rg <- bitly_retrieve_groups()
-#' 
 #' }
 #' @export
 bitly_retrieve_groups <- function(organization_guid = NA) {

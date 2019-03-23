@@ -17,8 +17,8 @@
 #'
 #' @examples 
 #' \dontrun{ 
-#'      bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret= "54987201d3599fd9a09cc80922394b0f250c7886")
-#'      ui <- bitly_UserInfo(showRequestURL = TRUE) 
+#'  bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret= "54987201d3599fd9a09cc80922394b0f250c7886")
+#'  ui <- bitly_UserInfo(showRequestURL = TRUE) 
 #' }
 #' 
 #' @import httr stringr lubridate
@@ -55,7 +55,7 @@ bitly_UserInfo <- function(showRequestURL = FALSE, verbose = T) {
 #' @seealso \url{https://dev.bitly.com/v4/#operation/updateUser}
 #' 
 #' @examples 
-#' \donotrun {
+#' \donotrun{
 #' # this applies only for "free" users
 #' uu <- update_user(name= "Malc")
 #' 

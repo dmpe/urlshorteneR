@@ -20,10 +20,8 @@ shorten a link, it will be on behalf of a user and a group.
 }
 
 \examples{
-\dontrun {
-ui <- bitly_UserInfo(showRequestURL = TRUE) 
+\dontrun{
 rg <- bitly_retrieve_groups()
-
 }
 }
 \seealso{
