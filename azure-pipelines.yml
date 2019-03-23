@@ -21,9 +21,8 @@ container: $[ variables['containerImage'] ]
 steps:
   - script: |
       printenv
-      R
-      install.packages(c("lintr", "covr"), repos = "http://cran.us.r-project.org")
-      lintr::lint_package()
-      library(covr)
-      covr::coveralls()
-      codecov()
+      Rscript -e 'install.packages(c("lintr", "covr"), repos = "http://cran.us.r-project.org")'
+      Rscript -e 'lintr::lint_package()'
+      Rscript -e 'library(covr)'
+      Rscript -e 'covr::coveralls()'
+      Rscript -e 'codecov()'
