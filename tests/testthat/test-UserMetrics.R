@@ -1,12 +1,10 @@
 library(testthat)
-library(urlshorteneR)
 library(httr)
 library(jsonlite)
 library(stringr)
+library(urlshorteneR)
 
 bitly_token <- bitly_auth()
-
-# bitly_token <- readRDS("../bitly_token.rds")
 
 context("User Metrics")
 

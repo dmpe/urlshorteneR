@@ -1,10 +1,10 @@
 # https://github.com/dmpe/urlshorteneR/issues/9
 
 library(testthat)
-library(urlshorteneR)
 library(httr)
 library(jsonlite)
 library(stringr)
+library(urlshorteneR)
 
 bitly_token <- bitly_auth()
 

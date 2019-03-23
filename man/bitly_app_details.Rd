@@ -2,7 +2,7 @@
 % Please edit documentation in R/bitly_user_app_information.R
 \name{bitly_app_details}
 \alias{bitly_app_details}
-\title{Retrieve the details for the provided OAuth App client ID}
+\title{Retrieve details for the provided OAuth App client ID}
 \usage{
 
   bitly_app_details(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8")
@@ -11,5 +11,5 @@
 \item{client_id}{- The client ID of an OAuth app}
 }
 \description{
-Retrieve the details for the provided OAuth App client ID
+Retrieve details for the provided OAuth App client ID
 }

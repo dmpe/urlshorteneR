@@ -17,20 +17,20 @@
 #'
 #' @examples 
 #' \dontrun{ 
-#'      bitly_token <- bitly_auth()
+#'      bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret= "54987201d3599fd9a09cc80922394b0f250c7886")
 #'      ui <- bitly_UserInfo(showRequestURL = TRUE) 
 #' }
 #' 
-#' @import stringr lubridate
+#' @import httr stringr lubridate
 #' 
 #' @export
-bitly_UserInfo <- function(showRequestURL = FALSE) {
+bitly_UserInfo <- function(showRequestURL = FALSE, verbose = T) {
   
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
   
   query <- list(access_token = bitly_token$credentials$access_token)
   
-  df_user_info <- doRequest("GET", user_info_url, query, showURL = showRequestURL)
+  df_user_info <- doRequest("GET", user_info_url, query, showURL = showRequestURL, verbose)
   
   df_user_info_data <- data.frame(df_user_info, stringsAsFactors = FALSE)
 
@@ -60,7 +60,7 @@ bitly_UserInfo <- function(showRequestURL = FALSE) {
 #' uu <- update_user(name= "Malc")
 #' 
 #' # if you are premium user, you can additionally adjust your group id
-#' uug <- update_user(name= "Malc", default_group_guid = "TestGroupID")
+#' uug <- bitly_update_user(name= "Malc", default_group_guid = "TestGroupID")
 #' }
 #' 
 #' @export 
@@ -75,7 +75,8 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
   query <- list(access_token = bitly_token$credentials$access_token)
   body <- list(name = name, default_group_guid = default_group_guid)
   
-  df_user_info <- doRequest("PATCH", url = user_info_url, queryParameters = query, patch_body = body, showURL = showRequestURL)
+  df_user_info <- doRequest("PATCH", url = user_info_url, queryParameters = query, 
+                            patch_body = body, showURL = showRequestURL)
 
   return(df_user_info)
 }
@@ -91,7 +92,7 @@ is_bitly_user_premium_holder <- function() {
   return(user_profile$is_sso_user[[1]])
 }
 
-#' Retrieve the details for the provided OAuth App client ID
+#' Retrieve details for the provided OAuth App client ID
 #' 
 #' @param client_id - The client ID of an OAuth app
 #' 

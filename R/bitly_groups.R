@@ -17,12 +17,12 @@
 #' @examples 
 #' \dontrun {
 #' ui <- bitly_UserInfo(showRequestURL = TRUE) 
-#' rg <- retrieve_group(group_guid = ui$default_group_guid)
+#' rg <- bitly_retrieve_group(group_guid = ui$default_group_guid)
 #' 
 #' }
 #' 
 #' @export
-bitly_retrieve_group <- function(group_guid = NA) {
+bitly_retrieve_group <- function(group_guid = NA, showRequestURL = T) {
   if(is.character(group_guid)) {
     group_ulr <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid)
   } else {
@@ -52,14 +52,20 @@ bitly_retrieve_group <- function(group_guid = NA) {
 #' @import httr jsonlite
 #' 
 #' @inheritSection bitly_retrieve_group Group
+#'
+#' @examples 
+#' \dontrun {
+#' ui <- bitly_UserInfo(showRequestURL = TRUE) 
+#' rg <- bitly_retrieve_groups()
 #' 
+#' }
 #' @export
 bitly_retrieve_groups <- function(organization_guid = NA) {
-  groups_ulr <- "https://api-ssl.bitly.com/v4/groups/"
+  groups_url <- "https://api-ssl.bitly.com/v4/groups/"
   
   query <- list(access_token = bitly_token$credentials$access_token, organization_guid = organization_guid)
   
-  df_groups_details <- doRequest("GET", groups_ulr, query, showURL = showRequestURL)
+  df_groups_details <- doRequest("GET", groups_url, query, showURL = showRequestURL)
   
   df_groups_details <- data.frame(df_groups_details, stringsAsFactors = FALSE)
   return(df_group_details)

@@ -1,8 +1,8 @@
 library(testthat)
-library(urlshorteneR)
 library(httr)
 library(jsonlite)
 library(stringr)
+library(urlshorteneR)
 
 context("User Info")
 

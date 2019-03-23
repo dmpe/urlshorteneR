@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_group}
 \title{Retrieve a single group}
 \usage{
-bitly_retrieve_group(group_guid = NA)
+bitly_retrieve_group(group_guid = NA, showRequestURL = T)
 }
 \arguments{
 \item{group_guid}{- string | A GUID for a Bitly group}
@@ -22,7 +22,7 @@ shorten a link, it will be on behalf of a user and a group.
 \examples{
 \dontrun {
 ui <- bitly_UserInfo(showRequestURL = TRUE) 
-rg <- retrieve_group(group_guid = ui$default_group_guid)
+rg <- bitly_retrieve_group(group_guid = ui$default_group_guid)
 
 }
 

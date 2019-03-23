@@ -30,7 +30,7 @@ default group id to something else, you will get an error. In that case, only ch
 uu <- update_user(name= "Malc")
 
 # if you are premium user, you can additionally adjust your group id
-uug <- update_user(name= "Malc", default_group_guid = "TestGroupID")
+uug <- bitly_update_user(name= "Malc", default_group_guid = "TestGroupID")
 }
 
 }

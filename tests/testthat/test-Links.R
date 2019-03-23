@@ -1,10 +1,8 @@
 library(testthat)
-library(urlshorteneR)
 library(httr)
 library(jsonlite)
 library(stringr)
-
-# bitly_token <- readRDS("bitly_token.rds")
+library(urlshorteneR)
 
 context("Links Bit.ly")
 

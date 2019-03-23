@@ -1,5 +1,4 @@
-.state <- new.env(parent = emptyenv())
-globalVariables(c("bitly_token"))
+bitly_token <- NULL
 
 # Bitly_api_version <- "v4"
 # Isgd_api_version <- "v2019"
@@ -55,14 +54,13 @@ globalVariables(c("bitly_token"))
 #' @export
 bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", 
                        secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917") {
-  bitly_token <- httr::oauth2.0_token(httr::oauth_endpoint(authorize = "https://bitly.com/oauth/authorize",
+  token <- httr::oauth2.0_token(httr::oauth_endpoint(authorize = "https://bitly.com/oauth/authorize",
                                                            access = "https://api-ssl.bitly.com/oauth/access_token"),
                                       httr::oauth_app("bitly", key = key, secret = secret),
                                       cache = TRUE)
-  .state$token <- bitly_token
-  
-  message(paste0("urlshorteneR: You have been authorized as ", bitly_token$credentials$login))
-  return(bitly_token)
+  message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login))
+  assign("bitly_token", token, envir = parent.frame())
+  return(token)
 }
 
 #' @title Generalized function for executing GET/POST requests
@@ -79,15 +77,17 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 #' 
 #' @noRd
 #' @keywords internal
-doRequest <- function(verb, url, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
+doRequest <- function(verb, url, queryParameters = NULL, patch_body = NULL, showURL = NULL, verbose = F) {
 
   switch(verb,
          "PATCH" = {
-           return_request <- suppressMessages(httr::PATCH(url, query = queryParameters, body = patch_body, encode = "json", content_type_json(), 
+           return_request <- suppressMessages(httr::PATCH(url, query = queryParameters, body = patch_body, 
+                                                          encode = "json", content_type_json(), 
                                          httr::config(token = bitly_token)))
          },
          "GET" = {
-           return_request <- suppressMessages(httr::GET(url, query = queryParameters, httr::config(token = bitly_token)))
+           return_request <- suppressMessages(httr::GET(url, query = queryParameters, 
+                                                        httr::config(token = bitly_token), verbose()))
          },
          "POST" = {
            return_request <- suppressMessages(httr::POST(url, body = queryParameters, encode = "json", 
@@ -95,12 +95,10 @@ doRequest <- function(verb, url, queryParameters = NULL, patch_body = NULL, show
          }
   )
   
-  suppressMessages(return_request)
-  
   if (http_error(return_request) == FALSE) {
     stop_for_status(return_request, "you are not a premium account holder, or internet connection does not work properly (check with IT admins) ")
     
-    text_response <- content(return_request, as = "text")
+    text_response <- content(return_request, as = "text", encoding = "utf-8")
     json_response <- fromJSON(text_response)
     
     if (is.null(json_response$status_code) == FALSE && json_response$status_code >= 400) {

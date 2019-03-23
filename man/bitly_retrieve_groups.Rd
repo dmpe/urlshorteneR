@@ -19,6 +19,13 @@ Most actions on our API will be on behalf of a group. For example, when you
 shorten a link, it will be on behalf of a user and a group.
 }
 
+\examples{
+\dontrun {
+ui <- bitly_UserInfo(showRequestURL = TRUE) 
+rg <- bitly_retrieve_groups()
+
+}
+}
 \seealso{
 \url{https://dev.bitly.com/v4/#operation/getGroups}
 }

@@ -16,11 +16,14 @@ Depends:
 Imports:
     httr (>= 1.4.0),
     jsonlite (>= 1.5),
-    stringr (>= 1.4.0)
+    stringr (>= 1.4.0), 
+    lubridate (>= 1.7.4)
 Suggests:
     roxygen2 (>= 6.1.1),
     knitr (>= 1.21),
-    testthat (>= 2.0.1)
+    testthat (>= 2.0.1), 
+    rmarkdown (>= 1.12),
+    httpuv (>= 1.5.0)
 VignetteBuilder: knitr
 License: Apache License 2.0
 URL: https://github.com/dmpe/urlshorteneR
