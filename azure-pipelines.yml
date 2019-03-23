@@ -11,9 +11,9 @@ trigger:
 
 strategy:
   matrix:
-    ubuntu16:
+    base:
       containerImage: r-base:latest
-    ubuntu18:
+    tidyverse:
       containerImage: rocker/tidyverse:latest
 
 container: $[ variables['containerImage'] ]
@@ -21,7 +21,8 @@ container: $[ variables['containerImage'] ]
 steps:
   - script: |
       printenv
-      install.packages(c("lintr", "covr"))
+      R
+      install.packages(c("lintr", "covr"), repos = "http://cran.us.r-project.org")
       lintr::lint_package()
       library(covr)
       covr::coveralls()
