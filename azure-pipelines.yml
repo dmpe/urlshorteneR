@@ -16,14 +16,17 @@ strategy:
     r-base:
       containerImage: r-base:latest
 
-container: $[ variables['containerImage'] ]
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: Docker@0
+  displayName: 'Used R-base docker image to build R package'
+  inputs: 
+    containerRegistryType: "Container Registry"
+    action: "Run an image"
+    imageName: $[ variables['containerImage'] ]
+    containerCommand: 'R CMD INSTALL $PKG_TARBALL;'
 
-- script: |
-    printenv
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- script: Rscript -e 'lintr::lint_package()'
+
+- script: Rscript -e 'library(covr);covr::coveralls();codecov()'
+    
