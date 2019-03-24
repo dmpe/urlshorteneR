@@ -1,6 +1,7 @@
 [![Coverage Status](https://coveralls.io/repos/dmpe/urlshorteneR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/urlshorteneR?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 [![CircleCI](https://circleci.com/gh/dmpe/urlshorteneR/tree/master.svg?style=svg)](https://circleci.com/gh/dmpe/urlshorteneR/tree/master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/369c2a0a1ba107e0c98c/maintainability)](https://codeclimate.com/github/dmpe/urlshorteneR/maintainability)
 
 R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd`
 =======
@@ -14,42 +15,40 @@ library(devtools)
 devtools::install_github("dmpe/urlshorteneR", build_vignettes = TRUE)
 ```
 
-## Version v3
+## Version v4 Migration is underway
 
-### What has (not) been implemented for Bit.ly:
-
-- V3 -> V4 migration underway
+### What has (🚫t) been implemented for Bit.ly:
 
 - Based on <https://dev.bitly.com/v4_documentation.html>
 
-<https://dev.bitly.com/v4/#tag/User> DONE | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/User> DONE | Implemented and tested 
 ------------- | -------------
-PATCH https://api-ssl.bitly.com/v4/user | Yes
-GET https://api-ssl.bitly.com/v4/user | Yes
+PATCH https://api-ssl.bitly.com/v4/user | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/user | :heavy_check_mark: |
 
-<https://dev.bitly.com/v4/#tag/Groups>  | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/Groups>  | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GET https://api-ssl.bitly.com/v4/groups | Yes
-GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | Yes
+GET https://api-ssl.bitly.com/v4/groups | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | :heavy_check_mark:
 
-<https://dev.bitly.com/v4/#tag/Organizations> DONE | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/Organizations> DONE | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GET https://dev.bitly.com/v4/#operation/getOrganization | Yes
-GET https://dev.bitly.com/v4/#operation/getOrganizations | Yes
-GET https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts | Yes
+GET https://dev.bitly.com/v4/#operation/getOrganization | :heavy_check_mark:
+GET https://dev.bitly.com/v4/#operation/getOrganizations | :heavy_check_mark:
+GET https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts | :heavy_check_mark:
 
-<https://dev.bitly.com/v4/#tag/Campaigns> | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/Campaigns> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GET https://dev.bitly.com/v4/#operation/getCampaigns | YES but not tested
-POST https://dev.bitly.com/v4/#operation/createCampaign | YES but not tested
+GET https://dev.bitly.com/v4/#operation/getCampaigns | :heavy_check_mark: but 🚫t tested
+POST https://dev.bitly.com/v4/#operation/createCampaign | :heavy_check_mark: but 🚫t tested
 
-<https://dev.bitly.com/v4/#tag/BSDs> DONE | Implemented Yes/No
+<https://dev.bitly.com/v4/#tag/BSDs> DONE | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GET https://dev.bitly.com/v4/#operation/getBSDs | Yes
+GET https://dev.bitly.com/v4/#operation/getBSDs | :heavy_check_mark:
 
-<https://dev.bitly.com/v4/#operation/getOAuthApp> DONE | Implemented Yes/No 
+<https://dev.bitly.com/v4/#operation/getOAuthApp> DONE | Implemented :heavy_check_mark:/🚫 
 ------------- | ------------- 
-GET https://api-ssl.bitly.com/v4/apps/{client_id} | Yes 
+GET https://api-ssl.bitly.com/v4/apps/{client_id} | :heavy_check_mark: 
 
 
 ### Help needed !!!

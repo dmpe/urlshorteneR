@@ -5,7 +5,7 @@
 \title{Assign bit.ly API tokens using OAuth2.0}
 \usage{
 bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-  secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917")
+  secret = "446edd8011ef30bf5b32db05cc8dec5ef1a5a55e")
 }
 \arguments{
 \item{key}{- Client ID}
@@ -50,7 +50,7 @@ such case, use desktop RStudio application. See \href{https://support.rstudio.co
 bitly_token <-
   bitly_auth(
     key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-    secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917"
+    secret = "446edd8011ef30bf5b32db05cc8dec5ef1a5a55e"
   )
 
 # default variant

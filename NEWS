@@ -2,7 +2,7 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
-March 2019     - Update packages to their latest versions
+May 2019       - Update packages to their latest versions
                - Delete goo.gl API from the packages because of being deprecated by Google
                - Upgrade Bit.ly from v3 API to v4 API
 
@@ -29,4 +29,4 @@ September 2015 - Smaller tweaks, which should not impact any functionality of th
 
 
 July 2015      - Initial CRAN Release.
-               - Majority of methods are implemented and ready to use.
+               - Majority of methods are implemented and ready to use, for v3.

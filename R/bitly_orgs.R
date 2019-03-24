@@ -55,7 +55,7 @@ bitly_retrieve_organizations <- function() {
   df_orgs_details <- doRequest("GET", orgs_url, query)
 
   df_orgs_details <- data.frame(df_orgs_details, stringsAsFactors = FALSE)
-  return(df_orgs_details)
+  return(df_orgs_details$organizations)
 }
 
 
@@ -67,7 +67,7 @@ bitly_retrieve_organizations <- function() {
 #' @inheritParams bitly_retrieve_organization
 #' @examples
 #' \dontrun{
-#' osc <- org_shorten_counts()
+#' osc <- org_shorten_counts(organization_guid = "")
 #' }
 #' @export
 org_shorten_counts <- function(organization_guid = NULL) {

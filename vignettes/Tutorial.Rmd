@@ -1,5 +1,5 @@
 ---
-title: "Tutorial for urlshorteneR - v4"
+title: "Tutorial for urlshorteneR -- v4"
 author: "dmpe @ github"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -11,7 +11,7 @@ editor_options:
   chunk_output_type: console  
 ---
   
-`urlshorteneR` wrapps 2 services [Bit.ly](https://bitly.com) and [is.gd/v.gd](https://is.gd). 
+`urlshorteneR` wrapps 2 URL services [Bit.ly](https://bitly.com) and [is.gd/v.gd](https://is.gd). 
 In order to begin shortening URLs and downloading usefull statistics about short links, you have to -- in the case of <http://bit.ly> -- authenticate using OAuth2.0. 
 
 For is.gd/v.gd there is no authentication needed. 
@@ -28,7 +28,7 @@ library(urlshorteneR)
 bitly_token <- readRDS("bitly_token.rds")
 
 # You can register a new pair of keys yourself - but you can also use mine - an option which is also by default
-# bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "c7eb384b2f4ce4b109fe616f1c9455e4f7735917")
+# bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "f9c6a3b18968e991e35f466e90c7d883cc176073")
 # bitly_token <- bitly_auth()
 
 ui <- bitly_UserInfo(showRequestURL = TRUE) 
@@ -110,21 +110,20 @@ if (interactive()) {
 }
 ```
 
-BEWARE: This will proceed only with the two real links, not with the NA, NULL or an empty string. 
+**BEWARE:** This will proceed only with the two real links, not with the NA, NULL or an empty string. 
 Therefore, you will recieve X number of messages describing the error. These, however, will not stop the flow of the code (i.e. are not errors). 
 
 
+# Is.gd & V.gd 
 
-## Campaigns
-
-# Is.gd
+## Is.gd
 
 ```{r}
 isgd_LinksShorten(longUrl = "http://cnn.com/", showRequestURL = TRUE)
 ```
 
 
-# V.gd
+## V.gd
 
 ```{r}
 vgd_LinksShorten(longUrl = "http://cbs.com/", showRequestURL = TRUE)

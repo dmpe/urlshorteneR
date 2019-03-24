@@ -14,7 +14,7 @@ Retrieve all the shorten counts for a specific organization
 }
 \examples{
 \dontrun{
-osc <- org_shorten_counts()
+osc <- org_shorten_counts(organization_guid = "")
 }
 }
 \seealso{
