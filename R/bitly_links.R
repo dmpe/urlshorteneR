@@ -31,7 +31,7 @@
 bitly_LinksLookup <- function(url, showRequestURL = FALSE) {
   links_lookup_url <- "https://api-ssl.bitly.com/v3/link/lookup"
 
-  query <- list(access_token = bitly_token$credentials$access_token, url = url)
+  query <- list(access_token = bitly_auth_access(), url = url)
 
   # call method from ApbiKey.R
   df_link_lookup <- doRequest("GET", links_lookup_url, "bitly", query, showURL = showRequestURL)
@@ -90,9 +90,9 @@ bitly_LinksInfo <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true"
   links_info_url <- "https://api-ssl.bitly.com/v3/info"
 
   if (is.null(hashIN)) {
-    query <- list(access_token = bitly_token$credentials$access_token, shortUrl = shortUrl, expand_user = expand_user)
+    query <- list(access_token = bitly_auth_access(), shortUrl = shortUrl, expand_user = expand_user)
   } else {
-    query <- list(access_token = bitly_token$credentials$access_token, hash = hashIN, expand_user = expand_user)
+    query <- list(access_token = bitly_auth_access(), hash = hashIN, expand_user = expand_user)
   }
 
   # call method from ApbiKey.R
@@ -153,9 +153,9 @@ bitly_LinksExpand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = F
   links_expand_url <- "https://api-ssl.bitly.com/v3/expand"
 
   if (is.null(hashIN)) {
-    query <- list(access_token = bitly_token$credentials$access_token, shortUrl = shortUrl)
+    query <- list(access_token = bitly_auth_access(), shortUrl = shortUrl)
   } else {
-    query <- list(access_token = bitly_token$credentials$access_token, hash = hashIN)
+    query <- list(access_token = bitly_auth_access(), hash = hashIN)
   }
 
   # call method from ApbiKey.R
@@ -221,7 +221,7 @@ bitly_LinksExpand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = F
 bitly_LinksShorten <- function(longUrl, domain = NULL, showRequestURL = FALSE) {
   links_shorten_url <- "https://api-ssl.bitly.com/v3/shorten"
 
-  query <- list(access_token = bitly_token$credentials$access_token, longUrl = longUrl, domain = domain)
+  query <- list(access_token = bitly_auth_access(), longUrl = longUrl, domain = domain)
 
   # call method from ApiKey.R
   df_link_shorten <- doRequest("GET", links_shorten_url, "bitly", query, showURL = showRequestURL)

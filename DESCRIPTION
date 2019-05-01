@@ -12,7 +12,7 @@ Authors@R:
 Maintainer: John Malc <cincenko@outlook.com>
 Encoding: UTF-8
 Depends:
-    R (>= 3.6.0)
+    R (>= 3.5.0)
 Imports:
     httr (>= 1.4.0),
     jsonlite (>= 1.5),

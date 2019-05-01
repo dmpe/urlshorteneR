@@ -2,7 +2,7 @@
 % Please edit documentation in R/bitly_orgs.R
 \name{bitly_retrieve_organization}
 \alias{bitly_retrieve_organization}
-\title{Retrieve an Organization}
+\title{Retrieve a single Organization}
 \usage{
 bitly_retrieve_organization(organization_guid = NULL)
 }

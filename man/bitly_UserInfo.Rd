@@ -4,7 +4,7 @@
 \alias{bitly_UserInfo}
 \title{Retrieve information for the current authenticated user}
 \usage{
-bitly_UserInfo(showRequestURL = FALSE, verbose = T)
+bitly_UserInfo(showRequestURL = FALSE)
 }
 \arguments{
 \item{showRequestURL}{- show URL which has been build and requested from server.

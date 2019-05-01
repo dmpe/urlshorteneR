@@ -1,5 +1,3 @@
-bitly_token <- NULL
-
 # Bitly_api_version <- "v4"
 # Isgd_api_version <- "v2019"
 
@@ -54,7 +52,7 @@ bitly_token <- NULL
 #' @import httr
 #' @export
 bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-                       secret = "f9c6a3b18968e991e35f466e90c7d883cc176073") {
+                       secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F) {
   token <- httr::oauth2.0_token(
     httr::oauth_endpoint(
       authorize = "https://bitly.com/oauth/authorize",
@@ -63,11 +61,25 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
     httr::oauth_app("bitly", key = key, secret = secret),
     cache = TRUE
   )
-  message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login))
-  assign("bitly_token", token, envir = parent.frame())
-  
-  return(token)
+  if (isTRUE(debug)) {
+    message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login, " with access token ", token$credentials$access_token))
+  }
+  invisible(return(token))
 }
+
+
+#' Get Bitly access token
+#' 
+#' Extract it from \code{bitly_auth} method
+#' @export
+bitly_auth_access <- function() {
+  
+  bitly_token <- bitly_auth()
+  access_key <- bitly_token$credentials$access_token
+  
+  return(access_key)
+}
+
 
 #' @title Generalized function for executing REST requests
 #'
@@ -83,25 +95,22 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 #'
 #' @noRd
 #' @keywords internal
-doRequest <- function(verb, url, queryParameters = NULL, patch_body = NULL, showURL = NULL, verbose = F) {
+doRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
   switch(verb,
     "PATCH" = {
       return_request <- suppressMessages(httr::PATCH(url,
         query = queryParameters, body = patch_body,
         encode = "json", content_type_json(),
-        httr::config(token = bitly_token)
+        httr::config(token = bitly_auth())
       ))
     },
     "GET" = {
-      return_request <- suppressMessages(httr::GET(url,
-        query = queryParameters,
-        httr::config(token = bitly_token), verbose()
-      ))
+      return_request <- httr::GET(url, query = queryParameters, httr::config(token = bitly_auth()), verbose())
     },
     "POST" = {
       return_request <- suppressMessages(httr::POST(url,
         body = queryParameters, encode = "json",
-        httr::content_type_json(), httr::config(token = bitly_token)
+        httr::content_type_json(), httr::config(token = bitly_auth())
       ))
     }
   )

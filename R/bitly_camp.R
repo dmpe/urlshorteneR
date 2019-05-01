@@ -29,7 +29,7 @@ create_campaigns <- function(group_guid = NULL, channel_guids = list(), descript
   create_camp <- "https://api-ssl.bitly.com/v4/campaigns"
 
   query <- list(
-    access_token = bitly_token$credentials$access_token, group_guid = group_guid,
+    access_token = bitly_auth_access(), group_guid = group_guid,
     channel_guids = channel_guids, description = description, name = name
   )
 
@@ -63,7 +63,7 @@ create_campaigns <- function(group_guid = NULL, channel_guids = list(), descript
 retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T, verbose = T) {
   get_camp <- "https://api-ssl.bitly.com/v4/campaigns"
 
-  query <- list(access_token = bitly_token$credentials$access_token, group_guid = group_guid)
+  query <- list(access_token = bitly_auth_access(), group_guid = group_guid)
 
   df_get_camps <- doRequest("GET", get_camp, query, showURL = showRequestURL, verbose)
 

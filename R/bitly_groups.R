@@ -30,7 +30,7 @@ bitly_retrieve_group <- function(group_guid = NA, showRequestURL = T) {
     }
   }
 
-  query <- list(access_token = bitly_token$credentials$access_token, group_guid = group_guid)
+  query <- list(access_token = bitly_auth_access(), group_guid = group_guid)
 
   df_group_details <- doRequest("GET", group_ulr, query, showURL = showRequestURL)
 
@@ -60,7 +60,7 @@ bitly_retrieve_group <- function(group_guid = NA, showRequestURL = T) {
 bitly_retrieve_groups <- function(organization_guid = NA) {
   groups_url <- "https://api-ssl.bitly.com/v4/groups/"
 
-  query <- list(access_token = bitly_token$credentials$access_token, organization_guid = organization_guid)
+  query <- list(access_token = bitly_auth_access(), organization_guid = organization_guid)
 
   df_groups_details <- doRequest("GET", groups_url, query, showURL = showRequestURL)
 

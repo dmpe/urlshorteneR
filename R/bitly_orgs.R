@@ -1,4 +1,4 @@
-#' @title Retrieve an Organization
+#' @title Retrieve a single Organization
 #'
 #' @description
 #' Retrive details for an organization
@@ -21,16 +21,16 @@
 bitly_retrieve_organization <- function(organization_guid = NULL) {
   org_url <- paste0("https://api-ssl.bitly.com/v4/organizations/", organization_guid)
 
-  query <- list(access_token = bitly_token$credentials$access_token, organization_guid = organization_guid)
+  query <- list(access_token = bitly_auth_access(), organization_guid = organization_guid)
 
-  df_org_details <- doRequest("GET", org_url, query)
+  df_org_details <- doRequest("GET", url = org_url, queryParameters = query)
 
   df_org_details <- data.frame(df_org_details, stringsAsFactors = FALSE)
   return(df_org_details)
 }
 
 
-#' @title Retrieve Organizations
+#' @title Retrieve all Organizations
 #'
 #' @description
 #' Retrieve a list of organizations
@@ -50,12 +50,12 @@ bitly_retrieve_organization <- function(organization_guid = NULL) {
 bitly_retrieve_organizations <- function() {
   orgs_url <- "https://api-ssl.bitly.com/v4/organizations"
 
-  query <- list(access_token = bitly_token$credentials$access_token)
+  query <- list(access_token = bitly_auth_access())
 
-  df_orgs_details <- doRequest("GET", orgs_url, query)
+  df_orgs_details <- doRequest(verb = "GET", url = orgs_url, queryParameters = query)
 
-  df_orgs_details <- data.frame(df_orgs_details, stringsAsFactors = FALSE)
-  return(df_orgs_details$organizations)
+  df_orgs_details <- data.frame(df_orgs_details$organizations, stringsAsFactors = FALSE)
+  return(df_orgs_details)
 }
 
 
@@ -70,12 +70,12 @@ bitly_retrieve_organizations <- function() {
 #' osc <- org_shorten_counts(organization_guid = "")
 #' }
 #' @export
-org_shorten_counts <- function(organization_guid = NULL) {
+bitly_org_shorten_counts <- function(organization_guid = NULL) {
   org_short_counts <- paste0("https://api-ssl.bitly.com/v4/organizations/", organization_guid, "/shorten_counts")
 
-  query <- list(access_token = bitly_token$credentials$access_token, organization_guid = organization_guid)
+  query <- list(access_token = bitly_auth_access(), organization_guid = organization_guid)
 
-  df_org_short_counts <- doRequest("GET", org_short_counts, query)
+  df_org_short_counts <- doRequest("GET", org_short_counts, queryParameters = query)
 
   df_org_short_counts <- data.frame(df_org_short_counts, stringsAsFactors = FALSE)
   return(df_org_short_counts)

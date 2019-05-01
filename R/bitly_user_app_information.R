@@ -24,12 +24,12 @@
 #' @import httr stringr lubridate
 #'
 #' @export
-bitly_UserInfo <- function(showRequestURL = FALSE, verbose = T) {
+bitly_UserInfo <- function(showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
-  query <- list(access_token = bitly_token$credentials$access_token)
+  create_query <- list(access_token = bitly_auth_access())
 
-  df_user_info <- doRequest("GET", user_info_url, query, showURL = showRequestURL, verbose)
+  df_user_info <- doRequest(verb = "GET", url = user_info_url, queryParameters = create_query, showURL = showRequestURL)
 
   df_user_info_data <- data.frame(df_user_info, stringsAsFactors = FALSE)
 
@@ -71,7 +71,7 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
     warning("Your account is not premium. Please report bugs in GitHub if this is not true.")
   }
 
-  query <- list(access_token = bitly_token$credentials$access_token)
+  query <- list(access_token = bitly_auth_access())
   body <- list(name = name, default_group_guid = default_group_guid)
 
   df_user_info <- doRequest("PATCH",
@@ -101,9 +101,9 @@ is_bitly_user_premium_holder <- function() {
 bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
   oauth_app_details <- paste0("https://api-ssl.bitly.com/v4/apps/", client_id)
 
-  query <- list(access_token = bitly_token$credentials$access_token, client_id = client_id)
+  query <- list(access_token = bitly_auth_access(), client_id = client_id)
 
-  df_app_details <- doRequest("GET", oauth_app_details, query, showURL = showRequestURL)
+  df_app_details <- doRequest("GET", url = oauth_app_details, queryParameters = query, showURL = showRequestURL)
 
   df_app_details <- data.frame(df_app_details, stringsAsFactors = FALSE)
   return(df_app_details)
