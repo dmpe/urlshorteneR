@@ -11,11 +11,11 @@ jobs:
       CC_TEST_REPORTER_ID: 7f6f541be829a83a1b5837e73fd74c27863326cbf6d9e5698c6d408c983c45e4
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-            - deps1-{{ .Branch }}
-            - deps1-
+      #- restore_cache:
+      #    keys:
+      #      - deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+      #      - deps1-{{ .Branch }}
+      #      - deps1-
       - run:
           command: |
             R -e "devtools::install_deps(dependencies = TRUE)"
@@ -26,7 +26,7 @@ jobs:
           command: |
             R -e 'devtools::check(run_dont_test = TRUE)'
       - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
+          key: deps1-{{ .Branch }}
           paths:
             - "/usr/local/lib/R/site-library"
       #- run:
