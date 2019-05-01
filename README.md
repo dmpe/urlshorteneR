@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/dmpe/urlshorteneR/tree/master.svg?style=svg)](https://circleci.com/gh/dmpe/urlshorteneR/tree/master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/369c2a0a1ba107e0c98c/maintainability)](https://codeclimate.com/github/dmpe/urlshorteneR/maintainability)
 
-R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd`
+R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd` 
 =======
 
 ### Installing
