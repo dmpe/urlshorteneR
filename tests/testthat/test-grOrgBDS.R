@@ -3,12 +3,10 @@ library(httr)
 library(jsonlite)
 library(testthat)
 
-bitly_token <- bitly_auth()
-
 context("Branded Domain Names")
 
 test_that("BDN do work", {
-  fdm <- bsds()
+  fdm <- bitly_bsds()
   expect_equal(length(as.list(fdm)), 0)
 })
 

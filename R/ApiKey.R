@@ -1,5 +1,6 @@
 # Bitly_api_version <- "v4"
 # Isgd_api_version <- "v2019"
+.urlshorteneREnv <- new.env(parent = emptyenv())
 
 #' @title Assign bit.ly API tokens using OAuth2.0
 #'
@@ -64,7 +65,8 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
   if (isTRUE(debug)) {
     message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login, " with access token ", token$credentials$access_token))
   }
-  invisible(return(token))
+  .urlshorteneREnv$token <- token
+  invisible(token)
 }
 
 
@@ -75,9 +77,9 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 bitly_auth_access <- function() {
   
   bitly_token <- bitly_auth()
-  access_key <- bitly_token$credentials$access_token
-  
-  return(access_key)
+  .urlshorteneREnv$acc_token <- bitly_token$credentials$access_token
+
+  return(.urlshorteneREnv$acc_token)
 }
 
 

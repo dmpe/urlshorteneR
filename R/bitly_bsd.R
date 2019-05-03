@@ -4,7 +4,7 @@
 #'
 #' @import httr jsonlite
 #' @export
-bsds <- function() {
+bitly_bsds <- function() {
   url_bsds <- "https://api-ssl.bitly.com/v4/bsds"
 
   query <- list(access_token = bitly_token$credentials$access_token)
