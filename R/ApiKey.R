@@ -65,6 +65,7 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
   if (isTRUE(debug)) {
     message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login, " with access token ", token$credentials$access_token))
   }
+  
   .urlshorteneREnv$token <- token
   invisible(token)
 }
@@ -72,13 +73,24 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 
 #' Get Bitly access token
 #' 
-#' Extract it from \code{bitly_auth} method
-#' @export
+#' Extract token from \code{bitly_auth} method
+#' 
+#' @noRd
+#' @keywords internal
 bitly_auth_access <- function() {
-  
-  bitly_token <- bitly_auth()
-  .urlshorteneREnv$acc_token <- bitly_token$credentials$access_token
 
+  if (interactive()) {
+    #setwd("~/Documents/Documents2/R-package-urlshortener")
+    bitly_token <- bitly_auth()
+    bitly_token <- readRDS("tests/bitly_local_token.rds")
+  } else {
+    #setwd("~/main/")
+    #print(getwd())
+    bitly_token <- readRDS("../bitly_local_token.rds")
+  }
+  .urlshorteneREnv$acc_token <- bitly_token$credentials$access_token
+  .urlshorteneREnv$token <- bitly_token
+  
   return(.urlshorteneREnv$acc_token)
 }
 
@@ -103,16 +115,16 @@ doRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body 
       return_request <- suppressMessages(httr::PATCH(url,
         query = queryParameters, body = patch_body,
         encode = "json", content_type_json(),
-        httr::config(token = bitly_auth())
+        httr::config(token = .urlshorteneREnv$token)
       ))
     },
     "GET" = {
-      return_request <- httr::GET(url, query = queryParameters, httr::config(token = bitly_auth()))
+      return_request <- httr::GET(url, query = queryParameters, httr::config(token = .urlshorteneREnv$token))
     },
     "POST" = {
       return_request <- suppressMessages(httr::POST(url,
         body = queryParameters, encode = "json",
-        httr::content_type_json(), httr::config(token = bitly_auth())
+        httr::content_type_json(), httr::config(token = .urlshorteneREnv$token)
       ))
     }
   )

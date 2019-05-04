@@ -9,7 +9,10 @@
 #' @param channel_guids - a list of strings
 #' @param description - description of campaign
 #' @param name - its name
-#'
+#' 
+#' @inheritParams bitly_user_info
+#' @inheritParams bitly_retrieve_group
+#' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/createCampaign}
 #'
 #' @examples
@@ -24,7 +27,7 @@
 #'
 #' @export
 create_campaigns <- function(group_guid = NULL, channel_guids = list(), description = NULL,
-                             name = NULL, showRequestURL = T, verbose = T) {
+                             name = NULL, showRequestURL = T) {
   create_camp <- "https://api-ssl.bitly.com/v4/campaigns"
 
   query <- list(
@@ -32,7 +35,7 @@ create_campaigns <- function(group_guid = NULL, channel_guids = list(), descript
     channel_guids = channel_guids, description = description, name = name
   )
 
-  df_create_camps <- doRequest("POST", create_camp, query, showURL = showRequestURL, verbose)
+  df_create_camps <- doRequest("POST", create_camp, query, showURL = showRequestURL)
 
   df_create_camps <- data.frame(df_create_camps, stringsAsFactors = FALSE)
   df_create_camps$created <- ymd_hms(df_create_camps$created, tz = "UTC")
@@ -46,7 +49,9 @@ create_campaigns <- function(group_guid = NULL, channel_guids = list(), descript
 #' Retrieve the campaigns for the current user
 #'
 #' @inheritParams create_campaigns
-#'
+#' @inheritParams bitly_user_info
+#' @inheritParams bitly_retrieve_group
+#' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getCampaigns}
 #'
 #' @examples
@@ -56,12 +61,12 @@ create_campaigns <- function(group_guid = NULL, channel_guids = list(), descript
 #' 
 #' @import httr jsonlite
 #' @export
-retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T, verbose = T) {
+retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T) {
   get_camp <- "https://api-ssl.bitly.com/v4/campaigns"
 
   query <- list(access_token = bitly_auth_access(), group_guid = group_guid)
 
-  df_get_camps <- doRequest("GET", get_camp, query, showURL = showRequestURL, verbose)
+  df_get_camps <- doRequest("GET", get_camp, query, showURL = showRequestURL)
 
   df_get_camps <- data.frame(df_get_camps, stringsAsFactors = FALSE)
   df_get_camps$campaigns$created <- ymd_hms(df_get_camps$campaigns$created, tz = "UTC")

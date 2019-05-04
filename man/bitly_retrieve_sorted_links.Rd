@@ -9,6 +9,8 @@ bitly_retrieve_sorted_links(group_id = NA, to_sort_by = "clicks",
   showRequestURL = F)
 }
 \arguments{
+\item{group_id}{- a required string | A GUID for a Bitly group}
+
 \item{to_sort_by}{- a required string | Enum: "clicks" | The type of sorting that you would like to do}
 
 \item{unit}{- string | Default: "day", Enum: "minute" "hour" "day" "week" "month" | A unit of time}
@@ -20,6 +22,9 @@ query data for. pass -1 to return all units of time.}
 which to pull metrics. Will default to current time.}
 
 \item{size}{- string |  Default: 50 | The quantity of items to be be returned}
+
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
 This will retrieve a paginated response for Bitlinks that are sorted for the Group.
@@ -34,7 +39,7 @@ shorten a link, it will be on behalf of a user and a group.
 
 \examples{
 \dontrun{
-ui <- bitly_UserInfo(showRequestURL = TRUE)
+ui <- bitly_user_info(showRequestURL = TRUE)
 rg <- bitly_retrieve_sorted_links(group_id = ui$default_group_guid[1])
 }
 

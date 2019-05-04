@@ -7,7 +7,10 @@
 bitly_retrieve_groups(organization_id = NA, showRequestURL = F)
 }
 \arguments{
-\item{organization_id}{- an optional string parameter | A GUID for a Bitly rganization}
+\item{organization_id}{- an optional string parameter | A GUID for a Bitly organization}
+
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
 Retrive details for all groups that a user belongs to.
@@ -21,7 +24,7 @@ shorten a link, it will be on behalf of a user and a group.
 
 \examples{
 \dontrun{
-rg <- bitly_retrieve_groups()
+rg <- bitly_retrieve_groups("") # will still work ok
 }
 }
 \seealso{

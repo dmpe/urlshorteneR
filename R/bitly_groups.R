@@ -11,12 +11,14 @@
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getGroup}
 #'
 #' @param group_id - a required string | A GUID for a Bitly group
-#'
+#' 
+#' @inheritParams bitly_user_info
+#' 
 #' @import httr jsonlite assertthat
 #'
 #' @examples
 #' \dontrun{
-#' ui <- bitly_UserInfo(showRequestURL = TRUE)
+#' ui <- bitly_user_info(showRequestURL = TRUE)
 #' rg <- bitly_retrieve_group(group_guid = ui$default_group_guid)
 #' }
 #' 
@@ -43,17 +45,19 @@ bitly_retrieve_group <- function(group_id = NA, showRequestURL = F) {
 #' @description
 #' Retrive details for all groups that a user belongs to.
 #'
-#' @param organization_id - an optional string parameter | A GUID for a Bitly rganization
+#' @param organization_id - an optional string parameter | A GUID for a Bitly organization
 #'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getGroups}
 #'
 #' @import httr jsonlite assertthat
 #'
 #' @inheritSection bitly_retrieve_group Group
-#'
+#' 
+#' @inheritParams bitly_user_info
+#' 
 #' @examples
 #' \dontrun{
-#' rg <- bitly_retrieve_groups()
+#' rg <- bitly_retrieve_groups("") # will still work ok
 #' }
 #' @export
 bitly_retrieve_groups <- function(organization_id = NA, showRequestURL = F) {
@@ -68,7 +72,7 @@ bitly_retrieve_groups <- function(organization_id = NA, showRequestURL = F) {
   df_groups_details <- doRequest("GET", groups_url, query, showURL = showRequestURL)
   df_groups_details <- data.frame(df_groups_details, stringsAsFactors = FALSE)
   
-  return(df_group_details)
+  return(df_groups_details)
 }
 
 #' Retrieve Sorted Bitlinks for Group
@@ -86,13 +90,15 @@ bitly_retrieve_groups <- function(organization_id = NA, showRequestURL = F) {
 #' @param size - string |  Default: 50 | The quantity of items to be be returned
 #' 
 #' @inheritSection bitly_retrieve_group Group
+#' @inheritParams bitly_user_info
+#' @inheritParams bitly_retrieve_group
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getSortedBitlinks}
 #'
 #' @import httr jsonlite lubridate 
 #' @examples
 #' \dontrun{
-#' ui <- bitly_UserInfo(showRequestURL = TRUE)
+#' ui <- bitly_user_info(showRequestURL = TRUE)
 #' rg <- bitly_retrieve_sorted_links(group_id = ui$default_group_guid[1])
 #' }
 #' 
@@ -108,12 +114,12 @@ bitly_retrieve_sorted_links <- function(group_id = NA, to_sort_by = "clicks", un
   
   query <- list(access_token = bitly_auth_access(), unit = unit, units = units, unit_reference = unit_reference, size = size)
   
-  df_groups_details <- doRequest("GET", url = sorted_links_group_url, queryParameters = query, showURL = showRequestURL)
-  df_groups_details2 <- cbind(
-    data.frame(df_groups_details$links, stringsAsFactors = FALSE), 
-    data.frame(df_groups_details$sorted_links, stringsAsFactors = FALSE))
+  df_sorted_links <- doRequest("GET", url = sorted_links_group_url, queryParameters = query, showURL = showRequestURL)
+  df_sorted_links2 <- cbind(
+    data.frame(df_sorted_links$links, stringsAsFactors = FALSE), 
+    data.frame(df_sorted_links$sorted_links, stringsAsFactors = FALSE))
   
-  return(df_groups_details2)
+  return(df_sorted_links2)
   
 }
 

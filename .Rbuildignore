@@ -9,4 +9,6 @@ CONTRIBUTE.MD
 ^cran-comments\.md$
 ^.*\.o$
 .lintr
-bitly_token.rds
+bitly_local_token.rds
+.codecov.yml
+.circleci

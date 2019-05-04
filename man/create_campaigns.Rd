@@ -5,7 +5,7 @@
 \title{Create Campaign (Premium)}
 \usage{
 create_campaigns(group_guid = NULL, channel_guids = list(),
-  description = NULL, name = NULL, showRequestURL = T, verbose = T)
+  description = NULL, name = NULL, showRequestURL = T)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}
@@ -15,6 +15,9 @@ create_campaigns(group_guid = NULL, channel_guids = list(),
 \item{description}{- description of campaign}
 
 \item{name}{- its name}
+
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
 Create a new campaign

@@ -10,6 +10,9 @@
 }
 \arguments{
 \item{client_id}{- The client ID of an OAuth app}
+
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
 Retrieve details for the provided OAuth App client ID

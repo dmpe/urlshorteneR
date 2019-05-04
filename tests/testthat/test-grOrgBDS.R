@@ -32,36 +32,36 @@ test_that("You cannot retrieve shorten counts for organization because there is 
 context("Groups")
 
 test_that("You can retrieve my own group", {
-  user_info  <- bitly_UserInfo()
+  user_info  <- bitly_user_info()
   expect_equal(dim(bitly_retrieve_group(group_id = user_info$default_group_guid[1]))[2], 8)
 })
 
 test_that("You cannot retrieve my own group because of incorrect string", {
-  user_info  <- "bitly_UserInfo()"
-  expect_error(bitly_retrieve_group(user_info$default_group_guid[1]), "group_guid must not be empty string, NA or NULL")
+  user_info  <- "test"
+  expect_error(bitly_retrieve_group(user_info), "group_guid must not be empty string, NA or NULL")
 })
 
 test_that("You can retrieve my groups (PLURAL) without specifying org id", {
-  user_info  <- bitly_UserInfo()
+  user_info  <- bitly_user_info()
   my_group <- bitly_retrieve_group(user_info$default_group_guid[1])
   callm <- bitly_retrieve_groups(organization_id = my_group$organization_guid)
-  expect_equal(dim(callm)[2], 8)
+  expect_equal(dim(callm)[2], 9)
 })
 
 test_that("You can retrieve my groups (PLURAL) without specifying org id", {
-  ret_groups <- bitly_retrieve_groups()
-  expect_equal(dim(ret_groups)[2], 8)
+  ret_groups <- bitly_retrieve_groups("")
+  expect_equal(dim(ret_groups)[2], 9)
 })
 
 test_that("bitly_retrieve_sorted_links works, with day", {
-  user_info  <- bitly_UserInfo()
+  user_info  <- bitly_user_info()
   rsl <- bitly_retrieve_sorted_links(user_info$default_group_guid[1])
   expect_equal(dim(rsl)[[2]], 13)
 })
 
 
 test_that("bitly_retrieve_sorted_links works, with hour", {
-  user_info  <- bitly_UserInfo()
+  user_info  <- bitly_user_info()
   rsl <- bitly_retrieve_sorted_links(user_info$default_group_guid[1], unit = "hour")
   expect_equal(dim(rsl)[[2]], 13)
 })

@@ -8,6 +8,9 @@ bitly_retrieve_group(group_id = NA, showRequestURL = F)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}
+
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
 Retrive details for a specific group that a user belongs to.
@@ -21,7 +24,7 @@ shorten a link, it will be on behalf of a user and a group.
 
 \examples{
 \dontrun{
-ui <- bitly_UserInfo(showRequestURL = TRUE)
+ui <- bitly_user_info(showRequestURL = TRUE)
 rg <- bitly_retrieve_group(group_guid = ui$default_group_guid)
 }
 

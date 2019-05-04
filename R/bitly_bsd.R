@@ -7,7 +7,7 @@
 bitly_bsds <- function() {
   url_bsds <- "https://api-ssl.bitly.com/v4/bsds"
 
-  query <- list(access_token = bitly_token$credentials$access_token)
+  query <- list(access_token = bitly_auth_access())
 
   df_bsds <- doRequest("GET", url = url_bsds, queryParameters = query)
   

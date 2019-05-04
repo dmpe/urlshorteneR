@@ -3,11 +3,12 @@ library(httr)
 library(jsonlite)
 library(stringr)
 library(urlshorteneR)
+bitly_token <- readRDS("../bitly_local_token.rds")
 
 context("User Information")
 
 test_that("Return information about a user.", {
-  ui <- bitly_UserInfo()
+  ui <- bitly_user_info()
   expect_equal(dim(ui)[[2]], 11)
 })
 
@@ -38,7 +39,7 @@ test_that("Application provides some metadata", {
 context("Group Information")
 
 test_that("Returns entries from a user's link history in reverse chronological order.", {
-  ui <- bitly_UserInfo()
+  ui <- bitly_user_info()
   user_group <- bitly_retrieve_group(ui$default_group_guid)
   expect_equal(user_group, 10)
   expect_message(bitly_UserTrackingDomains(), "It seems that you don't have any tracking domains.")

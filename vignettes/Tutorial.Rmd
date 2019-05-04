@@ -10,12 +10,6 @@ vignette: >
 editor_options: 
   chunk_output_type: console  
 ---
-```{r setup, include=FALSE, echo=FALSE}
-require("knitr")
-opts_knit$set(root.dir = "~/main")
-str(knitr::opts_knit$get())
-```
-
 
 `urlshorteneR` wrapps 2 URL services [Bit.ly](https://bitly.com) and [is.gd/v.gd](https://is.gd). 
 In order to begin shortening URLs and downloading usefull statistics about short links, you have to -- in the case of <http://bit.ly> -- authenticate using OAuth2.0. 
@@ -29,6 +23,11 @@ For is.gd/v.gd there is no authentication needed.
 Return some basic information about my user on Bit.ly. Additionally, is the account "premium" one?
 
 ```{r}
+require("knitr")
+opts_knit$set(root.dir = "~/main/")
+#opts_knit$set(root.dir = "~/Documents/Documents2/R-package-urlshortener")
+str(knitr::opts_knit$get())
+
 library(urlshorteneR)
 
 bitly_token <- readRDS("tests/bitly_local_token.rds")
@@ -37,7 +36,7 @@ bitly_token <- readRDS("tests/bitly_local_token.rds")
 # bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "f9c6a3b18968e991e35f466e90c7d883cc176073")
 # bitly_token <- bitly_auth()
 
-ui <- bitly_UserInfo(showRequestURL = TRUE) 
+ui <- bitly_user_info(showRequestURL = TRUE) 
 is_bitly_user_premium_holder()
 ```
 
@@ -79,7 +78,7 @@ The first method returns an information about myself, whereas the second one ret
 ```{r}
 if (interactive()) {
 
-bitly_UserInfo()
+bitly_user_info()
 
 bitly_UserTrackingDomains()
 }

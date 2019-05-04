@@ -17,13 +17,13 @@
 #'
 #' @examples
 #' \dontrun{
-#'    ui <- bitly_UserInfo(showRequestURL = TRUE)
+#'    ui <- bitly_user_info(showRequestURL = TRUE)
 #' }
 #' 
 #' @import httr stringr lubridate
 #'
 #' @export
-bitly_UserInfo <- function(showRequestURL = FALSE) {
+bitly_user_info <- function(showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
   create_query <- list(access_token = bitly_auth_access())
@@ -51,7 +51,7 @@ bitly_UserInfo <- function(showRequestURL = FALSE) {
 #' @param default_group_guid - group id to change, see NOTE
 #' @param name - username to change
 #' 
-#' @inheritParams bitly_UserInfo
+#' @inheritParams bitly_user_info
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/updateUser}
 #'
@@ -87,11 +87,11 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
 
 #' Check if authenticated user holds premium account
 #'
-#' @seealso [bitly_UserInfo()]
+#' @seealso [bitly_user_info()]
 #'
 #' @export
 is_bitly_user_premium_holder <- function() {
-  user_profile <- bitly_UserInfo()
+  user_profile <- bitly_user_info()
 
   return(user_profile$is_sso_user[[1]])
 }
@@ -99,7 +99,9 @@ is_bitly_user_premium_holder <- function() {
 #' Retrieve details for the provided OAuth App client ID
 #'
 #' @param client_id - The client ID of an OAuth app
-#'
+#' 
+#' @inheritParams bitly_user_info
+#' 
 #' @export
 bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
   oauth_app_details <- paste0("https://api-ssl.bitly.com/v4/apps/", client_id)

@@ -10,5 +10,5 @@ is_bitly_user_premium_holder()
 Check if authenticated user holds premium account
 }
 \seealso{
-[bitly_UserInfo()]
+[bitly_user_info()]
 }

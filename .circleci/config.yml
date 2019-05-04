@@ -4,7 +4,7 @@ orbs:
   codecov: codecov/codecov@1.0.4
 jobs:
   build:
-    working_directory: ~/main
+    working_directory: ~/
     docker:
     - image: rocker/tidyverse:devel
     environment:
@@ -13,20 +13,17 @@ jobs:
       CODECOV_TOKEN: 'd9508b8e-7bc1-4212-a361-86d64a361045'
     steps:
       - checkout
-      #- restore_cache:
-      #    keys:
-      #      - deps1-{{ .Branch }}-{{ checksum "DESCRIPTION" }}-{{ checksum ".circleci/config.yml" }}
-      #      - deps1-{{ .Branch }}
-      #      - deps1-
+      - restore_cache:
+          keys:
+            - deps1-{{ .Branch }}
       - run:
           command: |
-            R -e "devtools::install_deps(dependencies = TRUE)"
-            R -e "install.packages('lintr', dependencies = TRUE)"
-            R -e "install.packages('covr', dependencies = TRUE)"
+            R -e "devtools::install_deps(dependencies = TRUE);install.packages('lintr', dependencies = TRUE);install.packages('covr', dependencies = TRUE)"  
       - run:
           no_output_timeout: 30m
           command: |
-            R -e 'devtools::check(run_dont_test = TRUE)'
+            R -e 'source("~/main/tests/circle-ci.R")'
+         #   R -e "library(lintr); lintr::lint_package()"
       - save_cache:
           key: deps1-{{ .Branch }}
           paths:
@@ -41,11 +38,25 @@ jobs:
       - run:
           no_output_timeout: 20m
           command: |
-            mkdir /root/main/artifacts
-            R -e "devtools::install()"
-            R -e "lintr::lint_package(); library(covr); covr::codecov()"
-      - store_artifacts:
-          path: /root/main/artifacts/
+            mkdir ~/artifacts
+            R -e "devtools::install();library(covr); covr::codecov(token='d9508b8e-7bc1-4212-a361-86d64a361045')"
       - codecov/upload:
           upload_name: "CodeCov Test Coverage" 
+      - run:
+          name: Build package
+          command: | 
+            R -e "devtools::check(run_dont_test = F, vignettes = F)"
+            R CMD build .
+      - run:
+          name: Check package
+          command: R CMD check "${PKG_TARBALL}" --as-cran --no-manual
+      - run:
+          name: Check failures
+          command: |
+            Rscript -e "message(devtools::check_failures(path = '${RCHECK_DIR}'))"
+            # warnings are errors
+            # - run: if grep -q -R "WARNING" "${RCHECK_DIR}/00check.log"; then exit 1; fi
+      - store_artifacts:
+          path: ~/artifacts/
+          
 destination: artifacts
