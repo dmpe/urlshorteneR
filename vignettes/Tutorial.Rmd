@@ -12,7 +12,7 @@ editor_options:
 ---
 ```{r setup, include=FALSE, echo=FALSE}
 require("knitr")
-opts_knit$set(root.dir = "~/")
+opts_knit$set(root.dir = "~/main")
 str(knitr::opts_knit$get())
 ```
 
