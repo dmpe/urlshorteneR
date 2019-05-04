@@ -70,7 +70,8 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
 
   if (!is_bitly_user_premium_holder()) {
     default_group_guid <- NULL
-    warning("Your account is not premium. Please report bugs in GitHub if this is not true.")
+    warning("Your account is not premium. Please report bugs in GitHub if this is not true.", 
+            "We will now skip changing group guid.")
   }
 
   query <- list(access_token = bitly_auth_access())

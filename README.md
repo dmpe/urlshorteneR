@@ -1,7 +1,6 @@
-[![Coverage Status](https://coveralls.io/repos/dmpe/urlshorteneR/badge.svg?branch=master&service=github)](https://coveralls.io/github/dmpe/urlshorteneR?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 [![CircleCI](https://circleci.com/gh/dmpe/urlshorteneR/tree/master.svg?style=svg)](https://circleci.com/gh/dmpe/urlshorteneR/tree/master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/369c2a0a1ba107e0c98c/maintainability)](https://codeclimate.com/github/dmpe/urlshorteneR/maintainability)
+[![codecov](https://codecov.io/gh/dmpe/urlshorteneR/branch/master/graph/badge.svg)](https://codecov.io/gh/dmpe/urlshorteneR)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 
 R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd` 
 =======
@@ -48,14 +47,12 @@ GET https://api-ssl.bitly.com/v4/groups | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | :heavy_check_mark:
 
-
-
 <hts://dev.bitly.com/v4/#tag/Campaigns> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
 GET https://dev.bitly.com/v4/#operation/getCampaigns | :heavy_check_mark: but 🚫t tested
 POST https://dev.bitly.com/v4/#operation/createCampaign | :heavy_check_mark: but 🚫t tested
 
-<https:lneeded !!!
+### Help needed !!!
 
 - Testers with the "enterprise" Bit.ly accounts. 
 - Testing Ow.ly support (this requires their API key)
