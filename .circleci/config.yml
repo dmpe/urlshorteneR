@@ -4,7 +4,7 @@ orbs:
   codecov: codecov/codecov@1.0.4
 jobs:
   build:
-    working_directory: ~/
+    working_directory: ~/main
     docker:
     - image: rocker/tidyverse:devel
     environment:
@@ -38,13 +38,13 @@ jobs:
       - run:
           no_output_timeout: 20m
           command: |
-            mkdir ~/artifacts
+            mkdir ~/main/artifacts
             R -e "devtools::install();library(covr); covr::codecov(token='d9508b8e-7bc1-4212-a361-86d64a361045')"
       - codecov/upload:
           upload_name: "CodeCov Test Coverage" 
       - run:
           name: Build package
-          command: | 
+          command: |
             R -e "devtools::check(run_dont_test = F, vignettes = F)"
             R CMD build .
       - run:
@@ -57,6 +57,6 @@ jobs:
             # warnings are errors
             # - run: if grep -q -R "WARNING" "${RCHECK_DIR}/00check.log"; then exit 1; fi
       - store_artifacts:
-          path: ~/artifacts/
+          path: ~/main/artifacts/
           
 destination: artifacts
