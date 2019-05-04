@@ -120,7 +120,73 @@ bitly_retrieve_sorted_links <- function(group_id = NA, to_sort_by = "clicks", un
     data.frame(df_sorted_links$sorted_links, stringsAsFactors = FALSE))
   
   return(df_sorted_links2)
-  
 }
+
+#' Update a Group
+#'
+#' Update the details of a group
+#'
+#' @seealso \url{https://dev.bitly.com/v4/#operation/updateGroup}
+#' 
+#' @inheritParams bitly_retrieve_sorted_links
+#' @inheritParams bitly_update_user 
+#' @inheritParams bitly_retrieve_groups
+#'
+#' @examples
+#' \dontrun{
+#' ui <- bitly_user_info(showRequestURL = TRUE)
+#' up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "New Group Name", organization_id = "asd")
+#' }
+#' @import httr jsonlite assetthat
+#' @export
+bitly_update_group <- function(group_id = NA, name = NA, organization_id = NA, showRequestURL = F) {
+  #TODO, maybe as with https://github.com/dmpe/urlshorteneR/blob/master/R/bitly_user_app_info.R#L68
+  if (is.string(group_id) { 
+    upd_group_url <- paste0("https://api-ssl.bitly.com/v4/groups/", group_id)  
+  } else {
+    stop("group_id must not be emptry string, NA or NULL")
+  }
+  
+  query <- list(access_token = bitly_auth_access())
+  update_body <- list(name = name, organization_guid = organization_id)
+  
+  df_update_pref <- doRequest("PATCH", url = upd_group_url, queryParameters = query, 
+                              patch_body = update_body, showURL = showRequestURL)
+  df_update_pref <- data.frame(t(unlist(df_update_pref)), stringsAsFactors = FALSE)
+      
+  return(df_update_pref)
+}
+
+#' Retrieve Group Preferences
+#'
+#' Retrieve preferences for a specific group
+#'
+#' @seealso \url{https://dev.bitly.com/v4/#operation/getGroupPreferences}
+#' 
+#' @inheritParams bitly_retrieve_sorted_links
+#' \dontrun{
+#' ui <- bitly_user_info(showRequestURL = TRUE)
+#' group_pref <- bitly_retrieve_group_pref(group_id = ui$default_group_guid[1])
+#' }
+#' @import httr jsonlite assetthat
+#' @export
+bitly_retrieve_group_pref <- function(group_id = NA, showRequestURL = F) {
+  if (is.string(group_id) {
+    gr_pref_url <- paste0("bitly_https://api-ssl.bitly.com/v4/groups/", group_id, "/preferences")
+  } else {
+    stop("group_id must not be emptry string, NA or NULL")
+  }
+  
+  query <- list(access_token = bitly_auth_access())
+  
+  df_group_prefs <- doRequest("GET", url = gr_pref_url, queryParameters = query, showURL = showRequestURL)
+  df_group_prefs <- data.frame(df_group_prefs, stringsAsFactors = FALSE)
+
+  retunr(df_group_prefs)
+}
+
+
+
+
 
 
