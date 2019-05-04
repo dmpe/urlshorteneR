@@ -60,9 +60,26 @@ test_that("bitly_retrieve_sorted_links works, with day", {
 })
 
 
-test_that("bitly_retrieve_sorted_links works, with hour", {
+test_that("bitly_retrieve_sorted_links works, with hours", {
   user_info  <- bitly_user_info()
   rsl <- bitly_retrieve_sorted_links(user_info$default_group_guid[1], unit = "hour")
   expect_equal(dim(rsl)[[2]], 13)
 })
+
+
+---------------------
+test_that("bitly_update_group works, updating name and org id", {
+  ui <- bitly_user_info(showRequestURL = TRUE)
+  up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "New Group Name", organization_id = "asd")
+  expect_equal(xxx)
+})
+
+
+test_that("bitly_retrieve_group_pref can retrieve group prefs", {
+  user_info  <- bitly_user_info()
+  rsl <- bitly_retrieve_group_pref(user_info$default_group_guid[1], unit = "hour")
+  expect_equal(dim(rsl)[2], 2)
+})
+
+
 
