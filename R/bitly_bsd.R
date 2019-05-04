@@ -9,7 +9,7 @@ bitly_bsds <- function() {
 
   query <- list(access_token = bitly_token$credentials$access_token)
 
-  df_bsds <- doRequest("GET", url_bsds, queryParameters = query)
+  df_bsds <- doRequest("GET", url = url_bsds, queryParameters = query)
   
   if (length(df_bsds$bsds) == 0) {
     warning("There are no branded domains. First create some in Bitly.com")

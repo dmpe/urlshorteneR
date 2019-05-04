@@ -2,12 +2,12 @@
 % Please edit documentation in R/bitly_groups.R
 \name{bitly_retrieve_groups}
 \alias{bitly_retrieve_groups}
-\title{Retrieve a list of Groups}
+\title{Retrieve a list of all groups}
 \usage{
-bitly_retrieve_groups(organization_guid = NA)
+bitly_retrieve_groups(organization_id = NA, showRequestURL = F)
 }
 \arguments{
-\item{organization_guid}{}
+\item{organization_id}{- an optional string parameter | A GUID for a Bitly rganization}
 }
 \description{
 Retrive details for all groups that a user belongs to.

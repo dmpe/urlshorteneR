@@ -4,10 +4,11 @@
 \alias{bitly_retrieve_organization}
 \title{Retrieve a single Organization}
 \usage{
-bitly_retrieve_organization(organization_guid = NULL)
+bitly_retrieve_organization(organization_id = NULL)
 }
 \arguments{
-\item{organization_guid}{- string | A GUID for a Bitly organization}
+\item{organization_id}{- a required string | A GUID for a Bitly organization.
+You may also simply pass "" (double quotes), but this should be avoided at all costs.}
 }
 \description{
 Retrive details for an organization
@@ -19,7 +20,8 @@ Organizations are part of our hierarchy. This is the top level where a group and
 
 \examples{
 \dontrun{
-ro <- bitly_retrieve_organization(organization_guid = "")
+all_orgs <- bitly_retrieve_organizations()
+ro <- bitly_retrieve_organization(organization_id = all_orgs$guid)
 }
 
 }

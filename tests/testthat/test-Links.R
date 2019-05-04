@@ -32,14 +32,3 @@ test_that("Given a bitly URL or hash (or multiple), returns the target (long) UR
   expect_named(ls2, c("long_url", "url", "hash", "global_hash", "new_hash"))
 })
 
-context("Links Goo.gl")
-
-test_that("expanding does work", {
-  g1 <- googl_LinksExpand(shortUrl = "http://goo.gl/vM0w4", showRequestURL = F)
-  expect_output(g1$original_data$longUrl, "http://www.bi-verdict.com/fileadmin/FreeAnalyses/consolidations.htm")
-})
-
-test_that("shorting does work", {
-  g2 <- googl_LinksShorten(longUrl = "https://developers.google.com/url-shortener/v1/url/insert", showRequestURL = F)
-  expect_more_than(nchar(g2$id), 19)
-})

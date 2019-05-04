@@ -4,10 +4,10 @@
 \alias{bitly_retrieve_group}
 \title{Retrieve a single group}
 \usage{
-bitly_retrieve_group(group_guid = NA, showRequestURL = T)
+bitly_retrieve_group(group_id = NA, showRequestURL = F)
 }
 \arguments{
-\item{group_guid}{- string | A GUID for a Bitly group}
+\item{group_id}{- a required string | A GUID for a Bitly group}
 }
 \description{
 Retrive details for a specific group that a user belongs to.

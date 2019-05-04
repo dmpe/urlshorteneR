@@ -18,7 +18,6 @@ Organizations are part of our hierarchy. This is the top level where a group and
 \dontrun{
 ros <- bitly_retrieve_organizations()
 }
-
 }
 \seealso{
 \url{https://dev.bitly.com/v4/#operation/getOrganizations}

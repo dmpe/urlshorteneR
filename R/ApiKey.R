@@ -107,7 +107,7 @@ doRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body 
       ))
     },
     "GET" = {
-      return_request <- httr::GET(url, query = queryParameters, httr::config(token = bitly_auth()), verbose())
+      return_request <- httr::GET(url, query = queryParameters, httr::config(token = bitly_auth()))
     },
     "POST" = {
       return_request <- suppressMessages(httr::POST(url,

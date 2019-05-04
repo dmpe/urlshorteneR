@@ -14,7 +14,6 @@
 #'
 #' @examples
 #' \dontrun{
-#' bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret = "54987201d3599fd9a09cc80922394b0f250c7886")
 #' cc <- create_campaigns(
 #'   group_guid = "testing", showRequestURL = TRUE, channel_guids = list("1", "2", "3"),
 #'   description = "description", name = "name"
@@ -42,8 +41,6 @@ create_campaigns <- function(group_guid = NULL, channel_guids = list(), descript
   return(df_create_camps)
 }
 
-
-
 #' Retrieve campaigns (Premium)
 #'
 #' Retrieve the campaigns for the current user
@@ -54,8 +51,7 @@ create_campaigns <- function(group_guid = NULL, channel_guids = list(), descript
 #'
 #' @examples
 #' \dontrun{
-#' bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret = "54987201d3599fd9a09cc80922394b0f250c7886")
-#' gc <- retrieve_campaigns(group_guid = "testing")
+#'   gc <- retrieve_campaigns(group_guid = "testing")
 #' }
 #' 
 #' @import httr jsonlite

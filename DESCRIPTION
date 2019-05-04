@@ -17,14 +17,15 @@ Imports:
     httr (>= 1.4.0),
     jsonlite (>= 1.5),
     stringr (>= 1.4.0), 
-    lubridate (>= 1.7.4)
+    lubridate (>= 1.7.4), 
+    assertthat (>= 0.2.1)
 Suggests:
     roxygen2 (>= 6.1.1),
     knitr (>= 1.21),
     testthat (>= 2.1.1), 
     rmarkdown (>= 1.12),
     httpuv (>= 1.5.0), 
-    covr, 
+    covr (>= 3.2.1), 
     lintr
 VignetteBuilder: knitr
 License: Apache License 2.0

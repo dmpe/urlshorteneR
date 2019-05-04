@@ -15,8 +15,7 @@ Retrieve the campaigns for the current user
 }
 \examples{
 \dontrun{
-bitly_token <- bitly_auth(key = "206868fc5803d50c8d3aae9e7efb9e8a9c56067f", secret = "54987201d3599fd9a09cc80922394b0f250c7886")
-gc <- retrieve_campaigns(group_guid = "testing")
+  gc <- retrieve_campaigns(group_guid = "testing")
 }
 
 }

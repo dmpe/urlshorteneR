@@ -4,18 +4,25 @@
 \alias{bitly_org_shorten_counts}
 \title{Retrieve Organization Shorten Counts}
 \usage{
-bitly_org_shorten_counts(organization_guid = NULL)
+bitly_org_shorten_counts(organization_id = NULL)
 }
 \arguments{
-\item{organization_guid}{- string | A GUID for a Bitly organization}
+\item{organization_id}{- a required string | A GUID for a Bitly organization.
+You may also simply pass "" (double quotes), but this should be avoided at all costs.}
+}
+\value{
+facet - Enum:"countries" "referrers" "referrers_by_domain" "referring_domains" "referring_networks" "shorten_counts"
 }
 \description{
 Retrieve all the shorten counts for a specific organization
 }
 \examples{
 \dontrun{
-osc <- org_shorten_counts(organization_guid = "")
+all_orgs <- bitly_retrieve_organizations()
+osc <- bitly_org_shorten_counts(organization_id = all_orgs$guid)
+df_org_short_counts <- data.frame(osc, stringsAsFactors = FALSE)
 }
+
 }
 \seealso{
 \url{https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts}
