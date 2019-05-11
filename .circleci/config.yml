@@ -22,7 +22,6 @@ jobs:
       - run:
           no_output_timeout: 30m
           command: |
-            R -e 'source("~/main/tests/circle-ci.R")'
          #   R -e "library(lintr); lintr::lint_package()"
       - save_cache:
           key: deps1-{{ .Branch }}
