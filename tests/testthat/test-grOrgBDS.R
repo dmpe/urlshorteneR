@@ -66,20 +66,44 @@ test_that("bitly_retrieve_sorted_links works, with hours", {
   expect_equal(dim(rsl)[[2]], 13)
 })
 
-
----------------------
 test_that("bitly_update_group works, updating name and org id", {
   ui <- bitly_user_info(showRequestURL = TRUE)
-  up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "New Group Name", organization_id = "asd")
-  expect_equal(xxx)
+  up_group_orig <- bitly_update_group(group_id = ui$default_group_guid[1], name = "fancy name", organization_id = "asd")
+  up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "NewGroupName", organization_id = "asd")
+  expect_equal(up_group$role, "NewGroupName")
+  expect_equal(up_group$is_active, "TRUE")
 })
 
 
 test_that("bitly_retrieve_group_pref can retrieve group prefs", {
-  user_info  <- bitly_user_info()
-  rsl <- bitly_retrieve_group_pref(user_info$default_group_guid[1], unit = "hour")
+  ui  <- bitly_user_info()
+  rsl <- bitly_retrieve_group_pref(ui$default_group_guid[1])
   expect_equal(dim(rsl)[2], 2)
+  expect_equal(rsl$domain_preference, "bit.ly")
 })
 
+test_that("bitly_update_group_pref can update group prefs to bit.ly (j.mp stopped working)", {
+  ui  <- bitly_user_info()
+  usl <- bitly_update_group_pref(group_id = ui$default_group_guid[1], domain_pref = "bit.ly", showRequestURL = T)
+  expect_equal(dim(usl)[2], 2)
+  expect_equal(rsl$domain_preference, "bit.ly")
+})
 
+test_that("bitly_retrieve_links_grouped retrieves bitly links by group, deeplinks are not recieved", {
+  ui  <- bitly_user_info()
+  rlbg <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], showRequestURL = F, archived = "on")
+  expect_equal(length(rlbg$links), 0)
+  
+  rlbg <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], deeplinks = "off")
+  expect_equal(rlbg$pagination$total, 8)
+  
+  rlbg_cnn <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], search_query = "News")
+  expect_equal(rlbg_cnn$pagination$total, 1)
+})
+
+test_that("bitly_retrieve_tags can get tags", {
+  ui  <- bitly_user_info()
+  tags <- bitly_retrieve_tags(group_id = ui$default_group_guid[1], showRequestURL = T)
+  expect_length(tags, 0)
+})
 

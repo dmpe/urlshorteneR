@@ -11,11 +11,16 @@ bitly_org_shorten_counts(organization_id = NULL)
 You may also simply pass "" (double quotes), but this should be avoided at all costs.}
 }
 \value{
-facet - Enum:"countries" "referrers" "referrers_by_domain" "referring_domains" "referring_networks" "shorten_counts"
+facet - Enum: "countries" "referrers" "referrers_by_domain" "referring_domains" "referring_networks" "shorten_counts"
 }
 \description{
 Retrieve all the shorten counts for a specific organization
 }
+\section{Organizations}{
+
+Organizations are part of our hierarchy. This is the top level where a group and user will belong.
+}
+
 \examples{
 \dontrun{
 all_orgs <- bitly_retrieve_organizations()

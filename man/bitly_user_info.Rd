@@ -32,6 +32,11 @@ email - user's emails
 \description{
 Retrieve information for the current authenticated user
 }
+\section{User}{
+
+User operations such as changing your name or fetching basic user information apply only to the authenticated user.
+}
+
 \examples{
 \dontrun{
    ui <- bitly_user_info(showRequestURL = TRUE)

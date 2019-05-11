@@ -20,9 +20,14 @@ This will overwrite your (display) username and/or group ID you belong to.
 }
 \note{
 Applies only to the authenticated user:
-Changing group ID is only permitted to premium users. Thus, if you are a "free" user and will try to change your
+Changing group/org ID is only permitted to premium users. Thus, if you are a "free" user and will try to change your
 default group id to something else, you will get an error. In that case, only changing display name is permitted.
 }
+\section{User}{
+
+User operations such as changing your name or fetching basic user information apply only to the authenticated user.
+}
+
 \examples{
 \dontrun{
 # this applies only for "free" users

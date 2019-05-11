@@ -70,8 +70,11 @@ bitly_retrieve_organizations <- function() {
 #'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts}
 #' 
+#' @inheritSection bitly_retrieve_organization Organizations
+#' 
 #' @inheritParams bitly_retrieve_organization
-#' @return facet - Enum:"countries" "referrers" "referrers_by_domain" "referring_domains" "referring_networks" "shorten_counts" 
+#' 
+#' @return facet - Enum: "countries" "referrers" "referrers_by_domain" "referring_domains" "referring_networks" "shorten_counts" 
 #' 
 #' @examples
 #' \dontrun{

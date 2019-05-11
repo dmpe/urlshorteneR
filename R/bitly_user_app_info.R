@@ -2,7 +2,10 @@
 #'
 #' @param showRequestURL - an optional T/F value to whether show URL which has been 
 #' build and requested from server. For debug purposes, default FALSE.
-#'
+#' 
+#' @section User:
+#' User operations such as changing your name or fetching basic user information apply only to the authenticated user.
+#' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getUser}
 #'
 #' @return login - the specified bitly login or the login of the authenticated user
@@ -45,13 +48,14 @@ bitly_user_info <- function(showRequestURL = FALSE) {
 #' This will overwrite your (display) username and/or group ID you belong to.
 #'
 #' @note Applies only to the authenticated user:
-#' Changing group ID is only permitted to premium users. Thus, if you are a "free" user and will try to change your
+#' Changing group/org ID is only permitted to premium users. Thus, if you are a "free" user and will try to change your
 #' default group id to something else, you will get an error. In that case, only changing display name is permitted.
 #'
 #' @param default_group_guid - group id to change, see NOTE
 #' @param name - username to change
 #' 
 #' @inheritParams bitly_user_info
+#' @inheritSection bitly_user_info User
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/updateUser}
 #'
@@ -63,6 +67,8 @@ bitly_user_info <- function(showRequestURL = FALSE) {
 #' # if you are premium user, you can additionally adjust your group id
 #' uug <- bitly_update_user(name = "Malc", default_group_guid = "TestGroupID")
 #' }
+#' 
+#' @import httr jsonlite lubridate
 #' 
 #' @export
 bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestURL = FALSE) {
@@ -81,7 +87,9 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
     url = user_info_url, queryParameters = query,
     patch_body = body, showURL = showRequestURL
   )
-
+  df_user_info$created <- ymd_hms(df_user_info$created, tz = "UTC")
+  df_user_info$modified <- ymd_hms(df_user_info$modified, tz = "UTC")
+  
   return(df_user_info)
 }
 
@@ -96,6 +104,8 @@ is_bitly_user_premium_holder <- function() {
   return(user_profile$is_sso_user[[1]])
 }
 
+#' Retrieve OAuth App 
+#' 
 #' Retrieve details for the provided OAuth App client ID
 #'
 #' @param client_id - The client ID of an OAuth app
