@@ -37,12 +37,13 @@ GET https://dev.bitly.com/v4/#operation/getBSDs | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/apps/{client_id} | :heavy_check_mark: 
 
 
-https://dev.bitly.com/v4/#tag/User> DONE | Implemented :heavy_check_mark:
+<https://dev.bitly.com/v4/#tag/User> DONE | Implemented :heavy_check_mark:
 ------------- | -------------
 PATCH https://api-ssl.bitly.com/v4/user | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/user | :heavy_check_mark: 
 
-#<https://dev.bitly.com/v4/#tag/Groups> DONE | Implemented :heavy_check_mark:------------- | -------------
+<https://dev.bitly.com/v4/#tag/Groups> DONE | Implemented :heavy_check_mark:
+------------- | -------------
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/preferences | :heavy_check_mark:
 PATCH https://api-ssl.bitly.com/v4/groups/{group_guid}/preferences | :heavy_check_mark: 
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks | :heavy_check_mark: 
@@ -70,9 +71,9 @@ GET
 GET https://dev.bapi-ssl.bitly.com/v4/cgns | :heavy_check_mark: but 🚫t tested
 POST https://dev.biapi-ssl.bitly.com/v4/campaignsavy_check_mark: but 🚫t tested
 
-### HePO<api-ssl.bitly.com/v4/channels
-GET htt> | Implemented :heavy_check_mark:/🚫------------- | -------------
-ps://api-ssl.bitly.com/v4/channels
+<https://api-ssl.bitly.com/v4/channels> | Implemented :heavy_check_mark:/🚫
+------------- | -------------
+GET https://api-ssl.bitly.com/v4/channels
 GET https://api-ssl.bitly.com/v4/campaigns/{campaign_guid}
 PATCH https://api-ssl.bitly.com/v4/campaigns/{campaign_guid}
 GET https://api-ssl.bitly.com/v4/channels/{channel_guid}
