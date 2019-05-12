@@ -68,8 +68,8 @@ GET
 
 <https://dev.bitly.com/v4/#tag/Campaigns> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GET https://dev.bapi-ssl.bitly.com/v4/cgns | :heavy_check_mark: but 🚫t tested
-POST https://dev.biapi-ssl.bitly.com/v4/campaignsavy_check_mark: but 🚫t tested
+GET https://dev.bapi-ssl.bitly.com/v4/cgns | 
+POST https://dev.biapi-ssl.bitly.com/v4/campaign | 
 
 <https://api-ssl.bitly.com/v4/channels> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
@@ -80,7 +80,7 @@ GET https://api-ssl.bitly.com/v4/channels/{channel_guid}
 PATCH https://api-ssl.bitly.com/v4/channels/{channel_guid}
 
 
-p neede !!!
+### Help needed !!!
 
 -p needed Testers with the "enterprise" Bit.ly accounts. 
 - Testing Ow.ly support (this requires their API key)
