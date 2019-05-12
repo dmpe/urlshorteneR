@@ -15,12 +15,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' all_orgs <- bitly_retrieve_organizations()
-#' ro <- bitly_retrieve_organization(organization_id = all_orgs$guid)
+#' all_orgs <- bitly_retrieve_orgs()
+#' ro <- bitly_retrieve_org(organization_id = all_orgs$guid)
 #' }
 #' 
 #' @export
-bitly_retrieve_organization <- function(organization_id = NULL) {
+bitly_retrieve_org <- function(organization_id = NULL) {
   org_url <- paste0("https://api-ssl.bitly.com/v4/organizations/", organization_id)
 
   if (!is.string(organization_id)) {
@@ -40,7 +40,7 @@ bitly_retrieve_organization <- function(organization_id = NULL) {
 #' @description
 #' Retrieve a list of organizations
 #'
-#' @inheritSection bitly_retrieve_organization Organizations
+#' @inheritSection bitly_retrieve_org Organizations
 #'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getOrganizations}
 #'
@@ -48,11 +48,11 @@ bitly_retrieve_organization <- function(organization_id = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' ros <- bitly_retrieve_organizations()
+#' ros <- bitly_retrieve_orgs()
 #' }
 #' @import httr jsonlite
 #' @export
-bitly_retrieve_organizations <- function() {
+bitly_retrieve_orgs <- function() {
   orgs_url <- "https://api-ssl.bitly.com/v4/organizations"
 
   query <- list(access_token = bitly_auth_access())
@@ -70,22 +70,22 @@ bitly_retrieve_organizations <- function() {
 #'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts}
 #' 
-#' @inheritSection bitly_retrieve_organization Organizations
+#' @inheritSection bitly_retrieve_org Organizations
 #' 
-#' @inheritParams bitly_retrieve_organization
+#' @inheritParams bitly_retrieve_org
 #' 
 #' @return facet - Enum: "countries" "referrers" "referrers_by_domain" "referring_domains" "referring_networks" "shorten_counts" 
 #' 
 #' @examples
 #' \dontrun{
-#' all_orgs <- bitly_retrieve_organizations()
+#' all_orgs <- bitly_retrieve_orgs()
 #' osc <- bitly_org_shorten_counts(organization_id = all_orgs$guid)
 #' df_org_short_counts <- data.frame(osc, stringsAsFactors = FALSE)
 #' }
 #' 
 #' @import httr jsonlite assertthat
 #' @export
-bitly_org_shorten_counts <- function(organization_id = NULL) {
+bitly_retrieve_org_shorten_counts <- function(organization_id = NULL) {
   org_short_counts <- paste0("https://api-ssl.bitly.com/v4/organizations/", organization_id, "/shorten_counts")
 
   if (!is.string(organization_id)) {

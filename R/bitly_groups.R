@@ -144,7 +144,7 @@ bitly_retrieve_links_grouped <- function(group_id = NA, keyword = NULL, search_q
 #' @examples
 #' \dontrun{
 #' ui <- bitly_user_info(showRequestURL = TRUE)
-#' rg <- bitly_retrieve_tags(group_id = ui$default_group_guid[1]) # will still work ok
+#' rg <- bitly_retrieve_tags(group_id = ui$default_group_guid[1])
 #' }
 #' @export
 bitly_retrieve_tags <- function(group_id = NA, showRequestURL = F) {
@@ -155,12 +155,118 @@ bitly_retrieve_tags <- function(group_id = NA, showRequestURL = F) {
     stop("group_id must not be emptry string, NA or NULL")
   }
   
-  query <- list(access_token = bitly_auth_access(), group_guid = group_id)
+  query <- list(access_token = bitly_auth_access())
   
   df_groups_details <- doRequest("GET", tags_url, query, showURL = showRequestURL)
   df_groups_details <- data.frame(df_groups_details, stringsAsFactors = FALSE)
   
   return(df_groups_details)
+}
+
+#' Get Click Metrics for a Group by countries 
+#'
+#' This endpoint will return metrics about the countries referring click traffic rolled up to a Group
+#'
+#' @seealso \url{https://dev.bitly.com/v4/#operation/getGroupMetricsByCountries}
+#' 
+#' @inheritSection bitly_retrieve_group Group
+#' 
+#' @inheritParams bitly_user_info
+#' 
+#' @import httr jsonlite assertthat lubridate
+#' 
+#' @examples
+#' \dontrun{
+#' ui <- bitly_user_info(showRequestURL = TRUE)
+#' rg <- bitly_retrieve_group_click_metrics_by_countries(group_id = ui$default_group_guid[1])
+#' }
+#' @export
+bitly_retrieve_group_click_metrics_by_countries <- function(group_id = NA, showRequestURL = F) {
+  
+  if (is.string(group_id)) {
+    metrics_url <- paste0("https://api-ssl.bitly.com/v4/groups/", group_id, "/countries")
+  } else {
+    stop("group_id must not be emptry string, NA or NULL")
+  }
+  
+  query <- list(access_token = bitly_auth_access())
+  
+  df_click_metrics <- doRequest("GET", metrics_url, query, showURL = showRequestURL)
+  df_click_metrics <- data.frame(df_click_metrics, stringsAsFactors = FALSE)
+  df_click_metrics$unit_reference <- ymd_hms(df_click_metrics$unit_reference, tz = "UTC")
+  
+  return(df_click_metrics)
+}
+
+
+#' Get Click Metrics for a Group by referring networks 
+#' 
+#' This endpoint will return metrics about the referring network click traffic rolled up to a Group
+#' 
+#' @seealso \url{https://dev.bitly.com/v4/#operation/GetGroupMetricsByReferringNetworks}
+#' 
+#' @inheritSection bitly_retrieve_group Group
+#' 
+#' @inheritParams bitly_user_info
+#' 
+#' @import httr jsonlite assertthat lubridate
+#' 
+#' @examples
+#' \dontrun{
+#' ui <- bitly_user_info(showRequestURL = TRUE)
+#' rg <- bitly_retrieve_group_click_metrics_by_ref_networks(group_id = ui$default_group_guid[1])
+#' }
+#' @export
+bitly_retrieve_group_click_metrics_by_ref_networks <- function(group_id = NA, showRequestURL = F) {
+  
+  if (is.string(group_id)) {
+    metrics_ref_net_url <- paste0("https://api-ssl.bitly.com/v4/groups/", group_id, "/referring_networks")
+  } else {
+    stop("group_id must not be emptry string, NA or NULL")
+  }
+  
+  query <- list(access_token = bitly_auth_access())
+  
+  df_click_metrics_net <- doRequest("GET", metrics_ref_net_url, query, showURL = showRequestURL)
+  df_click_metrics_net <- data.frame(df_click_metrics_net, stringsAsFactors = FALSE)
+  df_click_metrics_net$unit_reference <- ymd_hms(df_click_metrics_net$unit_reference, tz = "UTC")
+  
+  return(df_click_metrics_net)
+}
+
+#' Retrieve Group Shorten Counts 
+#'
+#' Get all the shorten counts for a specific group
+#'
+#' @seealso \url{https://dev.bitly.com/v4/#operation/getGroupShortenCounts}
+#' 
+#' @inheritSection bitly_retrieve_group Group
+#' 
+#' @inheritParams bitly_user_info
+#' 
+#' @import httr jsonlite assertthat lubridate
+#' 
+#' @examples
+#' \dontrun{
+#' ui <- bitly_user_info(showRequestURL = TRUE)
+#' rg <- bitly_retrieve_group_shorten_counts(group_id = ui$default_group_guid[1])
+#' }
+#' @export
+bitly_retrieve_group_shorten_counts <- function(group_id = NA, showRequestURL = F) {
+  
+  if (is.string(group_id)) {
+    gr_short_counts_url <- paste0("https://api-ssl.bitly.com/v4/groups/", group_id, "/shorten_counts")
+  } else {
+    stop("group_id must not be emptry string, NA or NULL")
+  }
+  
+  query <- list(access_token = bitly_auth_access())
+  
+  df_short_co <- doRequest("GET", gr_short_counts_url, query, showURL = showRequestURL)
+  df_short_co <- data.frame(df_short_co, stringsAsFactors = FALSE)
+  df_short_co$unit_reference <- ymd_hms(df_short_co$unit_reference, tz = "UTC")
+  
+  return(df_short_co)
 }
 
 
@@ -333,14 +439,3 @@ bitly_retrieve_group <- function(group_id = NA, showRequestURL = F) {
   
   return(df_group_details)
 }
-
-
-
-
-
-
-
-
-
-
-

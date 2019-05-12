@@ -12,16 +12,16 @@ test_that("BDN call issues a warning message, thus 0 BDNs", {
 context("Organization")
 
 test_that("You cannot retrieve specific organization because there is emptry string", {
-  expect_error(bitly_retrieve_organization(), "organization_id must not be emptry string, NA or NULL")
+  expect_error(bitly_retrieve_org(), "organization_id must not be emptry string, NA or NULL")
 })
 
 test_that("You can retrieve all organizations", {
-  ro <- bitly_retrieve_organizations()
+  ro <- bitly_retrieve_orgs()
   expect_gte(length(ro$guid), 0)
 })
 
 test_that("You can retrieve organizations' shorten counts", {
-  organization_guid <- bitly_retrieve_organizations()
+  organization_guid <- bitly_retrieve_orgs()
   expect_true(is.list(bitly_org_shorten_counts(organization_guid$guid)))
 })
 
@@ -107,3 +107,20 @@ test_that("bitly_retrieve_tags can get tags", {
   expect_length(tags, 0)
 })
 
+test_that("we can get group's click metrics by countries", {
+  ui  <- bitly_user_info()
+  group_metrics <- bitly_retrieve_group_click_metrics_by_countries(group_id = ui$default_group_guid[1])
+  expect_equal(dim(group_metrics)[[2]], 6)
+})
+
+test_that("we can get group's click metrics by referring networks", {
+  ui  <- bitly_user_info()
+  group_metrics_ref_net <- bitly_retrieve_group_click_metrics_by_ref_networks(group_id = ui$default_group_guid[1])
+  expect_equal(dim(group_metrics_ref_net)[[2]], 6)
+})
+
+test_that("we can get group's shorten counts", {
+  ui  <- bitly_user_info()
+  sc <- bitly_retrieve_group_shorten_counts(group_id = ui$default_group_guid[1])
+  expect_equal(dim(sc)[[2]], 6)
+})

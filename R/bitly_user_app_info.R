@@ -24,7 +24,6 @@
 #' }
 #' 
 #' @import httr stringr lubridate
-#'
 #' @export
 bitly_user_info <- function(showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
