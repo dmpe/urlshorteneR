@@ -68,21 +68,16 @@ GET
 
 <https://dev.bitly.com/v4/#tag/Campaigns> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GET https://dev.bapi-ssl.bitly.com/v4/cgns | 
-POST https://dev.biapi-ssl.bitly.com/v4/campaign | 
+GET https://api-ssl.bitly.com/v4/campaigns | 
+POS:heavy_check_mark:
+POST https://api-ssl.bitly.com/v4/campaigns | :heavy_check_mark:tttps://api-ssl.bitly.com/v4/channels
+GET  | :heavy_check_mark:https://api-ssl.bitly.com/v4/campaigns/{campaign_guid}
+PATC | :heavy_check_mark:
+PATCH https://api-ssl.bitly.com/v4/campaigns/{campaign_guid} |
+GET https://api-ssl.bitly.com/v4/channels/{channel_guid} |
+PATCH https://api-ssl.bitly.com/v4/channels/{channel_guid} |# Help needed !!!
 
-<https://api-ssl.bitly.com/v4/channels> | Implemented :heavy_check_mark:/🚫
-------------- | -------------
-GET https://api-ssl.bitly.com/v4/channels
-GET https://api-ssl.bitly.com/v4/campaigns/{campaign_guid}
-PATCH https://api-ssl.bitly.com/v4/campaigns/{campaign_guid}
-GET https://api-ssl.bitly.com/v4/channels/{channel_guid}
-PATCH https://api-ssl.bitly.com/v4/channels/{channel_guid}
-
-
-### Help needed !!!
-
--p needed Testers with the "enterprise" Bit.ly accounts. 
+- Testers with the "enterprise" Bit.ly accounts. 
 - Testing Ow.ly support (this requires their API key)
 
 ### Looking for examples and current implementation status ?
