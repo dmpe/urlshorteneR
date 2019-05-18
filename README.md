@@ -55,7 +55,7 @@ GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | :heavy_ch
 PATCH https://api-ssl.bitly.com/v4/groups/{group_guid} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | :heavy_check_mark:
 
-https://dev.bitly.com/v4/#tag/Campaigns> | Implemented :heavy_check_mark:/🚫
+<https://dev.bitly.com/v4/#tag/Campaigns> DONE | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
 GET https://api-ssl.bitly.com/v4/campaigns | :heavy_check_mark:
 POST https://api-ssl.bitly.com/v4/campaigns | :heavy_check_mark:
@@ -77,6 +77,7 @@ GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} |
 <https//dev.bitly.com/v4/#tag/Bitlinks> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
 GET
+
 
 ## Help needed !!!
 
