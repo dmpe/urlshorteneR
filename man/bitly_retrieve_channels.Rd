@@ -22,6 +22,11 @@ Retrieve channels (Premium)
 It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 Retrieve the channels available to a user
 }
+\section{Campaigns}{
+
+Bitly Campaigns allows you to build and manage omnichannel campaigns.
+}
+
 \examples{
 \dontrun{
   gc <- bitly_retrieve_channels(group_guid = "testing", campaign_guid = "test")

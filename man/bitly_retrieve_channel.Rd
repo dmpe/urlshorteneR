@@ -17,6 +17,11 @@ Get a Channel (Premium)
 It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 Get a channel's details
 }
+\section{Campaigns}{
+
+Bitly Campaigns allows you to build and manage omnichannel campaigns.
+}
+
 \examples{
 \dontrun{
   gc <- bitly_retrieve_channel(channel_guid = "testing")

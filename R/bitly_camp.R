@@ -32,13 +32,11 @@ bitly_create_campaigns <- function(group_guid = NULL, channel_guids = NULL, desc
                              name = NULL, showRequestURL = T) {
   create_camp <- "https://api-ssl.bitly.com/v4/campaigns"
  
-  query <- list(access_token = bitly_auth_access())
-  
-  body_req_query <- list(group_guid = group_guid,
+  body_req_query <- list(access_token = bitly_auth_access(), group_guid = group_guid,
     channel_guids = channel_guids, description = description, name = name
   )
 
-  df_create_camps <- doRequest("POST", create_camp, queryParameters = query, patch_body = body_req_query, 
+  df_create_camps <- doRequest("POST", create_camp, queryParameters = body_req_query, 
                                showURL = showRequestURL)
 
   df_create_camps <- data.frame(df_create_camps, stringsAsFactors = FALSE)
@@ -55,6 +53,7 @@ bitly_create_campaigns <- function(group_guid = NULL, channel_guids = NULL, desc
 #' @inheritParams bitly_create_campaigns
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
+#' @inheritSection bitly_create_campaigns Campaigns
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getCampaigns}
 #'
@@ -87,6 +86,7 @@ bitly_retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T) {
 #' @inheritParams bitly_retrieve_campaigns
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
+#' @inheritSection bitly_create_campaigns Campaigns
 #' 
 #' @param modified - string | ISO_TIMESTAMP
 #' @param created	- string | ISO TIMESTAMP
@@ -107,14 +107,13 @@ bitly_create_channel <- function(group_guid = NULL, guid = NULL, name = NULL, mo
   
   create_channel <- "https://api-ssl.bitly.com/v4/channels"
   
-  query <- list(access_token = bitly_auth_access())
   bitlinks <- list(bitlink_id = bitlink_id, campaign_guid = campaign_guid)
-  
-  body_req_query <- list(group_guid = group_guid, created = created, bitlinks = bitlinks,
+  body_req_query <- list(access_token = bitly_auth_access(), group_guid = group_guid, 
+                         created = created, bitlinks = bitlinks,
                          guid = guid, modified = modified, name = name
   )
   
-  df_create_channel <- doRequest("POST", create_channel, queryParameters = query, patch_body = body_req_query, 
+  df_create_channel <- doRequest("POST", create_channel, queryParameters = body_req_query, 
                                showURL = showRequestURL)
   
   df_create_channel <- data.frame(df_create_channel, stringsAsFactors = FALSE)
@@ -134,6 +133,7 @@ bitly_create_channel <- function(group_guid = NULL, guid = NULL, name = NULL, mo
 #' @inheritParams bitly_create_campaigns
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
+#' @inheritSection bitly_create_campaigns Campaigns
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getChannels}
 #'
@@ -167,6 +167,7 @@ bitly_retrieve_channels <- function(group_guid = NULL, campaign_guid = NULL, sho
 #' @inheritParams bitly_create_campaigns
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
+#' @inheritSection bitly_create_campaigns Campaigns
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getCampaign}
 #'
@@ -200,6 +201,7 @@ bitly_retrieve_campaign <- function(campaign_guid = NULL, showRequestURL = T) {
 #' @inheritParams bitly_create_campaigns
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
+#' @inheritSection bitly_create_campaigns Campaigns
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getChannel}
 #'
@@ -223,3 +225,100 @@ bitly_retrieve_channel <- function(channel_guid = NULL, showRequestURL = T) {
   
   return(df_get_channel)
 }
+
+
+#' Update A Channel (Premium)
+#'
+#' Update an existing Channel
+#'
+#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
+#' @inheritSection bitly_create_campaigns Campaigns
+#' 
+#' @inheritParams bitly_create_channel
+#' @inheritParams bitly_create_campaigns
+#' @inheritParams bitly_user_info
+#' @inheritParams bitly_retrieve_group
+#' 
+#' @seealso \url{https://dev.bitly.com/v4/#operation/updateCampaign}
+#'
+#' @examples
+#' \dontrun{
+#' cc <- bitly_update_campaign(
+#'   channel_guid = "testing", group_guid = "", channel_guids = list("1", "2", "3"),
+#'   description = "description", name = "name"
+#' )
+#' }
+#' 
+#' @import httr jsonlite lubridate
+#'
+#' @export
+bitly_update_campaign <- function(campaign_guid = NULL, group_guid = NULL, channel_guids = NULL, description = NULL,
+                                   name = NULL, showRequestURL = T) {
+  update_campaign <- paste0("https://api-ssl.bitly.com/v4/campaigns", campaign_guid)
+
+  query <- list(access_token = bitly_auth_access())
+  body_req_query <- list(group_guid = group_guid,
+                         channel_guids = channel_guids, description = description, name = name
+  )
+  
+  df_update_camps <- doRequest("PATCH", update_campaign, queryParameters = query, patch_body = body_req_query, 
+                               showURL = showRequestURL)
+  
+  df_update_camps <- data.frame(df_update_camps, stringsAsFactors = FALSE)
+  df_update_camps$created <- ymd_hms(df_update_camps$created, tz = "UTC")
+  df_update_camps$modified <- ymd_hms(df_update_camps$modified, tz = "UTC")
+  
+  return(df_update_camps)
+}
+
+#' Update A Channel (Premium)
+#'
+#' Update an existing Channel
+#'
+#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
+#' @inheritSection bitly_create_campaigns Campaigns
+#' 
+#' @inheritParams bitly_create_channel
+#' @inheritParams bitly_create_campaigns
+#' @inheritParams bitly_user_info
+#' @inheritParams bitly_retrieve_group
+#' 
+#' @seealso \url{https://dev.bitly.com/v4/#operation/updateChannel}
+#'
+#' @examples
+#' \dontrun{
+#' cc <- bitly_update_channel(
+#'   channel_guid = "testing", group_guid = "", channel_guids = list("1", "2", "3"),
+#'   description = "description", name = "name"
+#' )
+#' }
+#' 
+#' @import httr jsonlite lubridate
+#'
+#' @export
+bitly_update_channel <- function(channel_guid = NULL, group_guid = NULL, guid = NULL, name = NULL, modified = NULL,
+                                  created = NULL, campaign_guid = NULL, bitlink_id = NULL,
+                                  showRequestURL = T) {
+  update_channels <- paste0("https://api-ssl.bitly.com/v4/channels", channel_guid)
+  
+  query <- list(access_token = bitly_auth_access())
+  bitlinks <- list(bitlink_id = bitlink_id, campaign_guid = campaign_guid)
+  
+  body_req_query <- list(group_guid = group_guid, guid = guid, modified = modified,
+                         name = name, created = created, bitlinks = bitlinks, 
+  )
+  
+  df_update_camp <- doRequest("PATCH", update_channels, queryParameters = query, patch_body = body_req_query, 
+                               showURL = showRequestURL)
+  
+  df_update_camp <- data.frame(df_update_camp, stringsAsFactors = FALSE)
+  df_update_camp$created <- ymd_hms(df_update_camp$created, tz = "UTC")
+  df_update_camp$modified <- ymd_hms(df_update_camp$modified, tz = "UTC")
+  
+  return(df_update_camp)
+}
+
+
+
+
+

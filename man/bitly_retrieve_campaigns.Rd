@@ -19,6 +19,11 @@ Retrieve campaigns (Premium)
 It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 Retrieve the campaigns for the current user
 }
+\section{Campaigns}{
+
+Bitly Campaigns allows you to build and manage omnichannel campaigns.
+}
+
 \examples{
 \dontrun{
   gc <- bitly_retrieve_campaigns(group_guid = "testing")
