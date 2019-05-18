@@ -55,7 +55,7 @@ GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | :heavy_ch
 PATCH https://api-ssl.bitly.com/v4/groups/{group_guid} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | :heavy_check_mark:
 
-#https://dev.bitly.com/v4/#tag/Campaigns> | Implemented :heavy_check_mark:/🚫
+https://dev.bitly.com/v4/#tag/Campaigns> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
 GET https://api-ssl.bitly.com/v4/campaigns | :heavy_check_mark:
 POST https://api-ssl.bitly.com/v4/campaigns | :heavy_check_mark:
@@ -65,7 +65,7 @@ PATCH https://api-ssl.bitly.com/v4/campaigns/{campaign_guid} | :heavy_check_mark
 GET https://api-ssl.bitly.com/v4/channels/{channel_guid} | :heavy_check_mark:
 PATCH https://api-ssl.bitly.com/v4/channels/{channel_guid} | :heavy_check_mark:
 
-# T####O
+# TODO
 
 <https://dev.bitly.com/v4/#tag/Custom-Bitlinks> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
@@ -74,11 +74,11 @@ GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink}/clicks_by_dest
 PATCH https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | 
 GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | 
 
-htt<<ps//dev.bitly.com/v4/#tag/Bitlinks> | Implemented :heavy_check_mark:/🚫
+<https//dev.bitly.com/v4/#tag/Bitlinks> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
 GET
 
-<ht##Helpded !!!
+## Help needed !!!
 
 - Testers with the "enterprise" Bit.ly accounts. 
 - Testing Ow.ly support (this requires their API key)
