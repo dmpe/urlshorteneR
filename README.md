@@ -65,18 +65,30 @@ PATCH https://api-ssl.bitly.com/v4/campaigns/{campaign_guid} | :heavy_check_mark
 GET https://api-ssl.bitly.com/v4/channels/{channel_guid} | :heavy_check_mark:
 PATCH https://api-ssl.bitly.com/v4/channels/{channel_guid} | :heavy_check_mark:
 
-# TODO
-
-<https://dev.bitly.com/v4/#tag/Custom-Bitlinks> | Implemented :heavy_check_mark:/🚫
+<https://dev.bitly.com/v4/#tag/Custom-Bitlinks> DONE | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GETPOST https://api-ssl.bitly.com/v4/custom_bitlinks | 
-GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink}/clicks_by_destination | 
-PATCH https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | 
-GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | 
+GETPOST https://api-ssl.bitly.com/v4/custom_bitlinks | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink}/clicks_by_destination | :heavy_check_mark:
+PATCH https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | :heavy_check_mark:
+
+# TODO
 
 <https//dev.bitly.com/v4/#tag/Bitlinks> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-GET
+POST https://api-ssl.bitly.com/v4/expand | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers |
+POST https://api-ssl.bitly.com/v4/bitlinks |
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks |
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/countries | 
+PATCH https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | 
+POST https://api-ssl.bitly.com/v4/shorten | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | 
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains |
 
 
 ## Help needed !!!
