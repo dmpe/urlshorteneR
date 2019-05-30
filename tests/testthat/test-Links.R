@@ -1,11 +1,20 @@
-# library(testthat)
-# library(httr)
-# library(jsonlite)
-# library(stringr)
-# library(urlshorteneR)
-# 
-# context("Links Bit.ly")
-# 
+library(testthat)
+library(httr)
+library(jsonlite)
+library(stringr)
+library(stringi)
+library(urlshorteneR)
+
+
+context("Links Bit.ly")
+
+test_that("method creates a Bitlink based on a long URL.", {
+  ll <- bitly_create_bitlink(long_url = paste0("https://www.google.com/", stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")), 
+                             title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]"), 
+                             tags = list("msft", "apple"), showRequestURL = T)
+  expect_equal(dim(ll)[[2]], 8)
+})
+
 # test_that("Query for a Bitlink based on a long URL.", {
 #   ll <- bitly_LinksLookup(url = "http://www.google.com/")
 #   expect_equal(dim(ll)[[2]], 2)

@@ -1,10 +1,10 @@
-# library(testthat)
-# library(httr)
-# library(jsonlite)
-# library(stringr)
-# library(urlshorteneR)
-# 
-# context("User Metrics")
+library(testthat)
+library(httr)
+library(jsonlite)
+library(stringr)
+library(urlshorteneR)
+
+context("User Metrics")
 # 
 # test_that("Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's Bitlinks.", {
 #   umcoun <- bitly_UserMetricsCountries(unit = "day", units = -1, limit = 100, rollup = "true")
@@ -27,14 +27,12 @@
 #   umrr <- bitly_UserMetricsReferrers(unit = "day", units = -1, limit = 100, rollup = "true")
 #   expect_named(umrr, c("referrer", "clicks"))
 # })
-# 
-# test_that("Returns aggregate metrics about the domains referring click traffic to all of the authenticated user's Bitlinks.", {
-#   umrd <- bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "false")
-#   expect_named(umrd, c("domain", "clicks"))
-#   expect_message(
-#     bitly_UserMetricsReferringDomains(unit = "day", units = -1, limit = 100, rollup = "true", exclude_social_networks = "true"), "You have zero referring domains given your function input."
-#   )
-# })
+
+test_that("will rollup the click counts to a referrer about a single Bitlink.", {
+  umrd <- bitly_user_metrics_referring_domains(bitlink = "cnn.it/2HomWGB", size = 100)
+  expect_named(umrd, c("facet", "metrics"))
+
+})
 # 
 # test_that("Returns the number of Bitlinks created in a given time period by the authenticated user.", {
 #   umsc <- bitly_UserMetricsShortenCounts(unit = "day", units = -1, limit = 100, rollup = "true")

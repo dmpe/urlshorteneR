@@ -76,19 +76,19 @@ GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | :heavy_check
 
 <https//dev.bitly.com/v4/#tag/Bitlinks> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
-POST https://api-ssl.bitly.com/v4/expand | 
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers |
-POST https://api-ssl.bitly.com/v4/bitlinks |
+POST https://api-ssl.bitly.com/v4/bitlinks | :heavy_check_mark:
+POST https://api-ssl.bitly.com/v4/shorten | 
+POST https://api-ssl.bitly.com/v4/expand | 
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks |
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary | 
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks | 
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/countries | 
 PATCH https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | 
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | 
-POST https://api-ssl.bitly.com/v4/shorten | 
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | 
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | 
-GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains |
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains | :heavy_check_mark:
 
 
 ## Help needed !!!

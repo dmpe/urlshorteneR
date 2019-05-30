@@ -17,7 +17,7 @@
 #' then \code{REGISTER NEW APPLICATION} followed by \code{GET REGISTRATION CODE}.
 #' Open your email that you will receive and click \code{COMPLETE REGISTRATION}.
 #' Make up an \code{APPLICATION NAME} that is unique. Unless you know to do otherwise,
-#' type "http://localhost:1410/" (slash at the end is important) in \code{REDIRECT URIs}. For
+  #' type "http://localhost:1410/" (slash at the end is important) in \code{REDIRECT URIs}. For
 #' \code{APPLICATION LINK} and \code{APPLICATION DESCRIPTION} you can type whatever you like.
 #'
 #' @section However Important Information:
@@ -52,12 +52,12 @@
 #' 
 #' @import httr
 #' @export
-bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-                       secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F) {
+  bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+                         secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F) {
   token <- httr::oauth2.0_token(
     httr::oauth_endpoint(
       authorize = "https://bitly.com/oauth/authorize",
-      access = "https://api-ssl.bitly.com/oauth/access_token"
+        access = "https://api-ssl.bitly.com/oauth/access_token"
     ),
     httr::oauth_app("bitly", key = key, secret = secret),
     cache = TRUE
@@ -136,14 +136,18 @@ doRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body 
     text_response <- content(return_request, as = "text", encoding = "utf-8")
     json_response <- fromJSON(text_response)
 
-    if (is.null(json_response$status_code) == FALSE && json_response$status_code >= 400) {
-      message(sprintf("Code: %s - %s", json_response$status_code, json_response$status_txt))
+    if (is.null(return_request$status_code) == FALSE && return_request$status_code >= 400) {
+      message(sprintf("Code: %s - %s", json_response$message, json_response$description))
     }
 
     if (identical(showURL, TRUE)) {
       cat("The requested URL has been this: ", return_request$request$url, "\n")
     }
   } else {
+    text_response <- content(return_request, as = "text", encoding = "utf-8")
+    json_response <- fromJSON(text_response)
+    message(sprintf("Code: %s - %s", json_response$message, json_response$description))
+    cat("The requested URL has been this: ", return_request$request$url, "\n")
     stop_for_status(return_request)
   }
 
