@@ -125,190 +125,209 @@ bitly_user_metrics_referring_domains <- function(bitlink = NULL, unit = "day", u
   return(df_user_metrics_referring_domains)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-#______________________________________________________
-#' @title Query for a Bitlink based on a long URL.
+#' @title Expand a Bitlink 
 #' 
-#' @description See \url{http://dev.bitly.com/links.html#v3_link_lookup}
+#' @description See \url{https://dev.bitly.com/v4/#operation/expandBitlink}
+#' This endpoint returns public information for a Bitlink.
+#'
+#' @inheritParams bitly_user_metrics_referring_domains
 #' 
-#' @param url - one long URLs to lookup.
-#' @param showRequestURL - show URL which has been build and requested from server. For debug
-#' purposes.
-#' 
-#' @return url - an echo back of the url parameter.
-#' @return aggregate_link - the corresponding bitly aggregate link (global hash).
+#' @return long_url - a full URL to which bitlink points to
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_token <- bitly_auth(
-#'   key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-#'   secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899"
-#' )
-#' bitly_LinksLookup(url = "http://www.seznam.cz/")
-#' bitly_LinksLookup(url = "http://www.seznam.cz/", showRequestURL = TRUE)
+#' bitly_expand_link(bitlink_id = "bit.ly/DPetrov")
+#' bitly_expand_link(bitlink_id = "on.natgeo.com/1bEVhwE")
+#' 
+#' ## manyHashes <- list("bit.ly/DPetrov", "bit.ly/1QU8CFm", "bit.ly/1R1LPSE", "bit.ly/1LNqqva")
+#' ## for (u in 1:length(manyHashes)) {
+#' ##   print(bitly_expand_link(bitlink_id = manyHashes[[u]], showRequestURL = TRUE))
+#' ## }
+#' }
+#' @import httr jsonlite lubridate
+#' @export
+bitly_expand_link <- function(bitlink_id = NULL, showRequestURL = FALSE) {
+   links_expand_url <- "https://api-ssl.bitly.com/v4/expand"
+   
+   if (!is.null(bitlink_id)) {
+      body_req_query <- list(access_token = bitly_auth_access(), 
+                             bitlink_id = bitlink_id)
+   }
+   
+   df_link_expand <- doRequest("POST", links_expand_url, queryParameters = body_req_query, showURL = showRequestURL)
+   df_link_expand <- data.frame(df_link_expand, stringsAsFactors = FALSE)
+   df_link_expand$created_at <- ymd_hms(df_link_expand$created_at, tz = "UTC")
+   
+   return(df_link_expand)
+}
+   
+
+#' @title Shorten a Link 
+#' 
+#' @description See \url{https://dev.bitly.com/v4/#operation/createBitlink}
+#' Convert a long url to a Bitlink
+#' 
+#' @inheritParams bitly_create_bitlink
+#' 
+#' @examples
+#' \dontrun{
+#' bitly_shorten_link(url = "http://www.seznam.cz/")
+#' bitly_shorten_link(url = "http://www.seznam.cz/", showRequestURL = TRUE)
 #' 
 #' manyUrls <- list(
 #'   "http://www.seznam.cz/", "http://www.seznamasdas.cz/",
 #'   "http://www.seznam.cz/asadasd", "http://www.seznam.cz/adqwrewtregt"
 #' )
 #' for (u in 1:length(manyUrls)) {
-#'   print(bitly_LinksLookup(url = manyUrls[[u]], showRequestURL = TRUE))
+#'   print(bitly_shorten_link(long_url = manyUrls[[u]], showRequestURL = TRUE))
 #' }
 #' }
-#' 
+#' @import httr jsonlite lubridate
 #' @export
-bitly_LinksLookup <- function(url, showRequestURL = FALSE) {
- links_lookup_url <- "https://api-ssl.bitly.com/v3/link/lookup"
-
- query <- list(access_token = bitly_auth_access(), url = url)
-
- # call method from ApbiKey.R
- df_link_lookup <- doRequest("GET", links_lookup_url, "bitly", query, showURL = showRequestURL)
- df_link_lookup_data <- df_link_lookup$data$link_lookup
-
- # sapply(df_link_lookup_data, class)
- return(df_link_lookup_data)
+bitly_shorten_link <- function(domain = "bit.ly", group_guid = NULL, long_url = NULL, showRequestURL = FALSE) {
+   links_shorten_url <- "https://api-ssl.bitly.com/v4/shorten"
+   
+   if (!is.null(long_url)) {
+      body_req_query <- list(access_token = bitly_auth_access(), group_guid = group_guid,
+                             long_url = long_url, domain = domain)
+   }
+   
+   df_link_shorten <- doRequest("POST", links_shorten_url, queryParameters = body_req_query, showURL = showRequestURL)
+   df_link_shorten <- data.frame(t(do.call(rbind, df_link_shorten)), stringsAsFactors = F)
+   df_link_shorten$created_at <- now("UTC")
+   
+   return(df_link_shorten)
 }
 
-#' @title Used to return the page title for a given Bitlink.
+#' @title Update a Bitlink 
 #' 
-#' @description See \url{http://dev.bitly.com/links.html#v3_info}
+#' @description See \url{https://dev.bitly.com/v4/#operation/updateBitlink}
+#' Update fields in the Bitlink
 #' 
-#' @note Either shortUrl or hash must be given as a parameter (or both).
-#' @note The maximum number of shortUrl and hash parameters is 15.
-#' 
-#' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
-#' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT.
-#' Optional.
-#' @param expand_user - optional true|false (default) - include extra user info in response.
-#' @param showRequestURL - show URL which has been build and requested from server.
-#' For debug purposes.
-#' 
-#' @return short_url - this is an echo back of the shortUrl request parameter.
-#' @return hash - this is an echo back of the hash request parameter.
-#' @return user_hash - the corresponding bitly user identifier.
-#' @return global_hash - the corresponding bitly aggregate identifier.
-#' @return error - indicates there was an error retrieving data for a given shortUrl or hash. An
-#' example error is "NOT_FOUND".
-#' @return title - the HTML page title for the destination page (when available).
-#' @return created_by - the bitly username that originally shortened this link, if the
-#' link is public. Otherwise, null.
-#' @return created_at - the epoch timestamp when this Bitlink was created.
+#' @inheritParams bitly_create_bitlink
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_token <- bitly_auth(
-#'   key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-#'   secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899"
-#' )
-#' bitly_LinksInfo(shortUrl = "http://bit.ly/DPetrov")
-#' bitly_LinksInfo(hash = "DPetrov", showRequestURL = TRUE)
-#' bitly_LinksInfo(hash = "DPetrov", expand_user = "true")
+#' bitly_update_bitlink(bitlink = "bit.ly/DPetrov", title = "novy titulek")
 #' 
 #' ## hash is the one which is only returned. Dont use
-#' bitly_LinksInfo(shortUrl = "on.natgeo.com/1bEVhwE", hash = "DPetrov")
+#' bitly_update_bitlink(bitlink = "on.natgeo.com/1bEVhwE")
 #' 
-#' ## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
+#' ## manyHashes <- list("bit.ly/DPetrov", "bit.ly/1QU8CFm", "bit.ly/1R1LPSE", "bit.ly/1LNqqva")
 #' ## for (u in 1:length(manyHashes)) {
-#' ##   print(bitly_LinksInfo(hashIN = manyHashes[[u]], showRequestURL = TRUE))
+#' ##   print(bitly_update_bitlink(bitlink = manyHashes[[u]], title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")))
 #' ## }
 #' }
-#' 
+#' @import httr jsonlite lubridate stringi
 #' @export
-bitly_LinksInfo <- function(hashIN = NULL, shortUrl = NULL, expand_user = "true", showRequestURL = FALSE) {
- links_info_url <- "https://api-ssl.bitly.com/v3/info"
-
- if (is.null(hashIN)) {
-   query <- list(access_token = bitly_auth_access(), shortUrl = shortUrl, expand_user = expand_user)
- } else {
-   query <- list(access_token = bitly_auth_access(), hash = hashIN, expand_user = expand_user)
- }
-
- # call method from ApbiKey.R
- df_link_info <- doRequest("GET", links_info_url, "bitly", query, showURL = showRequestURL)
-
- df_user_info_data <- data.frame(t(sapply(unlist(df_link_info$data$info), c)), stringsAsFactors = FALSE)
- df_user_info_data$created_at <- as.POSIXct(as.integer(df_user_info_data$created_at),
-   origin = "1970-01-01", tz = "UTC"
- )
-
- # sapply(df_link_info_data, class)
- return(df_user_info_data)
+bitly_update_bitlink <- function(bitlink = NULL, archived = NULL, tags = NULL, showRequestURL = FALSE, 
+                                 created_at = NULL, title = NULL, created_by = NULL, long_url = NULL, 
+                                 client_id = NULL, custom_bitlinks = NULL, link = NULL, id = NULL, 
+                                 deeplinks = list(bitlink = NULL, install_url = NULL, created = NULL,
+                                                  modified = NULL, app_uri_path = NULL, install_type = NULL,
+                                                  app_guid = NULL, guid = NULL, os = NULL)) {
+   
+   link_update <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink)
+   
+   query <- list(access_token = bitly_auth_access())
+   body_upd = list()
+   
+   
+   if (!length(deeplinks$bitlink) == 0 || !length(deeplinks$created) == 0 ||
+       !length(deeplinks$install_url) == 0 || !length(deeplinks$app_uri_path) == 0 ||
+       !length(deeplinks$modified) == 0 || !length(deeplinks$install_type) == 0 ||
+       !length(deeplinks$app_guid) == 0 || !length(deeplinks$guid) == 0 || 
+       !length(deeplinks$os) == 0) {
+      body_upd$deeplinks <- deeplinks
+   }
+   
+   if (length(tags) >= 1) {
+      body_upd$tags <- tags
+   }
+   
+   if (length(archived) >= 1) {
+      body_upd$archived <- archived
+   }
+   
+   if (length(created_at) >= 1) {
+      body_upd$created_at <- created_at
+   }
+  
+   if (length(created_by) >= 1) {
+      body_upd$created_by <- created_by
+   }
+   
+   if (length(title) >= 1) {
+      body_upd$title <- title
+   }
+   
+   if (length(long_url) >= 1) {
+      body_upd$long_url <- long_url
+   }
+   
+   if (length(client_id) >= 1) {
+      body_upd$client_id <- client_id
+   }
+   
+   if (length(custom_bitlinks) >= 1) {
+      body_upd$custom_bitlinks <- custom_bitlinks
+   }
+   
+   if (length(link) >= 1) {
+      body_upd$link <- link
+   }
+   
+   if (length(id) >= 1) {
+      body_upd$id <- id
+   }
+   
+   body_req_query_cleaned <- toJSON(body_upd, auto_unbox = T)
+   
+   df_update_pref <- doRequest("PATCH", url = link_update, queryParameters = query, 
+                               patch_body = body_req_query_cleaned, showURL = showRequestURL)
+   
+   df_update_pref <- data.frame(t(do.call(rbind, df_update_pref)), stringsAsFactors = F)
+   df_update_pref$created_at <- ymd_hms(df_update_pref$created_at, tz = "UTC")
+   
+   return(df_update_pref)
 }
 
 
-#' @title Given a bitly URL or hash (or multiple), returns the target (long) URL.
+
+#' @title Retrieve a Bitlink 
 #' 
-#' @description See \url{http://dev.bitly.com/links.html#v3_expand}
+#' @description This endpoint returns information for a Bitlink.
 #' 
-#' @param hashIN - refers to one bitly hashes, (e.g.:  2bYgqR or a-custom-name). Required
-#' @param shortUrl - refers to one Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT.
-#' Optional.
-#' @param showRequestURL - show URL which has been build and requested from server.
-#' For debug purposes.
+#' @seealso See \url{https://dev.bitly.com/v4/#operation/getBitlink}
 #' 
-#' @section TODO: or more URLs  Up TO 15
-#' 
-#' @note Either shortUrl or hash must be given as a parameter.
-#' @note The maximum number of shortUrl and hash parameters is 15.
-#' 
-#' @return short_url - this is an echo back of the shortUrl request parameter.
-#' @return hash - this is an echo back of the hash request parameter.
-#' @return user_hash - the corresponding bitly user identifier.
-#' @return global_hash - the corresponding bitly aggregate identifier.
-#' @return error - indicates there was an error retrieving data for a given shortUrl or hash. An
-#' example error is "NOT_FOUND".
-#' @return long_url - the URL that the requested short_url or hash points to.
+#' @inheritParams bitly_retrieve_sorted_links
+#'
+#' @import httr jsonlite lubridate
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_token <- bitly_auth(
-#'   key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-#'   secret = "b7e4abaf8b26ec4daa92b1e64502736f5cd78899"
-#' )
-#' bitly_LinksExpand(shortUrl = "http://bit.ly/DPetrov")
-#' bitly_LinksExpand(hash = "DPetrov", showRequestURL = TRUE)
-#' bitly_LinksExpand(hash = "DPetrov")
-#' bitly_LinksExpand(shortUrl = "on.natgeo.com/1bEVhwE", hash = "1bEVhwE")
-#' 
-#' ## manyHashes <- list("DPetrov", "1QU8CFm", "1R1LPSE", "1LNqqva")
-#' ## for (u in 1:length(manyHashes)) {
-#' ##   print(bitly_LinksExpand(hashIN = manyHashes[[u]], showRequestURL = TRUE))
-#' ## }
+#' bitly_retrieve_bitlink(bitlink = "cnn.it/2HomWGB")
 #' }
 #' 
 #' @export
-bitly_LinksExpand <- function(hashIN = NULL, shortUrl = NULL, showRequestURL = FALSE) {
- links_expand_url <- "https://api-ssl.bitly.com/v3/expand"
-
- if (is.null(hashIN)) {
-   query <- list(access_token = bitly_auth_access(), shortUrl = shortUrl)
- } else {
-   query <- list(access_token = bitly_auth_access(), hash = hashIN)
- }
-
- # call method from ApbiKey.R
- df_link_expand <- doRequest("GET", links_expand_url, "bitly", query, showURL = showRequestURL)
-
- df_link_expand_data <- data.frame(t(sapply(unlist(df_link_expand$data$expand), c)), stringsAsFactors = FALSE)
-
- # sapply(df_link_expand_data, class)
- return(df_link_expand_data)
+bitly_retrieve_bitlink  <- function(bitlink = NULL, showRequestURL = FALSE) {
+   
+   get_bitlink_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink)
+   
+   query <- list(access_token = bitly_auth_access(), bitlink = bitlink)
+   
+   df_bitlink <- doRequest("GET", get_bitlink_url, queryParameters = query, showURL = showRequestURL)
+   df_bitlink <- data.frame(t(do.call(rbind, df_bitlink)), stringsAsFactors = F)
+   df_bitlink$created_at <- ymd_hms(df_bitlink$created_at, tz = "UTC")
+   
+   return(df_bitlink)
 }
 
 
 
 
+
+#______________________________________________________
 #' @title Returns the aggregate number of clicks on all of the authenticated user's Bitlinks.
 #' 
 #' @description See \url{http://dev.bitly.com/user_metrics.html#v3_user_clicks}
