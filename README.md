@@ -81,11 +81,11 @@ POST https://api-ssl.bitly.com/v4/shorten | :heavy_check_mark:
 POST https://api-ssl.bitly.com/v4/expand | :heavy_check_mark:
 PATCH https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers |
-GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary | 
-GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks | 
-GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/countries | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/countries | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | :heavy_check_mark:
-GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | 
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | 
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks |
