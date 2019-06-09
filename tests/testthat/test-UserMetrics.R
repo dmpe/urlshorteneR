@@ -27,16 +27,12 @@ test_that("Returns metrics about the countries referring click traffic to a sing
   expect_named(lmcc, c("unit_reference", "metrics", "units", "unit", "facet"))
 })
 
-# test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
-#   lmebc <- bitly_LinksMetricsEncodersByCount(link = "http://bit.ly/DPetrov", my_network = "false", limit = 100)
-#   expect_named(lmebc, c("count", "link", "user", "ts"))
-# })
-# 
-# test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
-#   lmrd <- bitly_LinksMetricsReferringDomains(link = "http://bit.ly/DPetrov", unit = "day", units = -1, limit = 100)
-#   expect_named(lmrd, c("domain", "clicks"))
-# })
-# 
+test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
+  user_info  <- bitly_user_info()
+  lmrd <- bitly_retrieve_bitlinks_by_groups(group_guid = user_info$default_group_guid[1])
+  expect_equal(length(lmrd), 2)
+})
+
 test_that("Returns metrics about the pages referring click traffic to a single Bitlink.", {
   lmr <- bitly_retrieve_metrics_by_referrers(link = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
   expect_named(lmr, c("referrer", "clicks"))

@@ -489,73 +489,60 @@ bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_retrieve_by_groups(bitlink = "bit.ly/DPetrov", title = "novy titulek")
+#' bitly_retrieve_bitlinks_by_groups(bitlink = "bit.ly/DPetrov", title = "novy titulek")
 #' }
 #' @import httr jsonlite lubridate stringi
 #' @export
-bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = NULL, page = NULL, showRequestURL = FALSE, 
-                                 keyword = NULL, query = NULL, created_before = NULL, created_after = NULL, 
+bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = 50, page = 1, showRequestURL = FALSE, 
+                                 keyword = NULL, query_q = NULL, created_before = NULL, created_after = NULL, 
                                  modified_after = NULL, archived = "both", deeplinks = "both", campaign_guid = NULL, 
                                  channel_guid = NULL, custom_bitlink = "both", tags = NULL, encoding_login = NULL,
                                  domain_deeplinks = "both") {
    
-   link_update <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid, "/bitlinks")
-   
-   query <- list(access_token = bitly_auth_access())
+    link_by_groups <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid, "/bitlinks")
 
-   if (!length(size) == 0) {
-      query$size <- size
-   }
-   
-   if (length(tags) >= 1) {
+    query <- list(access_token = bitly_auth_access(), size = size, page = page,
+                  archived = archived, domain_deeplinks = domain_deeplinks,
+      deeplinks = deeplinks, custom_bitlink = custom_bitlink)
+
+    if (!length(tags) >= 1) {
       query$tags <- tags
-   }
-   
-   if (length(page) >= 1) {
-      query$page <- page
-   }
-   
-   if (length(created_at) >= 1) {
-      query$created_at <- created_at
-   }
-   
-   if (length(created_by) >= 1) {
-      body_upd$created_by <- created_by
-   }
-   
-   if (length(title) >= 1) {
-      body_upd$title <- title
-   }
-   
-   if (length(long_url) >= 1) {
-      body_upd$long_url <- long_url
-   }
-   
-   if (length(client_id) >= 1) {
-      body_upd$client_id <- client_id
-   }
-   
-   if (length(custom_bitlinks) >= 1) {
-      body_upd$custom_bitlinks <- custom_bitlinks
-   }
-   
-   if (length(link) >= 1) {
-      body_upd$link <- link
-   }
-   
-   if (length(id) >= 1) {
-      body_upd$id <- id
-   }
-   
-   body_req_query_cleaned <- toJSON(body_upd, auto_unbox = T)
-   
-   df_update_pref <- doRequest("PATCH", url = link_update, queryParameters = query, 
-                               patch_body = body_req_query_cleaned, showURL = showRequestURL)
-   
-   df_update_pref <- data.frame(t(do.call(rbind, df_update_pref)), stringsAsFactors = F)
-   df_update_pref$created_at <- ymd_hms(df_update_pref$created_at, tz = "UTC")
-   
-   return(df_update_pref)
+    }
+
+    if (!length(keyword) >= 1) {
+      query$keyword <- keyword
+    }
+
+    if (!length(query_q) >= 1) {
+      query$query_q <- query_q
+    }
+
+    if (!length(created_before) >= 1) {
+      query$created_before <- created_before
+    }
+
+    if (!length(created_after) >= 1) {
+      query$created_after <- created_after
+    }
+
+    if (!length(modified_after) >= 1) {
+      query$modified_after <- modified_after
+    }
+
+    if (!length(campaign_guid) >= 1) {
+      query$campaign_guid <- campaign_guid
+    }
+
+    if (!length(channel_guid) >= 1) {
+      query$channel_guid <- channel_guid
+    }
+
+    if (!length(encoding_login) >= 1) {
+      query$encoding_login <- encoding_login
+    }
+
+    df_bitlinks_byGroup <- doRequest("GET", url = link_by_groups, queryParameters = query, showURL = showRequestURL)
+    return(df_bitlinks_byGroup)
 }
 
 
