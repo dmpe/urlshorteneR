@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/dmpe/urlshorteneR/branch/master/graph/badge.svg)](https://codecov.io/gh/dmpe/urlshorteneR)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
 
-R package for shortening URLs, supporting `Bit.ly`/`j.mp` and `is.gd`/`v.gd` 
+R package for shortening URLs, supporting `Bit.ly` and `is.gd`/`v.gd` 
 =======
 
 ## Installing
@@ -11,7 +11,7 @@ Either see CRAN badge above or use `devtools` to install the latest version from
 
 ```
 library(devtools)
-devtools::install_github("dmpe/urlshorteneR", build_vignettes = TRUE)
+devtools::install_github("dmpe/urlshorteneR", build_vignettes = FALSE)
 ```
 
 :warning: Version v4 Migration is currently underway
@@ -80,7 +80,7 @@ POST https://api-ssl.bitly.com/v4/bitlinks | :heavy_check_mark:
 POST https://api-ssl.bitly.com/v4/shorten | :heavy_check_mark:
 POST https://api-ssl.bitly.com/v4/expand | :heavy_check_mark:
 PATCH https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | :heavy_check_mark:
-GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers |
+GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/countries | :heavy_check_mark:
@@ -88,7 +88,7 @@ GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | 
-GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks |
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks | 
 
 
 ## Help needed !!!

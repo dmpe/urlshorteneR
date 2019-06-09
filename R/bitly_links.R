@@ -448,3 +448,119 @@ bitly_retrieve_metrics_by_countries <- function(bitlink = NULL, size = 100, unit
    return(df_link_metrics_countries)
 }
 
+#' @title Get Metrics for a Bitlink by referrers 
+#' 
+#' @description This endpoint will return metrics about the referrers referring click traffic to a single Bitlink.
+#' 
+#' @seealso \url{https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrers}
+#' 
+#' @inheritParams bitly_retrieve_metrics_by_countries
+#' 
+#' @import httr jsonlite lubridate
+#' 
+#' @examples
+#' \dontrun{
+#' bitly_retrieve_metrics_by_referrers(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
+#' }
+#' 
+#' @export
+bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit = NULL, unit_reference = NULL,
+                                                units = -1, showRequestURL = FALSE) {
+   
+   link_metrics_countries_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/referrers")
+   
+   query <- list(access_token = bitly_auth_access(), bitlink = bitlink, unit_reference = unit_reference,
+                 unit = unit, units = units, size = size)
+   
+   df_link_metrics_countries <- doRequest("GET", link_metrics_countries_url, query, showURL = showRequestURL)
+   df_link_metrics_countries$unit_reference <- ymd_hms(df_link_metrics_countries$unit_reference, tz = "UTC")
+   
+   return(df_link_metrics_countries)
+}
+
+#' @title Retrieve Bitlinks by Group
+#' 
+#' @description See \url{https://dev.bitly.com/v4/#operation/getBitlinksByGroup}
+#' Retrieve a paginated collection of Bitlinks for a Group
+#' 
+#' @inheritParams bitly_retrieve_metrics_by_referrers
+#' @inheritParams bitly_update_bitlink
+#' @inheritParams bitly_retrieve_links_grouped
+#' 
+#' @examples
+#' \dontrun{
+#' bitly_retrieve_by_groups(bitlink = "bit.ly/DPetrov", title = "novy titulek")
+#' }
+#' @import httr jsonlite lubridate stringi
+#' @export
+bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = NULL, page = NULL, showRequestURL = FALSE, 
+                                 keyword = NULL, query = NULL, created_before = NULL, created_after = NULL, 
+                                 modified_after = NULL, archived = "both", deeplinks = "both", campaign_guid = NULL, 
+                                 channel_guid = NULL, custom_bitlink = "both", tags = NULL, encoding_login = NULL,
+                                 domain_deeplinks = "both") {
+   
+   link_update <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid, "/bitlinks")
+   
+   query <- list(access_token = bitly_auth_access())
+
+   if (!length(size) == 0) {
+      query$size <- size
+   }
+   
+   if (length(tags) >= 1) {
+      query$tags <- tags
+   }
+   
+   if (length(page) >= 1) {
+      query$page <- page
+   }
+   
+   if (length(created_at) >= 1) {
+      query$created_at <- created_at
+   }
+   
+   if (length(created_by) >= 1) {
+      body_upd$created_by <- created_by
+   }
+   
+   if (length(title) >= 1) {
+      body_upd$title <- title
+   }
+   
+   if (length(long_url) >= 1) {
+      body_upd$long_url <- long_url
+   }
+   
+   if (length(client_id) >= 1) {
+      body_upd$client_id <- client_id
+   }
+   
+   if (length(custom_bitlinks) >= 1) {
+      body_upd$custom_bitlinks <- custom_bitlinks
+   }
+   
+   if (length(link) >= 1) {
+      body_upd$link <- link
+   }
+   
+   if (length(id) >= 1) {
+      body_upd$id <- id
+   }
+   
+   body_req_query_cleaned <- toJSON(body_upd, auto_unbox = T)
+   
+   df_update_pref <- doRequest("PATCH", url = link_update, queryParameters = query, 
+                               patch_body = body_req_query_cleaned, showURL = showRequestURL)
+   
+   df_update_pref <- data.frame(t(do.call(rbind, df_update_pref)), stringsAsFactors = F)
+   df_update_pref$created_at <- ymd_hms(df_update_pref$created_at, tz = "UTC")
+   
+   return(df_update_pref)
+}
+
+
+
+
+
+
+
