@@ -23,7 +23,7 @@ bitly_retrieve_links_grouped(group_id = NA, keyword = NULL,
 \item{created_after}{- Timestamp as an integer unix epoch}
 
 \item{modified_after}{- Timestamp as an integer unix epoch, 
-see \code{\link[lubridate]{as_datetime}} or \code{\link[anytime]{as_datetime}}}
+see \code{\link[lubridate]{as_datetime}} or \code{anytime}'s \code{as_datetime}}
 
 \item{archived}{- string | Default: "off" | Enum:"on" "off" "both" | Whether or not to include archived bitlinks}
 

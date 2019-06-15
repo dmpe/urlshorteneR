@@ -9,9 +9,14 @@ bitly_retrieve_metrics_by_countries(bitlink = NULL, size = 100,
   showRequestURL = FALSE)
 }
 \arguments{
+\item{bitlink}{- required, a Bitlink made of the domain and hash}
+
 \item{size}{- The quantity of items to be be returned}
 
 \item{unit}{- A unit of time}
+
+\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for 
+which to pull metrics. Will default to current time.}
 
 \item{units}{- An integer representing the time units to query data for. pass -1 to return all units of time.}
 
@@ -19,11 +24,13 @@ bitly_retrieve_metrics_by_countries(bitlink = NULL, size = 100,
 purposes.}
 }
 \description{
-This endpoint will return metrics about the countries referring click traffic to a single Bitlink.
+This endpoint will return metrics about the countries referring click traffic to 
+a single Bitlink.
 }
 \examples{
 \dontrun{
-bitly_retrieve_metrics_by_countries(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
+bitly_retrieve_metrics_by_countries(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, 
+size = 100)
 }
 
 }

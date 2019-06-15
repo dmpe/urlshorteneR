@@ -11,6 +11,8 @@ bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 \item{key}{- Client ID}
 
 \item{secret}{- Client Secret}
+
+\item{debug}{- whether to print additional debug messages}
 }
 \description{
 There are 2 ways of how you can authenticate using this package.

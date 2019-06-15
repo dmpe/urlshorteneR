@@ -9,7 +9,11 @@ bitly_update_channel(channel_guid = NULL, group_guid = NULL,
   campaign_guid = NULL, bitlink_id = NULL, showRequestURL = T)
 }
 \arguments{
+\item{channel_guid}{- GUID of a target channel}
+
 \item{group_guid}{- a GUID for a Bitly group}
+
+\item{guid}{- ID for a channel}
 
 \item{name}{- its name}
 
@@ -18,6 +22,8 @@ bitly_update_channel(channel_guid = NULL, group_guid = NULL,
 \item{created}{- string | ISO TIMESTAMP}
 
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}
+
+\item{bitlink_id}{- string}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been 
 build and requested from server. For debug purposes, default FALSE.}
@@ -35,10 +41,7 @@ Bitly Campaigns allows you to build and manage omnichannel campaigns.
 
 \examples{
 \dontrun{
-cc <- bitly_update_channel(
-  channel_guid = "testing", group_guid = "", channel_guids = list("1", "2", "3"),
-  description = "description", name = "name"
-)
+uc <- bitly_update_channel(channel_guid = "testing", group_guid = "", name = "name")
 }
 
 }

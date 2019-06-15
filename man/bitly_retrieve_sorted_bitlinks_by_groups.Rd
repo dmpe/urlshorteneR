@@ -9,6 +9,8 @@ bitly_retrieve_sorted_bitlinks_by_groups(group_guid = NULL,
   unit_reference = NULL, showRequestURL = FALSE)
 }
 \arguments{
+\item{group_guid}{- a GUID for a Bitly group}
+
 \item{unit}{- A unit of time}
 
 \item{units}{- An integer representing the time units to query data for. pass -1 to return all units of time.}
@@ -16,6 +18,9 @@ bitly_retrieve_sorted_bitlinks_by_groups(group_guid = NULL,
 \item{sort}{- required, Enum:"clicks" - The type of sorting that you would like to do}
 
 \item{size}{- The quantity of items to be be returned}
+
+\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for 
+which to pull metrics. Will default to current time.}
 
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}

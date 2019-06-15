@@ -10,6 +10,8 @@ bitly_update_group_pref(group_id = NA, domain_pref = NA,
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
+\item{domain_pref}{- string}
+
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been 
 build and requested from server. For debug purposes, default FALSE.}
 }

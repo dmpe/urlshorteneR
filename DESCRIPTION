@@ -3,8 +3,8 @@ Type: Package
 Title: R Wrapper for the 'Bit.ly' and 'Is.gd'/'v.gd' URL Shortening Services
 Description: Allows using two URL shortening services, which also provide
     expanding and analytic functions. Specifically developed for 'Bit.ly' (which requires OAuth2) and 'is.gd' (no API key).
-Version: 1.0
-Date: 2019-06-15
+Version: 1.1
+Date: 2019-06-16
 Authors@R: 
    c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe"))
@@ -20,12 +20,11 @@ Imports:
     assertthat (>= 0.2.1)
 Suggests:
     roxygen2 (>= 6.1.1),
-    knitr (>= 1.21),
+    knitr (>= 1.23),
     testthat (>= 2.1.1), 
-    rmarkdown (>= 1.12),
+    rmarkdown (>= 1.13),
     httpuv (>= 1.5.1), 
     stringi (>= 1.4.3), 
-    stringr (>= 1.4.0), 
     covr (>= 3.2.1), 
     lintr (>= 1.0.3)
 VignetteBuilder: knitr

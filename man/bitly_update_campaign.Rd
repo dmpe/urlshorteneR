@@ -36,7 +36,7 @@ Bitly Campaigns allows you to build and manage omnichannel campaigns.
 \examples{
 \dontrun{
 cc <- bitly_update_campaign(
-  channel_guid = "testing", group_guid = "", channel_guids = list("1", "2", "3"),
+  group_guid = "", channel_guids = list("1", "2", "3"),
   description = "description", name = "name"
 )
 }

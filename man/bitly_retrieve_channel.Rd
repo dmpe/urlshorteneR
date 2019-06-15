@@ -7,6 +7,8 @@
 bitly_retrieve_channel(channel_guid = NULL, showRequestURL = T)
 }
 \arguments{
+\item{channel_guid}{- GUID of a target channel}
+
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been 
 build and requested from server. For debug purposes, default FALSE.}
 }

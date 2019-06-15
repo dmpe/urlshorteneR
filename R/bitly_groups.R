@@ -6,7 +6,8 @@
 #' 
 #' @inheritSection bitly_retrieve_group Group
 #' @inheritParams bitly_retrieve_sorted_links
-#' 
+#' @param group_id - the group id the user belongs to
+#'
 #' @examples
 #' \dontrun{
 #' ui <- bitly_user_info(showRequestURL = TRUE)
@@ -38,8 +39,12 @@ bitly_retrieve_group_pref <- function(group_id = NA, showRequestURL = F) {
 #' @seealso \url{https://dev.bitly.com/v4/#operation/updateGroupPreferences}
 #' 
 #' @inheritSection bitly_retrieve_group Group
+#'
 #' @inheritParams bitly_retrieve_sorted_links
-#' 
+#' @inheritParams bitly_retrieve_group_pref
+#'
+#' @param domain_pref - string
+#'
 #' @examples
 #' \dontrun{
 #' ui <- bitly_user_info(showRequestURL = TRUE)
@@ -75,7 +80,7 @@ bitly_update_group_pref <- function(group_id = NA, domain_pref = NA, showRequest
 #' @param page - Default: 1 | Integer specifying the numbered result at which to start
 #' @param keyword - Custom keyword to filter on history entries
 #' @param modified_after - Timestamp as an integer unix epoch, 
-#' see \code{\link[lubridate]{as_datetime}} or \code{\link[anytime]{as_datetime}}
+#' see \code{\link[lubridate]{as_datetime}} or \code{anytime}'s \code{as_datetime}
 #' @param created_after - Timestamp as an integer unix epoch
 #' @param created_before - Timestamp as an integer unix epoch
 #' @param search_query - string | the value that you would like to search
@@ -94,7 +99,7 @@ bitly_update_group_pref <- function(group_id = NA, domain_pref = NA, showRequest
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
 #' @inheritParams bitly_retrieve_sorted_links
-#' 
+#' @inheritParams bitly_update_group_pref 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getBitlinksByGroup}
 #'
 #' @import httr jsonlite assertthat lubridate 
@@ -138,7 +143,7 @@ bitly_retrieve_links_grouped <- function(group_id = NA, keyword = NULL, search_q
 #' @import httr jsonlite assertthat
 #'
 #' @inheritSection bitly_retrieve_group Group
-#' 
+#' @inheritParams bitly_retrieve_links_grouped
 #' @inheritParams bitly_user_info
 #' 
 #' @examples
@@ -172,7 +177,7 @@ bitly_retrieve_tags <- function(group_id = NA, showRequestURL = F) {
 #' @inheritSection bitly_retrieve_group Group
 #' 
 #' @inheritParams bitly_user_info
-#' 
+#' @inheritParams bitly_retrieve_links_grouped
 #' @import httr jsonlite assertthat lubridate
 #' 
 #' @examples
@@ -208,7 +213,7 @@ bitly_retrieve_group_click_metrics_by_countries <- function(group_id = NA, showR
 #' @inheritSection bitly_retrieve_group Group
 #' 
 #' @inheritParams bitly_user_info
-#' 
+#' @inheritParams bitly_retrieve_links_grouped
 #' @import httr jsonlite assertthat lubridate
 #' 
 #' @examples
@@ -243,7 +248,7 @@ bitly_retrieve_group_click_metrics_by_ref_networks <- function(group_id = NA, sh
 #' @inheritSection bitly_retrieve_group Group
 #' 
 #' @inheritParams bitly_user_info
-#' 
+#' @inheritParams bitly_retrieve_links_grouped
 #' @import httr jsonlite assertthat lubridate
 #' 
 #' @examples
@@ -284,7 +289,7 @@ bitly_retrieve_group_shorten_counts <- function(group_id = NA, showRequestURL = 
 #' @inheritSection bitly_retrieve_group Group
 #' 
 #' @inheritParams bitly_user_info
-#' 
+#' @inheritParams bitly_retrieve_links_grouped
 #' @examples
 #' \dontrun{
 #' rg <- bitly_retrieve_groups("") # will still work ok
@@ -323,7 +328,7 @@ bitly_retrieve_groups <- function(organization_id = NA, showRequestURL = F) {
 #' @inheritSection bitly_retrieve_group Group
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
-#' 
+#' @inheritParams bitly_retrieve_links_grouped
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getSortedBitlinks}
 #'
 #' @import httr jsonlite lubridate 
@@ -370,11 +375,12 @@ bitly_retrieve_sorted_links <- function(group_id = NA, to_sort_by = "clicks", un
 #' @inheritParams bitly_retrieve_sorted_links
 #' @inheritParams bitly_update_user 
 #' @inheritParams bitly_retrieve_groups
-#'
+#' @inheritParams bitly_retrieve_links_grouped
 #' @examples
 #' \dontrun{
 #' ui <- bitly_user_info(showRequestURL = TRUE)
-#' up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "New Group Name", organization_id = "asd")
+#' up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "New Group Name", 
+#' organization_id = "asd")
 #' }
 #' @import httr jsonlite assertthat lubridate
 #' 
@@ -414,7 +420,7 @@ bitly_update_group <- function(group_id = NA, name = NA, organization_id = NA, s
 #' @param group_id - a required string | A GUID for a Bitly group
 #' 
 #' @inheritParams bitly_user_info
-#' 
+#' @inheritParams bitly_retrieve_links_grouped
 #' @import httr jsonlite assertthat
 #'
 #' @examples

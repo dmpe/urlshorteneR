@@ -4,7 +4,8 @@
 #' \url{https://dev.bitly.com/v4/#operation/createFullBitlink}
 #' Convert a long url to a Bitlink and set additional parameters. 
 #'
-#' @param long_url - required, a long URL to be shortened (example: http://betaworks.com/). Must contain http/https
+#' @param long_url - required, a long URL to be shortened (example: http://betaworks.com/). 
+#' Must contain http/https
 #' @param domain - (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
 #' a custom short domain. The default for this parameter is the short domain selected by each
 #' user in their bitly account settings. Passing a specific domain via this parameter will override
@@ -13,10 +14,11 @@
 #' @param tags - Array of string, use e.g. \code{c("test1", "test2")}
 #' @param showRequestURL - show URL which has been build and requested from server. For debug
 #' purposes.
-#' @param deeplinks_app_uri_path - app_uri_path
-#' @param deeplinks_install_type - install_type
-#' @param deeplinks_install_url - install_url
-#' @param deeplinks_app_id - app_id
+#' @param deeplinks_list - a list containing parameters below
+#' @param app_uri_path - app_uri_path
+#' @param install_type - install_type
+#' @param install_url - install_url
+#' @param app_id - app_id
 #' 
 #' @inheritParams bitly_create_campaigns
 #' 
@@ -104,7 +106,8 @@ bitly_create_bitlink <- function(long_url = NULL, domain = "bit.ly", title = NUL
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_user_metrics_referring_domains(bitlink = "cnn.it/2HomWGB", unit = "month", units = -1, size = 100)
+#' bitly_user_metrics_referring_domains(bitlink = "cnn.it/2HomWGB", unit = "month", units = -1, 
+#' size = 100)
 #' }
 #' 
 #' @export
@@ -135,7 +138,7 @@ bitly_user_metrics_referring_domains <- function(bitlink = NULL, unit = "day", u
 #' This endpoint returns public information for a Bitlink.
 #'
 #' @inheritParams bitly_user_metrics_referring_domains
-#' 
+#' @inheritParams bitly_create_channel
 #' @return long_url - a full URL to which bitlink points to
 #' 
 #' @examples
@@ -209,7 +212,20 @@ bitly_shorten_link <- function(domain = "bit.ly", group_guid = NULL, long_url = 
 #' Update fields in the Bitlink
 #' 
 #' @inheritParams bitly_create_bitlink
-#' 
+#' @inheritParams bitly_retrieve_bitlinks_by_groups
+#' @inheritParams bitly_create_channel
+#' @inheritParams bitly_retrieve_links_grouped
+#' @inheritParams bitly_user_metrics_referring_domains
+#' @inheritParams bitly_add_cust_bitlink
+#' @inheritParams bitly_update_cust_bitlink
+#' @inheritParams bitly_update_channel
+#' @inheritParams bitly_retrieve_sorted_links
+#' @inheritParams bitly_app_details
+#' @param created_at - update created at parameter
+#' @param created_by - update user
+#' @param custom_bitlinks - update custom_bitlinks
+#' @param link - link
+#' @param id - id
 #' @examples
 #' \dontrun{
 #' bitly_update_bitlink(bitlink = "bit.ly/DPetrov", title = "novy titulek")
@@ -219,10 +235,11 @@ bitly_shorten_link <- function(domain = "bit.ly", group_guid = NULL, long_url = 
 #' 
 #' ## manyHashes <- list("bit.ly/DPetrov", "bit.ly/1QU8CFm", "bit.ly/1R1LPSE", "bit.ly/1LNqqva")
 #' ## for (u in 1:length(manyHashes)) {
-#' ##   print(bitly_update_bitlink(bitlink = manyHashes[[u]], title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")))
+#' ##   print(bitly_update_bitlink(bitlink = manyHashes[[u]], 
+#' ##                 title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")))
 #' ## }
 #' }
-#' @import httr jsonlite lubridate stringi
+#' @import httr jsonlite lubridate
 #' @export
 bitly_update_bitlink <- function(bitlink = NULL, archived = NULL, tags = NULL, showRequestURL = FALSE, 
                                  created_at = NULL, title = NULL, created_by = NULL, long_url = NULL, 
@@ -305,7 +322,12 @@ bitly_update_bitlink <- function(bitlink = NULL, archived = NULL, tags = NULL, s
 #' @seealso See \url{https://dev.bitly.com/v4/#operation/getBitlink}
 #' 
 #' @inheritParams bitly_retrieve_sorted_links
-#'
+#' @inheritParams bitly_update_bitlink
+#' @inheritParams bitly_create_bitlink
+#' @inheritParams bitly_retrieve_bitlinks_by_groups
+#' @inheritParams bitly_create_channel
+#' @inheritParams bitly_retrieve_links_grouped
+#' @inheritParams bitly_user_metrics_referring_domains
 #' @import httr jsonlite lubridate
 #' 
 #' @examples
@@ -335,10 +357,13 @@ bitly_retrieve_bitlink  <- function(bitlink = NULL, showRequestURL = FALSE) {
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrersByDomains}
 #' 
 #' @inheritParams bitly_user_metrics_referring_domains
+#' 
 #' @import httr jsonlite lubridate
+#' 
 #' @examples
 #' \dontrun{
-#' bitly_retrieve_metrics_by_referrers_by_domain(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
+#' bitly_retrieve_metrics_by_referrers_by_domain(bitlink = "bit.ly/DPetrov", unit = "day", 
+#' units = -1, size = 100)
 #' }
 #' 
 #' @export
@@ -367,7 +392,8 @@ bitly_retrieve_metrics_by_referrers_by_domain <- function(bitlink = NULL, size =
 #' @param unit - A unit of time
 #' @param showRequestURL - show URL which has been build and requested from server. For debug
 #' purposes.
-#' 
+#' @inheritParams bitly_retrieve_metrics_by_referrers_by_domain
+#'
 #' @examples
 #' \dontrun{
 #' bitly_retrieve_clicks(bitlink = "cnn.it/2HomWGB", unit = "day", units = -1, size = 100)
@@ -393,14 +419,10 @@ bitly_retrieve_clicks <- function(bitlink = NULL, size = 50, unit_reference = NU
 #' @title Get Clicks Summary for a Bitlink
 #' 
 #' @description See \url{https://dev.bitly.com/v4/#operation/getClicksSummaryForBitlink}
-#' This will return the click counts for a specified Bitlink. This rolls up all the data into a single field of clicks.
-#' 
-#' @param size - The quantity of items to be be returned
-#' @param units - An integer representing the time units to query data for. pass -1 to return all units of time.
-#' @param unit - A unit of time
-#' @param showRequestURL - show URL which has been build and requested from server. For debug
-#' purposes.
-#' 
+#' This will return the click counts for a specified Bitlink. This rolls up all the data into a 
+#' single field of clicks.
+#'
+#' @inheritParams bitly_retrieve_clicks
 #' @examples
 #' \dontrun{
 #' bitly_retrieve_clicks_summary(bitlink = "cnn.it/2HomWGB", unit = "day", units = -1, size = 100)
@@ -424,7 +446,8 @@ bitly_retrieve_clicks_summary <- function(bitlink = NULL, size = 50, unit_refere
 
 #' @title Get Metrics for a Bitlink by countries 
 #' 
-#' @description This endpoint will return metrics about the countries referring click traffic to a single Bitlink.
+#' @description This endpoint will return metrics about the countries referring click traffic to 
+#' a single Bitlink.
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByCountries}
 #' 
@@ -434,11 +457,13 @@ bitly_retrieve_clicks_summary <- function(bitlink = NULL, size = 50, unit_refere
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_retrieve_metrics_by_countries(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
+#' bitly_retrieve_metrics_by_countries(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, 
+#' size = 100)
 #' }
 #' 
 #' @export
-bitly_retrieve_metrics_by_countries <- function(bitlink = NULL, size = 100, unit = NULL, unit_reference = NULL,
+bitly_retrieve_metrics_by_countries <- function(bitlink = NULL, size = 100, unit = NULL, 
+                                                unit_reference = NULL,
                                         units = -1, showRequestURL = FALSE) {
    
    link_metrics_countries_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/countries")
@@ -454,7 +479,8 @@ bitly_retrieve_metrics_by_countries <- function(bitlink = NULL, size = 100, unit
 
 #' @title Get Metrics for a Bitlink by referrers 
 #' 
-#' @description This endpoint will return metrics about the referrers referring click traffic to a single Bitlink.
+#' @description This endpoint will return metrics about the referrers referring click traffic to 
+#' a single Bitlink.
 #' 
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrers}
 #' 
@@ -464,7 +490,8 @@ bitly_retrieve_metrics_by_countries <- function(bitlink = NULL, size = 100, unit
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_retrieve_metrics_by_referrers(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
+#' bitly_retrieve_metrics_by_referrers(bitlink = "bit.ly/DPetrov", unit = "day", 
+#' units = -1, size = 100)
 #' }
 #' 
 #' @export
@@ -486,21 +513,28 @@ bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit
 #' 
 #' @description See \url{https://dev.bitly.com/v4/#operation/getBitlinksByGroup}
 #' Retrieve a paginated collection of Bitlinks for a Group
-#'
+#' @param query_q - a query to look for in bitlinks; acts a filter
 #' @inheritParams bitly_retrieve_metrics_by_referrers
 #' @inheritParams bitly_update_bitlink
+#' @inheritParams bitly_retrieve_sorted_links
+#' @inheritParams bitly_create_bitlink
+#' @inheritParams bitly_create_channel
 #' @inheritParams bitly_retrieve_links_grouped
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' bitly_retrieve_bitlinks_by_groups(group_guid = "bit.ly/DPetrov", keyword = "novy titulek")
 #' }
-#' @import httr jsonlite lubridate stringi
+#' @import httr jsonlite
 #' @export
-bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = 50, page = 1, showRequestURL = FALSE, 
-                                 keyword = NULL, query_q = NULL, created_before = NULL, created_after = NULL, 
-                                 modified_after = NULL, archived = "both", deeplinks = "both", campaign_guid = NULL, 
-                                 channel_guid = NULL, custom_bitlink = "both", tags = NULL, encoding_login = NULL,
+bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = 50, page = 1, 
+                                              showRequestURL = FALSE, 
+                                 keyword = NULL, query_q = NULL, created_before = NULL, 
+                                 created_after = NULL, 
+                                 modified_after = NULL, archived = "both", deeplinks = "both", 
+                                 campaign_guid = NULL, 
+                                 channel_guid = NULL, custom_bitlink = "both", tags = NULL, 
+                                 encoding_login = NULL,
                                  domain_deeplinks = "both") {
    
     link_by_groups <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid, "/bitlinks")
@@ -558,14 +592,14 @@ bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = 50, page
 #' @inheritParams bitly_retrieve_metrics_by_referrers
 #' @inheritParams bitly_update_bitlink
 #' @inheritParams bitly_retrieve_bitlinks_by_groups
-#'
+#' @inheritParams bitly_retrieve_groups
 #' @param sort - required, Enum:"clicks" - The type of sorting that you would like to do
 #'
 #' @examples
 #' \dontrun{
 #' bitly_retrieve_sorted_bitlinks_by_groups(group_guid = "", sort = "clicks")
 #' }
-#' @import httr jsonlite lubridate stringi
+#' @import httr jsonlite lubridate
 #' @export
 bitly_retrieve_sorted_bitlinks_by_groups <- function(group_guid = NULL, unit = "day", units = -1, sort = "clicks",
                                               size = 50, unit_reference = NULL, showRequestURL = FALSE) {

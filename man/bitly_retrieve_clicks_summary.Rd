@@ -9,7 +9,12 @@ bitly_retrieve_clicks_summary(bitlink = NULL, size = 50,
   showRequestURL = FALSE)
 }
 \arguments{
+\item{bitlink}{- required, a Bitlink made of the domain and hash}
+
 \item{size}{- The quantity of items to be be returned}
+
+\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for 
+which to pull metrics. Will default to current time.}
 
 \item{unit}{- A unit of time}
 
@@ -20,7 +25,8 @@ purposes.}
 }
 \description{
 See \url{https://dev.bitly.com/v4/#operation/getClicksSummaryForBitlink}
-This will return the click counts for a specified Bitlink. This rolls up all the data into a single field of clicks.
+This will return the click counts for a specified Bitlink. This rolls up all the data into a 
+single field of clicks.
 }
 \examples{
 \dontrun{

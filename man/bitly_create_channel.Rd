@@ -11,11 +11,17 @@ bitly_create_channel(group_guid = NULL, guid = NULL, name = NULL,
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}
 
+\item{guid}{- ID for a channel}
+
+\item{name}{- its name}
+
 \item{modified}{- string | ISO_TIMESTAMP}
 
 \item{created}{- string | ISO TIMESTAMP}
 
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}
+
+\item{bitlink_id}{- string}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been 
 build and requested from server. For debug purposes, default FALSE.}

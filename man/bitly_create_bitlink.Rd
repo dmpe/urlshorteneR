@@ -10,7 +10,8 @@ bitly_create_bitlink(long_url = NULL, domain = "bit.ly",
   install_url = NULL, app_id = NULL), showRequestURL = FALSE)
 }
 \arguments{
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). Must contain http/https}
+\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). 
+Must contain http/https}
 
 \item{domain}{- (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
 a custom short domain. The default for this parameter is the short domain selected by each
@@ -23,16 +24,18 @@ the default settings.}
 
 \item{group_guid}{- a GUID for a Bitly group}
 
+\item{deeplinks_list}{- a list containing parameters below}
+
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 
-\item{deeplinks_app_uri_path}{- app_uri_path}
+\item{app_uri_path}{- app_uri_path}
 
-\item{deeplinks_install_type}{- install_type}
+\item{install_type}{- install_type}
 
-\item{deeplinks_install_url}{- install_url}
+\item{install_url}{- install_url}
 
-\item{deeplinks_app_id}{- app_id}
+\item{app_id}{- app_id}
 }
 \value{
 id - a short bitly identifier for long_url which is unique to the given account.

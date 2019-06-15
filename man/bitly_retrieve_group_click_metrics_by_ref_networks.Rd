@@ -8,6 +8,8 @@ bitly_retrieve_group_click_metrics_by_ref_networks(group_id = NA,
   showRequestURL = F)
 }
 \arguments{
+\item{group_id}{- a required string | A GUID for a Bitly group}
+
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been 
 build and requested from server. For debug purposes, default FALSE.}
 }

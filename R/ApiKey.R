@@ -4,6 +4,8 @@
 
 #' @title Assign bit.ly API tokens using OAuth2.0
 #'
+#' @param debug - whether to print additional debug messages
+#' 
 #' @description
 #' There are 2 ways of how you can authenticate using this package.
 #'
@@ -17,7 +19,7 @@
 #' then \code{REGISTER NEW APPLICATION} followed by \code{GET REGISTRATION CODE}.
 #' Open your email that you will receive and click \code{COMPLETE REGISTRATION}.
 #' Make up an \code{APPLICATION NAME} that is unique. Unless you know to do otherwise,
-  #' type "http://localhost:1410/" (slash at the end is important) in \code{REDIRECT URIs}. For
+#' type "http://localhost:1410/" (slash at the end is important) in \code{REDIRECT URIs}. For
 #' \code{APPLICATION LINK} and \code{APPLICATION DESCRIPTION} you can type whatever you like.
 #'
 #' @section However Important Information:
@@ -52,7 +54,7 @@
 #' 
 #' @import httr
 #' @export
-  bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
                          secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F) {
   token <- httr::oauth2.0_token(
     httr::oauth_endpoint(
@@ -63,7 +65,8 @@
     cache = TRUE
   )
   if (isTRUE(debug)) {
-    message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login, " with access token ", token$credentials$access_token))
+    message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login, 
+                   " with access token ", token$credentials$access_token))
   }
   
   .urlshorteneREnv$token <- token

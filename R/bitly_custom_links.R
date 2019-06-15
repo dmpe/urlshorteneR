@@ -7,7 +7,9 @@
 #' @inheritParams bitly_add_cust_bitlink
 #' 
 #' @param bitlink_id - string
-#'
+#' @inheritParams bitly_retrieve_destination_metrics
+#' @inheritParams bitly_retrieve_metrics_by_referrers
+#' 
 #' @section Custom Bitlinks:
 #' Custom Bitlinks have both a branded short domain (BSD) AND a customized backend. 
 #' For example, bit.ly/bitlinks would not be considered a Custom Bitlink because it 
@@ -36,13 +38,14 @@ bitly_add_cust_bitlink <- function(bitlink_id = NULL, custom_bitlink = NULL, sho
 }
 
 #' Get Metrics for a Custom Bitlink by destination (Premium)
+#' @seealso \url{https://dev.bitly.com/v4/#operation/getCustomBitlinkMetricsByDestination}
 #'
 #' @description
 #' Get Click Metrics for a Custom Bitlink by historical Bitlink destinations
 #'
 #' @param custom_bitlink - A Custom Bitlink made of the domain and keyword
-#' 
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getCustomBitlinkMetricsByDestination}
+#'
+#' @inheritParams bitly_retrieve_group_pref
 #'
 #' @examples
 #' \dontrun{

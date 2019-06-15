@@ -7,6 +7,8 @@
 bitly_expand_link(bitlink_id = NULL, showRequestURL = FALSE)
 }
 \arguments{
+\item{bitlink_id}{- string}
+
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been 
 build and requested from server. For debug purposes, default FALSE.}
 }

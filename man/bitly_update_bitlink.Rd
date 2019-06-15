@@ -13,14 +13,33 @@ bitly_update_bitlink(bitlink = NULL, archived = NULL, tags = NULL,
   NULL, guid = NULL, os = NULL))
 }
 \arguments{
+\item{bitlink}{- required, a Bitlink made of the domain and hash}
+
+\item{archived}{- string | Default: "off" | Enum:"on" "off" "both" | Whether or not to include archived bitlinks}
+
 \item{tags}{- Array of string, use e.g. \code{c("test1", "test2")}}
 
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 
+\item{created_at}{- update created at parameter}
+
 \item{title}{- title of the bitlink in \url{https://bit.ly} UI}
 
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). Must contain http/https}
+\item{created_by}{- update user}
+
+\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). 
+Must contain http/https}
+
+\item{client_id}{- The client ID of an OAuth app}
+
+\item{custom_bitlinks}{- update custom_bitlinks}
+
+\item{link}{- link}
+
+\item{id}{- id}
+
+\item{deeplinks}{- string | Default: "both" | Enum:"on" "off" "both" | Filter to only Bitlinks that contain deeplinks}
 }
 \description{
 See \url{https://dev.bitly.com/v4/#operation/updateBitlink}
@@ -35,7 +54,8 @@ bitly_update_bitlink(bitlink = "on.natgeo.com/1bEVhwE")
 
 ## manyHashes <- list("bit.ly/DPetrov", "bit.ly/1QU8CFm", "bit.ly/1R1LPSE", "bit.ly/1LNqqva")
 ## for (u in 1:length(manyHashes)) {
-##   print(bitly_update_bitlink(bitlink = manyHashes[[u]], title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")))
+##   print(bitly_update_bitlink(bitlink = manyHashes[[u]], 
+##                 title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")))
 ## }
 }
 }

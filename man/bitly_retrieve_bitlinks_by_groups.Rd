@@ -12,6 +12,8 @@ bitly_retrieve_bitlinks_by_groups(group_guid = NULL, size = 50,
   encoding_login = NULL, domain_deeplinks = "both")
 }
 \arguments{
+\item{group_guid}{- a GUID for a Bitly group}
+
 \item{size}{- The quantity of items to be be returned}
 
 \item{page}{- Default: 1 | Integer specifying the numbered result at which to start}
@@ -21,18 +23,20 @@ purposes.}
 
 \item{keyword}{- Custom keyword to filter on history entries}
 
+\item{query_q}{- a query to look for in bitlinks; acts a filter}
+
 \item{created_before}{- Timestamp as an integer unix epoch}
 
 \item{created_after}{- Timestamp as an integer unix epoch}
 
 \item{modified_after}{- Timestamp as an integer unix epoch, 
-see \code{\link[lubridate]{as_datetime}} or \code{\link[anytime]{as_datetime}}}
+see \code{\link[lubridate]{as_datetime}} or \code{anytime}'s \code{as_datetime}}
 
 \item{archived}{- string | Default: "off" | Enum:"on" "off" "both" | Whether or not to include archived bitlinks}
 
 \item{deeplinks}{- string | Default: "both" | Enum:"on" "off" "both" | Filter to only Bitlinks that contain deeplinks}
 
-\item{campaign_guid}{- Filter to return only links for the given campaign GUID, can be provided}
+\item{campaign_guid}{- string | A GUID for a Bitly campaign}
 
 \item{channel_guid}{- Filter to return only links for the given channel GUID, 
 can be provided, overrides all other parameters}
