@@ -21,7 +21,7 @@ test_that("Query for a Bitlink", {
 
 test_that("you can update a Bitlink.", {
   li <- bitly_update_bitlink(bitlink = "bit.ly/DPetrov", title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]"))
-  expect_equal(dim(li)[[2]], 7)
+  expect_gte(dim(li)[[2]], 7)
 })
 
 test_that("Given a bitly URL or hash (or multiple), returns the target (long) URL.", {

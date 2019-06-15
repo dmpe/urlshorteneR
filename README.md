@@ -88,7 +88,7 @@ GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | 
-GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks | 
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks | :heavy_check_mark:
 
 
 ## Help needed !!!

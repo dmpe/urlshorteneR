@@ -69,7 +69,7 @@ from any user input before shortening.
 }
 \examples{
 \dontrun{
-bitly_LinksShorten(long_url = "http://slovnik.seznam.cz/")
+bitly_create_bitlink(long_url = "http://slovnik.seznam.cz/")
 }
 
 }

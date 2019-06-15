@@ -22,11 +22,11 @@ test_that("You can retrieve all organizations", {
 
 test_that("You can retrieve organizations' shorten counts", {
   organization_guid <- bitly_retrieve_orgs()
-  expect_true(is.list(bitly_org_shorten_counts(organization_guid$guid)))
+  expect_true(is.list(bitly_retrieve_org_shorten_counts(organization_guid$guid)))
 })
 
 test_that("You cannot retrieve shorten counts for organization because there is emptry string", {
-  expect_error(bitly_org_shorten_counts(), "organization_id must not be emptry string, NA or NULL")
+  expect_error(bitly_retrieve_org_shorten_counts(), "organization_id must not be emptry string, NA or NULL")
 })
 
 context("Groups")
@@ -34,11 +34,6 @@ context("Groups")
 test_that("You can retrieve my own group", {
   user_info  <- bitly_user_info()
   expect_equal(dim(bitly_retrieve_group(group_id = user_info$default_group_guid[1]))[2], 8)
-})
-
-test_that("You cannot retrieve my own group because of incorrect string", {
-  user_info  <- "test"
-  expect_error(bitly_retrieve_group(user_info), "group_guid must not be empty string, NA or NULL")
 })
 
 test_that("You can retrieve my groups (PLURAL) without specifying org id", {
@@ -56,21 +51,21 @@ test_that("You can retrieve my groups (PLURAL) without specifying org id", {
 test_that("bitly_retrieve_sorted_links works, with day", {
   user_info  <- bitly_user_info()
   rsl <- bitly_retrieve_sorted_links(user_info$default_group_guid[1])
-  expect_equal(dim(rsl)[[2]], 13)
+  expect_gte(dim(rsl)[[2]], 13)
 })
 
 
 test_that("bitly_retrieve_sorted_links works, with hours", {
   user_info  <- bitly_user_info()
   rsl <- bitly_retrieve_sorted_links(user_info$default_group_guid[1], unit = "hour")
-  expect_equal(dim(rsl)[[2]], 13)
+  expect_gte(dim(rsl)[[2]], 13)
 })
 
 test_that("bitly_update_group works, updating name and org id", {
   ui <- bitly_user_info(showRequestURL = TRUE)
   up_group_orig <- bitly_update_group(group_id = ui$default_group_guid[1], name = "fancy name", organization_id = "asd")
   up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "NewGroupName", organization_id = "asd")
-  expect_equal(up_group$role, "NewGroupName")
+  expect_equal(up_group$name, "NewGroupName")
   expect_equal(up_group$is_active, "TRUE")
 })
 
@@ -86,7 +81,7 @@ test_that("bitly_update_group_pref can update group prefs to bit.ly (j.mp stoppe
   ui  <- bitly_user_info()
   usl <- bitly_update_group_pref(group_id = ui$default_group_guid[1], domain_pref = "bit.ly", showRequestURL = T)
   expect_equal(dim(usl)[2], 2)
-  expect_equal(rsl$domain_preference, "bit.ly")
+  expect_equal(usl$domain_preference, "bit.ly")
 })
 
 test_that("bitly_retrieve_links_grouped retrieves bitly links by group, deeplinks are not recieved", {
@@ -95,16 +90,16 @@ test_that("bitly_retrieve_links_grouped retrieves bitly links by group, deeplink
   expect_equal(length(rlbg$links), 0)
   
   rlbg <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], deeplinks = "off")
-  expect_equal(rlbg$pagination$total, 8)
+  expect_gte(rlbg$pagination$total, 8)
   
   rlbg_cnn <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], search_query = "News")
-  expect_equal(rlbg_cnn$pagination$total, 1)
+  expect_gte(rlbg_cnn$pagination$total, 1)
 })
 
-test_that("bitly_retrieve_tags can get tags", {
+test_that("bitly_retrieve_tags can get several tags", {
   ui  <- bitly_user_info()
   tags <- bitly_retrieve_tags(group_id = ui$default_group_guid[1], showRequestURL = T)
-  expect_length(tags, 0)
+  expect_length(tags, 1)
 })
 
 test_that("we can get group's click metrics by countries", {

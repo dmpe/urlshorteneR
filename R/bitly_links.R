@@ -43,7 +43,7 @@
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_LinksShorten(long_url = "http://slovnik.seznam.cz/")
+#' bitly_create_bitlink(long_url = "http://slovnik.seznam.cz/")
 #' }
 #' 
 #' @export
@@ -55,12 +55,16 @@ bitly_create_bitlink <- function(long_url = NULL, domain = "bit.ly", title = NUL
                                             app_id = NULL), showRequestURL = FALSE) {
    links_shorten_url <- "https://api-ssl.bitly.com/v4/bitlinks"
    
-   body_req_query <- list(access_token = bitly_auth_access(), title = title, domain = domain,
+   body_req_query <- list(access_token = bitly_auth_access(), domain = domain,
                           long_url = long_url)
    
    if (!length(deeplinks_list$app_uri_path) == 0 || !length(deeplinks_list$install_type) == 0 ||
        !length(deeplinks_list$install_url) == 0 || !length(deeplinks_list$app_id) == 0) {
       body_req_query$deeplinks <- deeplinks_list
+   }
+   
+   if (length(title) >= 1) {
+      body_req_query$title <- title
    }
    
    if (length(tags) >= 1) {
@@ -482,14 +486,14 @@ bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit
 #' 
 #' @description See \url{https://dev.bitly.com/v4/#operation/getBitlinksByGroup}
 #' Retrieve a paginated collection of Bitlinks for a Group
-#' 
+#'
 #' @inheritParams bitly_retrieve_metrics_by_referrers
 #' @inheritParams bitly_update_bitlink
 #' @inheritParams bitly_retrieve_links_grouped
 #' 
 #' @examples
 #' \dontrun{
-#' bitly_retrieve_bitlinks_by_groups(bitlink = "bit.ly/DPetrov", title = "novy titulek")
+#' bitly_retrieve_bitlinks_by_groups(group_guid = "bit.ly/DPetrov", keyword = "novy titulek")
 #' }
 #' @import httr jsonlite lubridate stringi
 #' @export
@@ -546,8 +550,34 @@ bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = 50, page
 }
 
 
+#' @title Retrieve Sorted Bitlinks for Group
+#' 
+#' @description See \url{https://dev.bitly.com/v4/#operation/getSortedBitlinks}
+#' This will retrieve a paginated response for Bitlinks that are sorted for the Group
+#'
+#' @inheritParams bitly_retrieve_metrics_by_referrers
+#' @inheritParams bitly_update_bitlink
+#' @inheritParams bitly_retrieve_bitlinks_by_groups
+#'
+#' @param sort - required, Enum:"clicks" - The type of sorting that you would like to do
+#'
+#' @examples
+#' \dontrun{
+#' bitly_retrieve_sorted_bitlinks_by_groups(group_guid = "", sort = "clicks")
+#' }
+#' @import httr jsonlite lubridate stringi
+#' @export
+bitly_retrieve_sorted_bitlinks_by_groups <- function(group_guid = NULL, unit = "day", units = -1, sort = "clicks",
+                                              size = 50, unit_reference = NULL, showRequestURL = FALSE) {
+   
+    link_by_sorted_groups <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid, "/bitlinks/", sort)
 
+    query <- list(access_token = bitly_auth_access(), unit_reference = unit_reference,
+                 unit = unit, units = units, size = size)
 
+    df_bitlinks_byGroup <- doRequest("GET", url = link_by_sorted_groups, queryParameters = query, showURL = showRequestURL)
+    return(df_bitlinks_byGroup)
+}
 
 
 

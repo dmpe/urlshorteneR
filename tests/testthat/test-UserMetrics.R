@@ -8,7 +8,7 @@ library(lubridate)
 context("User Metrics")
 
 test_that("will rollup the click counts to a referrer about a single Bitlink.", {
-  expect_message(bitly_user_metrics_referring_domains(bitlink = "cnn.it/2HomWGB", size = 100))
+  expect_equal(bitly_user_metrics_referring_domains(bitlink = "cnn.it/2HomWGB", size = 100)$units, -1)
   umrd2 <- bitly_user_metrics_referring_domains(bitlink = "1.usa.gov/1IZgFLV", size = 100)
   expect_equal(umrd2$metrics[umrd2$metrics$value == "direct",]$clicks, 4)
 })
@@ -27,15 +27,23 @@ test_that("Returns metrics about the countries referring click traffic to a sing
   expect_named(lmcc, c("unit_reference", "metrics", "units", "unit", "facet"))
 })
 
-test_that("Returns metrics about the domains referring click traffic to a single Bitlink.", {
+test_that("Returns Bitlinks for Group.", {
   user_info  <- bitly_user_info()
   lmrd <- bitly_retrieve_bitlinks_by_groups(group_guid = user_info$default_group_guid[1])
   expect_equal(length(lmrd), 2)
 })
 
+test_that("Returns Sorted Bitlinks for Group.", {
+  user_info  <- bitly_user_info()
+  rsbbg <- bitly_retrieve_sorted_bitlinks_by_groups(group_guid = user_info$default_group_guid[1])
+  expect_equal(dim(rsbbg$sorted_links)[[2]], 2)
+  expect_equal(dim(rsbbg$links)[[2]], 12)
+})
+
+
 test_that("Returns metrics about the pages referring click traffic to a single Bitlink.", {
-  lmr <- bitly_retrieve_metrics_by_referrers(link = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
-  expect_named(lmr, c("referrer", "clicks"))
+  lmr <- bitly_retrieve_metrics_by_referrers(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, size = 100)
+  expect_named(lmr, c("unit_reference", "metrics", "units", "unit", "facet"))
 })
 
 test_that("Returns metrics for a Bitlink by referrers, by domain", {

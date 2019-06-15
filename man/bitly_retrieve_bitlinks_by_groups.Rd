@@ -52,6 +52,6 @@ Retrieve a paginated collection of Bitlinks for a Group
 }
 \examples{
 \dontrun{
-bitly_retrieve_bitlinks_by_groups(bitlink = "bit.ly/DPetrov", title = "novy titulek")
+bitly_retrieve_bitlinks_by_groups(group_guid = "bit.ly/DPetrov", keyword = "novy titulek")
 }
 }

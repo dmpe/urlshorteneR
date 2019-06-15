@@ -20,32 +20,31 @@ For is.gd/v.gd there is no authentication needed.
 
 ## User/App Information & Authentication for Bit.ly
 
-Return some basic information about my user on Bit.ly. Additionally, is the account "premium" one?
+Return some basic information about my user on Bit.ly. Additionally, is my account a "premium" one?
 
 ```{r}
-require("knitr")
-opts_knit$set(root.dir = "~/main/")
-#opts_knit$set(root.dir = "~/Documents/Documents2/R-package-urlshortener")
-str(knitr::opts_knit$get())
-
+library("knitr")
 library(urlshorteneR)
 
-bitly_token <- readRDS("tests/bitly_local_token.rds")
+if(interactive()) {
+  opts_knit$set(root.dir = "~/Documents/Documents2/R-package-urlshortener")
+  bitly_token <- readRDS("tests/bitly_local_token.rds")
 
 # You can register a new pair of keys yourself - but you can also use mine - an option which is also by default
 # bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "f9c6a3b18968e991e35f466e90c7d883cc176073")
 # bitly_token <- bitly_auth()
 
-ui <- bitly_user_info(showRequestURL = TRUE) 
-is_bitly_user_premium_holder()
+  ui <- bitly_user_info(showRequestURL = TRUE)
+  is_bitly_user_premium_holder()
+}
 ```
 
 We can also decide to update my username with a different one.
 
 ```{r}
-
+if (interactive()) {
 bitly_update_user(name = "John Malc", showRequestURL = TRUE)
-
+}
 ```
 
 And what about the metadata about our OAUTH application?
@@ -71,52 +70,36 @@ bitly_retrieve_groups()
 
 ## Information about Organizations
 
-Official API documentation <http://dev.bitly.com/user_info.html>. 
+Official API documentation <https://dev.bitly.com/v4/#tag/User>. 
 
-The first method returns an information about myself, whereas the second one returns a list of tracking domains I have configured (I have none).
+The first method returns an information about myself.
 
 ```{r}
 if (interactive()) {
-
 bitly_user_info()
-
-bitly_UserTrackingDomains()
 }
 ```
 
-
-## Bitlinks
-
-Official API documentation <http://dev.bitly.com/domains.html>. 
-
-This will query whether a given domain is a valid Bit.ly PRO domain (nyti.ms is). 
-
-```{r}
-if (interactive()) {
-
-bitly_IsProDomain(domain = "nyti.ms")
-}
-```
 
 ### Custom Bitlinks
 
 ```{r}
 if (interactive()) {
   df <- data.frame(pubDate = rep("2016-02-10", 4),
-                   link = c(NA,"http://www.opencoesione.gov.it/progetti/1misepac01_000443/",
-                            "http://www.opencoesione.gov.it/progetti/1misepac01_000031/", ""),
+                   link = c("http://wwaaw.opencasdoesione.gov.it/progetti/1misepac01_000443/",
+                            "http://wwssw.opencasdoesione.gov.it/progetti/1misepac01_000031/"),
                    stringsAsFactors = FALSE)
   df
   
   fin = NULL
   for (p in 1:length(df$link)) {
-    fin[[p]] <- bitly_LinksShorten(longUrl = df$link[p])
+    fin[[p]] <- bitly_create_bitlink(long_url = df$link[p])
   }
 }
 ```
 
-**BEWARE:** This will proceed only with the two real links, not with the NA, NULL or an empty string. 
-Therefore, you will recieve X number of messages describing the error. These, however, will not stop the flow of the code (i.e. are not errors). 
+**BEWARE:** This will proceed only with the two real links, not with the NA, NULL or an empty strings. 
+These, however, will stop the flow of the code (i.e. are errors). 
 
 
 # Is.gd & V.gd 
