@@ -14,8 +14,6 @@ library(devtools)
 devtools::install_github("dmpe/urlshorteneR", build_vignettes = FALSE)
 ```
 
-:warning: Version v4 Migration is currently underway
-
 ### What has (🚫t) been implemented for Bit.ly:
 
 - Based on <https://dev.bitly.com/v4_documentation.html>
