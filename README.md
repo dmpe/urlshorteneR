@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/dmpe/urlshorteneR/tree/master.svg?style=svg)](https://circleci.com/gh/dmpe/urlshorteneR/tree/master)
 [![codecov](https://codecov.io/gh/dmpe/urlshorteneR/branch/master/graph/badge.svg)](https://codecov.io/gh/dmpe/urlshorteneR)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/urlshorteneR)](http://cran.r-project.org/package=urlshorteneR)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/urlshorteneR)](https://cran.r-project.org/package=urlshorteneR)
 
 R package for shortening URLs, supporting `Bit.ly` and `is.gd`/`v.gd` 
 =======
@@ -70,8 +70,6 @@ GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink}/clicks_by_dest
 PATCH https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/custom_bitlinks/{custom_bitlink} | :heavy_check_mark:
 
-# TODO
-
 <https//dev.bitly.com/v4/#tag/Bitlinks> | Implemented :heavy_check_mark:/🚫
 ------------- | -------------
 POST https://api-ssl.bitly.com/v4/bitlinks | :heavy_check_mark:
@@ -85,7 +83,7 @@ GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/countries | :heavy_check_mar
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains | :heavy_check_mark:
-GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | 
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks | :heavy_check_mark:
 
 
