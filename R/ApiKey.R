@@ -85,7 +85,6 @@ bitly_auth_access <- function() {
   if (interactive()) {
     #setwd("~/Documents/Documents2/R-package-urlshortener")
     bitly_token <- bitly_auth()
-    bitly_token <- readRDS("tests/bitly_local_token.rds")
   } else {
     #setwd("~/main/")
     #print(getwd())
