@@ -7,7 +7,7 @@
 shortenerAddin <- function() {
   
   ui <- miniUI::miniPage(
-    miniUI::gadgetTitleBar("Shorten URL"),
+    miniUI::gadgetTitleBar("Shorten/Expand URL"),
     miniUI::miniContentPanel(
       padding = 10,
       shiny::textInput("url", label = "Long URL", value = "", width = "100%"),

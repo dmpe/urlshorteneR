@@ -1,4 +1,4 @@
-Name: Shorten URL
+Name: Shorten/Expand URL
 Description: Opens a dialog to shorten a URL.
 Binding: shortenerAddin
 Interactive: true
