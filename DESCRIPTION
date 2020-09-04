@@ -15,20 +15,24 @@ Depends:
 Imports:
     httr (>= 1.4.1),
     jsonlite (>= 1.6),
-    stringr (>= 1.4.0), 
-    lubridate (>= 1.7.4), 
-    assertthat (>= 0.2.1)
+    stringr (>= 1.4.0),
+    lubridate (>= 1.7.4),
+    assertthat (>= 0.2.1),
+    shiny (>= 1.5.0),
+    clipr (>= 0.7.0),
+    miniUI (>= 0.1.1.1),
+    cli (>= 2.0.2)
 Suggests:
     roxygen2 (>= 6.1.1),
     knitr (>= 1.23),
-    testthat (>= 2.1.1), 
+    testthat (>= 2.1.1),
     rmarkdown (>= 1.13),
-    httpuv (>= 1.5.1), 
-    stringi (>= 1.4.3), 
-    covr (>= 3.2.1), 
+    httpuv (>= 1.5.1),
+    stringi (>= 1.4.3),
+    covr (>= 3.2.1),
     lintr (>= 1.0.3)
 VignetteBuilder: knitr
 License: Apache License 2.0
 URL: https://github.com/dmpe/urlshorteneR
 BugReports: https://github.com/dmpe/urlshorteneR/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
