@@ -4,8 +4,12 @@
 \alias{bitly_update_group}
 \title{Update a Group}
 \usage{
-bitly_update_group(group_id = NA, name = NA, organization_id = NA,
-  showRequestURL = F)
+bitly_update_group(
+  group_id = NA,
+  name = NA,
+  organization_id = NA,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}

@@ -4,9 +4,16 @@
 \alias{bitly_create_channel}
 \title{Create channel (Premium)}
 \usage{
-bitly_create_channel(group_guid = NULL, guid = NULL, name = NULL,
-  modified = NULL, created = NULL, campaign_guid = NULL,
-  bitlink_id = NULL, showRequestURL = T)
+bitly_create_channel(
+  group_guid = NULL,
+  guid = NULL,
+  name = NULL,
+  modified = NULL,
+  created = NULL,
+  campaign_guid = NULL,
+  bitlink_id = NULL,
+  showRequestURL = T
+)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}

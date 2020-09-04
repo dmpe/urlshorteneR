@@ -4,8 +4,7 @@
 \alias{bitly_update_user}
 \title{Update your name and/or default group ID}
 \usage{
-bitly_update_user(default_group_guid = NULL, name = "",
-  showRequestURL = FALSE)
+bitly_update_user(default_group_guid = NULL, name = "", showRequestURL = FALSE)
 }
 \arguments{
 \item{default_group_guid}{- group id to change, see NOTE}

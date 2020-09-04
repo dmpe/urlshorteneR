@@ -4,9 +4,14 @@
 \alias{bitly_retrieve_clicks_summary}
 \title{Get Clicks Summary for a Bitlink}
 \usage{
-bitly_retrieve_clicks_summary(bitlink = NULL, size = 50,
-  unit_reference = NULL, unit = NULL, units = -1,
-  showRequestURL = FALSE)
+bitly_retrieve_clicks_summary(
+  bitlink = NULL,
+  size = 50,
+  unit_reference = NULL,
+  unit = NULL,
+  units = -1,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}

@@ -4,9 +4,14 @@
 \alias{bitly_update_campaign}
 \title{Update A Channel (Premium)}
 \usage{
-bitly_update_campaign(campaign_guid = NULL, group_guid = NULL,
-  channel_guids = NULL, description = NULL, name = NULL,
-  showRequestURL = T)
+bitly_update_campaign(
+  campaign_guid = NULL,
+  group_guid = NULL,
+  channel_guids = NULL,
+  description = NULL,
+  name = NULL,
+  showRequestURL = T
+)
 }
 \arguments{
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}

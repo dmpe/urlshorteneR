@@ -4,9 +4,14 @@
 \alias{bitly_retrieve_metrics_by_countries}
 \title{Get Metrics for a Bitlink by countries}
 \usage{
-bitly_retrieve_metrics_by_countries(bitlink = NULL, size = 100,
-  unit = NULL, unit_reference = NULL, units = -1,
-  showRequestURL = FALSE)
+bitly_retrieve_metrics_by_countries(
+  bitlink = NULL,
+  size = 100,
+  unit = NULL,
+  unit_reference = NULL,
+  units = -1,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}

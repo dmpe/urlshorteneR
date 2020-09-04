@@ -4,8 +4,10 @@
 \alias{bitly_retrieve_group_click_metrics_by_ref_networks}
 \title{Get Click Metrics for a Group by referring networks}
 \usage{
-bitly_retrieve_group_click_metrics_by_ref_networks(group_id = NA,
-  showRequestURL = F)
+bitly_retrieve_group_click_metrics_by_ref_networks(
+  group_id = NA,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}

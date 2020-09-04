@@ -4,13 +4,22 @@
 \alias{bitly_update_bitlink}
 \title{Update a Bitlink}
 \usage{
-bitly_update_bitlink(bitlink = NULL, archived = NULL, tags = NULL,
-  showRequestURL = FALSE, created_at = NULL, title = NULL,
-  created_by = NULL, long_url = NULL, client_id = NULL,
-  custom_bitlinks = NULL, link = NULL, id = NULL,
-  deeplinks = list(bitlink = NULL, install_url = NULL, created = NULL,
-  modified = NULL, app_uri_path = NULL, install_type = NULL, app_guid =
-  NULL, guid = NULL, os = NULL))
+bitly_update_bitlink(
+  bitlink = NULL,
+  archived = NULL,
+  tags = NULL,
+  showRequestURL = FALSE,
+  created_at = NULL,
+  title = NULL,
+  created_by = NULL,
+  long_url = NULL,
+  client_id = NULL,
+  custom_bitlinks = NULL,
+  link = NULL,
+  id = NULL,
+  deeplinks = list(bitlink = NULL, install_url = NULL, created = NULL, modified = NULL,
+    app_uri_path = NULL, install_type = NULL, app_guid = NULL, guid = NULL, os = NULL)
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}

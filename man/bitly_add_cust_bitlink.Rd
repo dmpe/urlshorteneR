@@ -4,8 +4,11 @@
 \alias{bitly_add_cust_bitlink}
 \title{Add Custom Bitlink (Premium)}
 \usage{
-bitly_add_cust_bitlink(bitlink_id = NULL, custom_bitlink = NULL,
-  showRequestURL = FALSE)
+bitly_add_cust_bitlink(
+  bitlink_id = NULL,
+  custom_bitlink = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink_id}{- string}

@@ -4,10 +4,16 @@
 \alias{bitly_create_bitlink}
 \title{Create a short Bitlink}
 \usage{
-bitly_create_bitlink(long_url = NULL, domain = "bit.ly",
-  title = NULL, tags = NULL, group_guid = NULL,
-  deeplinks_list = list(app_uri_path = NULL, install_type = NULL,
-  install_url = NULL, app_id = NULL), showRequestURL = FALSE)
+bitly_create_bitlink(
+  long_url = NULL,
+  domain = "bit.ly",
+  title = NULL,
+  tags = NULL,
+  group_guid = NULL,
+  deeplinks_list = list(app_uri_path = NULL, install_type = NULL, install_url = NULL,
+    app_id = NULL),
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). 

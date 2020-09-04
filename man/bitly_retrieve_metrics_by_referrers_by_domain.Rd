@@ -4,9 +4,14 @@
 \alias{bitly_retrieve_metrics_by_referrers_by_domain}
 \title{Get Metrics for a Bitlink by referrers by domain}
 \usage{
-bitly_retrieve_metrics_by_referrers_by_domain(bitlink = NULL,
-  size = 50, unit_reference = NULL, unit = NULL, units = -1,
-  showRequestURL = FALSE)
+bitly_retrieve_metrics_by_referrers_by_domain(
+  bitlink = NULL,
+  size = 50,
+  unit_reference = NULL,
+  unit = NULL,
+  units = -1,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}

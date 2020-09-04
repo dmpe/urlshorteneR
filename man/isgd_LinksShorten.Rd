@@ -4,8 +4,12 @@
 \alias{isgd_LinksShorten}
 \title{Given a long URL, returns a short is.gd link.}
 \usage{
-isgd_LinksShorten(longUrl = "", logstats = "0", shorturl = NULL,
-  showRequestURL = FALSE)
+isgd_LinksShorten(
+  longUrl = "",
+  logstats = "0",
+  shorturl = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{longUrl}{- The url parameter is the address that you want to shorten.}

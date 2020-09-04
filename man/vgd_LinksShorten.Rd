@@ -4,8 +4,12 @@
 \alias{vgd_LinksShorten}
 \title{Given a long URL, returns a short v.gd link.}
 \usage{
-vgd_LinksShorten(longUrl = "", logstats = "0", shorturl = NULL,
-  showRequestURL = FALSE)
+vgd_LinksShorten(
+  longUrl = "",
+  logstats = "0",
+  shorturl = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{longUrl}{- The url parameter is the address that you want to shorten.}

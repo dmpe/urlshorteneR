@@ -4,8 +4,11 @@
 \alias{bitly_retrieve_channels}
 \title{Retrieve channels (Premium)}
 \usage{
-bitly_retrieve_channels(group_guid = NULL, campaign_guid = NULL,
-  showRequestURL = T)
+bitly_retrieve_channels(
+  group_guid = NULL,
+  campaign_guid = NULL,
+  showRequestURL = T
+)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}

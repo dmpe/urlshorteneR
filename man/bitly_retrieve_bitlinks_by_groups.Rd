@@ -4,12 +4,25 @@
 \alias{bitly_retrieve_bitlinks_by_groups}
 \title{Retrieve Bitlinks by Group}
 \usage{
-bitly_retrieve_bitlinks_by_groups(group_guid = NULL, size = 50,
-  page = 1, showRequestURL = FALSE, keyword = NULL, query_q = NULL,
-  created_before = NULL, created_after = NULL, modified_after = NULL,
-  archived = "both", deeplinks = "both", campaign_guid = NULL,
-  channel_guid = NULL, custom_bitlink = "both", tags = NULL,
-  encoding_login = NULL, domain_deeplinks = "both")
+bitly_retrieve_bitlinks_by_groups(
+  group_guid = NULL,
+  size = 50,
+  page = 1,
+  showRequestURL = FALSE,
+  keyword = NULL,
+  query_q = NULL,
+  created_before = NULL,
+  created_after = NULL,
+  modified_after = NULL,
+  archived = "both",
+  deeplinks = "both",
+  campaign_guid = NULL,
+  channel_guid = NULL,
+  custom_bitlink = "both",
+  tags = NULL,
+  encoding_login = NULL,
+  domain_deeplinks = "both"
+)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}

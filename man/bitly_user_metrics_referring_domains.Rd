@@ -4,9 +4,14 @@
 \alias{bitly_user_metrics_referring_domains}
 \title{Get Metrics for a Bitlink by referring domains}
 \usage{
-bitly_user_metrics_referring_domains(bitlink = NULL, unit = "day",
-  units = -1, size = 50, unit_reference = NULL,
-  showRequestURL = FALSE)
+bitly_user_metrics_referring_domains(
+  bitlink = NULL,
+  unit = "day",
+  units = -1,
+  size = 50,
+  unit_reference = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}

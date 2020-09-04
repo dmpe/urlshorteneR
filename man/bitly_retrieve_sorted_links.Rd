@@ -4,9 +4,15 @@
 \alias{bitly_retrieve_sorted_links}
 \title{Retrieve Sorted Bitlinks for Group}
 \usage{
-bitly_retrieve_sorted_links(group_id = NA, to_sort_by = "clicks",
-  unit = "day", units = -1, unit_reference = NULL, size = 50,
-  showRequestURL = F)
+bitly_retrieve_sorted_links(
+  group_id = NA,
+  to_sort_by = "clicks",
+  unit = "day",
+  units = -1,
+  unit_reference = NULL,
+  size = 50,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}
