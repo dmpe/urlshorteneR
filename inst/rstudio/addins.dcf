@@ -1,0 +1,14 @@
+Name: Shorten URL
+Description: Opens a dialog to shorten a URL.
+Binding: shortenerAddin
+Interactive: true
+
+Name: Shorten URL from clipboard
+Description: Quickly shorten an URL from clipboard (using bit.ly)
+Binding: clipShortenerAddin
+Interactive: false
+
+Name: Expand URL from clipboard
+Description: Quickly expadn an URL from clibboard (using bit.ly)
+Binding: clipExpanderAddin
+Interactive: false

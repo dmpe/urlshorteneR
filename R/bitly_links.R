@@ -167,6 +167,16 @@ bitly_expand_link <- function(bitlink_id = NULL, showRequestURL = FALSE) {
    
    return(df_link_expand)
 }
+
+#' Wrapper url expander
+#' 
+#' @description url expander functions have different argnames to pass short URLs
+#'   therefore a wrapper is needed to avoid changing argnames to main functions.
+#'   
+#' @noRd
+bitly_expand_link_ <- function(shorturl, ...) {
+   bitly_expand_link(bitlink_id = shorturl, ...)
+}
    
 
 #' @title Shorten a Link 
@@ -204,6 +214,16 @@ bitly_shorten_link <- function(domain = "bit.ly", group_guid = NULL, long_url = 
    df_link_shorten$created_at <- now("UTC")
    
    return(df_link_shorten)
+}
+
+#' Wrapper url shortener
+#' 
+#' @description url shortener function have different argnames to pass long URLS
+#'   theefore a wrapper is needed to avoid changing argnames to main functions.
+#' 
+#' @noRd
+bitly_shorten_link_ <- function(longUrl, ...) {
+   bitly_shorten_link(long_url = longUrl, ...)
 }
 
 #' @title Update a Bitlink 
