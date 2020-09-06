@@ -14,7 +14,7 @@ test_that("will rollup the click counts to a referrer about a single Bitlink.", 
 })
 
 context("Link Metrics")
- 
+
 test_that("Returns the number of clicks on a single Bitlink.", {
   lmc <- bitly_retrieve_clicks(bitlink = "bit.ly/2EUGovW", unit = "month", units = -1, size = 100)
   expect_equal(length(lmc), 4)
