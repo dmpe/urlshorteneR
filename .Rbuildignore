@@ -12,3 +12,4 @@ CONTRIBUTE.MD
 bitly_local_token.rds
 .codecov.yml
 .circleci
+^tests/\.httr-oauth$

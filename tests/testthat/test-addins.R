@@ -2,12 +2,13 @@ library(testthat)
 library(urlshorteneR)
 library(clipr)
 
+Sys.setenv("CLIPR_ALLOW"=TRUE)
 
 long_url  <- "https://github.com/dmpe/urlshorteneR"
 short_url <- "https://bit.ly/3hXbilf"
 
 test_that("Clipboard shortener copies short url to clipboard", {
-  write_clip(long_url)
+  write_clip(long_url, allow_non_interactive = TRUE)
   clipShortenerAddin()
   
   short_url <- bitly_shorten_link(long_url = long_url)
@@ -18,7 +19,7 @@ test_that("Clipboard shortener copies short url to clipboard", {
 
 
 test_that("Clipboard expander copies long url to clipboard", {
-  write_clip(short_url)
+  write_clip(short_url, allow_non_interactive = TRUE)
   clipExpanderAddin()
   
   bitly_id <- gsub(pattern = "https://", x = short_url, replacement = "")

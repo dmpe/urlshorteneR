@@ -1,5 +1,5 @@
 ## Test environments
-* local linux: R devel @ Ubuntu 19.04 + circle-ci
+* local linux: R 4.0.2 @ Ubuntu 20.04 LTS
 * windows: rhub
 
 ## R CMD check results
