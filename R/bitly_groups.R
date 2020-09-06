@@ -62,7 +62,7 @@ bitly_update_group_pref <- function(group_id = NA, domain_pref = NA, showRequest
   }
   
   query <- list(access_token = bitly_auth_access())
-  body_upd = list(group_guid = group_id, domain_preference = domain_pref)
+  body_upd <- list(group_guid = group_id, domain_preference = domain_pref)
   
   df_update_pref <- doRequest("PATCH", url = gr_pref_url_up, queryParameters = query, 
                               patch_body = body_upd, showURL = showRequestURL)
@@ -387,7 +387,7 @@ bitly_retrieve_sorted_links <- function(group_id = NA, to_sort_by = "clicks", un
 #' @export
 bitly_update_group <- function(group_id = NA, name = NA, organization_id = NA, showRequestURL = F) {
   
-  if (is.string(group_id)) { 
+  if (is.string(group_id)) {
     upd_group_url <- paste0("https://api-ssl.bitly.com/v4/groups/", group_id)  
   } else {
     stop("group_id must not be emptry string, NA or NULL")

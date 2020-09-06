@@ -2,7 +2,7 @@ library(testthat)
 library(urlshorteneR)
 library(clipr)
 
-Sys.setenv("CLIPR_ALLOW"=TRUE)
+Sys.setenv("CLIPR_ALLOW" = TRUE)
 
 long_url  <- "https://github.com/dmpe/urlshorteneR"
 short_url <- "https://bit.ly/3hXbilf"

@@ -2,28 +2,28 @@
 #'
 #' @description
 #' Add a Keyword to a Bitlink
-#'   
+#'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/addCustomBitlink}
 #' @inheritParams bitly_add_cust_bitlink
-#' 
+#'
 #' @param bitlink_id - string
 #' @inheritParams bitly_retrieve_destination_metrics
 #' @inheritParams bitly_retrieve_metrics_by_referrers
-#' 
+#'
 #' @section Custom Bitlinks:
-#' Custom Bitlinks have both a branded short domain (BSD) AND a customized backend. 
-#' For example, bit.ly/bitlinks would not be considered a Custom Bitlink because it 
-#' does not have a branded short domain. es.pn/2yxklu would not be considered a custom 
-#' Bitlink because while it has a branded short domain, it doesn't have a customized 
+#' Custom Bitlinks have both a branded short domain (BSD) AND a customized backend.
+#' For example, bit.ly/bitlinks would not be considered a Custom Bitlink because it
+#' does not have a branded short domain. es.pn/2yxklu would not be considered a custom
+#' Bitlink because while it has a branded short domain, it doesn't have a customized
 #' backhalf. An example of a link that would live in this section is es.pn/SuperBowl
 #'
 #' @examples
 #' \dontrun{
 #' bitly_add_cust_bitlink(custom_bitlink = "es.pn/SuperBowl", bitlink_id = "")
 #' }
-#' 
+#'
 #' @import httr jsonlite lubridate
-#' 
+#'
 #' @export
 bitly_add_cust_bitlink <- function(bitlink_id = NULL, custom_bitlink = NULL, showRequestURL = FALSE) {
   cust_post_url <- "https://api-ssl.bitly.com/v4/custom_bitlinks"
@@ -31,8 +31,8 @@ bitly_add_cust_bitlink <- function(bitlink_id = NULL, custom_bitlink = NULL, sho
   body_req_query <- list(access_token = bitly_auth_access(), bitlink_id = bitlink_id,
                          custom_bitlink = custom_bitlink
   )
-  
-  df_add_keywords <- doRequest("POST", cust_post_url, queryParameters = body_req_query, 
+
+  df_add_keywords <- doRequest("POST", cust_post_url, queryParameters = body_req_query,
                                showURL = showRequestURL)
   return(df_add_keywords)
 }
@@ -51,23 +51,23 @@ bitly_add_cust_bitlink <- function(bitlink_id = NULL, custom_bitlink = NULL, sho
 #' \dontrun{
 #' bitly_retrieve_destination_metrics(custom_bitlink = "es.pn/SuperBowl")
 #' }
-#' 
+#'
 #' @import httr jsonlite lubridate
-#' 
+#'
 #' @export
 bitly_retrieve_destination_metrics <- function(custom_bitlink = NULL, showRequestURL = FALSE) {
-  
+
   if (is.string(custom_bitlink)) {
     metrics_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink, "/clicks_by_destination")
   } else {
     stop("custom_bitlink must not be empty string, NA or NULL")
   }
-  
+
   query <- list(access_token = bitly_auth_access(), custom_bitlink = custom_bitlink)
-  
+
   df_cust_metrics <- doRequest("GET", url = metrics_url, queryParameters = query, showURL = showRequestURL)
   df_cust_metrics <- data.frame(df_cust_metrics, stringsAsFactors = FALSE)
-  
+
   return(df_cust_metrics)
 }
 
@@ -78,31 +78,31 @@ bitly_retrieve_destination_metrics <- function(custom_bitlink = NULL, showReques
 #' Move a Keyword to a different Bitlink
 #'
 #' @inheritParams bitly_add_cust_bitlink
-#' 
+#'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/updateCustomBitlink}
 #'
 #' @examples
 #' \dontrun{
 #' bitly_update_cust_bitlink(custom_bitlink = "es.pn/SuperBowl", bitlink_id = "")
 #' }
-#' 
+#'
 #' @import httr jsonlite lubridate
-#' 
+#'
 #' @export
 bitly_update_cust_bitlink <- function(custom_bitlink = NULL, bitlink_id = NULL, showRequestURL = FALSE) {
-  
+
   if (is.string(custom_bitlink)) {
     patch_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink)
   } else {
     stop("custom_bitlink must not be empty string, NA or NULL")
   }
-  
+
   query <- list(access_token = bitly_auth_access())
   body_req_query <- list(bitlink_id = bitlink_id)
-  
-  df_update_cost_link <- doRequest("PATCH", patch_url, queryParameters = query, patch_body = body_req_query, 
+
+  df_update_cost_link <- doRequest("PATCH", patch_url, queryParameters = query, patch_body = body_req_query,
                                showURL = showRequestURL)
-  
+
   return(df_update_cost_link)
 }
 
@@ -113,16 +113,16 @@ bitly_update_cust_bitlink <- function(custom_bitlink = NULL, bitlink_id = NULL, 
 #' Retrieve the details and history of a Custom Bitlink
 #'
 #' @inheritParams bitly_add_cust_bitlink
-#' 
+#'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getCustomBitlink}
 #'
 #' @examples
 #' \dontrun{
 #' bitly_retrieve_cust_bitlink(custom_bitlink = "es.pn/SuperBowl")
 #' }
-#' 
+#'
 #' @import httr jsonlite lubridate
-#' 
+#'
 #' @export
 bitly_retrieve_cust_bitlink <- function(custom_bitlink = NULL, showRequestURL = FALSE) {
 
@@ -131,7 +131,7 @@ bitly_retrieve_cust_bitlink <- function(custom_bitlink = NULL, showRequestURL = 
   } else {
     stop("custom_bitlink must not be empty string, NA or NULL")
   }
-  
+
   query <- list(access_token = bitly_auth_access(), custom_bitlink = custom_bitlink)
   df_cust_metrics <- doRequest("GET", url = get_url, queryParameters = query, showURL = showRequestURL)
   return(df_cust_metrics)

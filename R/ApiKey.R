@@ -5,7 +5,7 @@
 #' @title Assign bit.ly API tokens using OAuth2.0
 #'
 #' @param debug - whether to print additional debug messages
-#' 
+#'
 #' @description
 #' There are 2 ways of how you can authenticate using this package.
 #'
@@ -47,15 +47,15 @@
 #'     key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 #'     secret = "f9c6a3b18968e991e35f466e90c7d883cc176073"
 #'   )
-#' 
+#'
 #' # default variant
 #' bitly_token <- bitly_auth()
 #' }
-#' 
+#'
 #' @import httr
 #' @export
 bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-                         secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F) {
+                      secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F) {
   token <- httr::oauth2.0_token(
     httr::oauth_endpoint(
       authorize = "https://bitly.com/oauth/authorize",
@@ -65,25 +65,25 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
     cache = TRUE
   )
   if (isTRUE(debug)) {
-    message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login, 
+    message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login,
                    " with access token ", token$credentials$access_token))
   }
-  
+
   .urlshorteneREnv$token <- token
   invisible(token)
 }
 
 
 #' Get Bitly access token
-#' 
+#'
 #' Extract token from \code{bitly_auth} method
-#' 
+#'
 #' @noRd
 #' @keywords internal
 bitly_auth_access <- function() {
 
   if (interactive()) {
-    #setwd("~/Documents/Documents2/R-package-urlshortener")
+    #setwd("~/Documents/R-package-urlshortener")
     bitly_token <- bitly_auth()
   } else {
     #setwd("~/main/")
@@ -92,7 +92,7 @@ bitly_auth_access <- function() {
   }
   .urlshorteneREnv$acc_token <- bitly_token$credentials$access_token
   .urlshorteneREnv$token <- bitly_token
-  
+
   return(.urlshorteneREnv$acc_token)
 }
 

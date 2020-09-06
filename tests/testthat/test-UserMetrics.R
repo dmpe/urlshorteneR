@@ -10,7 +10,7 @@ context("User Metrics")
 test_that("will rollup the click counts to a referrer about a single Bitlink.", {
   expect_gte(bitly_user_metrics_referring_domains(bitlink = "bit.ly/2EUGovW", size = 100)$units, -1)
   umrd2 <- bitly_user_metrics_referring_domains(bitlink = "bit.ly/2EUGovW", size = 100)
-  expect_gte(umrd2$metrics[umrd2$metrics$value == "direct",]$clicks, 1)
+  expect_gte(umrd2$metrics[umrd2$metrics$value == "direct", ]$clicks, 1)
 })
 
 context("Link Metrics")
