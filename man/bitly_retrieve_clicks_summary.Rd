@@ -30,7 +30,7 @@ purposes.}
 }
 \description{
 See \url{https://dev.bitly.com/v4/#operation/getClicksSummaryForBitlink}
-This will return the click counts for a specified Bitlink. This rolls up all the data into a 
+This will return the click counts for a specified Bitlink. This rolls up all the data into a
 single field of clicks.
 }
 \examples{

@@ -12,7 +12,7 @@ bitly_app_details(
 \arguments{
 \item{client_id}{- The client ID of an OAuth app}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

@@ -26,11 +26,11 @@ query data for. pass -1 to return all units of time.}
 \item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for 
 which to pull metrics. Will default to current time.}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \value{
-facet - string | One of "countries" "referrers" "referrers_by_domain" 
+facet - string | One of "countries" "referrers" "referrers_by_domain"
 "referring_domains" "referring_networks" "shorten_counts"
 }
 \description{
@@ -38,7 +38,7 @@ This endpoint will rollup the click counts to a referrer about a single Bitlink.
 }
 \examples{
 \dontrun{
-bitly_user_metrics_referring_domains(bitlink = "cnn.it/2HomWGB", unit = "month", units = -1, 
+bitly_user_metrics_referring_domains(bitlink = "cnn.it/2HomWGB", unit = "month", units = -1,
 size = 100)
 }
 

@@ -29,7 +29,7 @@ which to pull metrics. Will default to current time.}
 
 \item{size}{- string |  Default: 50 | The quantity of items to be be returned}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

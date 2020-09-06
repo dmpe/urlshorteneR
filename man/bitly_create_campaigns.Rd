@@ -21,7 +21,7 @@ bitly_create_campaigns(
 
 \item{name}{- its name}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

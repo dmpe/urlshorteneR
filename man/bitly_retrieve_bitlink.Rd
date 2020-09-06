@@ -9,7 +9,7 @@ bitly_retrieve_bitlink(bitlink = NULL, showRequestURL = FALSE)
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

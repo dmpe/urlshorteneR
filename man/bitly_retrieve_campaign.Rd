@@ -9,7 +9,7 @@ bitly_retrieve_campaign(campaign_guid = NULL, showRequestURL = T)
 \arguments{
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

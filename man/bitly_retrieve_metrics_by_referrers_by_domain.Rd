@@ -26,7 +26,7 @@ which to pull metrics. Will default to current time.}
 \item{units}{- integer | Default: -1 | An integer representing the time units to 
 query data for. pass -1 to return all units of time.}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
@@ -34,7 +34,7 @@ This endpoint will group referrers metrics about a single Bitlink.
 }
 \examples{
 \dontrun{
-bitly_retrieve_metrics_by_referrers_by_domain(bitlink = "bit.ly/DPetrov", unit = "day", 
+bitly_retrieve_metrics_by_referrers_by_domain(bitlink = "bit.ly/DPetrov", unit = "day",
 units = -1, size = 100)
 }
 

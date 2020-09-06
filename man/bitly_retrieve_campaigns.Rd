@@ -9,7 +9,7 @@ bitly_retrieve_campaigns(group_guid = NULL, showRequestURL = T)
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

@@ -16,7 +16,7 @@ bitly_create_bitlink(
 )
 }
 \arguments{
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). 
+\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/).
 Must contain http/https}
 
 \item{domain}{- (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
@@ -46,7 +46,7 @@ purposes.}
 \value{
 id - a short bitly identifier for long_url which is unique to the given account.
 
-long_url - This may not always be equal to the URL requested, as some URL normalization 
+long_url - This may not always be equal to the URL requested, as some URL normalization
 may occur (e.g., due to encoding differences, or case
 differences in the domain). This long_url will always be functionally identical the the request
 parameter.

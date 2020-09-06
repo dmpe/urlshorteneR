@@ -18,7 +18,7 @@ bitly_update_group(
 
 \item{organization_id}{- an optional string parameter | A GUID for a Bitly organization}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

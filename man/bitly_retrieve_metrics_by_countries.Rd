@@ -29,12 +29,12 @@ which to pull metrics. Will default to current time.}
 purposes.}
 }
 \description{
-This endpoint will return metrics about the countries referring click traffic to 
+This endpoint will return metrics about the countries referring click traffic to
 a single Bitlink.
 }
 \examples{
 \dontrun{
-bitly_retrieve_metrics_by_countries(bitlink = "bit.ly/DPetrov", unit = "day", units = -1, 
+bitly_retrieve_metrics_by_countries(bitlink = "bit.ly/DPetrov", unit = "day", units = -1,
 size = 100)
 }
 
