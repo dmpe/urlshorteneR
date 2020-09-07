@@ -28,4 +28,3 @@ test_that("Application provides some metadata", {
   ad <- bitly_app_details()
   expect_equal(dim(ad)[[2]], 4)
 })
-

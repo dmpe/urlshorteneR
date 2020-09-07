@@ -1,11 +1,11 @@
 #' @title Retrieve information for the current authenticated user
 #'
-#' @param showRequestURL - an optional T/F value to whether show URL which has been 
+#' @param showRequestURL - an optional T/F value to whether show URL which has been
 #' build and requested from server. For debug purposes, default FALSE.
-#' 
+#'
 #' @section User:
 #' User operations such as changing your name or fetching basic user information apply only to the authenticated user.
-#' 
+#'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/getUser}
 #'
 #' @return login - the specified bitly login or the login of the authenticated user
@@ -22,7 +22,7 @@
 #' \dontrun{
 #'    ui <- bitly_user_info(showRequestURL = TRUE)
 #' }
-#' 
+#'
 #' @import httr stringr lubridate
 #' @export
 bitly_user_info <- function(showRequestURL = FALSE) {
@@ -43,7 +43,7 @@ bitly_user_info <- function(showRequestURL = FALSE) {
 
 #' @title Update your name and/or default group ID
 #'
-#' @description 
+#' @description
 #' This will overwrite your (display) username and/or group ID you belong to.
 #'
 #' @note Applies only to the authenticated user:
@@ -52,30 +52,30 @@ bitly_user_info <- function(showRequestURL = FALSE) {
 #'
 #' @param default_group_guid - group id to change, see NOTE
 #' @param name - username to change
-#' 
+#'
 #' @inheritParams bitly_user_info
 #' @inheritSection bitly_user_info User
-#' 
+#'
 #' @seealso \url{https://dev.bitly.com/v4/#operation/updateUser}
 #'
 #' @examples
 #' \dontrun{
 #' # this applies only for "free" users
 #' uu <- bitly_update_user(name = "Malc")
-#' 
+#'
 #' # if you are premium user, you can additionally adjust your group id
 #' uug <- bitly_update_user(name = "Malc", default_group_guid = "TestGroupID")
 #' }
-#' 
+#'
 #' @import httr jsonlite lubridate
-#' 
+#'
 #' @export
 bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
   if (!is_bitly_user_premium_holder()) {
     default_group_guid <- NULL
-    warning("Your account is not premium. Please report bugs in GitHub if this is not true.", 
+    warning("Your account is not premium. Please report bugs in GitHub if this is not true.",
             "We will now skip changing group guid.")
   }
 
@@ -88,7 +88,7 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
   )
   df_user_info$created <- ymd_hms(df_user_info$created, tz = "UTC")
   df_user_info$modified <- ymd_hms(df_user_info$modified, tz = "UTC")
-  
+
   return(df_user_info)
 }
 
@@ -103,14 +103,14 @@ is_bitly_user_premium_holder <- function() {
   return(user_profile$is_sso_user[[1]])
 }
 
-#' Retrieve OAuth App 
-#' 
+#' Retrieve OAuth App
+#'
 #' Retrieve details for the provided OAuth App client ID
 #'
 #' @param client_id - The client ID of an OAuth app
-#' 
+#'
 #' @inheritParams bitly_user_info
-#' 
+#'
 #' @export
 bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
   oauth_app_details <- paste0("https://api-ssl.bitly.com/v4/apps/", client_id)
@@ -119,6 +119,6 @@ bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0e
 
   df_app_details <- doRequest("GET", url = oauth_app_details, queryParameters = query, showURL = showRequestURL)
   df_app_details <- data.frame(df_app_details, stringsAsFactors = FALSE)
-  
+
   return(df_app_details)
 }

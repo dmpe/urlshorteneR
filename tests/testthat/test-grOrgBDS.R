@@ -88,10 +88,10 @@ test_that("bitly_retrieve_links_grouped retrieves bitly links by group, deeplink
   ui  <- bitly_user_info()
   rlbg <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], showRequestURL = F, archived = "on")
   expect_equal(length(rlbg$links), 0)
-  
+
   rlbg <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], deeplinks = "off")
   expect_gte(rlbg$pagination$total, 8)
-  
+
   rlbg_cnn <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1], search_query = "News")
   expect_gte(rlbg_cnn$pagination$total, 1)
 })

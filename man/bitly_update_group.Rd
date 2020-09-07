@@ -4,8 +4,12 @@
 \alias{bitly_update_group}
 \title{Update a Group}
 \usage{
-bitly_update_group(group_id = NA, name = NA, organization_id = NA,
-  showRequestURL = F)
+bitly_update_group(
+  group_id = NA,
+  name = NA,
+  organization_id = NA,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}
@@ -14,7 +18,7 @@ bitly_update_group(group_id = NA, name = NA, organization_id = NA,
 
 \item{organization_id}{- an optional string parameter | A GUID for a Bitly organization}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

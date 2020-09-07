@@ -4,15 +4,18 @@
 \alias{bitly_update_cust_bitlink}
 \title{Update Custom Bitlink (Premium)}
 \usage{
-bitly_update_cust_bitlink(custom_bitlink = NULL, bitlink_id = NULL,
-  showRequestURL = FALSE)
+bitly_update_cust_bitlink(
+  custom_bitlink = NULL,
+  bitlink_id = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
 
 \item{bitlink_id}{- string}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

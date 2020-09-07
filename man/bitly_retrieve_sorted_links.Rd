@@ -4,9 +4,15 @@
 \alias{bitly_retrieve_sorted_links}
 \title{Retrieve Sorted Bitlinks for Group}
 \usage{
-bitly_retrieve_sorted_links(group_id = NA, to_sort_by = "clicks",
-  unit = "day", units = -1, unit_reference = NULL, size = 50,
-  showRequestURL = F)
+bitly_retrieve_sorted_links(
+  group_id = NA,
+  to_sort_by = "clicks",
+  unit = "day",
+  units = -1,
+  unit_reference = NULL,
+  size = 50,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}
@@ -23,7 +29,7 @@ which to pull metrics. Will default to current time.}
 
 \item{size}{- string |  Default: 50 | The quantity of items to be be returned}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

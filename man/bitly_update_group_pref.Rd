@@ -4,15 +4,14 @@
 \alias{bitly_update_group_pref}
 \title{Update Group Preferences}
 \usage{
-bitly_update_group_pref(group_id = NA, domain_pref = NA,
-  showRequestURL = F)
+bitly_update_group_pref(group_id = NA, domain_pref = NA, showRequestURL = F)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{domain_pref}{- string}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

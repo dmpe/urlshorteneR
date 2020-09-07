@@ -8,8 +8,8 @@ library(urlshorteneR)
 context("Links Bit.ly")
 
 test_that("method creates a Bitlink based on a long URL.", {
-  ll <- bitly_create_bitlink(long_url = paste0("https://www.google.com/", stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")), 
-                             title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]"), 
+  ll <- bitly_create_bitlink(long_url = paste0("https://www.google.com/", stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")),
+                             title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]"),
                              tags = list("msft", "apple"), showRequestURL = T)
   expect_equal(dim(ll)[[2]], 8)
 })
@@ -37,4 +37,3 @@ test_that("Given a bitly URL or hash (or multiple), returns the target (long) UR
   expect_equal(dim(ls)[[2]], 6)
   expect_named(ls2, c("created_at", "id", "link", "long_url", "archived", "references"))
 })
-

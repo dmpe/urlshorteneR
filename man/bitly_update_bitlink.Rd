@@ -4,13 +4,22 @@
 \alias{bitly_update_bitlink}
 \title{Update a Bitlink}
 \usage{
-bitly_update_bitlink(bitlink = NULL, archived = NULL, tags = NULL,
-  showRequestURL = FALSE, created_at = NULL, title = NULL,
-  created_by = NULL, long_url = NULL, client_id = NULL,
-  custom_bitlinks = NULL, link = NULL, id = NULL,
-  deeplinks = list(bitlink = NULL, install_url = NULL, created = NULL,
-  modified = NULL, app_uri_path = NULL, install_type = NULL, app_guid =
-  NULL, guid = NULL, os = NULL))
+bitly_update_bitlink(
+  bitlink = NULL,
+  archived = NULL,
+  tags = NULL,
+  showRequestURL = FALSE,
+  created_at = NULL,
+  title = NULL,
+  created_by = NULL,
+  long_url = NULL,
+  client_id = NULL,
+  custom_bitlinks = NULL,
+  link = NULL,
+  id = NULL,
+  deeplinks = list(bitlink = NULL, install_url = NULL, created = NULL, modified = NULL,
+    app_uri_path = NULL, install_type = NULL, app_guid = NULL, guid = NULL, os = NULL)
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
@@ -28,7 +37,7 @@ purposes.}
 
 \item{created_by}{- update user}
 
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). 
+\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/).
 Must contain http/https}
 
 \item{client_id}{- The client ID of an OAuth app}
@@ -54,7 +63,7 @@ bitly_update_bitlink(bitlink = "on.natgeo.com/1bEVhwE")
 
 ## manyHashes <- list("bit.ly/DPetrov", "bit.ly/1QU8CFm", "bit.ly/1R1LPSE", "bit.ly/1LNqqva")
 ## for (u in 1:length(manyHashes)) {
-##   print(bitly_update_bitlink(bitlink = manyHashes[[u]], 
+##   print(bitly_update_bitlink(bitlink = manyHashes[[u]],
 ##                 title = stri_rand_strings(1, 8, pattern = "[A-Za-z0-9]")))
 ## }
 }

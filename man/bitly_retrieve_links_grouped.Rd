@@ -4,12 +4,25 @@
 \alias{bitly_retrieve_links_grouped}
 \title{Retrieve Bitlinks by Group}
 \usage{
-bitly_retrieve_links_grouped(group_id = NA, keyword = NULL,
-  search_query = NULL, created_before = NULL, created_after = NULL,
-  modified_after = NULL, archived = "off", deeplinks = "both",
-  domain_deeplinks = "both", campaign_guid = NULL,
-  channel_guid = NULL, custom_bitlink = "both", tags = NULL,
-  encoding_login = NULL, page = 1, size = 50, showRequestURL = F)
+bitly_retrieve_links_grouped(
+  group_id = NA,
+  keyword = NULL,
+  search_query = NULL,
+  created_before = NULL,
+  created_after = NULL,
+  modified_after = NULL,
+  archived = "off",
+  deeplinks = "both",
+  domain_deeplinks = "both",
+  campaign_guid = NULL,
+  channel_guid = NULL,
+  custom_bitlink = "both",
+  tags = NULL,
+  encoding_login = NULL,
+  page = 1,
+  size = 50,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}
@@ -47,7 +60,7 @@ can be provided, overrides all other parameters}
 
 \item{size}{- string |  Default: 50 | The quantity of items to be be returned}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

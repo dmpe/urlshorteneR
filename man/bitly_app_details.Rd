@@ -4,14 +4,15 @@
 \alias{bitly_app_details}
 \title{Retrieve OAuth App}
 \usage{
-
-  bitly_app_details(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-  showRequestURL = F)
+bitly_app_details(
+  client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+  showRequestURL = F
+)
 }
 \arguments{
 \item{client_id}{- The client ID of an OAuth app}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

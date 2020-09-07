@@ -4,9 +4,14 @@
 \alias{bitly_retrieve_clicks_summary}
 \title{Get Clicks Summary for a Bitlink}
 \usage{
-bitly_retrieve_clicks_summary(bitlink = NULL, size = 50,
-  unit_reference = NULL, unit = NULL, units = -1,
-  showRequestURL = FALSE)
+bitly_retrieve_clicks_summary(
+  bitlink = NULL,
+  size = 50,
+  unit_reference = NULL,
+  unit = NULL,
+  units = -1,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
@@ -25,7 +30,7 @@ purposes.}
 }
 \description{
 See \url{https://dev.bitly.com/v4/#operation/getClicksSummaryForBitlink}
-This will return the click counts for a specified Bitlink. This rolls up all the data into a 
+This will return the click counts for a specified Bitlink. This rolls up all the data into a
 single field of clicks.
 }
 \examples{

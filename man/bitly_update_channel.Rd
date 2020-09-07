@@ -4,9 +4,17 @@
 \alias{bitly_update_channel}
 \title{Update A Channel (Premium)}
 \usage{
-bitly_update_channel(channel_guid = NULL, group_guid = NULL,
-  guid = NULL, name = NULL, modified = NULL, created = NULL,
-  campaign_guid = NULL, bitlink_id = NULL, showRequestURL = T)
+bitly_update_channel(
+  channel_guid = NULL,
+  group_guid = NULL,
+  guid = NULL,
+  name = NULL,
+  modified = NULL,
+  created = NULL,
+  campaign_guid = NULL,
+  bitlink_id = NULL,
+  showRequestURL = T
+)
 }
 \arguments{
 \item{channel_guid}{- GUID of a target channel}
@@ -25,7 +33,7 @@ bitly_update_channel(channel_guid = NULL, group_guid = NULL,
 
 \item{bitlink_id}{- string}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

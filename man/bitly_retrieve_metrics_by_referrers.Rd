@@ -4,9 +4,14 @@
 \alias{bitly_retrieve_metrics_by_referrers}
 \title{Get Metrics for a Bitlink by referrers}
 \usage{
-bitly_retrieve_metrics_by_referrers(bitlink = NULL, size = 100,
-  unit = NULL, unit_reference = NULL, units = -1,
-  showRequestURL = FALSE)
+bitly_retrieve_metrics_by_referrers(
+  bitlink = NULL,
+  size = 100,
+  unit = NULL,
+  unit_reference = NULL,
+  units = -1,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
@@ -24,12 +29,12 @@ which to pull metrics. Will default to current time.}
 purposes.}
 }
 \description{
-This endpoint will return metrics about the referrers referring click traffic to 
+This endpoint will return metrics about the referrers referring click traffic to
 a single Bitlink.
 }
 \examples{
 \dontrun{
-bitly_retrieve_metrics_by_referrers(bitlink = "bit.ly/DPetrov", unit = "day", 
+bitly_retrieve_metrics_by_referrers(bitlink = "bit.ly/DPetrov", unit = "day",
 units = -1, size = 100)
 }
 

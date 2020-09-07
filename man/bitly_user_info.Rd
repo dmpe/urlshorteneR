@@ -7,7 +7,7 @@
 bitly_user_info(showRequestURL = FALSE)
 }
 \arguments{
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \value{

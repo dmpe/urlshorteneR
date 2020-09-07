@@ -4,15 +4,18 @@
 \alias{bitly_retrieve_channels}
 \title{Retrieve channels (Premium)}
 \usage{
-bitly_retrieve_channels(group_guid = NULL, campaign_guid = NULL,
-  showRequestURL = T)
+bitly_retrieve_channels(
+  group_guid = NULL,
+  campaign_guid = NULL,
+  showRequestURL = T
+)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

@@ -4,8 +4,12 @@
 \alias{bitly_shorten_link}
 \title{Shorten a Link}
 \usage{
-bitly_shorten_link(domain = "bit.ly", group_guid = NULL,
-  long_url = NULL, showRequestURL = FALSE)
+bitly_shorten_link(
+  domain = "bit.ly",
+  group_guid = NULL,
+  long_url = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{domain}{- (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
@@ -15,7 +19,7 @@ the default settings.}
 
 \item{group_guid}{- a GUID for a Bitly group}
 
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/). 
+\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/).
 Must contain http/https}
 
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug

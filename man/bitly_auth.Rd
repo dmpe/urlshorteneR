@@ -4,8 +4,11 @@
 \alias{bitly_auth}
 \title{Assign bit.ly API tokens using OAuth2.0}
 \usage{
-bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-  secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F)
+bitly_auth(
+  key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
+  secret = "f9c6a3b18968e991e35f466e90c7d883cc176073",
+  debug = F
+)
 }
 \arguments{
 \item{key}{- Client ID}

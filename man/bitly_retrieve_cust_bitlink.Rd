@@ -4,13 +4,12 @@
 \alias{bitly_retrieve_cust_bitlink}
 \title{Retrieve Custom Bitlink (Premium)}
 \usage{
-bitly_retrieve_cust_bitlink(custom_bitlink = NULL,
-  showRequestURL = FALSE)
+bitly_retrieve_cust_bitlink(custom_bitlink = NULL, showRequestURL = FALSE)
 }
 \arguments{
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

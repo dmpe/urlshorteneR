@@ -9,7 +9,7 @@ bitly_retrieve_group_pref(group_id = NA, showRequestURL = F)
 \arguments{
 \item{group_id}{- the group id the user belongs to}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

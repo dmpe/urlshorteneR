@@ -4,8 +4,13 @@
 \alias{bitly_create_campaigns}
 \title{Create Campaign (Premium)}
 \usage{
-bitly_create_campaigns(group_guid = NULL, channel_guids = NULL,
-  description = NULL, name = NULL, showRequestURL = T)
+bitly_create_campaigns(
+  group_guid = NULL,
+  channel_guids = NULL,
+  description = NULL,
+  name = NULL,
+  showRequestURL = T
+)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}
@@ -16,7 +21,7 @@ bitly_create_campaigns(group_guid = NULL, channel_guids = NULL,
 
 \item{name}{- its name}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{

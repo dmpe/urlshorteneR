@@ -35,6 +35,7 @@ vgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, show
 
   return(df_link_shorten$shorturl)
 }
+
 #' @title Expand a short URL to a longer one
 #'
 #' @inheritParams vgd_LinksShorten

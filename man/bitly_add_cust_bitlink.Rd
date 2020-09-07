@@ -4,15 +4,18 @@
 \alias{bitly_add_cust_bitlink}
 \title{Add Custom Bitlink (Premium)}
 \usage{
-bitly_add_cust_bitlink(bitlink_id = NULL, custom_bitlink = NULL,
-  showRequestURL = FALSE)
+bitly_add_cust_bitlink(
+  bitlink_id = NULL,
+  custom_bitlink = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
 \item{bitlink_id}{- string}
 
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
@@ -20,10 +23,10 @@ Add a Keyword to a Bitlink
 }
 \section{Custom Bitlinks}{
 
-Custom Bitlinks have both a branded short domain (BSD) AND a customized backend. 
-For example, bit.ly/bitlinks would not be considered a Custom Bitlink because it 
-does not have a branded short domain. es.pn/2yxklu would not be considered a custom 
-Bitlink because while it has a branded short domain, it doesn't have a customized 
+Custom Bitlinks have both a branded short domain (BSD) AND a customized backend.
+For example, bit.ly/bitlinks would not be considered a Custom Bitlink because it
+does not have a branded short domain. es.pn/2yxklu would not be considered a custom
+Bitlink because while it has a branded short domain, it doesn't have a customized
 backhalf. An example of a link that would live in this section is es.pn/SuperBowl
 }
 

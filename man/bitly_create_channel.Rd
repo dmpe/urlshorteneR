@@ -4,9 +4,16 @@
 \alias{bitly_create_channel}
 \title{Create channel (Premium)}
 \usage{
-bitly_create_channel(group_guid = NULL, guid = NULL, name = NULL,
-  modified = NULL, created = NULL, campaign_guid = NULL,
-  bitlink_id = NULL, showRequestURL = T)
+bitly_create_channel(
+  group_guid = NULL,
+  guid = NULL,
+  name = NULL,
+  modified = NULL,
+  created = NULL,
+  campaign_guid = NULL,
+  bitlink_id = NULL,
+  showRequestURL = T
+)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}
@@ -23,7 +30,7 @@ bitly_create_channel(group_guid = NULL, guid = NULL, name = NULL,
 
 \item{bitlink_id}{- string}
 
-\item{showRequestURL}{- an optional T/F value to whether show URL which has been 
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
