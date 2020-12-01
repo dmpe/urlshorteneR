@@ -2,6 +2,12 @@
 # Isgd_api_version <- "v2019"
 .urlshorteneREnv <- new.env(parent = emptyenv())
 
+#' @title is_token
+#' @description is the object a token
+#' @noRd
+#' @keywords Internal
+is_token <- function(x) inherits(x, "Token")
+
 #' @title Assign bit.ly API tokens using OAuth2.0
 #'
 #' @param debug - whether to print additional debug messages
@@ -36,6 +42,7 @@
 #'
 #' @param key - Client ID
 #' @param secret - Client Secret
+#' @param token - a \code{Token} object or a file path to an rds file containing a token.
 #'
 #' @seealso See \url{https://dev.bitly.com/v4_documentation.html}
 #'
@@ -50,26 +57,39 @@
 #'
 #' # default variant
 #' bitly_token <- bitly_auth()
+#' saveRDS(bitly_token, "bitly_token.rds")
+#' # for non-interactive use:
+#' bitly_auth(token = "bitly_token.rds")
 #' }
 #'
 #' @import httr
 #' @export
 bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-                      secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F) {
-  token <- httr::oauth2.0_token(
-    httr::oauth_endpoint(
-      authorize = "https://bitly.com/oauth/authorize",
-        access = "https://api-ssl.bitly.com/oauth/access_token"
-    ),
-    httr::oauth_app("bitly", key = key, secret = secret),
-    cache = TRUE
-  )
+                      secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F, token) {
+  if (!missing(token)) {
+    if (is_token(token)) {
+      token <- readRDS(token)
+      if (!is_token(token)) stop("Invalid token")
+    }
+  } else if (interactive()) {
+    token <- httr::oauth2.0_token(
+      httr::oauth_endpoint(
+        authorize = "https://bitly.com/oauth/authorize",
+          access = "https://api-ssl.bitly.com/oauth/access_token"
+      ),
+      httr::oauth_app("bitly", key = key, secret = secret),
+      cache = TRUE
+    )
+  } else {
+    stop("Save bit.ly token as rds and pass to token to run non-interactively.")
+  }
   if (isTRUE(debug)) {
     message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login,
                    " with access token ", token$credentials$access_token))
   }
-
+  .urlshorteneREnv$access_token <- token$credentials$access_token
   .urlshorteneREnv$token <- token
+   
   invisible(token)
 }
 
@@ -82,16 +102,17 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 #' @keywords internal
 bitly_auth_access <- function() {
 
-  if (interactive()) {
+  
+  if (is.null(.urlshorteneREnv$token) && interactive()) {
     #setwd("~/Documents/R-package-urlshortener")
-    bitly_token <- bitly_auth()
-  } else {
+    .urlshorteneREnv$token <- bitly_auth()
+  } else if (is.null(.urlshorteneREnv$token)) {
     #setwd("~/main/")
     #print(getwd())
-    bitly_token <- readRDS("../bitly_local_token.rds")
-  }
-  .urlshorteneREnv$acc_token <- bitly_token$credentials$access_token
-  .urlshorteneREnv$token <- bitly_token
+    .urlshorteneREnv$token <- readRDS("../bitly_local_token.rds")
+  } 
+  .urlshorteneREnv$acc_token <- .urlshorteneREnv$token$credentials$access_token
+  
 
   return(.urlshorteneREnv$acc_token)
 }
