@@ -122,3 +122,21 @@ bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0e
 
   return(df_app_details)
 }
+
+#' @title bitly_rate_limits
+#' @description Provides bit.ly rate limits by endpoint. See \url{https://dev.bitly.com/api-reference#getPlatformLimits}
+#' @inheritParams bitly_user_info
+#' @return \code{data.frame} of end points and their rate limits by action
+#' @export
+
+bitly_rate_limits <- function(showRequestURL = F) {
+  query <- list(access_token = bitly_auth_access())
+  .url <- "https://api-ssl.bitly.com/v4/user/platform_limits"
+  
+  limits <- doRequest("GET",
+                      url = .url,
+                      queryParameters = query,
+                      showURL = showRequestURL)
+  
+  return(limits[[1]])
+}
