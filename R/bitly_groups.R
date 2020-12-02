@@ -295,12 +295,8 @@ bitly_retrieve_group_shorten_counts <- function(group_id = NA, showRequestURL = 
 #' rg <- bitly_retrieve_groups("") # will still work ok
 #' }
 #' @export
-bitly_retrieve_groups <- function(organization_id = NA, showRequestURL = F) {
+bitly_retrieve_groups <- function(organization_id = NULL, showRequestURL = F) {
   groups_url <- "https://api-ssl.bitly.com/v4/groups/"
-  
-  if (!is.string(organization_id)) {
-    stop("organization_id must not be empty string, NA or NULL")
-  }
   
   query <- list(access_token = bitly_auth_access(), organization_guid = organization_id)
   
