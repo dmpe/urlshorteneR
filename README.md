@@ -38,6 +38,7 @@ GET https://api-ssl.bitly.com/v4/apps/{client_id} | :heavy_check_mark:
 ------------- | -------------
 PATCH https://api-ssl.bitly.com/v4/user | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/user | :heavy_check_mark: 
+GET https://api-ssl.bitly.com/v4/user/platform_limits | :heavy_check_mark: 
 
 <https://dev.bitly.com/v4/#tag/Groups> DONE | Implemented :heavy_check_mark:
 ------------- | -------------

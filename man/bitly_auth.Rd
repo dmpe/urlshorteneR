@@ -7,7 +7,8 @@
 bitly_auth(
   key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
   secret = "f9c6a3b18968e991e35f466e90c7d883cc176073",
-  debug = F
+  debug = F,
+  token
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ bitly_auth(
 \item{secret}{- Client Secret}
 
 \item{debug}{- whether to print additional debug messages}
+
+\item{token}{- a \code{Token} object or a file path to an rds file containing a token.}
 }
 \description{
 There are 2 ways of how you can authenticate using this package.
@@ -60,6 +63,9 @@ bitly_token <-
 
 # default variant
 bitly_token <- bitly_auth()
+saveRDS(bitly_token, "bitly_token.rds")
+# for non-interactive use:
+bitly_auth(token = "bitly_token.rds")
 }
 
 }

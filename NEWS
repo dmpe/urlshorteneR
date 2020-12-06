@@ -2,6 +2,11 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
+December 2020  - Allow bitly_retrieve_groups to retrieve the "general" group list
+               - Add bitly_rate_limits 
+               - Add ability to read stored tokens and to work non-interactively #19 
+               - Upgrade all dependencies for packages
+
 September 2020 - Add support for RStudio Addins
                - Upgrade all dependencies for packages
                
