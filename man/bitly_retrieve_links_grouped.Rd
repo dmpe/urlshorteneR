@@ -35,19 +35,19 @@ bitly_retrieve_links_grouped(
 
 \item{created_after}{- Timestamp as an integer unix epoch}
 
-\item{modified_after}{- Timestamp as an integer unix epoch, 
+\item{modified_after}{- Timestamp as an integer unix epoch,
 see \code{\link[lubridate]{as_datetime}} or \code{anytime}'s \code{as_datetime}}
 
 \item{archived}{- string | Default: "off" | Enum:"on" "off" "both" | Whether or not to include archived bitlinks}
 
 \item{deeplinks}{- string | Default: "both" | Enum:"on" "off" "both" | Filter to only Bitlinks that contain deeplinks}
 
-\item{domain_deeplinks}{- string | Default: "both" | Enum:"on" "off" "both" | Filter to only Bitlinks 
+\item{domain_deeplinks}{- string | Default: "both" | Enum:"on" "off" "both" | Filter to only Bitlinks
 that contain deeplinks configured with a custom domain}
 
 \item{campaign_guid}{- Filter to return only links for the given campaign GUID, can be provided}
 
-\item{channel_guid}{- Filter to return only links for the given channel GUID, 
+\item{channel_guid}{- Filter to return only links for the given channel GUID,
 can be provided, overrides all other parameters}
 
 \item{custom_bitlink}{- string | Default: "both" | Enum:"on" "off" "both"}

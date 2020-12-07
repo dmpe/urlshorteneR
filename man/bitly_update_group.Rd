@@ -34,7 +34,7 @@ shorten a link, it will be on behalf of a user and a group.
 \examples{
 \dontrun{
 ui <- bitly_user_info(showRequestURL = TRUE)
-up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "New Group Name", 
+up_group <- bitly_update_group(group_id = ui$default_group_guid[1], name = "New Group Name",
 organization_id = "asd")
 }
 }

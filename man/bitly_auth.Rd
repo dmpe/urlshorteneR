@@ -70,5 +70,5 @@ bitly_auth(token = "bitly_token.rds")
 
 }
 \seealso{
-See \url{https://dev.bitly.com/v4_documentation.html}
+See \url{https://dev.bitly.com/api-reference}
 }

@@ -20,7 +20,7 @@ bitly_retrieve_metrics_by_referrers(
 
 \item{unit}{- A unit of time}
 
-\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for 
+\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for
 which to pull metrics. Will default to current time.}
 
 \item{units}{- An integer representing the time units to query data for. pass -1 to return all units of time.}

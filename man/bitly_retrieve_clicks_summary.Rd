@@ -18,7 +18,7 @@ bitly_retrieve_clicks_summary(
 
 \item{size}{- The quantity of items to be be returned}
 
-\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for 
+\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for
 which to pull metrics. Will default to current time.}
 
 \item{unit}{- A unit of time}

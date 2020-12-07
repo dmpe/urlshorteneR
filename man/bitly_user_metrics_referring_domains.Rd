@@ -18,12 +18,12 @@ bitly_user_metrics_referring_domains(
 
 \item{unit}{- string | Default: "day", Enum: "minute" "hour" "day" "week" "month" | A unit of time}
 
-\item{units}{- integer | Default: -1 | An integer representing the time units to 
+\item{units}{- integer | Default: -1 | An integer representing the time units to
 query data for. pass -1 to return all units of time.}
 
 \item{size}{- string |  Default: 50 | The quantity of items to be be returned}
 
-\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for 
+\item{unit_reference}{- string | An ISO-8601 timestamp, indicating the most recent time for
 which to pull metrics. Will default to current time.}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
