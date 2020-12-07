@@ -28,5 +28,5 @@ rg <- bitly_retrieve_groups("") # will still work ok
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getGroups}
+\url{https://dev.bitly.com/api-reference#getGroups}
 }

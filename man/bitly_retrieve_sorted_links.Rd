@@ -51,5 +51,5 @@ rg <- bitly_retrieve_sorted_links(group_id = ui$default_group_guid[1])
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getSortedBitlinks}
+\url{https://dev.bitly.com/api-reference#getSortedBitlinks}
 }

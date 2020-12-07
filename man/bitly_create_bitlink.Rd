@@ -54,8 +54,8 @@ parameter.
 link - an bitly id with http(s) prefix
 }
 \description{
-See \url{https://dev.bitly.com/v4/#section/Rate-Limiting} and
-\url{https://dev.bitly.com/v4/#operation/createFullBitlink}
+See \url{https://dev.bitly.com/docs/getting-started/rate-limits} and
+\url{https://dev.bitly.com/api-reference#createFullBitlink}
 Convert a long url to a Bitlink and set additional parameters.
 }
 \note{

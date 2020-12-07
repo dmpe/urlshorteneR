@@ -26,7 +26,7 @@ Must contain http/https}
 purposes.}
 }
 \description{
-See \url{https://dev.bitly.com/v4/#operation/createBitlink}
+See \url{https://dev.bitly.com/api-reference#createBitlink}
 Convert a long url to a Bitlink
 }
 \examples{

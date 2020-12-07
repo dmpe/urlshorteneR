@@ -38,5 +38,5 @@ uug <- bitly_update_user(name = "Malc", default_group_guid = "TestGroupID")
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/updateUser}
+\url{https://dev.bitly.com/api-reference#updateUser}
 }

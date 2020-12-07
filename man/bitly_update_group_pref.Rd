@@ -31,5 +31,5 @@ group_pref <- bitly_update_group_pref(group_id = ui$default_group_guid[1])
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/updateGroupPreferences}
+\url{https://dev.bitly.com/api-reference#updateGroupPreferences}
 }

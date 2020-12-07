@@ -29,5 +29,5 @@ rg <- bitly_retrieve_tags(group_id = ui$default_group_guid[1])
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getGroupTags}
+\url{https://dev.bitly.com/api-reference#getGroupTags}
 }

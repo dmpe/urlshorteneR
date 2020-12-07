@@ -44,7 +44,7 @@ is_token <- function(x) inherits(x, "Token")
 #' @param secret - Client Secret
 #' @param token - a \code{Token} object or a file path to an rds file containing a token.
 #'
-#' @seealso See \url{https://dev.bitly.com/v4_documentation.html}
+#' @seealso See \url{https://dev.bitly.com/api-reference}
 #'
 #' @examples
 #' \dontrun{
@@ -89,7 +89,7 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
   }
   .urlshorteneREnv$access_token <- token$credentials$access_token
   .urlshorteneREnv$token <- token
-   
+
   invisible(token)
 }
 
@@ -102,7 +102,7 @@ bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
 #' @keywords internal
 bitly_auth_access <- function() {
 
-  
+
   if (is.null(.urlshorteneREnv$token) && interactive()) {
     #setwd("~/Documents/R-package-urlshortener")
     .urlshorteneREnv$token <- bitly_auth()
@@ -110,9 +110,9 @@ bitly_auth_access <- function() {
     #setwd("~/main/")
     #print(getwd())
     .urlshorteneREnv$token <- readRDS("../bitly_local_token.rds")
-  } 
+  }
   .urlshorteneREnv$acc_token <- .urlshorteneREnv$token$credentials$access_token
-  
+
 
   return(.urlshorteneREnv$acc_token)
 }

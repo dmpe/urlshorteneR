@@ -54,5 +54,5 @@ uc <- bitly_update_channel(channel_guid = "testing", group_guid = "", name = "na
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/updateChannel}
+\url{https://dev.bitly.com/api-reference#updateChannel}
 }

@@ -25,5 +25,5 @@ bitly_retrieve_destination_metrics(custom_bitlink = "es.pn/SuperBowl")
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getCustomBitlinkMetricsByDestination}
+\url{https://dev.bitly.com/api-reference#getCustomBitlinkMetricsByDestination}
 }

@@ -32,5 +32,5 @@ rg <- bitly_retrieve_group_click_metrics_by_countries(group_id = ui$default_grou
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getGroupMetricsByCountries}
+\url{https://dev.bitly.com/api-reference#getGroupMetricsByCountries}
 }

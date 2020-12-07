@@ -48,5 +48,5 @@ cc <- bitly_update_campaign(
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/updateCampaign}
+\url{https://dev.bitly.com/api-reference#updateCampaign}
 }

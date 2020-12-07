@@ -11,5 +11,5 @@ BSDs is an acronym for branded short domains. This is a custom 15
 character or less domain for bitlinks. This allows you to customize the domain to your brand.
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getBSDs}
+\url{https://dev.bitly.com/api-reference#getBSDs}
 }

@@ -26,5 +26,5 @@ ro <- bitly_retrieve_org(organization_id = all_orgs$guid)
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getOrganization}
+\url{https://dev.bitly.com/api-reference#getOrganization}
 }

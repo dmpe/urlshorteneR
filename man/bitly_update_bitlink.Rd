@@ -51,7 +51,7 @@ Must contain http/https}
 \item{deeplinks}{- string | Default: "both" | Enum:"on" "off" "both" | Filter to only Bitlinks that contain deeplinks}
 }
 \description{
-See \url{https://dev.bitly.com/v4/#operation/updateBitlink}
+See \url{https://dev.bitly.com/api-reference#updateBitlink}
 Update fields in the Bitlink
 }
 \examples{

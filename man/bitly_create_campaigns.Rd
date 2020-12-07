@@ -45,5 +45,5 @@ cc <- bitly_create_campaigns(
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/createCampaign}
+\url{https://dev.bitly.com/api-reference#createCampaign}
 }

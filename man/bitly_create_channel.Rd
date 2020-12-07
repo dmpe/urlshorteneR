@@ -51,5 +51,5 @@ Bitly Campaigns allows you to build and manage omnichannel campaigns.
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/createChannel}
+\url{https://dev.bitly.com/api-reference#createChannel}
 }

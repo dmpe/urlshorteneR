@@ -29,5 +29,5 @@ group_pref <- bitly_retrieve_group_pref(group_id = ui$default_group_guid[1])
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getGroupPreferences}
+\url{https://dev.bitly.com/api-reference#getGroupPreferences}
 }

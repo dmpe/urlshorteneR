@@ -37,5 +37,5 @@ bitly_add_cust_bitlink(custom_bitlink = "es.pn/SuperBowl", bitlink_id = "")
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/addCustomBitlink}
+\url{https://dev.bitly.com/api-reference#addCustomBitlink}
 }

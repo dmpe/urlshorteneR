@@ -44,5 +44,5 @@ User operations such as changing your name or fetching basic user information ap
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getUser}
+\url{https://dev.bitly.com/api-reference#getUser}
 }

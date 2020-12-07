@@ -16,7 +16,7 @@
 #' @inheritParams bitly_retrieve_group
 #' @inheritParams bitly_retrieve_bitlinks_by_groups
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/createCampaign}
+#' @seealso \url{https://dev.bitly.com/api-reference#createCampaign}
 #'
 #' @examples
 #' \dontrun{
@@ -56,7 +56,7 @@ bitly_create_campaigns <- function(group_guid = NULL, channel_guids = NULL, desc
 #' @inheritParams bitly_retrieve_group
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getCampaigns}
+#' @seealso \url{https://dev.bitly.com/api-reference#getCampaigns}
 #'
 #' @examples
 #' \dontrun{
@@ -95,7 +95,7 @@ bitly_retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T) {
 #' @param created	- string | ISO TIMESTAMP
 #' @param campaign_guid - string | A GUID for a Bitly campaign
 #' @param guid - ID for a channel
-#' @seealso \url{https://dev.bitly.com/v4/#operation/createChannel}
+#' @seealso \url{https://dev.bitly.com/api-reference#createChannel}
 #'
 #' @examples
 #' \dontrun{
@@ -138,7 +138,7 @@ bitly_create_channel <- function(group_guid = NULL, guid = NULL, name = NULL, mo
 #' @inheritParams bitly_retrieve_group
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getChannels}
+#' @seealso \url{https://dev.bitly.com/api-reference#getChannels}
 #'
 #' @examples
 #' \dontrun{
@@ -172,7 +172,7 @@ bitly_retrieve_channels <- function(group_guid = NULL, campaign_guid = NULL, sho
 #' @inheritParams bitly_retrieve_group
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getCampaign}
+#' @seealso \url{https://dev.bitly.com/api-reference#getCampaign}
 #'
 #' @examples
 #' \dontrun{
@@ -207,7 +207,7 @@ bitly_retrieve_campaign <- function(campaign_guid = NULL, showRequestURL = T) {
 #' @inheritSection bitly_create_campaigns Campaigns
 #' @inheritParams bitly_retrieve_bitlinks_by_groups
 #' @param channel_guid - GUID of a target channel
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getChannel}
+#' @seealso \url{https://dev.bitly.com/api-reference#getChannel}
 #'
 #' @examples
 #' \dontrun{
@@ -243,7 +243,7 @@ bitly_retrieve_channel <- function(channel_guid = NULL, showRequestURL = T) {
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
 #' @inheritParams bitly_create_channel
-#' @seealso \url{https://dev.bitly.com/v4/#operation/updateCampaign}
+#' @seealso \url{https://dev.bitly.com/api-reference#updateCampaign}
 #'
 #' @examples
 #' \dontrun{
@@ -288,7 +288,7 @@ bitly_update_campaign <- function(campaign_guid = NULL, group_guid = NULL, chann
 #' @inheritParams bitly_retrieve_group
 #' @inheritParams bitly_retrieve_bitlinks_by_groups
 #' @inheritParams bitly_retrieve_channel
-#' @seealso \url{https://dev.bitly.com/v4/#operation/updateChannel}
+#' @seealso \url{https://dev.bitly.com/api-reference#updateChannel}
 #'
 #' @examples
 #' \dontrun{

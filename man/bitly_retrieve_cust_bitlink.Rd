@@ -22,5 +22,5 @@ bitly_retrieve_cust_bitlink(custom_bitlink = "es.pn/SuperBowl")
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getCustomBitlink}
+\url{https://dev.bitly.com/api-reference#getCustomBitlink}
 }

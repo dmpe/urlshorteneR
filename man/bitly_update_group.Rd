@@ -39,7 +39,7 @@ organization_id = "asd")
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/updateGroup}
+\url{https://dev.bitly.com/api-reference#updateGroup}
 
 [bitly_update_user()]
 }

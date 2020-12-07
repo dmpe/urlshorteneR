@@ -30,5 +30,5 @@ rg <- bitly_retrieve_group(group_guid = ui$default_group_guid)
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getGroup}
+\url{https://dev.bitly.com/api-reference#getGroup}
 }

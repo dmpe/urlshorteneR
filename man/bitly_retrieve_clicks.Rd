@@ -29,7 +29,7 @@ which to pull metrics. Will default to current time.}
 purposes.}
 }
 \description{
-See \url{https://dev.bitly.com/v4/#operation/getClicksForBitlink}
+See \url{https://dev.bitly.com/api-reference#getClicksForBitlink}
 This will return the click counts for a specified Bitlink. This returns an array with clicks based on a date.
 }
 \examples{

@@ -16,7 +16,7 @@ build and requested from server. For debug purposes, default FALSE.}
 long_url - a full URL to which bitlink points to
 }
 \description{
-See \url{https://dev.bitly.com/v4/#operation/expandBitlink}
+See \url{https://dev.bitly.com/api-reference#expandBitlink}
 This endpoint returns public information for a Bitlink.
 }
 \examples{

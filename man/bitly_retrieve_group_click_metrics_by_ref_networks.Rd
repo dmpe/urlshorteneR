@@ -32,5 +32,5 @@ rg <- bitly_retrieve_group_click_metrics_by_ref_networks(group_id = ui$default_g
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/GetGroupMetricsByReferringNetworks}
+\url{https://dev.bitly.com/api-reference#GetGroupMetricsByReferringNetworks}
 }

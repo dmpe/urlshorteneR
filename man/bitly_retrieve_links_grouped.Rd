@@ -81,5 +81,5 @@ rg <- bitly_retrieve_links_grouped(group_id = ui$default_group_guid[1])
 
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getBitlinksByGroup}
+\url{https://dev.bitly.com/api-reference#getBitlinksByGroup}
 }

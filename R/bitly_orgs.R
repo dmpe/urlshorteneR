@@ -6,7 +6,7 @@
 #' @section Organizations:
 #' Organizations are part of our hierarchy. This is the top level where a group and user will belong.
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getOrganization}
+#' @seealso \url{https://dev.bitly.com/api-reference#getOrganization}
 #'
 #' @param organization_id - a required string | A GUID for a Bitly organization.
 #' You may also simply pass "" (double quotes), but this should be avoided at all costs.
@@ -42,7 +42,7 @@ bitly_retrieve_org <- function(organization_id = NULL) {
 #'
 #' @inheritSection bitly_retrieve_org Organizations
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getOrganizations}
+#' @seealso \url{https://dev.bitly.com/api-reference#getOrganizations}
 #'
 #' @import httr jsonlite
 #'
@@ -68,7 +68,7 @@ bitly_retrieve_orgs <- function() {
 #'
 #' Retrieve all the shorten counts for a specific organization
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts}
+#' @seealso \url{https://dev.bitly.com/api-reference#getOrganizationShortenCounts}
 #'
 #' @inheritSection bitly_retrieve_org Organizations
 #'

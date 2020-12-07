@@ -22,15 +22,15 @@ devtools::install_github("dmpe/urlshorteneR", build_vignettes = FALSE)
  
 <https://dev.bitly.com/v4/#tag/Organizations> DONE | Implemented :heavy_check_mark:
 ------------ | -------------
-GET https://dev.bitly.com/v4/#operation/getOrganization | :heavy_check_mark:
-GET https://dev.bitly.com/v4/#operation/getOrganizations | :heavy_check_mark:
-GET https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference#getOrganization | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference#getOrganizations | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference#getOrganizationShortenCounts | :heavy_check_mark:
 
 <https://dev.bitly.com/v4/#tag/BSDs> DONE | Implemented :heavy_check_mark:
 ----------- | -------------
-GET https://dev.bitly.com/v4/#operation/getBSDs | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference#getBSDs | :heavy_check_mark:
 
-<https://dev.bitly.com/v4/#operation/getOAuthApp> DONE | Implemented :heavy_check_mark:
+<https://dev.bitly.com/api-reference#getOAuthApp> DONE | Implemented :heavy_check_mark:
 ------------- | ------------- 
 GET https://api-ssl.bitly.com/v4/apps/{client_id} | :heavy_check_mark: 
 

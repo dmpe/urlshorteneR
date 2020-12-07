@@ -3,7 +3,7 @@
 #' @description
 #' Add a Keyword to a Bitlink
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/addCustomBitlink}
+#' @seealso \url{https://dev.bitly.com/api-reference#addCustomBitlink}
 #' @inheritParams bitly_add_cust_bitlink
 #'
 #' @param bitlink_id - string
@@ -38,7 +38,7 @@ bitly_add_cust_bitlink <- function(bitlink_id = NULL, custom_bitlink = NULL, sho
 }
 
 #' Get Metrics for a Custom Bitlink by destination (Premium)
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getCustomBitlinkMetricsByDestination}
+#' @seealso \url{https://dev.bitly.com/api-reference#getCustomBitlinkMetricsByDestination}
 #'
 #' @description
 #' Get Click Metrics for a Custom Bitlink by historical Bitlink destinations
@@ -79,7 +79,7 @@ bitly_retrieve_destination_metrics <- function(custom_bitlink = NULL, showReques
 #'
 #' @inheritParams bitly_add_cust_bitlink
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/updateCustomBitlink}
+#' @seealso \url{https://dev.bitly.com/api-reference#updateCustomBitlink}
 #'
 #' @examples
 #' \dontrun{
@@ -114,7 +114,7 @@ bitly_update_cust_bitlink <- function(custom_bitlink = NULL, bitlink_id = NULL, 
 #'
 #' @inheritParams bitly_add_cust_bitlink
 #'
-#' @seealso \url{https://dev.bitly.com/v4/#operation/getCustomBitlink}
+#' @seealso \url{https://dev.bitly.com/api-reference#getCustomBitlink}
 #'
 #' @examples
 #' \dontrun{

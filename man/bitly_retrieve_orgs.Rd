@@ -20,5 +20,5 @@ ros <- bitly_retrieve_orgs()
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getOrganizations}
+\url{https://dev.bitly.com/api-reference#getOrganizations}
 }

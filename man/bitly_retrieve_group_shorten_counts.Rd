@@ -29,5 +29,5 @@ rg <- bitly_retrieve_group_shorten_counts(group_id = ui$default_group_guid[1])
 }
 }
 \seealso{
-\url{https://dev.bitly.com/v4/#operation/getGroupShortenCounts}
+\url{https://dev.bitly.com/api-reference#getGroupShortenCounts}
 }
