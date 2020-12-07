@@ -70,7 +70,7 @@ bitly_retrieve_groups()
 
 ## Information about Organizations
 
-Official API documentation <https://dev.bitly.com/v4/#tag/User>. 
+Official API documentation <https://dev.bitly.com/api-reference>. 
 
 The first method returns an information about myself.
 
