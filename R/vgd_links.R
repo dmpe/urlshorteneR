@@ -24,7 +24,7 @@
 #' For debug purposes.
 #'
 #' @examples
-#' ## asd <- vgd_LinksShorten(longUrl = "http://novinky.cz/",showRequestURL = TRUE)
+#' ## asd <- vgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
 #' @export
 vgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, showRequestURL = FALSE) {
   links_shorten_url <- "https://v.gd/create.php?format=json"

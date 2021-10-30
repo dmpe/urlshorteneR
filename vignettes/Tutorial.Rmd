@@ -4,17 +4,17 @@ author: "dmpe @ github"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Tutorial for urlshorteneR}
+  %\VignetteIndexEntry{Tutorial for urlshorteneR -- v4}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
-  chunk_output_type: console  
+  chunk_output_type: console
 ---
 
-`urlshorteneR` wrapps 2 URL services [Bit.ly](https://bitly.com) and [is.gd/v.gd](https://is.gd). 
-In order to begin shortening URLs and downloading usefull statistics about short links, you have to -- in the case of <http://bit.ly> -- authenticate using OAuth2.0. 
+`urlshorteneR` wraps 2 URL services [Bit.ly](https://bitly.com) and [is.gd domain](https://is.gd) as well as [v.gd domain](https://v.gd/). 
+In order to begin shortening URLs and downloading useful statistics about short links, you have to -- in the case of <https://bit.ly> -- authenticate using OAuth2.0. 
 
-For is.gd/v.gd there is no authentication needed. 
+For [is.gd](https://is.gd/) and [v.gd](https://v.gd/) there is no authentication needed. Just create desired short links, see below.
 
 # Bit.ly
 
@@ -107,13 +107,13 @@ These, however, will stop the flow of the code (i.e. are errors).
 ## Is.gd
 
 ```{r}
-isgd_LinksShorten(longUrl = "http://cnn.com/", showRequestURL = TRUE)
+isgd_LinksShorten(longUrl = "https://us.cnn.com/", showRequestURL = TRUE)
 ```
 
 
 ## V.gd
 
 ```{r}
-vgd_LinksShorten(longUrl = "http://cbs.com/", showRequestURL = TRUE)
+vgd_LinksShorten(longUrl = "https://www.cbs.com/", showRequestURL = TRUE)
 ```
 

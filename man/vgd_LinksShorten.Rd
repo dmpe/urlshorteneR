@@ -37,5 +37,5 @@ For debug purposes.}
 See \url{https://v.gd/apishorteningreference.php}
 }
 \examples{
-## asd <- vgd_LinksShorten(longUrl = "http://novinky.cz/",showRequestURL = TRUE)
+## asd <- vgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
 }

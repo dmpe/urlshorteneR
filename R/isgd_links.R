@@ -24,10 +24,10 @@
 #' For debug purposes.
 #'
 #' @examples
-#' ## asd <- isgd_LinksShorten(longUrl = "http://novinky.cz/",showRequestURL = TRUE)
+#' ## asd <- isgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
 #' @export
 isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, showRequestURL = FALSE) {
-  links_shorten_url <- "http://is.gd/create.php?format=json"
+  links_shorten_url <- "https://is.gd/create.php?format=json"
 
   query <- list(url = longUrl, logstats = logstats, shorturl = shorturl)
 
@@ -42,10 +42,10 @@ isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, sho
 #' @description See \url{https://is.gd/apilookupreference.php}
 #'
 #' @examples
-#' ### isgd_LinksExpand(shorturl = "http://is.gd/4oIAXJ", showRequestURL = TRUE)
+#' ### isgd_LinksExpand(shorturl = "https://is.gd/4oIAXJ", showRequestURL = TRUE)
 #' @export
 isgd_LinksExpand <- function(shorturl = "", showRequestURL = FALSE) {
-  links_expand_url <- "http://is.gd/forward.php?format=json"
+  links_expand_url <- "https://is.gd/forward.php?format=json"
 
   query <- list(shorturl = shorturl)
 
