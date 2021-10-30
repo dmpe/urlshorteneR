@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/dmpe/urlshorteneR/tree/master.svg?style=svg)](https://circleci.com/gh/dmpe/urlshorteneR/tree/master)
-[![codecov](https://codecov.io/gh/dmpe/urlshorteneR/branch/master/graph/badge.svg)](https://codecov.io/gh/dmpe/urlshorteneR)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/urlshorteneR)](https://cran.r-project.org/package=urlshorteneR)
 
 R package for shortening URLs, supporting `Bit.ly` and `is.gd`/`v.gd` 
