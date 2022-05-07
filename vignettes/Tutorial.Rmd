@@ -27,11 +27,11 @@ library("knitr")
 library(urlshorteneR)
 
 if(interactive()) {
-  opts_knit$set(root.dir = "~/Documents/Documents2/R-package-urlshortener")
+  opts_knit$set(root.dir = "~/Documents/urlshorteneR")
   bitly_token <- readRDS("tests/bitly_local_token.rds")
 
-# You can register a new pair of keys yourself - but you can also use mine - an option which is also by default
-# bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "f9c6a3b18968e991e35f466e90c7d883cc176073")
+# You must register a new pair of keys yourself
+# bitly_token <- bitly_auth(key = "xxx", secret = "xxx")
 # bitly_token <- bitly_auth()
 
   ui <- bitly_user_info(showRequestURL = TRUE)
@@ -86,8 +86,8 @@ bitly_user_info()
 ```{r}
 if (interactive()) {
   df <- data.frame(pubDate = rep("2016-02-10", 4),
-                   link = c("http://wwaaw.opencasdoesione.gov.it/progetti/1misepac01_000443/",
-                            "http://wwssw.opencasdoesione.gov.it/progetti/1misepac01_000031/"),
+                   link = c("https://www.google.com",
+                            "https://www.apple.com"),
                    stringsAsFactors = FALSE)
   df
   
@@ -107,13 +107,13 @@ These, however, will stop the flow of the code (i.e. are errors).
 ## Is.gd
 
 ```{r}
-isgd_LinksShorten(longUrl = "https://us.cnn.com/", showRequestURL = TRUE)
+isgd_LinksShorten(longUrl = "https://us.cnn.com", showRequestURL = TRUE)
 ```
 
 
 ## V.gd
 
 ```{r}
-vgd_LinksShorten(longUrl = "https://www.cbs.com/", showRequestURL = TRUE)
+vgd_LinksShorten(longUrl = "https://www.cbs.com", showRequestURL = TRUE)
 ```
 

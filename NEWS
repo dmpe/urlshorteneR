@@ -2,6 +2,8 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
+May 2022       - Update package dependancies and adjust URL links again.
+
 November 2021  - Update package dependancies and adjust tutorial links.
 
 December 2020  - Allow bitly_retrieve_groups to retrieve the "general" group list
