@@ -12,9 +12,10 @@ editor_options:
 ---
 
 `urlshorteneR` wraps 2 URL services [Bit.ly](https://bitly.com) and [is.gd domain](https://is.gd) as well as [v.gd domain](https://v.gd/). 
-In order to begin shortening URLs and downloading useful statistics about short links, you have to -- in the case of <https://bit.ly> -- authenticate using OAuth2.0. 
+In order to begin shortening URLs and downloading useful statistics about short links, you have to -- in the case of [Bit.ly](https://bitly.com) -- authenticate using OAuth2.0 protocol.
 
-For [is.gd](https://is.gd/) and [v.gd](https://v.gd/) there is no authentication needed. Just create desired short links, see below.
+For [is.gd](https://is.gd/) and [v.gd](https://v.gd/) there is no authentication needed. 
+Just create desired short links, see below.
 
 # Bit.ly
 
@@ -57,7 +58,7 @@ bitly_app_details()
 
 ## Group Information
 
-This retrieves information about a single group that user belongs to and and then about all groups that user are associated with. 
+This retrieves information about a single group that user belongs to and and then about all groups that user are associated with.
 
 ```{r}
 if (interactive()) {
@@ -67,10 +68,9 @@ bitly_retrieve_groups()
 }
 ```
 
-
 ## Information about Organizations
 
-Official API documentation <https://dev.bitly.com/api-reference>. 
+Official API documentation <https://dev.bitly.com/api-reference>.
 
 The first method returns an information about myself.
 
@@ -79,7 +79,6 @@ if (interactive()) {
 bitly_user_info()
 }
 ```
-
 
 ### Custom Bitlinks
 
@@ -98,11 +97,9 @@ if (interactive()) {
 }
 ```
 
-**BEWARE:** This will proceed only with the two real links, not with the NA, NULL or an empty strings. 
-These, however, will stop the flow of the code (i.e. are errors). 
+**BEWARE:** This will proceed only with the two real links, not with the NA, NULL or an empty strings. These, however, will stop the flow of the code (i.e. are errors).
 
-
-# Is.gd & V.gd 
+# Is.gd & V.gd
 
 ## Is.gd
 
@@ -110,10 +107,8 @@ These, however, will stop the flow of the code (i.e. are errors).
 isgd_LinksShorten(longUrl = "https://us.cnn.com", showRequestURL = TRUE)
 ```
 
-
 ## V.gd
 
 ```{r}
 vgd_LinksShorten(longUrl = "https://www.cbs.com", showRequestURL = TRUE)
 ```
-

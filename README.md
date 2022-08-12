@@ -101,12 +101,12 @@ See `Contribute.md`
 
 ### Credits:
 
-- Developed by ([@dmpe](https://www.github.com/dmpe))
+- Developed by ([@dmpe](https://github.com/dmpe))
 - Contributions by [@DataWookie](https://github.com/DataWookie) and [@RickPack](https://github.com/RickPack) :yum:. 
 
 ### Meta
 
-- Licensed under [Apache License 2.0](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29).
+- Licensed under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 - Report bugs in <https://github.com/dmpe/urlshorteneR/issues>.
 
 
