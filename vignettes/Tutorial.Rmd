@@ -11,10 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-`urlshorteneR` wraps 2 URL services [Bit.ly](https://bitly.com) and [is.gd domain](https://is.gd) as well as [v.gd domain](https://v.gd/). 
-In order to begin shortening URLs and downloading useful statistics about short links, you have to -- in the case of [Bit.ly](https://bitly.com) -- authenticate using OAuth2.0 protocol.
+`urlshorteneR` wraps 2 URL services `Bit.ly` and its 2 friends `is.gd` as well as `v.gd`. 
+For Bit.ly, in order to shorten URLs and downloading useful statistics about them, you have to 
+authenticate using OAuth2.0 protocol, for which you need user account and API keys..
 
-For [is.gd](https://is.gd/) and [v.gd](https://v.gd/) there is no authentication needed. 
+For 2 other services `is.gd` & `v.gd`, there is no authentication needed. 
 Just create desired short links, see below.
 
 # Bit.ly
@@ -28,9 +29,6 @@ library("knitr")
 library(urlshorteneR)
 
 if(interactive()) {
-  opts_knit$set(root.dir = "~/Documents/urlshorteneR")
-  bitly_token <- readRDS("tests/bitly_local_token.rds")
-
 # You must register a new pair of keys yourself
 # bitly_token <- bitly_auth(key = "xxx", secret = "xxx")
 # bitly_token <- bitly_auth()

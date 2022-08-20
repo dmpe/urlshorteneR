@@ -3,9 +3,6 @@ library("knitr")
 library(urlshorteneR)
 
 if(interactive()) {
-  opts_knit$set(root.dir = "~/Documents/urlshorteneR")
-  bitly_token <- readRDS("tests/bitly_local_token.rds")
-
 # You must register a new pair of keys yourself
 # bitly_token <- bitly_auth(key = "xxx", secret = "xxx")
 # bitly_token <- bitly_auth()
