@@ -22,5 +22,5 @@ bitly_retrieve_bitlink(bitlink = "cnn.it/2HomWGB")
 
 }
 \seealso{
-See \url{https://dev.bitly.com/api-reference#getBitlink}
+See \url{https://dev.bitly.com/api-reference/#getBitlink}
 }

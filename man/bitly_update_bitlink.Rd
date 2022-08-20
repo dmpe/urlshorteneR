@@ -33,11 +33,11 @@ purposes.}
 
 \item{created_at}{- update created at parameter}
 
-\item{title}{- title of the bitlink in \url{https://bit.ly} UI}
+\item{title}{- title of the bitlink}
 
 \item{created_by}{- update user}
 
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/).
+\item{long_url}{- required, a long URL to be shortened (example: https://www.idnes.cz).
 Must contain http/https}
 
 \item{client_id}{- The client ID of an OAuth app}
@@ -51,7 +51,7 @@ Must contain http/https}
 \item{deeplinks}{- string | Default: "both" | Enum:"on" "off" "both" | Filter to only Bitlinks that contain deeplinks}
 }
 \description{
-See \url{https://dev.bitly.com/api-reference#updateBitlink}
+See \url{https://dev.bitly.com/api-reference/#updateBitlink}
 Update fields in the Bitlink
 }
 \examples{

@@ -13,10 +13,6 @@ bitly_retrieve_channel(channel_guid = NULL, showRequestURL = T)
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
-Get a Channel (Premium)
-}
-\note{
-It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 Get a channel's details
 }
 \section{Campaigns}{
@@ -31,5 +27,5 @@ Bitly Campaigns allows you to build and manage omnichannel campaigns.
 
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#getChannel}
+\url{https://dev.bitly.com/api-reference/#getChannel}
 }

@@ -64,7 +64,7 @@ can be provided, overrides all other parameters}
 that contain deeplinks configured with a custom domain}
 }
 \description{
-See \url{https://dev.bitly.com/api-reference#getBitlinksByGroup}
+See \url{https://dev.bitly.com/api-reference/#getBitlinksByGroup}
 Retrieve a paginated collection of Bitlinks for a Group
 }
 \examples{

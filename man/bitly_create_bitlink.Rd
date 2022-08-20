@@ -16,7 +16,7 @@ bitly_create_bitlink(
 )
 }
 \arguments{
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/).
+\item{long_url}{- required, a long URL to be shortened (example: https://www.idnes.cz).
 Must contain http/https}
 
 \item{domain}{- (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
@@ -24,7 +24,7 @@ a custom short domain. The default for this parameter is the short domain select
 user in their bitly account settings. Passing a specific domain via this parameter will override
 the default settings.}
 
-\item{title}{- title of the bitlink in \url{https://bit.ly} UI}
+\item{title}{- title of the bitlink}
 
 \item{tags}{- Array of string, use e.g. \code{c("test1", "test2")}}
 
@@ -55,7 +55,7 @@ link - an bitly id with http(s) prefix
 }
 \description{
 See \url{https://dev.bitly.com/docs/getting-started/rate-limits} and
-\url{https://dev.bitly.com/api-reference#createFullBitlink}
+\url{https://dev.bitly.com/api-reference/#createFullBitlink}
 Convert a long url to a Bitlink and set additional parameters.
 }
 \note{
@@ -69,7 +69,7 @@ Long URLs should be URL-encoded. You can not include a longUrl in the request
 that has &, ?, #, or other reserved parameters without first encoding it.
 
 The default value for the domain parameter is selected by each user from within their bitly
-account settings at \url{https://bitly.com/a/settings/advanced}.
+account settings at <https://app.bitly.com/settings/api/>.
 
 Long URLs should not contain spaces: any longUrl with spaces will be rejected. All spaces
 should be either percent encoded %20 or plus encoded +. Note that tabs, newlines and trailing

@@ -21,5 +21,7 @@ For debug purposes.}
 See \url{https://is.gd/apilookupreference.php}
 }
 \examples{
-### isgd_LinksExpand(shorturl = "https://is.gd/4oIAXJ", showRequestURL = TRUE)
+\dontrun{
+isgd_LinksExpand(shorturl = "https://is.gd/4oIAXJ", showRequestURL = TRUE)
+}
 }

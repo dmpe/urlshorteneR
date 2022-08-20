@@ -30,5 +30,5 @@ df_org_short_counts <- data.frame(osc, stringsAsFactors = FALSE)
 
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#getOrganizationShortenCounts}
+\url{https://dev.bitly.com/api-reference/#getOrganizationShortenCounts}
 }

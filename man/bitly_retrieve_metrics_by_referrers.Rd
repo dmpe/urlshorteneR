@@ -40,5 +40,5 @@ units = -1, size = 100)
 
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#getMetricsForBitlinkByReferrers}
+\url{https://dev.bitly.com/api-reference/#getMetricsForBitlinkByReferrers}
 }

@@ -24,7 +24,9 @@
 #' For debug purposes.
 #'
 #' @examples
-#' ## asd <- isgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
+#' \dontrun{
+#' short_lin <- isgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
+#' }
 #' @export
 isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, showRequestURL = FALSE) {
   links_shorten_url <- "https://is.gd/create.php?format=json"
@@ -35,6 +37,7 @@ isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, sho
 
   return(df_link_shorten$shorturl)
 }
+
 #' @title Expand a short URL to a longer one
 #'
 #' @inheritParams isgd_LinksShorten
@@ -42,7 +45,9 @@ isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, sho
 #' @description See \url{https://is.gd/apilookupreference.php}
 #'
 #' @examples
-#' ### isgd_LinksExpand(shorturl = "https://is.gd/4oIAXJ", showRequestURL = TRUE)
+#' \dontrun{
+#' isgd_LinksExpand(shorturl = "https://is.gd/4oIAXJ", showRequestURL = TRUE)
+#' }
 #' @export
 isgd_LinksExpand <- function(shorturl = "", showRequestURL = FALSE) {
   links_expand_url <- "https://is.gd/forward.php?format=json"

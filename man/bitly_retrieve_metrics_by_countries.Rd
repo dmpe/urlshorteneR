@@ -40,5 +40,5 @@ size = 100)
 
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#getMetricsForBitlinkByCountries}
+\url{https://dev.bitly.com/api-reference/#getMetricsForBitlinkByCountries}
 }

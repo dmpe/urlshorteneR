@@ -3,7 +3,7 @@
 #' @description
 #' Add a Keyword to a Bitlink
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#addCustomBitlink}
+#' @seealso \url{https://dev.bitly.com/api-reference/#addCustomBitlink}
 #' @inheritParams bitly_add_cust_bitlink
 #'
 #' @param bitlink_id - string
@@ -38,7 +38,7 @@ bitly_add_cust_bitlink <- function(bitlink_id = NULL, custom_bitlink = NULL, sho
 }
 
 #' Get Metrics for a Custom Bitlink by destination (Premium)
-#' @seealso \url{https://dev.bitly.com/api-reference#getCustomBitlinkMetricsByDestination}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getCustomBitlinkMetricsByDestination}
 #'
 #' @description
 #' Get Click Metrics for a Custom Bitlink by historical Bitlink destinations
@@ -79,7 +79,7 @@ bitly_retrieve_destination_metrics <- function(custom_bitlink = NULL, showReques
 #'
 #' @inheritParams bitly_add_cust_bitlink
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#updateCustomBitlink}
+#' @seealso \url{https://dev.bitly.com/api-reference/#updateCustomBitlink}
 #'
 #' @examples
 #' \dontrun{
@@ -114,7 +114,7 @@ bitly_update_cust_bitlink <- function(custom_bitlink = NULL, bitlink_id = NULL, 
 #'
 #' @inheritParams bitly_add_cust_bitlink
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getCustomBitlink}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getCustomBitlink}
 #'
 #' @examples
 #' \dontrun{
@@ -137,20 +137,63 @@ bitly_retrieve_cust_bitlink <- function(custom_bitlink = NULL, showRequestURL = 
   return(df_cust_metrics)
 }
 
+#' Get Clicks for a Custom Bitlink's Entire History (Premium)
+#'
+#' @description
+#' Returns the click counts for the specified link. This returns an array with clicks based on a date.
+#'
+#' @inheritParams bitly_add_cust_bitlink
+#'
+#' @seealso \url{https://dev.bitly.com/api-reference/#getClicksForCustomBitlink}
+#'
+#' @examples
+#' \dontrun{
+#' bitly_retrieve_cust_bitlink_clicks_history(custom_bitlink = "es.pn/SuperBowl")
+#' }
+#'
+#' @import httr jsonlite lubridate
+#'
+#' @export
+bitly_retrieve_cust_bitlink_clicks_history <- function(custom_bitlink = NULL, showRequestURL = FALSE) {
+  
+  if (is.string(custom_bitlink)) {
+    get_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink, "/clicks")
+  } else {
+    stop("custom_bitlink must not be empty string, NA or NULL")
+  }
+  
+  query <- list(access_token = bitly_auth_access(), custom_bitlink = custom_bitlink)
+  df_cust_metrics_history <- doRequest("GET", url = get_url, queryParameters = query, showURL = showRequestURL)
+  return(df_cust_metrics_history)
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#' Get Metrics for a Custom Bitlink by Destination (Premium)
+#'
+#' @description
+#' Returns click metrics for the specified link by its historical destinations.
+#'
+#' @inheritParams bitly_add_cust_bitlink
+#'
+#' @seealso \url{https://dev.bitly.com/api-reference/#getCustomBitlinkMetricsByDestination}
+#'
+#' @examples
+#' \dontrun{
+#' bitly_retrieve_cust_bitlink_metrics_destination(custom_bitlink = "es.pn/SuperBowl")
+#' }
+#'
+#' @import httr jsonlite lubridate
+#'
+#' @export
+bitly_retrieve_cust_bitlink_metrics_destination <- function(custom_bitlink = NULL, showRequestURL = FALSE) {
+  
+  if (is.string(custom_bitlink)) {
+    get_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink, "/clicks_by_destination")
+  } else {
+    stop("custom_bitlink must not be empty string, NA or NULL")
+  }
+  
+  query <- list(access_token = bitly_auth_access(), custom_bitlink = custom_bitlink)
+  df_cust_metrics_dest <- doRequest("GET", url = get_url, queryParameters = query, showURL = showRequestURL)
+  return(df_cust_metrics_dest)
+}
 

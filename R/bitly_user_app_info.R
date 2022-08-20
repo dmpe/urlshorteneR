@@ -6,7 +6,7 @@
 #' @section User:
 #' User operations such as changing your name or fetching basic user information apply only to the authenticated user.
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getUser}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getUser}
 #'
 #' @return login - the specified bitly login or the login of the authenticated user
 #' @return name - the user's full/display name
@@ -14,8 +14,8 @@
 #' @return created - Timestamp for the moment the user signed up (uses \code{\link[lubridate]{ymd_hms}})
 #' @return is_active - whether a user profile is active
 #' @return modified - Timestamp of the last modification to the user profile (uses \code{\link[lubridate]{ymd_hms}})
-#' @return is_sso_user - is Single-Sign-On enabled for the user (PREMIUM FEATURE) ? See <https://support.bitly.com/hc/en-us/articles/360001482672-What-is-Single-Sign-On-SSO-> for more details.
-#' @return is_2fa_enabled - is 2 Step verification enabled ? See <https://support.bitly.com/hc/en-us/articles/230650187-What-is-2-step-verification-> for more details.
+#' @return is_sso_user - is Single-Sign-On enabled for the user (PREMIUM FEATURE)
+#' @return is_2fa_enabled - is 2 Step verification enabled ?
 #' @return email - user's emails
 #'
 #' @examples
@@ -56,7 +56,7 @@ bitly_user_info <- function(showRequestURL = FALSE) {
 #' @inheritParams bitly_user_info
 #' @inheritSection bitly_user_info User
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#updateUser}
+#' @seealso \url{https://dev.bitly.com/api-reference/#updateUser}
 #'
 #' @examples
 #' \dontrun{
@@ -124,7 +124,7 @@ bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0e
 }
 
 #' @title bitly_rate_limits
-#' @description Provides bit.ly rate limits by endpoint. See \url{https://dev.bitly.com/api-reference#getPlatformLimits}
+#' @description Provides bit.ly rate limits by endpoint. See \url{https://dev.bitly.com/api-reference/#getPlatformLimitss}
 #' @inheritParams bitly_user_info
 #' @return \code{data.frame} of end points and their rate limits by action
 #' @export

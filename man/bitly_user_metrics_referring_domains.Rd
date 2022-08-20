@@ -44,5 +44,5 @@ size = 100)
 
 }
 \seealso{
-See \url{https://dev.bitly.com/api-reference#getMetricsForBitlinkByReferringDomains}
+See \url{https://dev.bitly.com/api-reference/#getMetricsForBitlinkByReferringDomains}
 }

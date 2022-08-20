@@ -29,7 +29,7 @@ are provided using this method.
 2. Alternatively, you can register your own application via the web in order to get Client ID
 and Client Secret code.
 
-For that go first to \url{https://bitly.com/a/oauth_apps}. Click \code{REGISTERED OAUTH APPLICATIONS},
+For that go first to \url{https://app.bitly.com/settings/integrations/}. Click \code{REGISTERED OAUTH APPLICATIONS},
 then \code{REGISTER NEW APPLICATION} followed by \code{GET REGISTRATION CODE}.
 Open your email that you will receive and click \code{COMPLETE REGISTRATION}.
 Make up an \code{APPLICATION NAME} that is unique. Unless you know to do otherwise,
@@ -48,8 +48,8 @@ track the shortened URLs".
 
 \section{WARNING}{
 
-If using Rstudio in the browsers via RStudio Server, then authentication may not work well. In
-such case, use desktop RStudio application. See <https://support.rstudio.com/hc/en-us/articles/217952868-Generating-OAuth-tokens-for-a-server-using-httr> for more details.
+If using RStudio in the browsers via RStudio Server, then authentication may not work well. In
+such case, use desktop RStudio application. Look for help at <https://support.rstudio.com/>.
 }
 
 \examples{

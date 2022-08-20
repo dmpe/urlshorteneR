@@ -30,9 +30,6 @@ build and requested from server. For debug purposes, default FALSE.}
 \description{
 Update an existing Channel
 }
-\note{
-It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
-}
 \section{Campaigns}{
 
 Bitly Campaigns allows you to build and manage omnichannel campaigns.
@@ -48,5 +45,5 @@ cc <- bitly_update_campaign(
 
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#updateCampaign}
+\url{https://dev.bitly.com/api-reference/#updateCampaign}
 }

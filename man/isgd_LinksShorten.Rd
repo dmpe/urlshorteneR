@@ -37,5 +37,7 @@ For debug purposes.}
 See \url{https://is.gd/apishorteningreference.php}
 }
 \examples{
-## asd <- isgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
+\dontrun{
+short_lin <- isgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
+}
 }

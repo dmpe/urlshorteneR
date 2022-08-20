@@ -1,8 +1,7 @@
 #' Create Campaign (Premium)
 #'
+#' @description
 #' Create a new campaign
-#'
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 #'
 #' @section Campaigns:
 #' Bitly Campaigns allows you to build and manage omnichannel campaigns.
@@ -16,7 +15,7 @@
 #' @inheritParams bitly_retrieve_group
 #' @inheritParams bitly_retrieve_bitlinks_by_groups
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#createCampaign}
+#' @seealso \url{https://dev.bitly.com/api-reference/#createCampaign}
 #'
 #' @examples
 #' \dontrun{
@@ -48,7 +47,8 @@ bitly_create_campaigns <- function(group_guid = NULL, channel_guids = NULL, desc
 }
 
 #' Retrieve campaigns (Premium)
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
+#'
+#' @description
 #' Retrieve the campaigns for the current user
 #'
 #' @inheritParams bitly_create_campaigns
@@ -56,7 +56,7 @@ bitly_create_campaigns <- function(group_guid = NULL, channel_guids = NULL, desc
 #' @inheritParams bitly_retrieve_group
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getCampaigns}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getCampaigns}
 #'
 #' @examples
 #' \dontrun{
@@ -82,8 +82,9 @@ bitly_retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T) {
 
 #' Create channel (Premium)
 #'
+#' @description
 #' Create a new channel
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
+#'
 #' @inheritParams bitly_retrieve_campaigns
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
@@ -95,7 +96,7 @@ bitly_retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T) {
 #' @param created	- string | ISO TIMESTAMP
 #' @param campaign_guid - string | A GUID for a Bitly campaign
 #' @param guid - ID for a channel
-#' @seealso \url{https://dev.bitly.com/api-reference#createChannel}
+#' @seealso \url{https://dev.bitly.com/api-reference/#createChannel}
 #'
 #' @examples
 #' \dontrun{
@@ -129,7 +130,7 @@ bitly_create_channel <- function(group_guid = NULL, guid = NULL, name = NULL, mo
 
 #' Retrieve channels (Premium)
 #'
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
+#' @description
 #' Retrieve the channels available to a user
 #'
 #' @inheritParams bitly_create_channel
@@ -138,7 +139,7 @@ bitly_create_channel <- function(group_guid = NULL, guid = NULL, name = NULL, mo
 #' @inheritParams bitly_retrieve_group
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getChannels}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getChannels}
 #'
 #' @examples
 #' \dontrun{
@@ -163,7 +164,7 @@ bitly_retrieve_channels <- function(group_guid = NULL, campaign_guid = NULL, sho
 
 #' Retrieve a Campaign
 #'
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
+#' @description
 #' Retrive details for a campaign
 #'
 #' @inheritParams bitly_create_channel
@@ -172,7 +173,7 @@ bitly_retrieve_channels <- function(group_guid = NULL, campaign_guid = NULL, sho
 #' @inheritParams bitly_retrieve_group
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getCampaign}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getCampaign}
 #'
 #' @examples
 #' \dontrun{
@@ -197,7 +198,7 @@ bitly_retrieve_campaign <- function(campaign_guid = NULL, showRequestURL = T) {
 
 #' Get a Channel (Premium)
 #'
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
+#' @description
 #' Get a channel's details
 #'
 #' @inheritParams bitly_create_channel
@@ -207,7 +208,7 @@ bitly_retrieve_campaign <- function(campaign_guid = NULL, showRequestURL = T) {
 #' @inheritSection bitly_create_campaigns Campaigns
 #' @inheritParams bitly_retrieve_bitlinks_by_groups
 #' @param channel_guid - GUID of a target channel
-#' @seealso \url{https://dev.bitly.com/api-reference#getChannel}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getChannel}
 #'
 #' @examples
 #' \dontrun{
@@ -233,9 +234,9 @@ bitly_retrieve_channel <- function(channel_guid = NULL, showRequestURL = T) {
 
 #' Update A Channel (Premium)
 #'
+#' @description
 #' Update an existing Channel
 #'
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
 #' @inheritParams bitly_create_channel
@@ -243,7 +244,8 @@ bitly_retrieve_channel <- function(channel_guid = NULL, showRequestURL = T) {
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
 #' @inheritParams bitly_create_channel
-#' @seealso \url{https://dev.bitly.com/api-reference#updateCampaign}
+#'
+#' @seealso \url{https://dev.bitly.com/api-reference/#updateCampaign}
 #'
 #' @examples
 #' \dontrun{
@@ -277,9 +279,9 @@ bitly_update_campaign <- function(campaign_guid = NULL, group_guid = NULL, chann
 
 #' Update A Channel (Premium)
 #'
+#' @description
 #' Update an existing Channel
 #'
-#' @note It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 #' @inheritSection bitly_create_campaigns Campaigns
 #'
 #' @inheritParams bitly_create_channel
@@ -288,7 +290,7 @@ bitly_update_campaign <- function(campaign_guid = NULL, group_guid = NULL, chann
 #' @inheritParams bitly_retrieve_group
 #' @inheritParams bitly_retrieve_bitlinks_by_groups
 #' @inheritParams bitly_retrieve_channel
-#' @seealso \url{https://dev.bitly.com/api-reference#updateChannel}
+#' @seealso \url{https://dev.bitly.com/api-reference/#updateChannel}
 #'
 #' @examples
 #' \dontrun{

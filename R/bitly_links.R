@@ -1,16 +1,16 @@
 #' @title Create a short Bitlink
 #'
 #' @description See \url{https://dev.bitly.com/docs/getting-started/rate-limits} and
-#' \url{https://dev.bitly.com/api-reference#createFullBitlink}
+#' \url{https://dev.bitly.com/api-reference/#createFullBitlink}
 #' Convert a long url to a Bitlink and set additional parameters.
 #'
-#' @param long_url - required, a long URL to be shortened (example: http://betaworks.com/).
+#' @param long_url - required, a long URL to be shortened (example: https://www.idnes.cz).
 #' Must contain http/https
 #' @param domain - (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
 #' a custom short domain. The default for this parameter is the short domain selected by each
 #' user in their bitly account settings. Passing a specific domain via this parameter will override
 #' the default settings.
-#' @param title - title of the bitlink in \url{https://bit.ly} UI
+#' @param title - title of the bitlink
 #' @param tags - Array of string, use e.g. \code{c("test1", "test2")}
 #' @param showRequestURL - show URL which has been build and requested from server. For debug
 #' purposes.
@@ -29,7 +29,7 @@
 #' @note Long URLs should be URL-encoded. You can not include a longUrl in the request
 #' that has &, ?, #, or other reserved parameters without first encoding it.
 #' @note The default value for the domain parameter is selected by each user from within their bitly
-#' account settings at \url{https://bitly.com/a/settings/advanced}.
+#' account settings at <https://app.bitly.com/settings/api/>.
 #' @note Long URLs should not contain spaces: any longUrl with spaces will be rejected. All spaces
 #' should be either percent encoded %20 or plus encoded +. Note that tabs, newlines and trailing
 #' spaces are all indications of errors. Please remember to strip leading and trailing whitespace
@@ -93,7 +93,7 @@ bitly_create_bitlink <- function(long_url = NULL, domain = "bit.ly", title = NUL
 #'
 #' @description This endpoint will rollup the click counts to a referrer about a single Bitlink.
 #'
-#' @seealso See \url{https://dev.bitly.com/api-reference#getMetricsForBitlinkByReferringDomains}
+#' @seealso See \url{https://dev.bitly.com/api-reference/#getMetricsForBitlinkByReferringDomains}
 #'
 #' @inheritParams bitly_retrieve_sorted_links
 #'
@@ -134,7 +134,7 @@ bitly_user_metrics_referring_domains <- function(bitlink = NULL, unit = "day", u
 
 #' @title Expand a Bitlink
 #'
-#' @description See \url{https://dev.bitly.com/api-reference#expandBitlink}
+#' @description See \url{https://dev.bitly.com/api-reference/#expandBitlink}
 #' This endpoint returns public information for a Bitlink.
 #'
 #' @inheritParams bitly_user_metrics_referring_domains
@@ -181,7 +181,7 @@ bitly_expand_link_ <- function(shorturl, ...) {
 
 #' @title Shorten a Link
 #'
-#' @description See \url{https://dev.bitly.com/api-reference#createBitlink}
+#' @description See \url{https://dev.bitly.com/api-reference/#createBitlink}
 #' Convert a long url to a Bitlink
 #'
 #' @inheritParams bitly_create_bitlink
@@ -228,7 +228,7 @@ bitly_shorten_link_ <- function(longUrl, ...) {
 
 #' @title Update a Bitlink
 #'
-#' @description See \url{https://dev.bitly.com/api-reference#updateBitlink}
+#' @description See \url{https://dev.bitly.com/api-reference/#updateBitlink}
 #' Update fields in the Bitlink
 #'
 #' @inheritParams bitly_create_bitlink
@@ -339,7 +339,7 @@ bitly_update_bitlink <- function(bitlink = NULL, archived = NULL, tags = NULL, s
 #'
 #' @description This endpoint returns information for a Bitlink.
 #'
-#' @seealso See \url{https://dev.bitly.com/api-reference#getBitlink}
+#' @seealso See \url{https://dev.bitly.com/api-reference/#getBitlink}
 #'
 #' @inheritParams bitly_retrieve_sorted_links
 #' @inheritParams bitly_update_bitlink
@@ -374,7 +374,7 @@ bitly_retrieve_bitlink  <- function(bitlink = NULL, showRequestURL = FALSE) {
 #'
 #' @description This endpoint will group referrers metrics about a single Bitlink.
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getMetricsForBitlinkByReferrersByDomains}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getMetricsForBitlinkByReferrersByDomains}
 #'
 #' @inheritParams bitly_user_metrics_referring_domains
 #'
@@ -404,7 +404,7 @@ bitly_retrieve_metrics_by_referrers_by_domain <- function(bitlink = NULL, size =
 
 #' @title Get Clicks for a Bitlink
 #'
-#' @description See \url{https://dev.bitly.com/api-reference#getClicksForBitlink}
+#' @description See \url{https://dev.bitly.com/api-reference/#getClicksForBitlink}
 #' This will return the click counts for a specified Bitlink. This returns an array with clicks based on a date.
 #'
 #' @param size - The quantity of items to be be returned
@@ -438,7 +438,7 @@ bitly_retrieve_clicks <- function(bitlink = NULL, size = 50, unit_reference = NU
 
 #' @title Get Clicks Summary for a Bitlink
 #'
-#' @description See \url{https://dev.bitly.com/api-reference#getClicksSummaryForBitlink}
+#' @description See \url{https://dev.bitly.com/api-reference/#getClicksSummaryForBitlink}
 #' This will return the click counts for a specified Bitlink. This rolls up all the data into a
 #' single field of clicks.
 #'
@@ -469,7 +469,7 @@ bitly_retrieve_clicks_summary <- function(bitlink = NULL, size = 50, unit_refere
 #' @description This endpoint will return metrics about the countries referring click traffic to
 #' a single Bitlink.
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getMetricsForBitlinkByCountries}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getMetricsForBitlinkByCountries}
 #'
 #' @inheritParams bitly_retrieve_clicks_summary
 #'
@@ -502,7 +502,7 @@ bitly_retrieve_metrics_by_countries <- function(bitlink = NULL, size = 100, unit
 #' @description This endpoint will return metrics about the referrers referring click traffic to
 #' a single Bitlink.
 #'
-#' @seealso \url{https://dev.bitly.com/api-reference#getMetricsForBitlinkByReferrers}
+#' @seealso \url{https://dev.bitly.com/api-reference/#getMetricsForBitlinkByReferrers}
 #'
 #' @inheritParams bitly_retrieve_metrics_by_countries
 #'
@@ -531,7 +531,7 @@ bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit
 
 #' @title Retrieve Bitlinks by Group
 #'
-#' @description See \url{https://dev.bitly.com/api-reference#getBitlinksByGroup}
+#' @description See \url{https://dev.bitly.com/api-reference/#getBitlinksByGroup}
 #' Retrieve a paginated collection of Bitlinks for a Group
 #' @param query_q - a query to look for in bitlinks; acts a filter
 #' @inheritParams bitly_retrieve_metrics_by_referrers
@@ -606,7 +606,7 @@ bitly_retrieve_bitlinks_by_groups <- function(group_guid = NULL, size = 50, page
 
 #' @title Retrieve Sorted Bitlinks for Group
 #'
-#' @description See \url{https://dev.bitly.com/api-reference#getSortedBitlinks}
+#' @description See \url{https://dev.bitly.com/api-reference/#getSortedBitlinks}
 #' This will retrieve a paginated response for Bitlinks that are sorted for the Group
 #'
 #' @inheritParams bitly_retrieve_metrics_by_referrers

@@ -4,12 +4,16 @@
 \alias{bitly_bsds}
 \title{Fetch all Branded Short Domains}
 \usage{
-bitly_bsds()
+bitly_bsds(showRequestURL = F)
+}
+\arguments{
+\item{showRequestURL}{- an optional T/F value to whether show URL which has been
+build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
 BSDs is an acronym for branded short domains. This is a custom 15
 character or less domain for bitlinks. This allows you to customize the domain to your brand.
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#getBSDs}
+\url{https://dev.bitly.com/api-reference/#getBSDs}
 }

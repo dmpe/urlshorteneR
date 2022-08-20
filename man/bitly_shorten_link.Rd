@@ -19,14 +19,14 @@ the default settings.}
 
 \item{group_guid}{- a GUID for a Bitly group}
 
-\item{long_url}{- required, a long URL to be shortened (example: http://betaworks.com/).
+\item{long_url}{- required, a long URL to be shortened (example: https://www.idnes.cz).
 Must contain http/https}
 
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 }
 \description{
-See \url{https://dev.bitly.com/api-reference#createBitlink}
+See \url{https://dev.bitly.com/api-reference/#createBitlink}
 Convert a long url to a Bitlink
 }
 \examples{

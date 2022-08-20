@@ -2,7 +2,8 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
-August 2022    - Resubmission to be included on CRAN again, fixing smaller URL/readme.md issues.
+August 2022    - Resubmission to be included on CRAN again, fixing smaller URL/readme.md issues. 
+               - Added a few new premium endpoints for bitly.
 
 May 2022       - Update package dependancies and adjust URL links again.
 

@@ -14,5 +14,5 @@ build and requested from server. For debug purposes, default FALSE.}
 \code{data.frame} of end points and their rate limits by action
 }
 \description{
-Provides bit.ly rate limits by endpoint. See \url{https://dev.bitly.com/api-reference#getPlatformLimits}
+Provides bit.ly rate limits by endpoint. See \url{https://dev.bitly.com/api-reference/#getPlatformLimitss}
 }

@@ -13,10 +13,6 @@ bitly_retrieve_campaign(campaign_guid = NULL, showRequestURL = T)
 build and requested from server. For debug purposes, default FALSE.}
 }
 \description{
-Retrieve a Campaign
-}
-\note{
-It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
 Retrive details for a campaign
 }
 \section{Campaigns}{
@@ -31,5 +27,5 @@ Bitly Campaigns allows you to build and manage omnichannel campaigns.
 
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#getCampaign}
+\url{https://dev.bitly.com/api-reference/#getCampaign}
 }

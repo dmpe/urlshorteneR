@@ -32,7 +32,7 @@ which to pull metrics. Will default to current time.}
 purposes.}
 }
 \description{
-See \url{https://dev.bitly.com/api-reference#getSortedBitlinks}
+See \url{https://dev.bitly.com/api-reference/#getSortedBitlinks}
 This will retrieve a paginated response for Bitlinks that are sorted for the Group
 }
 \examples{

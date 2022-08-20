@@ -18,15 +18,17 @@ devtools::install_github("dmpe/urlshorteneR", build_vignettes = FALSE)
 
 #### FINISHED (with testing)
  
-https://dev.bitly.com/v4/#tag/Organizations DONE | Implemented :heavy_check_mark:
+Organizations DONE | Implemented :heavy_check_mark:
 ------------ | -------------
-GET https://dev.bitly.com/api-reference#getOrganization | :heavy_check_mark:
-GET https://dev.bitly.com/api-reference#getOrganizations | :heavy_check_mark:
-GET https://dev.bitly.com/api-reference#getOrganizationShortenCounts | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference/#getOrganization | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference/#getOrganizations | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference/#getOrganizationShortenCounts | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference/#getPlanLimits | :heavy_check_mark:
 
 https://dev.bitly.com/v4/#tag/BSDs DONE | Implemented :heavy_check_mark:
 ----------- | -------------
-GET https://dev.bitly.com/api-reference#getBSDs | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference/#getBSDs | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference/#getOverridesForGroups | :heavy_check_mark:
 
 https://dev.bitly.com/api-reference#getOAuthApp DONE | Implemented :heavy_check_mark:
 ------------- | ------------- 
@@ -45,12 +47,15 @@ PATCH https://api-ssl.bitly.com/v4/groups/{group_guid}/preferences | :heavy_chec
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks | :heavy_check_mark: 
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/tags | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/countries | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/cities | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/devices | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/referring_networks | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/shorten_counts | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | :heavy_check_mark:
 PATCH https://api-ssl.bitly.com/v4/groups/{group_guid} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | :heavy_check_mark:
+
 
 https://dev.bitly.com/v4/#tag/Campaigns DONE | Implemented :heavy_check_mark:/🚫
 ------------- | -------------

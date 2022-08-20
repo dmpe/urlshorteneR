@@ -36,9 +36,6 @@ build and requested from server. For debug purposes, default FALSE.}
 \description{
 Create a new channel
 }
-\note{
-It has not been tested, see readme file on GitHub \url{https://github.com/dmpe/urlshorteneR/}
-}
 \section{Campaigns}{
 
 Bitly Campaigns allows you to build and manage omnichannel campaigns.
@@ -51,5 +48,5 @@ Bitly Campaigns allows you to build and manage omnichannel campaigns.
 
 }
 \seealso{
-\url{https://dev.bitly.com/api-reference#createChannel}
+\url{https://dev.bitly.com/api-reference/#createChannel}
 }
