@@ -49,7 +49,7 @@ track the shortened URLs".
 \section{WARNING}{
 
 If using Rstudio in the browsers via RStudio Server, then authentication may not work well. In
-such case, use desktop RStudio application. See \href{https://support.rstudio.com/hc/en-us/articles/217952868-Generating-OAuth-tokens-for-a-server-using-httr}{RStudio Help}
+such case, use desktop RStudio application. See <https://support.rstudio.com/hc/en-us/articles/217952868-Generating-OAuth-tokens-for-a-server-using-httr> for more details.
 }
 
 \examples{

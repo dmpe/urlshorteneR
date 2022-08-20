@@ -14,8 +14,8 @@
 #' @return created - Timestamp for the moment the user signed up (uses \code{\link[lubridate]{ymd_hms}})
 #' @return is_active - whether a user profile is active
 #' @return modified - Timestamp of the last modification to the user profile (uses \code{\link[lubridate]{ymd_hms}})
-#' @return is_sso_user - is Single-Sign-On enabled for the user (PREMIUM FEATURE) ? (\href{https://support.bitly.com/hc/en-us/articles/360001482672-What-is-Single-Sign-On-SSO-}{Bit.ly SSO})
-#' @return is_2fa_enabled - is 2 Step verification enabled ? (\href{https://support.bitly.com/hc/en-us/articles/230650187-What-is-2-step-verification-}{Bit.ly 2FA})
+#' @return is_sso_user - is Single-Sign-On enabled for the user (PREMIUM FEATURE) ? See <https://support.bitly.com/hc/en-us/articles/360001482672-What-is-Single-Sign-On-SSO-> for more details.
+#' @return is_2fa_enabled - is 2 Step verification enabled ? See <https://support.bitly.com/hc/en-us/articles/230650187-What-is-2-step-verification-> for more details.
 #' @return email - user's emails
 #'
 #' @examples
