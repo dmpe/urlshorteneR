@@ -102,11 +102,11 @@ if (interactive()) {
 ## Is.gd
 
 ```{r}
-isgd_LinksShorten(longUrl = "https://us.cnn.com", showRequestURL = TRUE)
+isgd_LinksShorten(longUrl = "https://www.google.com", showRequestURL = TRUE)
 ```
 
 ## V.gd
 
 ```{r}
-vgd_LinksShorten(longUrl = "https://www.cbs.com", showRequestURL = TRUE)
+vgd_LinksShorten(longUrl = "https://www.apple.com", showRequestURL = TRUE)
 ```
