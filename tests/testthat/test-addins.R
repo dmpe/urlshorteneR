@@ -4,7 +4,7 @@ library(clipr)
 
 Sys.setenv("CLIPR_ALLOW" = TRUE)
 
-long_url  <- "https://github.com/dmpe/urlshorteneR"
+long_url <- "https://github.com/dmpe/urlshorteneR"
 short_url <- "https://bit.ly/3hXbilf"
 
 test_that("Clipboard shortener copies short url to clipboard", {
@@ -28,5 +28,4 @@ test_that("Clipboard expander copies long url to clipboard", {
   long_url <- long_url$long_url[[1]]
 
   expect_equal(read_clip(), long_url)
-
 })

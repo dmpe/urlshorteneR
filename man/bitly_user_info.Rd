@@ -39,7 +39,7 @@ User operations such as changing your name or fetching basic user information ap
 
 \examples{
 \dontrun{
-   ui <- bitly_user_info(showRequestURL = TRUE)
+ui <- bitly_user_info(showRequestURL = TRUE)
 }
 
 }

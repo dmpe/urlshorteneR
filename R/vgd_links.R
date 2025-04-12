@@ -25,9 +25,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' assd <- vgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
+#' assd <- vgd_LinksShorten(longUrl = "https://novinky.cz/", showRequestURL = TRUE)
 #' }
-#' 
+#'
 #' @export
 vgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, showRequestURL = FALSE) {
   links_shorten_url <- "https://v.gd/create.php?format=json"
@@ -49,7 +49,7 @@ vgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, show
 #' \dontrun{
 #' isgd_LinksExpand(shorturl = "https://v.gd/4oIAXJ", showRequestURL = TRUE)
 #' }
-#' 
+#'
 #' @export
 vgd_LinksExpand <- function(shorturl = "", showRequestURL = FALSE) {
   links_expand_url <- "https://v.gd/forward.php?format=json"

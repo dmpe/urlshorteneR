@@ -17,12 +17,12 @@ Retrieve the campaigns for the current user
 }
 \section{Campaigns}{
 
-Bitly Campaigns allows you to build and manage omnichannel campaigns.
+Bit.ly Campaigns allows you to build and manage omnichannel campaigns.
 }
 
 \examples{
 \dontrun{
-  gc <- bitly_retrieve_campaigns(group_guid = "testing")
+gc <- bitly_retrieve_campaigns(group_guid = "testing")
 }
 
 }

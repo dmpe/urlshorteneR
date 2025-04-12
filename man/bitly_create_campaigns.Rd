@@ -30,7 +30,7 @@ Create a new campaign
 }
 \section{Campaigns}{
 
-Bitly Campaigns allows you to build and manage omnichannel campaigns.
+Bit.ly Campaigns allows you to build and manage omnichannel campaigns.
 }
 
 \examples{

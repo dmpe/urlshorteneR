@@ -4,10 +4,12 @@ library(jsonlite)
 library(stringr)
 library(stringi)
 library(urlshorteneR)
+library(dotenv)
 
+dotenv::load_dot_env("r.secret")
 context("QR Codes of Bit.ly")
 
 test_that("method creates a Bitlink based on a long URL.", {
-  ll <- bitly_qr_create_code(access_token, title = "google.com", group_guid = "asdagGE32r3t", bitly_link = "bit.ly/abc1234")
+  ll <- bitly_qr_create_code(access_token = Sys.getenv("access_token"), title = "google.com", group_guid = "asdagGE32r3t", bitly_link = "bit.ly/abc1234")
   expect_equal(dim(ll)[[2]], 8)
 })

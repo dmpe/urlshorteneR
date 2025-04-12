@@ -28,12 +28,15 @@
 bitly_add_cust_bitlink <- function(access_token, bitlink_id = NULL, custom_bitlink = NULL, showRequestURL = FALSE) {
   cust_post_url <- "https://api-ssl.bitly.com/v4/custom_bitlinks"
 
-  body_req_query <- list(access_token = access_token, bitlink_id = bitlink_id,
-                         custom_bitlink = custom_bitlink
+  body_req_query <- list(
+    access_token = access_token, bitlink_id = bitlink_id,
+    custom_bitlink = custom_bitlink
   )
 
-  df_add_keywords <- doBearerTokenRequest("POST", cust_post_url, queryParameters = body_req_query,
-                               showURL = showRequestURL)
+  df_add_keywords <- doBearerTokenRequest("POST", cust_post_url,
+    queryParameters = body_req_query,
+    showURL = showRequestURL
+  )
   return(df_add_keywords)
 }
 
@@ -56,7 +59,6 @@ bitly_add_cust_bitlink <- function(access_token, bitlink_id = NULL, custom_bitli
 #'
 #' @export
 bitly_retrieve_destination_metrics <- function(access_token, custom_bitlink = NULL, showRequestURL = FALSE) {
-
   if (is.string(custom_bitlink)) {
     metrics_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink, "/clicks_by_destination")
   } else {
@@ -90,7 +92,6 @@ bitly_retrieve_destination_metrics <- function(access_token, custom_bitlink = NU
 #'
 #' @export
 bitly_update_cust_bitlink <- function(access_token, custom_bitlink = NULL, bitlink_id = NULL, showRequestURL = FALSE) {
-
   if (is.string(custom_bitlink)) {
     patch_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink)
   } else {
@@ -100,8 +101,10 @@ bitly_update_cust_bitlink <- function(access_token, custom_bitlink = NULL, bitli
   query <- list(access_token = access_token)
   body_req_query <- list(bitlink_id = bitlink_id)
 
-  df_update_cost_link <- doBearerTokenRequest("PATCH", patch_url, queryParameters = query, patch_body = body_req_query,
-                               showURL = showRequestURL)
+  df_update_cost_link <- doBearerTokenRequest("PATCH", patch_url,
+    queryParameters = query, patch_body = body_req_query,
+    showURL = showRequestURL
+  )
 
   return(df_update_cost_link)
 }
@@ -125,7 +128,6 @@ bitly_update_cust_bitlink <- function(access_token, custom_bitlink = NULL, bitli
 #'
 #' @export
 bitly_retrieve_cust_bitlink <- function(access_token, custom_bitlink = NULL, showRequestURL = FALSE) {
-
   if (is.string(custom_bitlink)) {
     get_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink)
   } else {
@@ -155,13 +157,12 @@ bitly_retrieve_cust_bitlink <- function(access_token, custom_bitlink = NULL, sho
 #'
 #' @export
 bitly_retrieve_cust_bitlink_clicks_history <- function(access_token, custom_bitlink = NULL, showRequestURL = FALSE) {
-  
   if (is.string(custom_bitlink)) {
     get_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink, "/clicks")
   } else {
     stop("custom_bitlink must not be empty string, NA or NULL")
   }
-  
+
   query <- list(access_token = access_token, custom_bitlink = custom_bitlink)
   df_cust_metrics_history <- doBearerTokenRequest("GET", url = get_url, queryParameters = query, showURL = showRequestURL)
   return(df_cust_metrics_history)
@@ -185,15 +186,13 @@ bitly_retrieve_cust_bitlink_clicks_history <- function(access_token, custom_bitl
 #'
 #' @export
 bitly_retrieve_cust_bitlink_metrics_destination <- function(access_token, custom_bitlink = NULL, showRequestURL = FALSE) {
-  
   if (is.string(custom_bitlink)) {
     get_url <- paste0("https://api-ssl.bitly.com/v4/custom_bitlinks/", custom_bitlink, "/clicks_by_destination")
   } else {
     stop("custom_bitlink must not be empty string, NA or NULL")
   }
-  
+
   query <- list(access_token = access_token, custom_bitlink = custom_bitlink)
   df_cust_metrics_dest <- doBearerTokenRequest("GET", url = get_url, queryParameters = query, showURL = showRequestURL)
   return(df_cust_metrics_dest)
 }
-

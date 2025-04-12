@@ -12,11 +12,10 @@ editor_options:
 ---
 
 `urlshorteneR` wraps 2 URL services `Bit.ly` and its 2 friends `is.gd` as well as `v.gd`. 
-For Bit.ly, in order to shorten URLs and downloading useful statistics about them, you have to 
-authenticate using OAuth2.0 protocol, for which you need user account and API keys..
+For Bit.ly, in order to shorten URLs and downloading useful statistics about them, you have to authenticate 
+using Bearer Token, for which you need user account and API keys..
 
-For 2 other services `is.gd` & `v.gd`, there is no authentication needed. 
-Just create desired short links, see below.
+For 2 other services `is.gd` & `v.gd`, there is no authentication needed. Just create desired short links, see below.
 
 # Bit.ly
 
@@ -28,10 +27,8 @@ Return some basic information about my user on Bit.ly. Additionally, is my accou
 library("knitr")
 library(urlshorteneR)
 
-if(interactive()) {
-  access_token <- "0906523ec6a8c78b33f9310e84e7a5c81e500909"
-
-  ui <- bitly_user_info(access_token, showRequestURL = TRUE)
+if (interactive()) {
+  ui <- bitly_user_info(access_token = Sys.getenv("access_token"), showRequestURL = TRUE)
   is_bitly_user_premium_holder()
 }
 ```
@@ -40,7 +37,7 @@ We can also decide to update my username with a different one.
 
 ```{r}
 if (interactive()) {
-bitly_update_user(name = "John Malc", showRequestURL = TRUE)
+  bitly_update_user(access_token = Sys.getenv("access_token"),name = "John Malc", showRequestURL = TRUE)
 }
 ```
 
@@ -48,7 +45,7 @@ And what about the metadata about our OAUTH application?
 
 ```{r}
 if (interactive()) {
-bitly_app_details()
+  bitly_app_details()
 }
 ```
 
@@ -58,9 +55,8 @@ This retrieves information about a single group that user belongs to and and the
 
 ```{r}
 if (interactive()) {
-
-bitly_retrieve_group(ui$default_group_guid)
-bitly_retrieve_groups()
+  bitly_retrieve_group(access_token = Sys.getenv("access_token"),ui$default_group_guid)
+  bitly_retrieve_groups(access_token = Sys.getenv("access_token"))
 }
 ```
 
@@ -72,7 +68,7 @@ The first method returns an information about myself.
 
 ```{r}
 if (interactive()) {
-bitly_user_info()
+  bitly_user_info(access_token = Sys.getenv("access_token"))
 }
 ```
 
@@ -80,20 +76,23 @@ bitly_user_info()
 
 ```{r}
 if (interactive()) {
-  df <- data.frame(pubDate = rep("2016-02-10", 4),
-                   link = c("https://www.google.com",
-                            "https://www.apple.com"),
-                   stringsAsFactors = FALSE)
+  df <- data.frame(
+    pubDate = rep("2016-02-10", 4),
+    link = c(
+      "https://www.google.com",
+      "https://www.apple.com"
+    )
+  )
   df
-  
-  fin = NULL
+
+  fin <- NULL
   for (p in 1:length(df$link)) {
-    fin[[p]] <- bitly_create_bitlink(long_url = df$link[p])
+    fin[[p]] <- bitly_create_bitlink(access_token = Sys.getenv("access_token"),long_url = df$link[p])
   }
 }
 ```
 
-**BEWARE:** This will proceed only with the two real links, not with the NA, NULL or an empty strings. These, however, will stop the flow of the code (i.e. are errors).
+**WARNING:** This will proceed only with the two real links, not with the NA, NULL or an empty strings. These, however, will stop the flow of the code (i.e. are errors).
 
 # Is.gd & V.gd
 

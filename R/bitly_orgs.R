@@ -125,7 +125,7 @@ bitly_retrieve_org_plan_limits <- function(access_token, organization_id = NULL)
 
   query <- list(organization_guid = organization_id)
 
-  df_plan_limits <- doBearerTokenRequest("GET", org_plan_limits, access_token = access_token,queryParameters = query)
+  df_plan_limits <- doBearerTokenRequest("GET", org_plan_limits, access_token = access_token, queryParameters = query)
   df_org_plan_limits <- data.frame(df_plan_limits$plan_limits, stringsAsFactors = FALSE)
 
   return(df_org_plan_limits)

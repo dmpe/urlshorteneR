@@ -9,10 +9,11 @@ processResponse <- function(resp) {
     cat("you are not a premium account holder, or internet connection does not work properly")
   } else {
     text_response <- resp |> resp_body_string()
-    json_response <- fromJSON(text_response)
+    json_response <- jsonlite::fromJSON(text_response)
     message(sprintf("Code: %s - %s", json_response$message, json_response$description))
     cat("The requested URL has been this: ", resp$request$url, "\n")
   }
+  return(json_response)
 }
 
 
@@ -33,36 +34,35 @@ processResponse <- function(resp) {
 doNoAuthRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
   req <- httr2::request(url)
   switch(verb,
-         "PATCH" = {
-           resp <- req |>
-             req_url_query(!!!queryParameters) |>
-             req_method("PATCH") |>
-             req_body_json(list(patch_body)) |>
-             req_headers(
-               Accept = "application/json"
-             ) |>
-             req_perform()
-         },
-         "GET" = {
-           resp <- req |> 
-             req_url_query(!!!queryParameters) |> 
-             req_method("GET") |>
-             req_perform()
-         },
-         "POST" = {
-           resp <- req |>
-             req_url_query(!!!queryParameters) |>
-             req_method("POST") |>
-             req_body_json(list(patch_body)) |>
-             req_headers(
-               Accept = "application/json"
-             ) |>
-             req_perform()
-         }
+    "PATCH" = {
+      resp <- req |>
+        req_url_query(!!!queryParameters) |>
+        req_method("PATCH") |>
+        req_body_json(list(patch_body)) |>
+        req_headers(
+          Accept = "application/json"
+        ) |>
+        req_perform()
+    },
+    "GET" = {
+      resp <- req |>
+        req_url_query(!!!queryParameters) |>
+        req_method("GET") |>
+        req_perform()
+    },
+    "POST" = {
+      resp <- req |>
+        req_method("POST") |>
+        req_body_json(list(patch_body)) |>
+        req_headers(
+          Accept = "application/json"
+        ) |>
+        req_perform()
+    }
   )
-  
+
   json_response <- processResponse(resp)
-  
+
   return(json_response)
 }
 
@@ -82,42 +82,36 @@ doNoAuthRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch
 #'
 #' @noRd
 #' @keywords internal
-doBearerTokenRequest <- function(verb = "", url = NULL, access_token=NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
+doBearerTokenRequest <- function(verb = "", url = NULL, access_token = NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
   req <- httr2::request(url)
-  switch(verb,
-    "PATCH" = {
-      resp <- req |>
-          req_url_query(!!!queryParameters) |>
-          req_method("PATCH") |>
-          req_body_json(list(patch_body)) |>
-          req_auth_bearer_token(access_token) |>
-          req_headers(
-            Accept = "application/json"
-          ) |>
-          req_perform()
-    },
-    "GET" = {
-      resp <- req |> 
-        req_url_query(!!!queryParameters) |> 
-        req_method("GET") |>
-        req_auth_bearer_token(access_token) |>
-        req_perform()
-    },
-    "POST" = {
-      resp <- req |>
-        req_url_query(!!!queryParameters) |>
-        req_method("POST") |>
-        req_body_json(list(patch_body)) |>
-        req_auth_bearer_token(access_token) |>
-        req_headers(
-          Accept = "application/json",
-          "Content-Type" = "application/json"
-        ) |>
-        req_perform()
-    }
-  )
-
-  json_response <- processResponse(resp)
-
-  return(json_response)
+  resp <- NULL
+  if (verb == "PATCH") {
+    resp <- req |>
+      req_url_query(!!!queryParameters) |>
+      req_method("PATCH") |>
+      req_body_json(list(patch_body)) |>
+      req_auth_bearer_token(access_token) |>
+      req_headers(
+        Accept = "application/json"
+      ) |>
+      req_perform()
+  } else if (verb == "GET") {
+    resp <- req |>
+      req_url_query(!!!queryParameters) |>
+      req_method("GET") |>
+      req_auth_bearer_token(access_token) |>
+      req_perform()
+  } else if (verb == "POST") {
+    resp <- req |>
+      req_method("POST") |>
+      req_body_json(queryParameters) |>
+      req_auth_bearer_token(access_token) |>
+      req_verbose() |>
+      req_headers(
+        Accept = "application/json",
+        "Content-Type" = "application/json"
+      ) |>
+      req_perform()
+  }
+  return(processResponse(resp))
 }

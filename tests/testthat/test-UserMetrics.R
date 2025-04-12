@@ -28,13 +28,13 @@ test_that("Returns metrics about the countries referring click traffic to a sing
 })
 
 test_that("Returns Bitlinks for Group.", {
-  user_info  <- bitly_user_info()
+  user_info <- bitly_user_info()
   lmrd <- bitly_retrieve_bitlinks_by_groups(group_guid = user_info$default_group_guid[1])
   expect_equal(length(lmrd), 2)
 })
 
 test_that("Returns Sorted Bitlinks for Group.", {
-  user_info  <- bitly_user_info()
+  user_info <- bitly_user_info()
   rsbbg <- bitly_retrieve_sorted_bitlinks_by_groups(group_guid = user_info$default_group_guid[1])
   expect_equal(dim(rsbbg$sorted_links)[[2]], 2)
   expect_equal(dim(rsbbg$links)[[2]], 12)

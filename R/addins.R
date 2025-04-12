@@ -5,7 +5,6 @@
 #'
 #' @export
 shortenerAddin <- function() {
-
   ui <- miniUI::miniPage(
     miniUI::gadgetTitleBar("Shorten/Expand URL"),
     miniUI::miniContentPanel(
@@ -25,7 +24,6 @@ shortenerAddin <- function() {
   )
 
   server <- function(input, output, session) {
-
     shortener_provider <- shiny::reactive({
       shiny::req(input$provider)
       input$provider
@@ -35,8 +33,10 @@ shortenerAddin <- function() {
     output$bitly_domain <- shiny::renderUI({
       if (shortener_provider() == "bit.ly") {
         shiny::tagList(
-          shiny::textInput("domain", label = "Bit.ly domain", value = "bit.ly",
-                           width = "100%")
+          shiny::textInput("domain",
+            label = "Bit.ly domain", value = "bit.ly",
+            width = "100%"
+          )
         )
       } else {
         return(NULL)
@@ -45,7 +45,6 @@ shortenerAddin <- function() {
 
     # Shorten links
     shiny::observeEvent(input$shorten, {
-
       shiny::req(input$url)
 
       shortener <- get_shortener(provider_name = input$provider)
@@ -57,24 +56,25 @@ shortenerAddin <- function() {
         res <- shortener(longUrl = input$url)
       }
 
-      tryCatch({
-        parse_response(res) %>%
-          copy_and_notify()
-      }, error = function(e) {
-        cli::cli_alert_danger(e)
-        shiny::showNotification(
-          ui = paste("Something went wrong:", e, sep = " "),
-          duration = 3L,
-          closeButton = TRUE,
-          type = "message"
-        )
-      })
-
+      tryCatch(
+        {
+          parse_response(res) %>%
+            copy_and_notify()
+        },
+        error = function(e) {
+          cli::cli_alert_danger(e)
+          shiny::showNotification(
+            ui = paste("Something went wrong:", e, sep = " "),
+            duration = 3L,
+            closeButton = TRUE,
+            type = "message"
+          )
+        }
+      )
     })
 
     # Expand links
     shiny::observeEvent(input$expand, {
-
       shiny::req(input$url)
 
       expander <- get_expander(provider_name = input$provider)
@@ -86,26 +86,27 @@ shortenerAddin <- function() {
         short_url <- input$url
       }
 
-      tryCatch({
-        expander(shorturl = short_url) %>%
-          parse_response(expand = TRUE) %>%
-          copy_and_notify()
-      }, error = function(e) {
-        cli::cli_alert_danger(e)
-        shiny::showNotification(
-          ui = paste("Something went wrong:", e, sep = " "),
-          duration = 3L,
-          closeButton = TRUE,
-          type = "warning"
-        )
-      })
-
+      tryCatch(
+        {
+          expander(shorturl = short_url) %>%
+            parse_response(expand = TRUE) %>%
+            copy_and_notify()
+        },
+        error = function(e) {
+          cli::cli_alert_danger(e)
+          shiny::showNotification(
+            ui = paste("Something went wrong:", e, sep = " "),
+            duration = 3L,
+            closeButton = TRUE,
+            type = "warning"
+          )
+        }
+      )
     })
 
     shiny::observeEvent(input$done, {
       invisible(shiny::stopApp())
     })
-
   }
 
   viewer <- shiny::dialogViewer(dialogName = "URL shortener", width = 600, height = 400)
@@ -118,14 +119,17 @@ shortenerAddin <- function() {
 clipShortenerAddin <- function() {
   long_url <- clipr::read_clip()
 
-  tryCatch({
-    short_url <- bitly_shorten_link(long_url = long_url) %>%
-      parse_response()
-    clipr::write_clip(short_url)
-    cli::cli_alert_success(paste(short_url, "copied to clipboard", sep = " "))
-  }, error = function(err) {
-    cli::cli_alert_danger(err)
-  })
+  tryCatch(
+    {
+      short_url <- bitly_shorten_link(long_url = long_url) %>%
+        parse_response()
+      clipr::write_clip(short_url)
+      cli::cli_alert_success(paste(short_url, "copied to clipboard", sep = " "))
+    },
+    error = function(err) {
+      cli::cli_alert_danger(err)
+    }
+  )
 }
 
 #' Expand an URL from clipboard
@@ -135,15 +139,17 @@ clipExpanderAddin <- function() {
   bitly_id <- clipr::read_clip() %>%
     gsub(pattern = "https://", replacement = "")
 
-  tryCatch({
-    long_url <- bitly_expand_link(bitlink_id = bitly_id) %>%
-      parse_response(expand = TRUE)
-    clipr::write_clip(long_url)
-    cli::cli_alert_success(paste(long_url, "copied to clipboard", sep = " "))
-  }, error = function(e) {
-    cli::cli_alert_danger(e)
-  })
-
+  tryCatch(
+    {
+      long_url <- bitly_expand_link(bitlink_id = bitly_id) %>%
+        parse_response(expand = TRUE)
+      clipr::write_clip(long_url)
+      cli::cli_alert_success(paste(long_url, "copied to clipboard", sep = " "))
+    },
+    error = function(e) {
+      cli::cli_alert_danger(e)
+    }
+  )
 }
 
 
@@ -154,10 +160,10 @@ clipExpanderAddin <- function() {
 #'
 #' @noRd
 get_shortener <- function(provider_name) {
-  switch (provider_name,
-          "bit.ly" = bitly_shorten_link_,
-          "is.gd" = isgd_LinksShorten,
-          "v.gd" = vgd_LinksShorten
+  switch(provider_name,
+    "bit.ly" = bitly_shorten_link_,
+    "is.gd" = isgd_LinksShorten,
+    "v.gd" = vgd_LinksShorten
   )
 }
 
@@ -166,10 +172,10 @@ get_shortener <- function(provider_name) {
 #' @inheritParams get_shortener
 #' @noRd
 get_expander <- function(provider_name) {
-  switch (provider_name,
-          "bit.ly" = bitly_expand_link_,
-          "is.gd" = isgd_LinksExpand,
-          "v.gd" = vgd_LinksExpand
+  switch(provider_name,
+    "bit.ly" = bitly_expand_link_,
+    "is.gd" = isgd_LinksExpand,
+    "v.gd" = vgd_LinksExpand
   )
 }
 

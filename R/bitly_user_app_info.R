@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'    ui <- bitly_user_info(showRequestURL = TRUE)
+#' ui <- bitly_user_info(showRequestURL = TRUE)
 #' }
 #'
 #' @import httr2 stringr lubridate
@@ -73,8 +73,10 @@ bitly_update_user <- function(access_token, default_group_guid = NULL, name = ""
 
   if (!is_bitly_user_premium_holder()) {
     default_group_guid <- NULL
-    warning("Your account is not premium. Please report bugs in GitHub if this is not true.",
-            "We will now skip changing group guid.")
+    warning(
+      "Your account is not premium. Please report bugs in GitHub if this is not true.",
+      "We will now skip changing group guid."
+    )
   }
 
   body <- list(name = name, default_group_guid = default_group_guid)
@@ -131,9 +133,10 @@ bitly_rate_limits <- function(access_token, showRequestURL = F) {
   platform_lmt <- "https://api-ssl.bitly.com/v4/user/platform_limits"
 
   limits <- doBearerTokenRequest("GET",
-                      url = platform_lmt,
-                      access_token = access_token, 
-                      showURL = showRequestURL)
+    url = platform_lmt,
+    access_token = access_token,
+    showURL = showRequestURL
+  )
 
   return(limits[[1]])
 }

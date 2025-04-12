@@ -34,8 +34,10 @@ a single Bitlink.
 }
 \examples{
 \dontrun{
-bitly_retrieve_metrics_by_referrers(bitlink = "bit.ly/DPetrov", unit = "day",
-units = -1, size = 100)
+bitly_retrieve_metrics_by_referrers(
+  bitlink = "bit.ly/DPetrov", unit = "day",
+  units = -1, size = 100
+)
 }
 
 }
