@@ -18,14 +18,14 @@ bitly_qr_create_code(
 
 \item{group_guid}{- group id}
 
-\item{destination}{- a description}
+\item{bitly_link}{- a bit.ly link}
 }
 \description{
 Create a new QR Code and return its metadata
 }
 \examples{
 \dontrun{
-qr <- bitly_qr_create_code(group_guid = "Be2oejZbDDc", bitly_link = "bit.ly/abc1234")
+  qr <- bitly_qr_create_code(group_guid = "Be2oejZbDDc", bitly_link = "bit.ly/abc1234")
 }
 
 }

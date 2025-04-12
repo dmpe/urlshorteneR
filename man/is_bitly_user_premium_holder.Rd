@@ -6,6 +6,9 @@
 \usage{
 is_bitly_user_premium_holder(access_token)
 }
+\arguments{
+\item{access_token}{- bearer token for authentication}
+}
 \description{
 Check if authenticated user holds premium account
 }

@@ -79,7 +79,7 @@ bitly_update_user <- function(access_token, default_group_guid = NULL, name = ""
     )
     body <- list(name = name)
   } else {
-    body <- list(name = name, default_group_guid = default_group_guid)  
+    body <- list(name = name, default_group_guid = default_group_guid)
   }
 
   df_user_info <- doBearerTokenRequest("PATCH",
@@ -95,6 +95,7 @@ bitly_update_user <- function(access_token, default_group_guid = NULL, name = ""
 #' Check if authenticated user holds premium account
 #'
 #' @seealso [bitly_user_info()]
+#' @inheritParams bitly_user_info
 #'
 #' @export
 is_bitly_user_premium_holder <- function(access_token) {

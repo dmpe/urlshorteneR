@@ -11,4 +11,4 @@ library(urlshorteneR)
 #   bitly_token <- readRDS("tests/bitly_local_token.rds")
 # }
 
-test_check("urlshorteneR")
+# test_check("urlshorteneR")

@@ -7,14 +7,14 @@
 #'
 #' @param title - a required string
 #' @param group_guid - group id
-#' @param destination - a description
 #' @param access_token - bearer token for authentication
+#' @param bitly_link - a bit.ly link
 #'
 #' @import httr2 jsonlite assertthat
 #'
 #' @examples
 #' \dontrun{
-#' qr <- bitly_qr_create_code(group_guid = "Be2oejZbDDc", bitly_link = "bit.ly/abc1234")
+#'   qr <- bitly_qr_create_code(group_guid = "Be2oejZbDDc", bitly_link = "bit.ly/abc1234")
 #' }
 #'
 #' @export
