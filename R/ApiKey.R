@@ -1,17 +1,16 @@
 # Bitly_api_version <- "v4"
 # Isgd_api_version <- "v2019"
-.urlshorteneREnv <- new.env(parent = emptyenv())
 
 #' @noRd
 #' @keywords internal
 processResponse <- function(resp) {
   if (resp_is_error(resp) == TRUE) {
-    cat("you are not a premium account holder, or internet connection does not work properly")
+    cat("Either you are not a premium account holder and thus cannot execute the request, or internet connection does not work properly.")
+    cat("The requested URL has been this: ", resp$request$url, "\n")
+    message(sprintf("Code: %s - %s", json_response$message, json_response$description))
   } else {
     text_response <- resp |> resp_body_string()
     json_response <- jsonlite::fromJSON(text_response)
-    message(sprintf("Code: %s - %s", json_response$message, json_response$description))
-    cat("The requested URL has been this: ", resp$request$url, "\n")
   }
   return(json_response)
 }
@@ -34,16 +33,6 @@ processResponse <- function(resp) {
 doNoAuthRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
   req <- httr2::request(url)
   switch(verb,
-    "PATCH" = {
-      resp <- req |>
-        req_url_query(!!!queryParameters) |>
-        req_method("PATCH") |>
-        req_body_json(list(patch_body)) |>
-        req_headers(
-          Accept = "application/json"
-        ) |>
-        req_perform()
-    },
     "GET" = {
       resp <- req |>
         req_url_query(!!!queryParameters) |>
@@ -61,9 +50,7 @@ doNoAuthRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch
     }
   )
 
-  json_response <- processResponse(resp)
-
-  return(json_response)
+  return(processResponse(resp))
 }
 
 
@@ -85,33 +72,36 @@ doNoAuthRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch
 doBearerTokenRequest <- function(verb = "", url = NULL, access_token = NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
   req <- httr2::request(url)
   resp <- NULL
-  if (verb == "PATCH") {
-    resp <- req |>
-      req_url_query(!!!queryParameters) |>
-      req_method("PATCH") |>
-      req_body_json(list(patch_body)) |>
-      req_auth_bearer_token(access_token) |>
-      req_headers(
-        Accept = "application/json"
-      ) |>
-      req_perform()
-  } else if (verb == "GET") {
-    resp <- req |>
-      req_url_query(!!!queryParameters) |>
-      req_method("GET") |>
-      req_auth_bearer_token(access_token) |>
-      req_perform()
-  } else if (verb == "POST") {
-    resp <- req |>
-      req_method("POST") |>
-      req_body_json(queryParameters) |>
-      req_auth_bearer_token(access_token) |>
-      req_verbose() |>
-      req_headers(
-        Accept = "application/json",
-        "Content-Type" = "application/json"
-      ) |>
-      req_perform()
-  }
+  switch(verb,
+    "PATCH" = {
+      resp <- req |>
+        req_method("PATCH") |>
+        req_body_json(patch_body) |>
+        req_auth_bearer_token(access_token) |>
+        req_headers(
+          Accept = "application/json",
+          "Content-Type" = "application/json"
+        ) |>
+        req_perform()
+    },
+    "GET" = {
+      resp <- req |>
+        req_url_query(!!!queryParameters) |>
+        req_method("GET") |>
+        req_auth_bearer_token(access_token) |>
+        req_perform()
+    },
+    "POST" = {
+      resp <- req |>
+        req_method("POST") |>
+        req_body_json(queryParameters) |>
+        req_auth_bearer_token(access_token) |>
+        req_headers(
+          Accept = "application/json",
+          "Content-Type" = "application/json"
+        ) |>
+        req_perform()
+      }
+  )
   return(processResponse(resp))
 }

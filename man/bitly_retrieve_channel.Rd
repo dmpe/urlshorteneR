@@ -7,6 +7,8 @@
 bitly_retrieve_channel(access_token, channel_guid = NULL, showRequestURL = T)
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{channel_guid}{- GUID of a target channel}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

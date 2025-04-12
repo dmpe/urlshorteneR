@@ -12,6 +12,8 @@ bitly_update_user(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{default_group_guid}{- group id to change, see NOTE}
 
 \item{name}{- username to change}

@@ -23,10 +23,8 @@ bitly_retrieve_group_pref <- function(access_token, group_id = NA, showRequestUR
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
-
-  df_group_prefs <- doBearerTokenRequest("GET", url = gr_pref_url, queryParameters = query, showURL = showRequestURL)
-  df_group_prefs <- data.frame(df_group_prefs, stringsAsFactors = FALSE)
+  df_group_prefs <- doBearerTokenRequest("GET", url = gr_pref_url, access_token = access_token, showURL = showRequestURL)
+  df_group_prefs <- data.frame(df_group_prefs)
 
   return(df_group_prefs)
 }
@@ -59,15 +57,14 @@ bitly_update_group_pref <- function(access_token, group_id = NA, domain_pref = N
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
   body_upd <- list(group_guid = group_id, domain_preference = domain_pref)
 
   df_update_pref <- doBearerTokenRequest("PATCH",
-    url = gr_pref_url_up, queryParameters = query,
+    url = gr_pref_url_up, access_token = access_token,
     patch_body = body_upd, showURL = showRequestURL
   )
 
-  df_update_pref <- data.frame(df_update_pref, stringsAsFactors = FALSE)
+  df_update_pref <- data.frame(df_update_pref)
 
   return(df_update_pref)
 }
@@ -123,12 +120,12 @@ bitly_retrieve_links_grouped <- function(access_token, group_id = NA, keyword = 
   }
 
   query <- list(
-    access_token = access_token, size = size, page = page, keyword = keyword,
+    size = size, page = page, keyword = keyword,
     query = search_query, created_before = created_before, created_after = created_after,
     modified_after = modified_after, archived = archived
   )
 
-  df_grouped_links <- doBearerTokenRequest("GET",
+  df_grouped_links <- doBearerTokenRequest("GET", access_token = access_token,
     url = grouped_links_url, queryParameters = query,
     showURL = showRequestURL
   )
@@ -162,10 +159,8 @@ bitly_retrieve_tags <- function(access_token, group_id = NA, showRequestURL = F)
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
-
-  df_groups_details <- doBearerTokenRequest("GET", tags_url, query, showURL = showRequestURL)
-  df_groups_details <- data.frame(df_groups_details, stringsAsFactors = FALSE)
+  df_groups_details <- doBearerTokenRequest("GET", tags_url, access_token = access_token, showURL = showRequestURL)
+  df_groups_details <- data.frame(df_groups_details)
 
   return(df_groups_details)
 }
@@ -195,10 +190,8 @@ bitly_retrieve_group_click_metrics_by_countries <- function(access_token, group_
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
-
-  df_click_metrics <- doBearerTokenRequest("GET", metrics_url, query, showURL = showRequestURL)
-  df_click_metrics <- data.frame(df_click_metrics, stringsAsFactors = FALSE)
+  df_click_metrics <- doBearerTokenRequest("GET", metrics_url, access_token = access_token, showURL = showRequestURL)
+  df_click_metrics <- data.frame(df_click_metrics)
   df_click_metrics$unit_reference <- ymd_hms(df_click_metrics$unit_reference, tz = "UTC")
 
   return(df_click_metrics)
@@ -230,10 +223,8 @@ bitly_retrieve_group_click_metrics_by_devices <- function(access_token, group_id
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
-
-  df_click_metrics_devices <- doBearerTokenRequest("GET", metrics_devices_url, query, showURL = showRequestURL)
-  df_click_metrics_devices <- data.frame(df_click_metrics_devices, stringsAsFactors = FALSE)
+  df_click_metrics_devices <- doBearerTokenRequest("GET", metrics_devices_url, access_token = access_token, showURL = showRequestURL)
+  df_click_metrics_devices <- data.frame(df_click_metrics_devices)
   df_click_metrics_devices$unit_reference <- ymd_hms(df_click_metrics_devices$unit_reference, tz = "UTC")
 
   return(df_click_metrics_devices)
@@ -266,10 +257,8 @@ bitly_retrieve_group_click_metrics_by_cities <- function(access_token, group_id 
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
-
-  df_click_metrics_cities <- doBearerTokenRequest("GET", metrics_cities_url, query, showURL = showRequestURL)
-  df_click_metrics_cities <- data.frame(df_click_metrics_cities, stringsAsFactors = FALSE)
+  df_click_metrics_cities <- doBearerTokenRequest("GET", metrics_cities_url, access_token = access_token, showURL = showRequestURL)
+  df_click_metrics_cities <- data.frame(df_click_metrics_cities)
   df_click_metrics_cities$unit_reference <- ymd_hms(df_click_metrics_cities$unit_reference, tz = "UTC")
 
   return(df_click_metrics_cities)
@@ -301,15 +290,13 @@ bitly_retrieve_group_click_metrics_by_ref_networks <- function(access_token, gro
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
-
-  df_click_metrics_net <- doBearerTokenRequest("GET", metrics_ref_net_url, query, showURL = showRequestURL)
+  df_click_metrics_net <- doBearerTokenRequest("GET", metrics_ref_net_url, access_token = access_token, showURL = showRequestURL)
 
   if (length(df_click_metrics_net$metrics) == 0) {
     stop("Metrics are empty.")
   }
 
-  df_click_metrics_net <- data.frame(df_click_metrics_net, stringsAsFactors = FALSE)
+  df_click_metrics_net <- data.frame(df_click_metrics_net)
   df_click_metrics_net$unit_reference <- ymd_hms(df_click_metrics_net$unit_reference, tz = "UTC")
 
   return(df_click_metrics_net)
@@ -340,10 +327,8 @@ bitly_retrieve_group_shorten_counts <- function(access_token, group_id = NA, sho
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
-
-  df_short_co <- doBearerTokenRequest("GET", gr_short_counts_url, query, showURL = showRequestURL)
-  df_short_co <- data.frame(df_short_co, stringsAsFactors = FALSE)
+  df_short_co <- doBearerTokenRequest("GET", gr_short_counts_url, access_token = access_token, showURL = showRequestURL)
+  df_short_co <- data.frame(df_short_co)
   df_short_co$unit_reference <- ymd_hms(df_short_co$unit_reference, tz = "UTC")
 
   return(df_short_co)
@@ -373,10 +358,10 @@ bitly_retrieve_group_shorten_counts <- function(access_token, group_id = NA, sho
 bitly_retrieve_groups <- function(access_token, organization_id = NULL, showRequestURL = F) {
   groups_url <- "https://api-ssl.bitly.com/v4/groups/"
 
-  query <- list(access_token = access_token, organization_guid = organization_id)
+  query <- list(organization_guid = organization_id)
 
-  df_groups_details <- doBearerTokenRequest("GET", groups_url, query, showURL = showRequestURL)
-  df_groups_details <- data.frame(df_groups_details, stringsAsFactors = FALSE)
+  df_groups_details <- doBearerTokenRequest("GET", groups_url, access_token = access_token, query, showURL = showRequestURL)
+  df_groups_details <- data.frame(df_groups_details)
 
   return(df_groups_details)
 }
@@ -420,17 +405,17 @@ bitly_retrieve_sorted_links <- function(access_token, group_id = NA, to_sort_by 
   }
 
   query <- list(
-    access_token = access_token, unit = unit, units = units,
+    unit = unit, units = units,
     unit_reference = unit_reference, size = size
   )
 
-  df_sorted_links <- doBearerTokenRequest("GET",
+  df_sorted_links <- doBearerTokenRequest("GET", access_token = access_token,
     url = sorted_links_group_url, queryParameters = query,
     showURL = showRequestURL
   )
   df_sorted_links2 <- cbind(
-    data.frame(df_sorted_links$links, stringsAsFactors = FALSE),
-    data.frame(df_sorted_links$sorted_links, stringsAsFactors = FALSE)
+    data.frame(df_sorted_links$links),
+    data.frame(df_sorted_links$sorted_links)
   )
 
   return(df_sorted_links2)
@@ -469,14 +454,13 @@ bitly_update_group <- function(access_token, group_id = NA, name = NA, organizat
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token)
   update_body <- list(name = name, organization_guid = organization_id)
 
-  df_update_pref <- doBearerTokenRequest("PATCH",
-    url = upd_group_url, queryParameters = query,
+  df_update_pref <- doBearerTokenRequest("PATCH", access_token = access_token,
+    url = upd_group_url,
     patch_body = update_body, showURL = showRequestURL
   )
-  df_update_pref <- data.frame(t(unlist(df_update_pref)), stringsAsFactors = FALSE)
+  df_update_pref <- data.frame(t(unlist(df_update_pref)))
   df_update_pref$created <- ymd_hms(df_update_pref$created, tz = "UTC")
   df_update_pref$modified <- ymd_hms(df_update_pref$modified, tz = "UTC")
 
@@ -515,10 +499,45 @@ bitly_retrieve_group <- function(access_token, group_id = NA, showRequestURL = F
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token, group_guid = group_id)
+  query <- list(group_guid = group_id)
 
-  df_group_details <- doBearerTokenRequest("GET", url = group_url, queryParameters = query, showURL = showRequestURL)
-  df_group_details <- data.frame(t(unlist(df_group_details)), stringsAsFactors = FALSE)
+  df_group_details <- doBearerTokenRequest("GET", url = group_url, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+  df_group_details <- data.frame(t(unlist(df_group_details)))
 
   return(df_group_details)
+}
+
+
+#' @title Retrieve group's feature limit usage
+#'
+#' @description
+#' Get a group's current feature limit usage.
+#'
+#' @seealso \url{https://dev.bitly.com/api-reference/#getGroupFeatureUsage}
+#'
+#' @param group_id - a required string | A GUID for a Bitly group
+#'
+#' @inheritParams bitly_user_info
+#' @inheritParams bitly_retrieve_links_grouped
+#' @import httr2 jsonlite assertthat
+#'
+#' @examples
+#' \dontrun{
+#' ui <- bitly_user_info(showRequestURL = TRUE)
+#' rg <- bitly_retrieve_group_feature_usage(group_guid = ui$default_group_guid)
+#' }
+#'
+#' @export
+bitly_retrieve_group_feature_usage <- function(access_token, group_id = NA, showRequestURL = F) {
+  if (is.string(group_id)) {
+    group_url <- paste0("https://api-ssl.bitly.com/v4/groups/", group_id, "/feature_usage")
+  } else {
+    stop("group_id must not be empty string, NA or NULL")
+  }
+  
+  query <- list(group_guid = group_id)
+  
+  df_group_limits <- doBearerTokenRequest("GET", url = group_url, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+
+  return(df_group_limits$limit_usage)
 }

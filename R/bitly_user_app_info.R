@@ -2,6 +2,7 @@
 #'
 #' @param showRequestURL - an optional T/F value to whether show URL which has been
 #' build and requested from server. For debug purposes, default FALSE.
+#' @param access_token - bearer token for authentication
 #'
 #' @section User:
 #' User operations such as changing your name or fetching basic user information apply only to the authenticated user.
@@ -28,9 +29,9 @@
 bitly_user_info <- function(access_token, showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
-  df_user_info <- doBearerTokenRequest(verb = "GET", url = user_info_url, access_token = access_token, queryParameters = create_query, showURL = showRequestURL)
+  df_user_info <- doBearerTokenRequest(verb = "GET", url = user_info_url, access_token = access_token, showURL = showRequestURL)
 
-  df_user_info_data <- data.frame(df_user_info, stringsAsFactors = FALSE)
+  df_user_info_data <- data.frame(df_user_info)
 
   # convert to readable format - use lubridate parse_date_time
   df_user_info_data$created <- ymd_hms(df_user_info_data$created, tz = "UTC")
@@ -71,19 +72,18 @@ bitly_user_info <- function(access_token, showRequestURL = FALSE) {
 bitly_update_user <- function(access_token, default_group_guid = NULL, name = "", showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
-  if (!is_bitly_user_premium_holder()) {
-    default_group_guid <- NULL
+  if (!is_bitly_user_premium_holder(access_token)) {
     warning(
-      "Your account is not premium. Please report bugs in GitHub if this is not true.",
+      "Your account is not premium. Please report bugs in GitHub if this is not true. ",
       "We will now skip changing group guid."
     )
+    body <- list(name = name)
+  } else {
+    body <- list(name = name, default_group_guid = default_group_guid)  
   }
 
-  body <- list(name = name, default_group_guid = default_group_guid)
-
   df_user_info <- doBearerTokenRequest("PATCH",
-    url = user_info_url, queryParameters = query,
-    access_token = access_token,
+    url = user_info_url, access_token = access_token,
     patch_body = body, showURL = showRequestURL
   )
   df_user_info$created <- ymd_hms(df_user_info$created, tz = "UTC")
@@ -97,8 +97,8 @@ bitly_update_user <- function(access_token, default_group_guid = NULL, name = ""
 #' @seealso [bitly_user_info()]
 #'
 #' @export
-is_bitly_user_premium_holder <- function() {
-  user_profile <- bitly_user_info()
+is_bitly_user_premium_holder <- function(access_token) {
+  user_profile <- bitly_user_info(access_token)
 
   return(user_profile$is_sso_user[[1]])
 }
@@ -118,7 +118,7 @@ bitly_app_details <- function(access_token, client_id = "be03aead58f23bc1aee6e1d
   query <- list(client_id = client_id)
 
   df_app_details <- doBearerTokenRequest("GET", url = oauth_app_details, access_token = access_token, queryParameters = query, showURL = showRequestURL)
-  df_app_details <- data.frame(df_app_details, stringsAsFactors = FALSE)
+  df_app_details <- data.frame(df_app_details)
 
   return(df_app_details)
 }

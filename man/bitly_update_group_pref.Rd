@@ -12,6 +12,8 @@ bitly_update_group_pref(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{domain_pref}{- string}

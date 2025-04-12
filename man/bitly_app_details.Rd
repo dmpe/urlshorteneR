@@ -11,6 +11,8 @@ bitly_app_details(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{client_id}{- The client ID of an OAuth app}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

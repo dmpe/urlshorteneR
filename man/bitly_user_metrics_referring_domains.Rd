@@ -15,6 +15,8 @@ bitly_user_metrics_referring_domains(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{unit}{- string | Default: "day", Enum: "minute" "hour" "day" "week" "month" | A unit of time}

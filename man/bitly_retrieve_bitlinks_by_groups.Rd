@@ -26,6 +26,8 @@ bitly_retrieve_bitlinks_by_groups(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{size}{- The quantity of items to be be returned}

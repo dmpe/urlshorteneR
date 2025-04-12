@@ -16,6 +16,8 @@ bitly_retrieve_sorted_bitlinks_by_groups(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{unit}{- A unit of time}

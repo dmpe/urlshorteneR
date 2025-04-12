@@ -3,7 +3,9 @@ see: https://github.com/dmpe/urlshorteneR
 
 ###
 April 2025     - Major rewrite of the package, using `httr2` as REST backend.
-               - Add Bearer token authentication
+               - Remove oAUTH authentication and replaced it with Bearer token authentication.
+               - Removed RStudio Addins functionality to shorten and expand bit.ly links.
+               - Add few additional endpoints.
 
 February 2025  - Upgrade package dependancies 
 

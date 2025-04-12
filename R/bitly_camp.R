@@ -10,6 +10,7 @@
 #' @param channel_guids - a list of strings
 #' @param description - description of campaign
 #' @param name - its name
+#' @param access_token - bearer token for authentication
 #'
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
@@ -42,7 +43,7 @@ bitly_create_campaigns <- function(access_token, group_guid = NULL, channel_guid
     showURL = showRequestURL
   )
 
-  df_create_camps <- data.frame(df_create_camps, stringsAsFactors = FALSE)
+  df_create_camps <- data.frame(df_create_camps)
   df_create_camps$created <- ymd_hms(df_create_camps$created, tz = "UTC")
   df_create_camps$modified <- ymd_hms(df_create_camps$modified, tz = "UTC")
 
@@ -75,7 +76,7 @@ bitly_retrieve_campaigns <- function(access_token, group_guid = NULL, showReques
 
   df_get_camps <- doBearerTokenRequest("GET", get_camp, access_token = access_token, queryParameters = query, showURL = showRequestURL)
 
-  df_get_camps <- data.frame(df_get_camps$campaigns, stringsAsFactors = FALSE)
+  df_get_camps <- data.frame(df_get_camps$campaigns)
   df_get_camps$created <- ymd_hms(df_get_camps$created, tz = "UTC")
   df_get_camps$modified <- ymd_hms(df_get_camps$modified, tz = "UTC")
 
@@ -125,7 +126,7 @@ bitly_create_channel <- function(access_token, group_guid = NULL, guid = NULL, n
     showURL = showRequestURL
   )
 
-  df_create_channel <- data.frame(df_create_channel, stringsAsFactors = FALSE)
+  df_create_channel <- data.frame(df_create_channel)
   df_create_channel$created <- ymd_hms(df_create_channel$created, tz = "UTC")
   df_create_channel$modified <- ymd_hms(df_create_channel$modified, tz = "UTC")
 
@@ -160,7 +161,7 @@ bitly_retrieve_channels <- function(access_token, group_guid = NULL, campaign_gu
 
   df_get_channels <- doBearerTokenRequest("GET", get_channels, access_token = access_token, queryParameters = query, showURL = showRequestURL)
 
-  df_get_channels <- data.frame(df_get_channels$channels, stringsAsFactors = FALSE)
+  df_get_channels <- data.frame(df_get_channels$channels)
   df_get_channels$created <- ymd_hms(df_get_channels$created, tz = "UTC")
   df_get_channels$modified <- ymd_hms(df_get_channels$modified, tz = "UTC")
 
@@ -194,7 +195,7 @@ bitly_retrieve_campaign <- function(access_token, campaign_guid = NULL, showRequ
 
   df_get_camp <- doBearerTokenRequest("GET", get_camp, access_token = access_token, queryParameters = query, showURL = showRequestURL)
 
-  df_get_camp <- data.frame(df_get_camp, stringsAsFactors = FALSE)
+  df_get_camp <- data.frame(df_get_camp)
   df_get_camp$created <- ymd_hms(df_get_camp$created, tz = "UTC")
   df_get_camp$modified <- ymd_hms(df_get_camp$modified, tz = "UTC")
 
@@ -229,7 +230,7 @@ bitly_retrieve_channel <- function(access_token, channel_guid = NULL, showReques
 
   df_get_channel <- doBearerTokenRequest("GET", get_channel, access_token = access_token, queryParameters = query, showURL = showRequestURL)
 
-  df_get_channel <- data.frame(df_get_channel, stringsAsFactors = FALSE)
+  df_get_channel <- data.frame(df_get_channel)
   df_get_channel$created <- ymd_hms(df_get_channel$created, tz = "UTC")
   df_get_channel$modified <- ymd_hms(df_get_channel$modified, tz = "UTC")
 
@@ -277,7 +278,7 @@ bitly_update_campaign <- function(access_token, campaign_guid = NULL, group_guid
     showURL = showRequestURL
   )
 
-  df_update_camps <- data.frame(df_update_camps, stringsAsFactors = FALSE)
+  df_update_camps <- data.frame(df_update_camps)
   df_update_camps$created <- ymd_hms(df_update_camps$created, tz = "UTC")
   df_update_camps$modified <- ymd_hms(df_update_camps$modified, tz = "UTC")
 
@@ -322,7 +323,7 @@ bitly_update_channel <- function(access_token, channel_guid = NULL, group_guid =
     showURL = showRequestURL
   )
 
-  df_update_camp <- data.frame(df_update_camp, stringsAsFactors = FALSE)
+  df_update_camp <- data.frame(df_update_camp)
   df_update_camp$created <- ymd_hms(df_update_camp$created, tz = "UTC")
   df_update_camp$modified <- ymd_hms(df_update_camp$modified, tz = "UTC")
 

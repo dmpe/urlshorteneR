@@ -7,6 +7,8 @@
 bitly_retrieve_campaign(access_token, campaign_guid = NULL, showRequestURL = T)
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

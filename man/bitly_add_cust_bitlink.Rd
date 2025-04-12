@@ -12,6 +12,8 @@ bitly_add_cust_bitlink(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{bitlink_id}{- string}
 
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}

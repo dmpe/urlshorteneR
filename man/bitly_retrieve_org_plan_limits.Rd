@@ -7,6 +7,8 @@
 bitly_retrieve_org_plan_limits(access_token, organization_id = NULL)
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{organization_id}{- a required string | A GUID for a Bitly organization.
 You may also simply pass "" (double quotes), but this should be avoided at all costs.}
 }

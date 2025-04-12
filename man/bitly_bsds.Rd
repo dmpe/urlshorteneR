@@ -7,6 +7,8 @@
 bitly_bsds(access_token, showRequestURL = F)
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }

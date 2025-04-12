@@ -7,6 +7,8 @@
 bitly_retrieve_bitlink(access_token, bitlink = NULL, showRequestURL = FALSE)
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

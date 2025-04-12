@@ -13,6 +13,8 @@ bitly_shorten_link(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{domain}{- (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
 a custom short domain. The default for this parameter is the short domain selected by each
 user in their bitly account settings. Passing a specific domain via this parameter will override

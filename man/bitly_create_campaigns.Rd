@@ -14,6 +14,8 @@ bitly_create_campaigns(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{channel_guids}{- a list of strings}

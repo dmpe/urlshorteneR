@@ -7,6 +7,8 @@
 bitly_expand_link(access_token, bitlink_id = NULL, showRequestURL = FALSE)
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{bitlink_id}{- string}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

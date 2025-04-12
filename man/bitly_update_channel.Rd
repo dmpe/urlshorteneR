@@ -18,6 +18,8 @@ bitly_update_channel(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{channel_guid}{- GUID of a target channel}
 
 \item{group_guid}{- a GUID for a Bitly group}

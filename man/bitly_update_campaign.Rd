@@ -15,6 +15,8 @@ bitly_update_campaign(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}
 
 \item{group_guid}{- a GUID for a Bitly group}

@@ -12,6 +12,8 @@ bitly_qr_create_code(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{title}{- a required string}
 
 \item{group_guid}{- group id}
@@ -19,11 +21,11 @@ bitly_qr_create_code(
 \item{destination}{- a description}
 }
 \description{
-Retrive details for the specified organization.
+Create a new QR Code and return its metadata
 }
 \examples{
 \dontrun{
-qr <- bitly_qr_create_code(group_guid = "aeqog323", bitly_link = "bit.ly/abc1234")
+qr <- bitly_qr_create_code(group_guid = "Be2oejZbDDc", bitly_link = "bit.ly/abc1234")
 }
 
 }

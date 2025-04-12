@@ -23,6 +23,8 @@ bitly_update_bitlink(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{archived}{- string | Default: "off" | Enum:"on" "off" "both" | Whether or not to include archived bitlinks}

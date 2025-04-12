@@ -11,6 +11,8 @@ bitly_retrieve_group_shorten_counts(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

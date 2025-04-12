@@ -15,6 +15,8 @@ bitly_retrieve_metrics_by_countries(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{size}{- The quantity of items to be be returned}

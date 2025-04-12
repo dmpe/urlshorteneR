@@ -12,6 +12,8 @@ bitly_retrieve_channels(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}

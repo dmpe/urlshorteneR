@@ -4,6 +4,7 @@
 #' \url{https://dev.bitly.com/api-reference/#createFullBitlink}
 #' Convert a long url to a Bitlink and set additional parameters.
 #'
+#' @param access_token - bearer token for authentication
 #' @param long_url - required, a long URL to be shortened (example: https://www.idnes.cz).
 #' Must contain http/https
 #' @param domain - (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
@@ -168,8 +169,8 @@ bitly_expand_link <- function(access_token, bitlink_id = NULL, showRequestURL = 
     body_req_query <- list(bitlink_id = bitlink_id)
   }
 
-  df_link_expand <- doBearerTokenRequest("POST", links_expand_url, queryParameters = body_req_query, showURL = showRequestURL)
-  df_link_expand <- data.frame(df_link_expand, stringsAsFactors = FALSE)
+  df_link_expand <- doBearerTokenRequest("POST", links_expand_url, access_token = access_token, queryParameters = body_req_query, showURL = showRequestURL)
+  df_link_expand <- data.frame(df_link_expand)
   df_link_expand$created_at <- ymd_hms(df_link_expand$created_at, tz = "UTC")
 
   return(df_link_expand)
@@ -181,8 +182,8 @@ bitly_expand_link <- function(access_token, bitlink_id = NULL, showRequestURL = 
 #'   therefore a wrapper is needed to avoid changing argnames to main functions.
 #'
 #' @noRd
-bitly_expand_link_ <- function(shorturl, ...) {
-  bitly_expand_link(bitlink_id = shorturl, ...)
+bitly_expand_link_ <- function(shorturl, accessToken, ...) {
+  bitly_expand_link(bitlink_id = shorturl, access_token = accessToken, ...)
 }
 
 
@@ -228,11 +229,11 @@ bitly_shorten_link <- function(access_token, domain = "bit.ly", group_guid = NUL
 #' Wrapper url shortener
 #'
 #' @description url shortener function have different argnames to pass long URLS
-#'   theefore a wrapper is needed to avoid changing argnames to main functions.
+#'   therefore a wrapper is needed to avoid changing argnames to main functions.
 #'
 #' @noRd
-bitly_shorten_link_ <- function(longUrl, ...) {
-  bitly_shorten_link(long_url = longUrl, ...)
+bitly_shorten_link_ <- function(longUrl, accessToken, ...) {
+  bitly_shorten_link(long_url = longUrl, access_token = accessToken, ...)
 }
 
 #' @title Update a Bitlink
@@ -280,9 +281,7 @@ bitly_update_bitlink <- function(access_token, bitlink = NULL, archived = NULL, 
                                  )) {
   link_update <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink)
 
-  query <- list(access_token = access_token)
   body_upd <- list()
-
 
   if (!length(deeplinks$bitlink) == 0 || !length(deeplinks$created) == 0 ||
     !length(deeplinks$install_url) == 0 || !length(deeplinks$app_uri_path) == 0 ||
@@ -332,14 +331,12 @@ bitly_update_bitlink <- function(access_token, bitlink = NULL, archived = NULL, 
     body_upd$id <- id
   }
 
-  body_req_query_cleaned <- toJSON(body_upd, auto_unbox = T)
-
   df_update_pref <- doBearerTokenRequest("PATCH",
-    url = link_update, queryParameters = query, access_token = access_token,
-    patch_body = body_req_query_cleaned, showURL = showRequestURL
+    url = link_update, access_token = access_token,
+    patch_body = body_upd, showURL = showRequestURL
   )
 
-  df_update_pref <- data.frame(t(do.call(rbind, df_update_pref)), stringsAsFactors = F)
+  df_update_pref <- data.frame(t(do.call(rbind, df_update_pref)))
   df_update_pref$created_at <- ymd_hms(df_update_pref$created_at, tz = "UTC")
 
   return(df_update_pref)
@@ -373,7 +370,7 @@ bitly_retrieve_bitlink <- function(access_token, bitlink = NULL, showRequestURL 
 
   query <- list(bitlink = bitlink)
 
-  df_bitlink <- doBearerTokenRequest("GET", get_bitlink_url, queryParameters = query, showURL = showRequestURL)
+  df_bitlink <- doBearerTokenRequest("GET", get_bitlink_url, access_token = access_token, queryParameters = query, showURL = showRequestURL)
   df_bitlink <- data.frame(t(do.call(rbind, df_bitlink)), stringsAsFactors = F)
   df_bitlink$created_at <- ymd_hms(df_bitlink$created_at, tz = "UTC")
 
@@ -400,7 +397,7 @@ bitly_retrieve_bitlink <- function(access_token, bitlink = NULL, showRequestURL 
 #' }
 #'
 #' @export
-bitly_retrieve_metrics_by_referrers_by_domain <- function(bitlink = NULL, size = 50, unit_reference = NULL, unit = NULL,
+bitly_retrieve_metrics_by_referrers_by_domain <- function(access_token, bitlink = NULL, size = 50, unit_reference = NULL, unit = NULL,
                                                           units = -1, showRequestURL = FALSE) {
   metrics_referrers_by_domain_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/referrers_by_domains")
 
@@ -475,7 +472,7 @@ bitly_retrieve_clicks_summary <- function(access_token, bitlink = NULL, size = 5
     unit = unit, units = units, size = size
   )
 
-  df_user_metrics_clicks_sum <- doBearerTokenRequest("GET", user_metrics_clicks_url_sum, query, showURL = showRequestURL)
+  df_user_metrics_clicks_sum <- doBearerTokenRequest("GET", user_metrics_clicks_url_sum, access_token = access_token, query, showURL = showRequestURL)
   df_user_metrics_clicks_sum$unit_reference <- ymd_hms(df_user_metrics_clicks_sum$unit_reference, tz = "UTC")
 
   return(df_user_metrics_clicks_sum)
@@ -538,7 +535,7 @@ bitly_retrieve_metrics_by_countries <- function(access_token, bitlink = NULL, si
 #' }
 #'
 #' @export
-bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit = NULL, unit_reference = NULL,
+bitly_retrieve_metrics_by_referrers <- function(access_token, bitlink = NULL, size = 100, unit = NULL, unit_reference = NULL,
                                                 units = -1, showRequestURL = FALSE) {
   link_metrics_countries_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/referrers")
 
@@ -547,7 +544,7 @@ bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit
     unit = unit, units = units, size = size
   )
 
-  df_link_metrics_countries <- doBearerTokenRequest("GET", link_metrics_countries_url, query, showURL = showRequestURL)
+  df_link_metrics_countries <- doBearerTokenRequest("GET", link_metrics_countries_url, access_token =access_token, query, showURL = showRequestURL)
   df_link_metrics_countries$unit_reference <- ymd_hms(df_link_metrics_countries$unit_reference, tz = "UTC")
 
   return(df_link_metrics_countries)

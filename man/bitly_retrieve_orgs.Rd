@@ -6,6 +6,9 @@
 \usage{
 bitly_retrieve_orgs(access_token)
 }
+\arguments{
+\item{access_token}{- bearer token for authentication}
+}
 \description{
 Retrieve a list of organizations
 }

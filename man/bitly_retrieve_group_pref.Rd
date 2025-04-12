@@ -7,6 +7,8 @@
 bitly_retrieve_group_pref(access_token, group_id = NA, showRequestURL = F)
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{group_id}{- the group id the user belongs to}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

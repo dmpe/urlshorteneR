@@ -18,6 +18,7 @@ shortenerAddin <- function() {
         width = "100%"
       ),
       shiny::uiOutput("bitly_domain"),
+      shiny::uiOutput("bitly_token"),
       shiny::actionButton("shorten", label = "Shorten"),
       shiny::actionButton("expand", label = "Expand")
     )
@@ -43,6 +44,20 @@ shortenerAddin <- function() {
       }
     })
 
+    # bit.ly however also requires bearer tokens
+    output$bitly_token <- shiny::renderUI({
+      if (shortener_provider() == "bit.ly") {
+        shiny::tagList(
+          shiny::textInput("token",
+                           label = "Bearer Token", value = "",
+                           width = "100%"
+          )
+        )
+      } else {
+        return(NULL)
+      }
+    })
+    
     # Shorten links
     shiny::observeEvent(input$shorten, {
       shiny::req(input$url)
@@ -51,7 +66,7 @@ shortenerAddin <- function() {
 
       # Conditionally pass custom bit.ly custom domain
       if (input$provider == "bit.ly") {
-        res <- shortener(longUrl = input$url, domain = input$domain)
+        res <- shortener(longUrl = input$url, domain = input$domain, accessToken = input$token)
       } else {
         res <- shortener(longUrl = input$url)
       }
@@ -88,7 +103,7 @@ shortenerAddin <- function() {
 
       tryCatch(
         {
-          expander(shorturl = short_url) %>%
+          expander(shorturl = short_url, accessToken = input$token) %>%
             parse_response(expand = TRUE) %>%
             copy_and_notify()
         },
@@ -112,46 +127,6 @@ shortenerAddin <- function() {
   viewer <- shiny::dialogViewer(dialogName = "URL shortener", width = 600, height = 400)
   shiny::runGadget(ui, server, viewer = viewer)
 }
-
-#' Shorten an URL from clipboard
-#'
-#' @export
-clipShortenerAddin <- function() {
-  long_url <- clipr::read_clip()
-
-  tryCatch(
-    {
-      short_url <- bitly_shorten_link(long_url = long_url) %>%
-        parse_response()
-      clipr::write_clip(short_url)
-      cli::cli_alert_success(paste(short_url, "copied to clipboard", sep = " "))
-    },
-    error = function(err) {
-      cli::cli_alert_danger(err)
-    }
-  )
-}
-
-#' Expand an URL from clipboard
-#'
-#' @export
-clipExpanderAddin <- function() {
-  bitly_id <- clipr::read_clip() %>%
-    gsub(pattern = "https://", replacement = "")
-
-  tryCatch(
-    {
-      long_url <- bitly_expand_link(bitlink_id = bitly_id) %>%
-        parse_response(expand = TRUE)
-      clipr::write_clip(long_url)
-      cli::cli_alert_success(paste(long_url, "copied to clipboard", sep = " "))
-    },
-    error = function(e) {
-      cli::cli_alert_danger(e)
-    }
-  )
-}
-
 
 #' Select shortener function
 #'

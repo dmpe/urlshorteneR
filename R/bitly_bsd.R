@@ -17,7 +17,7 @@ bitly_bsds <- function(access_token, showRequestURL = F) {
   if (length(df_bsds$bsds) == 0) {
     warning("There are no branded domains. First create some in Bitly.com")
   } else {
-    df_bsds <- data.frame(df_bsds, stringsAsFactors = FALSE)
+    df_bsds <- data.frame(df_bsds)
     return(df_bsds)
   }
 }

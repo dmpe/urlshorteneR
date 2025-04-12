@@ -10,6 +10,7 @@
 #'
 #' @param organization_id - a required string | A GUID for a Bitly organization.
 #' You may also simply pass "" (double quotes), but this should be avoided at all costs.
+#' @param access_token - bearer token for authentication
 #'
 #' @import httr2 jsonlite assertthat
 #'
@@ -29,7 +30,7 @@ bitly_retrieve_org <- function(access_token, organization_id = NULL) {
   query <- list(organization_guid = organization_id)
 
   df_org_details <- doBearerTokenRequest("GET", url = org_url, access_token = access_token, queryParameters = query)
-  df_org_details <- data.frame(df_org_details, stringsAsFactors = FALSE)
+  df_org_details <- data.frame(df_org_details)
 
   return(df_org_details)
 }
@@ -41,6 +42,7 @@ bitly_retrieve_org <- function(access_token, organization_id = NULL) {
 #' Retrieve a list of organizations
 #'
 #' @inheritSection bitly_retrieve_org Organizations
+#' @inheritParams bitly_retrieve_org
 #'
 #' @seealso \url{https://dev.bitly.com/api-reference/#getOrganizations}
 #'
@@ -56,7 +58,7 @@ bitly_retrieve_orgs <- function(access_token) {
   orgs_url <- "https://api-ssl.bitly.com/v4/organizations"
 
   df_orgs_details <- doBearerTokenRequest(verb = "GET", url = orgs_url, access_token = access_token)
-  df_orgs_details <- data.frame(df_orgs_details$organizations, stringsAsFactors = FALSE)
+  df_orgs_details <- data.frame(df_orgs_details$organizations)
 
   return(df_orgs_details)
 }
@@ -77,8 +79,8 @@ bitly_retrieve_orgs <- function(access_token) {
 #' @examples
 #' \dontrun{
 #' all_orgs <- bitly_retrieve_orgs()
-#' osc <- bitly_org_shorten_counts(organization_id = all_orgs$guid)
-#' df_org_short_counts <- data.frame(osc, stringsAsFactors = FALSE)
+#' osc <- bitly_org_shorten_counts(access_token = access_token, organization_id = all_orgs$guid)
+#' df_org_short_counts <- data.frame(osc)
 #' }
 #'
 #' @import httr2 jsonlite assertthat
@@ -91,9 +93,7 @@ bitly_retrieve_org_shorten_counts <- function(access_token, organization_id = NU
   }
 
   query <- list(organization_guid = organization_id)
-
   df_org_short_counts <- doBearerTokenRequest("GET", org_short_counts, access_token = access_token, queryParameters = query)
-  # df_org_short_counts <- data.frame(df_org_short_counts, stringsAsFactors = FALSE)
 
   return(df_org_short_counts)
 }
@@ -126,7 +126,7 @@ bitly_retrieve_org_plan_limits <- function(access_token, organization_id = NULL)
   query <- list(organization_guid = organization_id)
 
   df_plan_limits <- doBearerTokenRequest("GET", org_plan_limits, access_token = access_token, queryParameters = query)
-  df_org_plan_limits <- data.frame(df_plan_limits$plan_limits, stringsAsFactors = FALSE)
+  df_org_plan_limits <- data.frame(df_plan_limits$plan_limits)
 
   return(df_org_plan_limits)
 }

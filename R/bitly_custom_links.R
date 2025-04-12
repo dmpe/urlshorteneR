@@ -68,7 +68,7 @@ bitly_retrieve_destination_metrics <- function(access_token, custom_bitlink = NU
   query <- list(access_token = access_token, custom_bitlink = custom_bitlink)
 
   df_cust_metrics <- doBearerTokenRequest("GET", url = metrics_url, queryParameters = query, showURL = showRequestURL)
-  df_cust_metrics <- data.frame(df_cust_metrics, stringsAsFactors = FALSE)
+  df_cust_metrics <- data.frame(df_cust_metrics)
 
   return(df_cust_metrics)
 }

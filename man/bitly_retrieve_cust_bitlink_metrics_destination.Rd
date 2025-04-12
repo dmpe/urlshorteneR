@@ -11,6 +11,8 @@ bitly_retrieve_cust_bitlink_metrics_destination(
 )
 }
 \arguments{
+\item{access_token}{- bearer token for authentication}
+
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
