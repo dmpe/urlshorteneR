@@ -3,11 +3,9 @@ library("knitr")
 library(urlshorteneR)
 
 if(interactive()) {
-# You must register a new pair of keys yourself
-# bitly_token <- bitly_auth(key = "xxx", secret = "xxx")
-# bitly_token <- bitly_auth()
+  access_token <- "0906523ec6a8c78b33f9310e84e7a5c81e500909"
 
-  ui <- bitly_user_info(showRequestURL = TRUE)
+  ui <- bitly_user_info(access_token, showRequestURL = TRUE)
   is_bitly_user_premium_holder()
 }
 
@@ -46,10 +44,4 @@ if (interactive()) {
     fin[[p]] <- bitly_create_bitlink(long_url = df$link[p])
   }
 }
-
-## -----------------------------------------------------------------------------
-isgd_LinksShorten(longUrl = "https://www.google.com", showRequestURL = TRUE)
-
-## -----------------------------------------------------------------------------
-vgd_LinksShorten(longUrl = "https://www.apple.com", showRequestURL = TRUE)
 

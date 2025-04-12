@@ -11,7 +11,7 @@
 #' @param organization_id - a required string | A GUID for a Bitly organization.
 #' You may also simply pass "" (double quotes), but this should be avoided at all costs.
 #'
-#' @import httr jsonlite assertthat
+#' @import httr2 jsonlite assertthat
 #'
 #' @examples
 #' \dontrun{
@@ -20,7 +20,7 @@
 #' }
 #'
 #' @export
-bitly_retrieve_org <- function(organization_id = NULL) {
+bitly_retrieve_org <- function(access_token, organization_id = NULL) {
   org_url <- paste0("https://api-ssl.bitly.com/v4/organizations/", organization_id)
 
   if (!is.string(organization_id)) {
@@ -28,7 +28,7 @@ bitly_retrieve_org <- function(organization_id = NULL) {
   }
   query <- list(access_token = bitly_auth_access(), organization_guid = organization_id)
 
-  df_org_details <- doRequest("GET", url = org_url, queryParameters = query)
+  df_org_details <- doBearerTokenRequest("GET", url = org_url, queryParameters = query)
   df_org_details <- data.frame(df_org_details, stringsAsFactors = FALSE)
 
   return(df_org_details)
@@ -44,20 +44,20 @@ bitly_retrieve_org <- function(organization_id = NULL) {
 #'
 #' @seealso \url{https://dev.bitly.com/api-reference/#getOrganizations}
 #'
-#' @import httr jsonlite
+#' @import httr2 jsonlite
 #'
 #' @examples
 #' \dontrun{
 #' ros <- bitly_retrieve_orgs()
 #' }
-#' @import httr jsonlite
+#' @import httr2 jsonlite
 #' @export
-bitly_retrieve_orgs <- function() {
+bitly_retrieve_orgs <- function(access_token) {
   orgs_url <- "https://api-ssl.bitly.com/v4/organizations"
 
   query <- list(access_token = bitly_auth_access())
 
-  df_orgs_details <- doRequest(verb = "GET", url = orgs_url, queryParameters = query)
+  df_orgs_details <- doBearerTokenRequest(verb = "GET", url = orgs_url, queryParameters = query)
   df_orgs_details <- data.frame(df_orgs_details$organizations, stringsAsFactors = FALSE)
 
   return(df_orgs_details)
@@ -83,9 +83,9 @@ bitly_retrieve_orgs <- function() {
 #' df_org_short_counts <- data.frame(osc, stringsAsFactors = FALSE)
 #' }
 #'
-#' @import httr jsonlite assertthat
+#' @import httr2 jsonlite assertthat
 #' @export
-bitly_retrieve_org_shorten_counts <- function(organization_id = NULL) {
+bitly_retrieve_org_shorten_counts <- function(access_token, organization_id = NULL) {
   org_short_counts <- paste0("https://api-ssl.bitly.com/v4/organizations/", organization_id, "/shorten_counts")
 
   if (!is.string(organization_id)) {
@@ -94,7 +94,7 @@ bitly_retrieve_org_shorten_counts <- function(organization_id = NULL) {
 
   query <- list(access_token = bitly_auth_access(), organization_guid = organization_id)
 
-  df_org_short_counts <- doRequest("GET", org_short_counts, queryParameters = query)
+  df_org_short_counts <- doBearerTokenRequest("GET", org_short_counts, queryParameters = query)
   # df_org_short_counts <- data.frame(df_org_short_counts, stringsAsFactors = FALSE)
 
   return(df_org_short_counts)
@@ -116,9 +116,9 @@ bitly_retrieve_org_shorten_counts <- function(organization_id = NULL) {
 #' plan <- bitly_retrieve_org_plan_limits(organization_id = all_orgs$guid)
 #' }
 #'
-#' @import httr jsonlite assertthat
+#' @import httr2 jsonlite assertthat
 #' @export
-bitly_retrieve_org_plan_limits <- function(organization_id = NULL) {
+bitly_retrieve_org_plan_limits <- function(access_token, organization_id = NULL) {
   org_plan_limits <- paste0("https://api-ssl.bitly.com/v4/organizations/", organization_id, "/plan_limits")
 
   if (!is.string(organization_id)) {
@@ -127,7 +127,7 @@ bitly_retrieve_org_plan_limits <- function(organization_id = NULL) {
 
   query <- list(access_token = bitly_auth_access(), organization_guid = organization_id)
 
-  df_plan_limits <- doRequest("GET", org_plan_limits, queryParameters = query)
+  df_plan_limits <- doBearerTokenRequest("GET", org_plan_limits, queryParameters = query)
   df_org_plan_limits <- data.frame(df_plan_limits$plan_limits, stringsAsFactors = FALSE)
 
   return(df_org_plan_limits)

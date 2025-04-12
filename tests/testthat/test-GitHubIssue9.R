@@ -1,7 +1,7 @@
 # https://github.com/dmpe/urlshorteneR/issues/9
 
 library(testthat)
-library(httr)
+library(httr2)
 library(jsonlite)
 library(stringr)
 library(urlshorteneR)

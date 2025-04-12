@@ -2,174 +2,121 @@
 # Isgd_api_version <- "v2019"
 .urlshorteneREnv <- new.env(parent = emptyenv())
 
-#' @title is_token
-#' @description is the object a token
-#' @noRd
-#' @keywords Internal
-is_token <- function(x) inherits(x, "Token")
-
-#' @title Assign bit.ly API tokens using OAuth2.0
-#'
-#' @param debug - whether to print additional debug messages
-#'
-#' @description
-#' There are 2 ways of how you can authenticate using this package.
-#'
-#' 1. The recommended practise for the end-user of this package is to use default API keys which
-#' are provided using this method.
-#'
-#' 2. Alternatively, you can register your own application via the web in order to get Client ID
-#' and Client Secret code.
-#'
-#' For that go first to \url{https://app.bitly.com/settings/integrations/}. Click \code{REGISTERED OAUTH APPLICATIONS},
-#' then \code{REGISTER NEW APPLICATION} followed by \code{GET REGISTRATION CODE}.
-#' Open your email that you will receive and click \code{COMPLETE REGISTRATION}.
-#' Make up an \code{APPLICATION NAME} that is unique. Unless you know to do otherwise,
-#' type "http://localhost:1410/" (slash at the end is important) in \code{REDIRECT URIs}. For
-#' \code{APPLICATION LINK} and \code{APPLICATION DESCRIPTION} you can type whatever you like.
-#'
-#' @section However Important Information:
-#' Before choosing registering new application yourself, you can try using my API keys (the default option). No
-#' worries, no information is exposed to me at all: neither what you shorten nor who does it, etc.
-#' In fact, quote: "If you are shortening URLs on behalf of end-users, we ask that you use our OAuth 2
-#' implementation to authenticate end-users before shortening. URLs shortened in this manner
-#' will be added to the specified end-user's history, allowing the end-user to manage and
-#' track the shortened URLs".
-#'
-#' @section WARNING:
-#' If using RStudio in the browsers via RStudio Server, then authentication may not work well. In
-#' such case, use desktop RStudio application. Look for help at <https://support.rstudio.com/>.
-#'
-#' @param key - Client ID
-#' @param secret - Client Secret
-#' @param token - a \code{Token} object or a file path to an rds file containing a token.
-#'
-#' @seealso See \url{https://dev.bitly.com/api-reference}
-#'
-#' @examples
-#' \dontrun{
-#' # overwrite keys - Variant 2
-#' bitly_token <-
-#'   bitly_auth(
-#'     key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-#'     secret = "f9c6a3b18968e991e35f466e90c7d883cc176073"
-#'   )
-#'
-#' # default variant
-#' bitly_token <- bitly_auth()
-#' saveRDS(bitly_token, "bitly_token.rds")
-#' # for non-interactive use:
-#' bitly_auth(token = "bitly_token.rds")
-#' }
-#'
-#' @import httr
-#' @export
-bitly_auth <- function(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
-                      secret = "f9c6a3b18968e991e35f466e90c7d883cc176073", debug = F, token) {
-  if (!missing(token)) {
-    if (!is_token(token)) {
-      token <- readRDS(token)
-      if (!is_token(token)) stop("Invalid token")
-    }
-  } else if (interactive()) {
-    token <- httr::oauth2.0_token(
-      httr::oauth_endpoint(
-        authorize = "https://bitly.com/oauth/authorize",
-          access = "https://api-ssl.bitly.com/oauth/access_token"
-      ),
-      httr::oauth_app("bitly", key = key, secret = secret),
-      cache = TRUE
-    )
-  } else {
-    stop("Save bit.ly token as rds and pass to token to run non-interactively.")
-  }
-  if (isTRUE(debug)) {
-    message(paste0("urlshorteneR: You have been authorized as ", token$credentials$login,
-                   " with access token ", token$credentials$access_token))
-  }
-  .urlshorteneREnv$access_token <- token$credentials$access_token
-  .urlshorteneREnv$token <- token
-
-  invisible(token)
-}
-
-
-#' Get Bitly access token
-#'
-#' Extract token from \code{bitly_auth} method
-#'
 #' @noRd
 #' @keywords internal
-bitly_auth_access <- function() {
-
-
-  if (is.null(.urlshorteneREnv$token) && interactive()) {
-    .urlshorteneREnv$token <- bitly_auth()
-  } else if (is.null(.urlshorteneREnv$token)) {
-    .urlshorteneREnv$token <- readRDS("../bitly_local_token.rds")
+processResponse <- function(resp) {
+  if (resp_is_error(resp) == TRUE) {
+    cat("you are not a premium account holder, or internet connection does not work properly")
+  } else {
+    text_response <- resp |> resp_body_string()
+    json_response <- fromJSON(text_response)
+    message(sprintf("Code: %s - %s", json_response$message, json_response$description))
+    cat("The requested URL has been this: ", resp$request$url, "\n")
   }
-  .urlshorteneREnv$acc_token <- .urlshorteneREnv$token$credentials$access_token
-
-
-  return(.urlshorteneREnv$acc_token)
 }
 
 
-#' @title Generalized function for executing REST requests
+#' @title Generalized function for executing non-auth REST requests
 #'
 #' @param verb - REST verb
 #' @param url - which is used for the request
 #' @param queryParameters - parameters that are used for building a URL
 #' @param showURL - for debugging purposes only: it shows what URL has been called
 #'
-#' @import httr
+#' @import httr2
 #' @import jsonlite
 #'
 #' @return json data
 #'
 #' @noRd
 #' @keywords internal
-doRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
+doNoAuthRequest <- function(verb = "", url = NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
+  req <- httr2::request(url)
+  switch(verb,
+         "PATCH" = {
+           resp <- req |>
+             req_url_query(!!!queryParameters) |>
+             req_method("PATCH") |>
+             req_body_json(list(patch_body)) |>
+             req_headers(
+               Accept = "application/json"
+             ) |>
+             req_perform()
+         },
+         "GET" = {
+           resp <- req |> 
+             req_url_query(!!!queryParameters) |> 
+             req_method("GET") |>
+             req_perform()
+         },
+         "POST" = {
+           resp <- req |>
+             req_url_query(!!!queryParameters) |>
+             req_method("POST") |>
+             req_body_json(list(patch_body)) |>
+             req_headers(
+               Accept = "application/json"
+             ) |>
+             req_perform()
+         }
+  )
+  
+  json_response <- processResponse(resp)
+  
+  return(json_response)
+}
+
+
+#' @title Generalized function for executing bearer token REST requests
+#'
+#' @param verb - REST verb
+#' @param url - which is used for the request
+#' @param access_token - Bearer token
+#' @param queryParameters - parameters that are used for building a URL
+#' @param showURL - for debugging purposes only: it shows what URL has been called
+#'
+#' @import httr2
+#' @import jsonlite
+#'
+#' @return json data
+#'
+#' @noRd
+#' @keywords internal
+doBearerTokenRequest <- function(verb = "", url = NULL, access_token=NULL, queryParameters = NULL, patch_body = NULL, showURL = NULL) {
+  req <- httr2::request(url)
   switch(verb,
     "PATCH" = {
-      return_request <- suppressMessages(httr::PATCH(url,
-        query = queryParameters, body = patch_body,
-        encode = "json", content_type_json(),
-        httr::config(token = .urlshorteneREnv$token)
-      ))
+      resp <- req |>
+          req_url_query(!!!queryParameters) |>
+          req_method("PATCH") |>
+          req_body_json(list(patch_body)) |>
+          req_auth_bearer_token(access_token) |>
+          req_headers(
+            Accept = "application/json"
+          ) |>
+          req_perform()
     },
     "GET" = {
-      return_request <- httr::GET(url, query = queryParameters, httr::config(token = .urlshorteneREnv$token))
+      resp <- req |> 
+        req_url_query(!!!queryParameters) |> 
+        req_method("GET") |>
+        req_auth_bearer_token(access_token) |>
+        req_perform()
     },
     "POST" = {
-      return_request <- suppressMessages(httr::POST(url,
-        body = queryParameters, encode = "json",
-        httr::content_type_json(), httr::config(token = .urlshorteneREnv$token)
-      ))
+      resp <- req |>
+        req_url_query(!!!queryParameters) |>
+        req_method("POST") |>
+        req_body_json(list(patch_body)) |>
+        req_auth_bearer_token(access_token) |>
+        req_headers(
+          Accept = "application/json"
+        ) |>
+        req_perform()
     }
   )
 
-  if (http_error(return_request) == FALSE) {
-    stop_for_status(return_request, "you are not a premium account holder, or internet connection does
-                    not work properly")
-
-    text_response <- content(return_request, as = "text", encoding = "utf-8")
-    json_response <- fromJSON(text_response)
-
-    if (is.null(return_request$status_code) == FALSE && return_request$status_code >= 400) {
-      message(sprintf("Code: %s - %s", json_response$message, json_response$description))
-    }
-
-    if (identical(showURL, TRUE)) {
-      cat("The requested URL has been this: ", return_request$request$url, "\n")
-    }
-  } else {
-    text_response <- content(return_request, as = "text", encoding = "utf-8")
-    json_response <- fromJSON(text_response)
-    message(sprintf("Code: %s - %s", json_response$message, json_response$description))
-    cat("The requested URL has been this: ", return_request$request$url, "\n")
-    stop_for_status(return_request)
-  }
+  json_response <- processResponse(resp)
 
   return(json_response)
 }

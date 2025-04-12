@@ -1,5 +1,5 @@
 library(urlshorteneR)
-library(httr)
+library(httr2)
 library(jsonlite)
 library(testthat)
 

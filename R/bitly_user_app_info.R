@@ -23,14 +23,12 @@
 #'    ui <- bitly_user_info(showRequestURL = TRUE)
 #' }
 #'
-#' @import httr stringr lubridate
+#' @import httr2 stringr lubridate
 #' @export
-bitly_user_info <- function(showRequestURL = FALSE) {
+bitly_user_info <- function(access_token, showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
-  create_query <- list(access_token = bitly_auth_access())
-
-  df_user_info <- doRequest(verb = "GET", url = user_info_url, queryParameters = create_query, showURL = showRequestURL)
+  df_user_info <- doBitlyRequest(verb = "GET", url = user_info_url, access_token = access_token, queryParameters = create_query, showURL = showRequestURL)
 
   df_user_info_data <- data.frame(df_user_info, stringsAsFactors = FALSE)
 
@@ -67,10 +65,10 @@ bitly_user_info <- function(showRequestURL = FALSE) {
 #' uug <- bitly_update_user(name = "Malc", default_group_guid = "TestGroupID")
 #' }
 #'
-#' @import httr jsonlite lubridate
+#' @import httr2 jsonlite lubridate
 #'
 #' @export
-bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestURL = FALSE) {
+bitly_update_user <- function(access_token, default_group_guid = NULL, name = "", showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
   if (!is_bitly_user_premium_holder()) {
@@ -79,11 +77,11 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
             "We will now skip changing group guid.")
   }
 
-  query <- list(access_token = bitly_auth_access())
   body <- list(name = name, default_group_guid = default_group_guid)
 
-  df_user_info <- doRequest("PATCH",
+  df_user_info <- doBitlyRequest("PATCH",
     url = user_info_url, queryParameters = query,
+    access_token = access_token,
     patch_body = body, showURL = showRequestURL
   )
   df_user_info$created <- ymd_hms(df_user_info$created, tz = "UTC")
@@ -112,12 +110,12 @@ is_bitly_user_premium_holder <- function() {
 #' @inheritParams bitly_user_info
 #'
 #' @export
-bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
+bitly_app_details <- function(access_token, client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
   oauth_app_details <- paste0("https://api-ssl.bitly.com/v4/apps/", client_id)
 
-  query <- list(access_token = bitly_auth_access(), client_id = client_id)
+  query <- list(client_id = client_id)
 
-  df_app_details <- doRequest("GET", url = oauth_app_details, queryParameters = query, showURL = showRequestURL)
+  df_app_details <- doBitlyRequest("GET", url = oauth_app_details, access_token = access_token, queryParameters = query, showURL = showRequestURL)
   df_app_details <- data.frame(df_app_details, stringsAsFactors = FALSE)
 
   return(df_app_details)
@@ -129,13 +127,12 @@ bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0e
 #' @return \code{data.frame} of end points and their rate limits by action
 #' @export
 
-bitly_rate_limits <- function(showRequestURL = F) {
-  query <- list(access_token = bitly_auth_access())
-  .url <- "https://api-ssl.bitly.com/v4/user/platform_limits"
+bitly_rate_limits <- function(access_token, showRequestURL = F) {
+  platform_lmt <- "https://api-ssl.bitly.com/v4/user/platform_limits"
 
-  limits <- doRequest("GET",
-                      url = .url,
-                      queryParameters = query,
+  limits <- doBitlyRequest("GET",
+                      url = platform_lmt,
+                      access_token = access_token, 
                       showURL = showRequestURL)
 
   return(limits[[1]])

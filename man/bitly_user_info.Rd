@@ -4,7 +4,7 @@
 \alias{bitly_user_info}
 \title{Retrieve information for the current authenticated user}
 \usage{
-bitly_user_info(showRequestURL = FALSE)
+bitly_user_info(access_token, showRequestURL = FALSE)
 }
 \arguments{
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

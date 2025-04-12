@@ -7,14 +7,14 @@
 #'
 #' @inheritParams bitly_retrieve_links_grouped
 #'
-#' @import httr jsonlite
+#' @import httr2 jsonlite
 #' @export
 bitly_bsds <- function(showRequestURL = F) {
   url_bsds <- "https://api-ssl.bitly.com/v4/bsds"
 
   query <- list(access_token = bitly_auth_access())
 
-  df_bsds <- doRequest("GET", url = url_bsds, queryParameters = query, showURL = showRequestURL)
+  df_bsds <- doBearerTokenRequest("GET", url = url_bsds, queryParameters = query, showURL = showRequestURL)
 
   if (length(df_bsds$bsds) == 0) {
     warning("There are no branded domains. First create some in Bitly.com")
@@ -40,7 +40,7 @@ bitly_bsds <- function(showRequestURL = F) {
 #' bsds_over <- bitly_bsds_overrides(group_id = ui$default_group_guid[1])
 #' }
 #' 
-#' @import httr jsonlite
+#' @import httr2 jsonlite
 #' @export
 bitly_bsds_overrides <- function(group_id = NA, showRequestURL = F) {
 
@@ -52,6 +52,6 @@ bitly_bsds_overrides <- function(group_id = NA, showRequestURL = F) {
 
   query <- list(access_token = bitly_auth_access())
 
-  df_bsds_overrides <- doRequest("GET", url = url_bsds_overrides, queryParameters = query, showURL = showRequestURL)
+  df_bsds_overrides <- doBearerTokenRequest("GET", url = url_bsds_overrides, queryParameters = query, showURL = showRequestURL)
   return(df_bsds_overrides)
 }

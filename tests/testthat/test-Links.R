@@ -1,5 +1,5 @@
 library(testthat)
-library(httr)
+library(httr2)
 library(jsonlite)
 library(stringr)
 library(stringi)

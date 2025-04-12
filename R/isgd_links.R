@@ -25,7 +25,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' short_lin <- isgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
+#' short_lin <- isgd_LinksShorten(longUrl = "https://novinky.cz/", showRequestURL = TRUE)
 #' }
 #' @export
 isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, showRequestURL = FALSE) {
@@ -33,7 +33,7 @@ isgd_LinksShorten <- function(longUrl = "", logstats = "0", shorturl = NULL, sho
 
   query <- list(url = longUrl, logstats = logstats, shorturl = shorturl)
 
-  df_link_shorten <- doRequest("GET", links_shorten_url, queryParameters = query, showURL = showRequestURL)
+  df_link_shorten <- doNoAuthRequest("GET", links_shorten_url, queryParameters = query, showURL = showRequestURL)
 
   return(df_link_shorten$shorturl)
 }
@@ -54,7 +54,7 @@ isgd_LinksExpand <- function(shorturl = "", showRequestURL = FALSE) {
 
   query <- list(shorturl = shorturl)
 
-  df_link_expand <- doRequest("GET", links_expand_url, queryParameters = query, showURL = showRequestURL)
+  df_link_expand <- doNoAuthRequest("GET", links_expand_url, queryParameters = query, showURL = showRequestURL)
 
   return(df_link_expand$url)
 }

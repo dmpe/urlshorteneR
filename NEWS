@@ -2,7 +2,8 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
-April 2025  - Upgrade package dependancies 
+April 2025     - Major rewrite of the package, using `httr2` as REST backend.
+               - Add Bearer token authentication
 
 February 2025  - Upgrade package dependancies 
 

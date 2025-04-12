@@ -5,6 +5,7 @@
 \title{Retrieve OAuth App}
 \usage{
 bitly_app_details(
+  access_token,
   client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
   showRequestURL = F
 )
