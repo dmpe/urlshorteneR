@@ -5,6 +5,7 @@
 \title{Get Clicks for a Custom Bitlink's Entire History (Premium)}
 \usage{
 bitly_retrieve_cust_bitlink_clicks_history(
+  access_token,
   custom_bitlink = NULL,
   showRequestURL = FALSE
 )

@@ -5,6 +5,7 @@
 \title{Update a Group}
 \usage{
 bitly_update_group(
+  access_token,
   group_id = NA,
   name = NA,
   organization_id = NA,

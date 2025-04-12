@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_bitlink}
 \title{Retrieve a Bitlink}
 \usage{
-bitly_retrieve_bitlink(bitlink = NULL, showRequestURL = FALSE)
+bitly_retrieve_bitlink(access_token, bitlink = NULL, showRequestURL = FALSE)
 }
 \arguments{
 \item{bitlink}{- required, a Bitlink made of the domain and hash}

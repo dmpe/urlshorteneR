@@ -4,7 +4,7 @@
 \alias{bitly_bsds_overrides}
 \title{Branded Short Domains Group Overrides (Premium)}
 \usage{
-bitly_bsds_overrides(group_id = NA, showRequestURL = F)
+bitly_bsds_overrides(access_token, group_id = NA, showRequestURL = F)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}

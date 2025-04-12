@@ -5,6 +5,7 @@
 \title{Get Metrics for a Bitlink by countries}
 \usage{
 bitly_retrieve_metrics_by_countries(
+  access_token,
   bitlink = NULL,
   size = 100,
   unit = NULL,

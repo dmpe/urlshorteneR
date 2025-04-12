@@ -4,7 +4,12 @@
 \alias{bitly_update_group_pref}
 \title{Update Group Preferences}
 \usage{
-bitly_update_group_pref(group_id = NA, domain_pref = NA, showRequestURL = F)
+bitly_update_group_pref(
+  access_token,
+  group_id = NA,
+  domain_pref = NA,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}

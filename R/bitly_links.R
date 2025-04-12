@@ -57,7 +57,7 @@ bitly_create_bitlink <- function(access_token, long_url = NULL, domain = "bit.ly
                                             app_id = NULL), showRequestURL = FALSE) {
    links_shorten_url <- "https://api-ssl.bitly.com/v4/bitlinks"
 
-   body_req_query <- list(access_token = access_token, domain = domain,
+   body_req_query <- list(domain = domain,
                           long_url = long_url)
 
    if (!length(deeplinks_list$app_uri_path) == 0 || !length(deeplinks_list$install_type) == 0 ||
@@ -79,7 +79,7 @@ bitly_create_bitlink <- function(access_token, long_url = NULL, domain = "bit.ly
 
    body_req_query_cleaned <- toJSON(body_req_query, auto_unbox = T)
 
-   df_link_shorten <- doBearerTokenRequest("POST", links_shorten_url,
+   df_link_shorten <- doBearerTokenRequest("POST", links_shorten_url, access_token = access_token,
                                 queryParameters = body_req_query_cleaned, showURL = showRequestURL)
 
    df_link_shorten <- data.frame(t(do.call(rbind, df_link_shorten)), stringsAsFactors = F)
@@ -117,10 +117,10 @@ bitly_user_metrics_referring_domains <- function(access_token, bitlink = NULL, u
 
   user_metrics_referring_domains_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/referring_domains")
 
-  query <- list(access_token = access_token, bitlink = bitlink, unit = unit, units = units, size = size,
+  query <- list(bitlink = bitlink, unit = unit, units = units, size = size,
       unit_reference = unit_reference)
 
-  df_user_metrics_referring_domains <- doBearerTokenRequest("GET", user_metrics_referring_domains_url,
+  df_user_metrics_referring_domains <- doBearerTokenRequest("GET", user_metrics_referring_domains_url,access_token = access_token,
                                                   query, showURL = showRequestURL)
   df_user_metrics_referring_domains$unit_reference <- ymd_hms(df_user_metrics_referring_domains$unit_reference, tz = "UTC")
 
@@ -157,8 +157,7 @@ bitly_expand_link <- function(access_token, bitlink_id = NULL, showRequestURL = 
    links_expand_url <- "https://api-ssl.bitly.com/v4/expand"
 
    if (!is.null(bitlink_id)) {
-      body_req_query <- list(access_token = access_token,
-                             bitlink_id = bitlink_id)
+      body_req_query <- list(                             bitlink_id = bitlink_id)
    }
 
    df_link_expand <- doBearerTokenRequest("POST", links_expand_url, queryParameters = body_req_query, showURL = showRequestURL)
@@ -205,11 +204,11 @@ bitly_shorten_link <- function(access_token, domain = "bit.ly", group_guid = NUL
    links_shorten_url <- "https://api-ssl.bitly.com/v4/shorten"
 
    if (!is.null(long_url)) {
-      body_req_query <- list(access_token = access_token, group_guid = group_guid,
+      body_req_query <- list(group_guid = group_guid,
                              long_url = long_url, domain = domain)
    }
 
-   df_link_shorten <- doBearerTokenRequest("POST", links_shorten_url, queryParameters = body_req_query, showURL = showRequestURL)
+   df_link_shorten <- doBearerTokenRequest("POST", links_shorten_url, access_token = access_token, queryParameters = body_req_query, showURL = showRequestURL)
    df_link_shorten <- data.frame(t(do.call(rbind, df_link_shorten)), stringsAsFactors = F)
    df_link_shorten$created_at <- now("UTC")
 
@@ -270,7 +269,7 @@ bitly_update_bitlink <- function(access_token, bitlink = NULL, archived = NULL, 
 
    link_update <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink)
 
-   query <- list(access_token = access_token,
+   query <- list(access_token = access_token)
    body_upd = list()
 
 
@@ -324,7 +323,7 @@ bitly_update_bitlink <- function(access_token, bitlink = NULL, archived = NULL, 
 
    body_req_query_cleaned <- toJSON(body_upd, auto_unbox = T)
 
-   df_update_pref <- doBearerTokenRequest("PATCH", url = link_update, queryParameters = query,
+   df_update_pref <- doBearerTokenRequest("PATCH", url = link_update, queryParameters = query,access_token = access_token,
                               patch_body = body_req_query_cleaned, showURL = showRequestURL)
 
    df_update_pref <- data.frame(t(do.call(rbind, df_update_pref)), stringsAsFactors = F)
@@ -360,7 +359,7 @@ bitly_retrieve_bitlink  <- function(access_token, bitlink = NULL, showRequestURL
 
    get_bitlink_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink)
 
-   query <- list(access_token = access_token, bitlink = bitlink)
+   query <- list(bitlink = bitlink)
 
    df_bitlink <- doBearerTokenRequest("GET", get_bitlink_url, queryParameters = query, showURL = showRequestURL)
    df_bitlink <- data.frame(t(do.call(rbind, df_bitlink)), stringsAsFactors = F)
@@ -392,10 +391,10 @@ bitly_retrieve_metrics_by_referrers_by_domain <- function(bitlink = NULL, size =
 
    metrics_referrers_by_domain_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/referrers_by_domains")
 
-   query <- list(access_token = access_token, bitlink = bitlink, size = size,
+   query <- list(bitlink = bitlink, size = size,
                  units = units, unit = unit, unit_reference = unit_reference)
 
-   df_metrics_referrers_by_domain <- doBearerTokenRequest("GET", metrics_referrers_by_domain_url,
+   df_metrics_referrers_by_domain <- doBearerTokenRequest("GET", metrics_referrers_by_domain_url,access_token = access_token,
                                                     query, showURL = showRequestURL)
 
    return(df_metrics_referrers_by_domain)
@@ -425,10 +424,10 @@ bitly_retrieve_clicks <- function(access_token, bitlink = NULL, size = 50, unit_
 
    user_metrics_clicks_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/clicks")
 
-   query <- list(access_token = access_token, bitlink = bitlink, unit_reference = unit_reference,
+   query <- list(bitlink = bitlink, unit_reference = unit_reference,
       unit = unit, units = units)
 
-   df_user_metrics_clicks <- doBearerTokenRequest("GET", user_metrics_clicks_url, query, showURL = showRequestURL)
+   df_user_metrics_clicks <- doBearerTokenRequest("GET", user_metrics_clicks_url, query, access_token = access_token, showURL = showRequestURL)
    df_user_metrics_clicks$link_clicks$date <- ymd_hms(df_user_metrics_clicks$link_clicks$date, tz = "UTC")
    df_user_metrics_clicks$unit_reference <- ymd_hms(df_user_metrics_clicks$unit_reference, tz = "UTC")
 
@@ -454,7 +453,7 @@ bitly_retrieve_clicks_summary <- function(access_token, bitlink = NULL, size = 5
 
    user_metrics_clicks_url_sum <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/clicks/summary")
 
-   query <- list(access_token = access_token, bitlink = bitlink, unit_reference = unit_reference,
+   query <- list(bitlink = bitlink, unit_reference = unit_reference,
                  unit = unit, units = units, size = size)
 
    df_user_metrics_clicks_sum <- doBearerTokenRequest("GET", user_metrics_clicks_url_sum, query, showURL = showRequestURL)
@@ -488,10 +487,10 @@ bitly_retrieve_metrics_by_countries <- function(access_token, bitlink = NULL, si
 
    link_metrics_countries_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/countries")
 
-   query <- list(access_token = access_token, bitlink = bitlink, unit_reference = unit_reference,
+   query <- list(bitlink = bitlink, unit_reference = unit_reference,
                  unit = unit, units = units, size = size)
 
-   df_link_metrics_countries <- doBearerTokenRequest("GET", link_metrics_countries_url, query, showURL = showRequestURL)
+   df_link_metrics_countries <- doBearerTokenRequest("GET", link_metrics_countries_url, access_token = access_token, query, showURL = showRequestURL)
    df_link_metrics_countries$unit_reference <- ymd_hms(df_link_metrics_countries$unit_reference, tz = "UTC")
 
    return(df_link_metrics_countries)
@@ -520,7 +519,7 @@ bitly_retrieve_metrics_by_referrers <- function(bitlink = NULL, size = 100, unit
 
    link_metrics_countries_url <- paste0("https://api-ssl.bitly.com/v4/bitlinks/", bitlink, "/referrers")
 
-   query <- list(access_token = access_token, bitlink = bitlink, unit_reference = unit_reference,
+   query <- list(bitlink = bitlink, unit_reference = unit_reference,
                  unit = unit, units = units, size = size)
 
    df_link_metrics_countries <- doBearerTokenRequest("GET", link_metrics_countries_url, query, showURL = showRequestURL)
@@ -559,7 +558,7 @@ bitly_retrieve_bitlinks_by_groups <- function(access_token, group_guid = NULL, s
 
     link_by_groups <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid, "/bitlinks")
 
-    query <- list(access_token = access_token, size = size, page = page,
+    query <- list(size = size, page = page,
                   archived = archived, domain_deeplinks = domain_deeplinks,
       deeplinks = deeplinks, custom_bitlink = custom_bitlink)
 
@@ -599,7 +598,7 @@ bitly_retrieve_bitlinks_by_groups <- function(access_token, group_guid = NULL, s
       query$encoding_login <- encoding_login
     }
 
-    df_bitlinks_byGroup <- doBearerTokenRequest("GET", url = link_by_groups, queryParameters = query, showURL = showRequestURL)
+    df_bitlinks_byGroup <- doBearerTokenRequest("GET", url = link_by_groups, access_token = access_token, queryParameters = query, showURL = showRequestURL)
     return(df_bitlinks_byGroup)
 }
 
@@ -626,10 +625,10 @@ bitly_retrieve_sorted_bitlinks_by_groups <- function(access_token, group_guid = 
 
     link_by_sorted_groups <- paste0("https://api-ssl.bitly.com/v4/groups/", group_guid, "/bitlinks/", sort)
 
-    query <- list(access_token = access_token, unit_reference = unit_reference,
+    query <- list(unit_reference = unit_reference,
                  unit = unit, units = units, size = size)
 
-    df_bitlinks_byGroup <- doBearerTokenRequest("GET", url = link_by_sorted_groups, queryParameters = query, showURL = showRequestURL)
+    df_bitlinks_byGroup <- doBearerTokenRequest("GET", url = link_by_sorted_groups, access_token = access_token, queryParameters = query, showURL = showRequestURL)
     return(df_bitlinks_byGroup)
 }
 

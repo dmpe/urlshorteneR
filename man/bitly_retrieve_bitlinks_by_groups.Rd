@@ -5,6 +5,7 @@
 \title{Retrieve Bitlinks by Group}
 \usage{
 bitly_retrieve_bitlinks_by_groups(
+  access_token,
   group_guid = NULL,
   size = 50,
   page = 1,

@@ -5,6 +5,7 @@
 \title{Retrieve Bitlinks by Group}
 \usage{
 bitly_retrieve_links_grouped(
+  access_token,
   group_id = NA,
   keyword = NULL,
   search_query = NULL,

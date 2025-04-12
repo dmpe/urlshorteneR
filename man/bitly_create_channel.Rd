@@ -5,6 +5,7 @@
 \title{Create channel (Premium)}
 \usage{
 bitly_create_channel(
+  access_token,
   group_guid = NULL,
   guid = NULL,
   name = NULL,

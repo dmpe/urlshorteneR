@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_org_shorten_counts}
 \title{Retrieve Organization Shorten Counts}
 \usage{
-bitly_retrieve_org_shorten_counts(organization_id = NULL)
+bitly_retrieve_org_shorten_counts(access_token, organization_id = NULL)
 }
 \arguments{
 \item{organization_id}{- a required string | A GUID for a Bitly organization.

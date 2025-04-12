@@ -5,6 +5,7 @@
 \title{Update Custom Bitlink (Premium)}
 \usage{
 bitly_update_cust_bitlink(
+  access_token,
   custom_bitlink = NULL,
   bitlink_id = NULL,
   showRequestURL = FALSE

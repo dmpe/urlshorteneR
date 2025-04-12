@@ -1,6 +1,6 @@
 library(testthat)
 library(urlshorteneR)
-# bitly_token <- bitly_auth(key = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", secret = "f9c6a3b18968e991e35f466e90c7d883cc176073")
+# access_token <- "0906523ec6a8c78b33f9310e84e7a5c81e500909"
 # saveRDS(bitly_token, file = "tests/bitly_local_token.rds")
 #
 # if (interactive()) {

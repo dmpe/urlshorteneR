@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_channel}
 \title{Get a Channel (Premium)}
 \usage{
-bitly_retrieve_channel(channel_guid = NULL, showRequestURL = T)
+bitly_retrieve_channel(access_token, channel_guid = NULL, showRequestURL = T)
 }
 \arguments{
 \item{channel_guid}{- GUID of a target channel}

@@ -5,6 +5,7 @@
 \title{Shorten a Link}
 \usage{
 bitly_shorten_link(
+  access_token,
   domain = "bit.ly",
   group_guid = NULL,
   long_url = NULL,

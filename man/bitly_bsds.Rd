@@ -4,7 +4,7 @@
 \alias{bitly_bsds}
 \title{Fetch all Branded Short Domains}
 \usage{
-bitly_bsds(showRequestURL = F)
+bitly_bsds(access_token, showRequestURL = F)
 }
 \arguments{
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

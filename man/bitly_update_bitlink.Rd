@@ -5,6 +5,7 @@
 \title{Update a Bitlink}
 \usage{
 bitly_update_bitlink(
+  access_token,
   bitlink = NULL,
   archived = NULL,
   tags = NULL,

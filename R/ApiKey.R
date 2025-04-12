@@ -110,7 +110,8 @@ doBearerTokenRequest <- function(verb = "", url = NULL, access_token=NULL, query
         req_body_json(list(patch_body)) |>
         req_auth_bearer_token(access_token) |>
         req_headers(
-          Accept = "application/json"
+          Accept = "application/json",
+          "Content-Type" = "application/json"
         ) |>
         req_perform()
     }

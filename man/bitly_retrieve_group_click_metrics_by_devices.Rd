@@ -5,6 +5,7 @@
 \title{Get Click Metrics for a specified group by devices (Premium)}
 \usage{
 bitly_retrieve_group_click_metrics_by_devices(
+  access_token,
   group_id = NA,
   showRequestURL = F
 )

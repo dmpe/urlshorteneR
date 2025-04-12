@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_orgs}
 \title{Retrieve all Organizations}
 \usage{
-bitly_retrieve_orgs()
+bitly_retrieve_orgs(access_token)
 }
 \description{
 Retrieve a list of organizations

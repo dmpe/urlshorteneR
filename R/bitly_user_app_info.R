@@ -28,7 +28,7 @@
 bitly_user_info <- function(access_token, showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
-  df_user_info <- doBitlyRequest(verb = "GET", url = user_info_url, access_token = access_token, queryParameters = create_query, showURL = showRequestURL)
+  df_user_info <- doBearerTokenRequest(verb = "GET", url = user_info_url, access_token = access_token, queryParameters = create_query, showURL = showRequestURL)
 
   df_user_info_data <- data.frame(df_user_info, stringsAsFactors = FALSE)
 
@@ -79,7 +79,7 @@ bitly_update_user <- function(access_token, default_group_guid = NULL, name = ""
 
   body <- list(name = name, default_group_guid = default_group_guid)
 
-  df_user_info <- doBitlyRequest("PATCH",
+  df_user_info <- doBearerTokenRequest("PATCH",
     url = user_info_url, queryParameters = query,
     access_token = access_token,
     patch_body = body, showURL = showRequestURL
@@ -115,7 +115,7 @@ bitly_app_details <- function(access_token, client_id = "be03aead58f23bc1aee6e1d
 
   query <- list(client_id = client_id)
 
-  df_app_details <- doBitlyRequest("GET", url = oauth_app_details, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+  df_app_details <- doBearerTokenRequest("GET", url = oauth_app_details, access_token = access_token, queryParameters = query, showURL = showRequestURL)
   df_app_details <- data.frame(df_app_details, stringsAsFactors = FALSE)
 
   return(df_app_details)
@@ -130,7 +130,7 @@ bitly_app_details <- function(access_token, client_id = "be03aead58f23bc1aee6e1d
 bitly_rate_limits <- function(access_token, showRequestURL = F) {
   platform_lmt <- "https://api-ssl.bitly.com/v4/user/platform_limits"
 
-  limits <- doBitlyRequest("GET",
+  limits <- doBearerTokenRequest("GET",
                       url = platform_lmt,
                       access_token = access_token, 
                       showURL = showRequestURL)

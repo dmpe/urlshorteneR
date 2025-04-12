@@ -5,6 +5,7 @@
 \title{Get Metrics for a Bitlink by referring domains}
 \usage{
 bitly_user_metrics_referring_domains(
+  access_token,
   bitlink = NULL,
   unit = "day",
   units = -1,

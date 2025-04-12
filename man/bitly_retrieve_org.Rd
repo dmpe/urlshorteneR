@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_org}
 \title{Retrieve a single Organization}
 \usage{
-bitly_retrieve_org(organization_id = NULL)
+bitly_retrieve_org(access_token, organization_id = NULL)
 }
 \arguments{
 \item{organization_id}{- a required string | A GUID for a Bitly organization.

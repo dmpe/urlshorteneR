@@ -5,6 +5,7 @@
 \title{Get Clicks Summary for a Bitlink}
 \usage{
 bitly_retrieve_clicks_summary(
+  access_token,
   bitlink = NULL,
   size = 50,
   unit_reference = NULL,

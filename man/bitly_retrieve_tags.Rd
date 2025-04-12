@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_tags}
 \title{Retrieve Tags by Group}
 \usage{
-bitly_retrieve_tags(group_id = NA, showRequestURL = F)
+bitly_retrieve_tags(access_token, group_id = NA, showRequestURL = F)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}

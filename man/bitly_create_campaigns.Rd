@@ -5,6 +5,7 @@
 \title{Create Campaign (Premium)}
 \usage{
 bitly_create_campaigns(
+  access_token,
   group_guid = NULL,
   channel_guids = NULL,
   description = NULL,

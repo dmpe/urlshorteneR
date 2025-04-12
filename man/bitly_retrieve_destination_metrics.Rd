@@ -5,6 +5,7 @@
 \title{Get Metrics for a Custom Bitlink by destination (Premium)}
 \usage{
 bitly_retrieve_destination_metrics(
+  access_token,
   custom_bitlink = NULL,
   showRequestURL = FALSE
 )

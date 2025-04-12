@@ -5,6 +5,7 @@
 \title{Retrieve channels (Premium)}
 \usage{
 bitly_retrieve_channels(
+  access_token,
   group_guid = NULL,
   campaign_guid = NULL,
   showRequestURL = T

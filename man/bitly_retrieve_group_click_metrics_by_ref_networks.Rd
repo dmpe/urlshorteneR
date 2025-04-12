@@ -5,6 +5,7 @@
 \title{Get Click Metrics for a Group by referring networks}
 \usage{
 bitly_retrieve_group_click_metrics_by_ref_networks(
+  access_token,
   group_id = NA,
   showRequestURL = F
 )

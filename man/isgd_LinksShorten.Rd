@@ -38,6 +38,6 @@ See \url{https://is.gd/apishorteningreference.php}
 }
 \examples{
 \dontrun{
-short_lin <- isgd_LinksShorten(longUrl = "https://novinky.cz/",showRequestURL = TRUE)
+short_lin <- isgd_LinksShorten(longUrl = "https://novinky.cz/", showRequestURL = TRUE)
 }
 }

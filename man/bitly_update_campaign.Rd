@@ -5,6 +5,7 @@
 \title{Update A Channel (Premium)}
 \usage{
 bitly_update_campaign(
+  access_token,
   campaign_guid = NULL,
   group_guid = NULL,
   channel_guids = NULL,

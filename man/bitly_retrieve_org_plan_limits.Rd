@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_org_plan_limits}
 \title{Get Plan Limits}
 \usage{
-bitly_retrieve_org_plan_limits(organization_id = NULL)
+bitly_retrieve_org_plan_limits(access_token, organization_id = NULL)
 }
 \arguments{
 \item{organization_id}{- a required string | A GUID for a Bitly organization.

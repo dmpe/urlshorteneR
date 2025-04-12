@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_group_pref}
 \title{Retrieve Group Preferences}
 \usage{
-bitly_retrieve_group_pref(group_id = NA, showRequestURL = F)
+bitly_retrieve_group_pref(access_token, group_id = NA, showRequestURL = F)
 }
 \arguments{
 \item{group_id}{- the group id the user belongs to}

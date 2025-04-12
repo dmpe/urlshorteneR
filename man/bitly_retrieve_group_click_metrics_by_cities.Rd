@@ -4,7 +4,11 @@
 \alias{bitly_retrieve_group_click_metrics_by_cities}
 \title{Get Click Metrics for a specified group by city (Premium)}
 \usage{
-bitly_retrieve_group_click_metrics_by_cities(group_id = NA, showRequestURL = F)
+bitly_retrieve_group_click_metrics_by_cities(
+  access_token,
+  group_id = NA,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}

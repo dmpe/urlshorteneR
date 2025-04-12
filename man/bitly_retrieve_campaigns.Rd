@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_campaigns}
 \title{Retrieve campaigns (Premium)}
 \usage{
-bitly_retrieve_campaigns(group_guid = NULL, showRequestURL = T)
+bitly_retrieve_campaigns(access_token, group_guid = NULL, showRequestURL = T)
 }
 \arguments{
 \item{group_guid}{- a GUID for a Bitly group}

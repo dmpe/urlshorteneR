@@ -97,7 +97,7 @@ bitly_update_cust_bitlink <- function(access_token, custom_bitlink = NULL, bitli
     stop("custom_bitlink must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = access_token,
+  query <- list(access_token = access_token)
   body_req_query <- list(bitlink_id = bitlink_id)
 
   df_update_cost_link <- doBearerTokenRequest("PATCH", patch_url, queryParameters = query, patch_body = body_req_query,

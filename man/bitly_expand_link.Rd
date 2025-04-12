@@ -4,7 +4,7 @@
 \alias{bitly_expand_link}
 \title{Expand a Bitlink}
 \usage{
-bitly_expand_link(bitlink_id = NULL, showRequestURL = FALSE)
+bitly_expand_link(access_token, bitlink_id = NULL, showRequestURL = FALSE)
 }
 \arguments{
 \item{bitlink_id}{- string}

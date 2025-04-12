@@ -4,7 +4,11 @@
 \alias{bitly_retrieve_group_shorten_counts}
 \title{Retrieve Group Shorten Counts}
 \usage{
-bitly_retrieve_group_shorten_counts(group_id = NA, showRequestURL = F)
+bitly_retrieve_group_shorten_counts(
+  access_token,
+  group_id = NA,
+  showRequestURL = F
+)
 }
 \arguments{
 \item{group_id}{- a required string | A GUID for a Bitly group}

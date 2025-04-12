@@ -5,6 +5,7 @@
 \title{Get Click Metrics for a Group by countries}
 \usage{
 bitly_retrieve_group_click_metrics_by_countries(
+  access_token,
   group_id = NA,
   showRequestURL = F
 )

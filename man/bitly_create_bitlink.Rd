@@ -5,6 +5,7 @@
 \title{Create a short Bitlink}
 \usage{
 bitly_create_bitlink(
+  access_token,
   long_url = NULL,
   domain = "bit.ly",
   title = NULL,

@@ -5,6 +5,7 @@
 \title{Add Custom Bitlink (Premium)}
 \usage{
 bitly_add_cust_bitlink(
+  access_token,
   bitlink_id = NULL,
   custom_bitlink = NULL,
   showRequestURL = FALSE

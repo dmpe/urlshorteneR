@@ -45,3 +45,9 @@ if (interactive()) {
   }
 }
 
+## -----------------------------------------------------------------------------
+isgd_LinksShorten(longUrl = "https://www.google.com", showRequestURL = TRUE)
+
+## -----------------------------------------------------------------------------
+vgd_LinksShorten(longUrl = "https://www.apple.com", showRequestURL = TRUE)
+

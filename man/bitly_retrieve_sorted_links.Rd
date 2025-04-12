@@ -5,6 +5,7 @@
 \title{Retrieve Sorted Bitlinks for Group}
 \usage{
 bitly_retrieve_sorted_links(
+  access_token,
   group_id = NA,
   to_sort_by = "clicks",
   unit = "day",

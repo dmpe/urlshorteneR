@@ -4,7 +4,7 @@
 \alias{bitly_retrieve_campaign}
 \title{Retrieve a Campaign}
 \usage{
-bitly_retrieve_campaign(campaign_guid = NULL, showRequestURL = T)
+bitly_retrieve_campaign(access_token, campaign_guid = NULL, showRequestURL = T)
 }
 \arguments{
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}
