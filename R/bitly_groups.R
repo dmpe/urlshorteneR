@@ -24,7 +24,7 @@ bitly_retrieve_group_pref <- function(access_token, group_id = NA, showRequestUR
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_group_prefs <- doBearerTokenRequest("GET", url = gr_pref_url, queryParameters = query, showURL = showRequestURL)
   df_group_prefs <- data.frame(df_group_prefs, stringsAsFactors = FALSE)
@@ -61,7 +61,7 @@ bitly_update_group_pref <- function(access_token, group_id = NA, domain_pref = N
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
   body_upd <- list(group_guid = group_id, domain_preference = domain_pref)
 
   df_update_pref <- doBearerTokenRequest("PATCH", url = gr_pref_url_up, queryParameters = query,
@@ -123,7 +123,7 @@ bitly_retrieve_links_grouped <- function(access_token, group_id = NA, keyword = 
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access(), size = size, page = page, keyword = keyword,
+  query <- list(access_token = access_token, size = size, page = page, keyword = keyword,
                 query = search_query, created_before = created_before, created_after = created_after,
                 modified_after = modified_after, archived = archived)
 
@@ -160,7 +160,7 @@ bitly_retrieve_tags <- function(access_token, group_id = NA, showRequestURL = F)
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_groups_details <- doBearerTokenRequest("GET", tags_url, query, showURL = showRequestURL)
   df_groups_details <- data.frame(df_groups_details, stringsAsFactors = FALSE)
@@ -194,7 +194,7 @@ bitly_retrieve_group_click_metrics_by_countries <- function(access_token, group_
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_click_metrics <- doBearerTokenRequest("GET", metrics_url, query, showURL = showRequestURL)
   df_click_metrics <- data.frame(df_click_metrics, stringsAsFactors = FALSE)
@@ -230,7 +230,7 @@ bitly_retrieve_group_click_metrics_by_devices <- function(access_token, group_id
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_click_metrics_devices <- doBearerTokenRequest("GET", metrics_devices_url, query, showURL = showRequestURL)
   df_click_metrics_devices <- data.frame(df_click_metrics_devices, stringsAsFactors = FALSE)
@@ -267,7 +267,7 @@ bitly_retrieve_group_click_metrics_by_cities <- function(access_token, group_id 
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_click_metrics_cities <- doBearerTokenRequest("GET", metrics_cities_url, query, showURL = showRequestURL)
   df_click_metrics_cities <- data.frame(df_click_metrics_cities, stringsAsFactors = FALSE)
@@ -303,7 +303,7 @@ bitly_retrieve_group_click_metrics_by_ref_networks <- function(access_token, gro
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_click_metrics_net <- doBearerTokenRequest("GET", metrics_ref_net_url, query, showURL = showRequestURL)
 
@@ -343,7 +343,7 @@ bitly_retrieve_group_shorten_counts <- function(access_token, group_id = NA, sho
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_short_co <- doBearerTokenRequest("GET", gr_short_counts_url, query, showURL = showRequestURL)
   df_short_co <- data.frame(df_short_co, stringsAsFactors = FALSE)
@@ -376,7 +376,7 @@ bitly_retrieve_group_shorten_counts <- function(access_token, group_id = NA, sho
 bitly_retrieve_groups <- function(access_token, organization_id = NULL, showRequestURL = F) {
   groups_url <- "https://api-ssl.bitly.com/v4/groups/"
 
-  query <- list(access_token = bitly_auth_access(), organization_guid = organization_id)
+  query <- list(access_token = access_token, organization_guid = organization_id)
 
   df_groups_details <- doBearerTokenRequest("GET", groups_url, query, showURL = showRequestURL)
   df_groups_details <- data.frame(df_groups_details, stringsAsFactors = FALSE)
@@ -423,7 +423,7 @@ bitly_retrieve_sorted_links <- function(access_token, group_id = NA, to_sort_by 
     stop("group_id and to_sort_by must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access(), unit = unit, units = units,
+  query <- list(access_token = access_token, unit = unit, units = units,
                 unit_reference = unit_reference, size = size)
 
   df_sorted_links <- doBearerTokenRequest("GET", url = sorted_links_group_url, queryParameters = query,
@@ -467,7 +467,7 @@ bitly_update_group <- function(access_token, group_id = NA, name = NA, organizat
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
   update_body <- list(name = name, organization_guid = organization_id)
 
   df_update_pref <- doBearerTokenRequest("PATCH", url = upd_group_url, queryParameters = query,
@@ -512,7 +512,7 @@ bitly_retrieve_group <- function(access_token, group_id = NA, showRequestURL = F
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access(), group_guid = group_id)
+  query <- list(access_token = access_token, group_guid = group_id)
 
   df_group_details <- doBearerTokenRequest("GET", url = group_url, queryParameters = query, showURL = showRequestURL)
   df_group_details <- data.frame(t(unlist(df_group_details)), stringsAsFactors = FALSE)

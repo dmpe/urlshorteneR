@@ -9,10 +9,10 @@
 #'
 #' @import httr2 jsonlite
 #' @export
-bitly_bsds <- function(showRequestURL = F) {
+bitly_bsds <- function(access_token, showRequestURL = F) {
   url_bsds <- "https://api-ssl.bitly.com/v4/bsds"
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_bsds <- doBearerTokenRequest("GET", url = url_bsds, queryParameters = query, showURL = showRequestURL)
 
@@ -42,7 +42,7 @@ bitly_bsds <- function(showRequestURL = F) {
 #' 
 #' @import httr2 jsonlite
 #' @export
-bitly_bsds_overrides <- function(group_id = NA, showRequestURL = F) {
+bitly_bsds_overrides <- function(access_token, group_id = NA, showRequestURL = F) {
 
   if (is.string(group_id)) {
     url_bsds_overrides <- paste0("https://api-ssl.bitly.com/v4/groups", group_id, "/overrides")
@@ -50,7 +50,7 @@ bitly_bsds_overrides <- function(group_id = NA, showRequestURL = F) {
     stop("group_id must not be empty string, NA or NULL")
   }
 
-  query <- list(access_token = bitly_auth_access())
+  query <- list(access_token = access_token)
 
   df_bsds_overrides <- doBearerTokenRequest("GET", url = url_bsds_overrides, queryParameters = query, showURL = showRequestURL)
   return(df_bsds_overrides)
