@@ -1,4 +1,5 @@
 name: Mac M1 Runner
+on: push
 jobs:
   setup:
     runs-on: ubuntu-latest
