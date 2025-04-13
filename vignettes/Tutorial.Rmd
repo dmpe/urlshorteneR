@@ -13,7 +13,7 @@ editor_options:
 
 `urlshorteneR` wraps 2 URL services `Bit.ly` and its 2 friends `is.gd` as well as `v.gd`. 
 For Bit.ly, in order to shorten URLs and downloading useful statistics about them, you have to authenticate 
-using Bearer Token, for which you need user account and API keys..
+using Bearer Token, for which you need user account and API key.
 
 For 2 other services `is.gd` & `v.gd`, there is no authentication needed. Just create desired short links, see below.
 
