@@ -3,6 +3,8 @@ on: push
 jobs:
   setup:
     runs-on: ubuntu-latest
+    outputs:
+      platforms: ${{ steps.rhub-setup.outputs.platforms }}
     steps:
     # NO NEED TO CHECKOUT HERE
     - uses: r-hub/actions/setup@v1
@@ -16,12 +18,13 @@ jobs:
     name: apple-mac
     strategy:
       fail-fast: false
-
+      matrix:
+        config: ${{ fromJson(needs.setup.outputs.platforms) }}
     steps:
       - uses: r-hub/actions/checkout@v1
       - uses: r-hub/actions/setup-r@v1
         with:
-          job-config: {"name":"m1-san","description":"ASAN + UBSAN on macOS","cran-names":["M1-SAN"],"aliases":[],"type":"os","os-type":"macOS","os":"macos-latest","arch":"arm64","r-version":"devel","pre-check":["mac-asan.sh"],"label":"m1-san (R-devel)"}
+          job-config: ${{ matrix.config.job-config }}
           token: ${{ secrets.RHUB_TOKEN }}
       - uses: r-hub/actions/platform-info@v1
         with:
