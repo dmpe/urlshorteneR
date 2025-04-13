@@ -4,7 +4,7 @@
 \alias{is_bitly_user_premium_holder}
 \title{Check if authenticated user holds premium account}
 \usage{
-is_bitly_user_premium_holder(access_token)
+is_bitly_user_premium_holder()
 }
 \description{
 Check if authenticated user holds premium account

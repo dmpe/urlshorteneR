@@ -74,7 +74,7 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
   access_token <- Sys.getenv("bitly_access_token")
 
-  if (!is_bitly_user_premium_holder(access_token)) {
+  if (!is_bitly_user_premium_holder()) {
     warning(
       "Your account is not premium. Please report bugs in GitHub if this is not true. ",
       "We will now skip changing group guid."
@@ -97,11 +97,10 @@ bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestU
 #' Check if authenticated user holds premium account
 #'
 #' @seealso [bitly_user_info()]
-#' @inheritParams bitly_user_info
 #'
 #' @export
-is_bitly_user_premium_holder <- function(access_token) {
-  user_profile <- bitly_user_info(access_token)
+is_bitly_user_premium_holder <- function() {
+  user_profile <- bitly_user_info()
 
   return(user_profile$is_sso_user[[1]])
 }
