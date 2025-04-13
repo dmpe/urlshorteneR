@@ -5,15 +5,12 @@
 \title{Retrieve channels (Premium)}
 \usage{
 bitly_retrieve_channels(
-  access_token,
   group_guid = NULL,
   campaign_guid = NULL,
   showRequestURL = T
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{campaign_guid}{- string | A GUID for a Bitly campaign}

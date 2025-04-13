@@ -4,16 +4,9 @@
 \alias{bitly_update_user}
 \title{Update your name and/or default group ID}
 \usage{
-bitly_update_user(
-  access_token,
-  default_group_guid = NULL,
-  name = "",
-  showRequestURL = FALSE
-)
+bitly_update_user(default_group_guid = NULL, name = "", showRequestURL = FALSE)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{default_group_guid}{- group id to change, see NOTE}
 
 \item{name}{- username to change}
@@ -36,6 +29,7 @@ User operations such as changing your name or fetching basic user information ap
 
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 # this applies only for "free" users
 uu <- bitly_update_user(name = "Malc")
 

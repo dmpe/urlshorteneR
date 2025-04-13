@@ -5,7 +5,6 @@
 \title{Create channel (Premium)}
 \usage{
 bitly_create_channel(
-  access_token,
   group_guid = NULL,
   guid = NULL,
   name = NULL,
@@ -17,8 +16,6 @@ bitly_create_channel(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{guid}{- ID for a channel}

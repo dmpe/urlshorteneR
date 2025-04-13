@@ -5,7 +5,6 @@
 \title{Update a Bitlink}
 \usage{
 bitly_update_bitlink(
-  access_token,
   bitlink = NULL,
   archived = NULL,
   tags = NULL,
@@ -23,8 +22,6 @@ bitly_update_bitlink(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{archived}{- string | Default: "off" | Enum:"on" "off" "both" | Whether or not to include archived bitlinks}
@@ -59,6 +56,7 @@ Update fields in the Bitlink
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_update_bitlink(bitlink = "bit.ly/DPetrov", title = "novy titulek")
 
 ## hash is the one which is only returned. Dont use

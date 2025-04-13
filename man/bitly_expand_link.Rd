@@ -4,12 +4,16 @@
 \alias{bitly_expand_link}
 \title{Expand a Bitlink}
 \usage{
-bitly_expand_link(access_token, bitlink_id = NULL, showRequestURL = FALSE)
+bitly_expand_link(
+  bitlink_id = NULL,
+  access_token = NULL,
+  showRequestURL = FALSE
+)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink_id}{- string}
+
+\item{access_token}{- bearer token which might be also provided directly}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
@@ -23,6 +27,7 @@ This endpoint returns public information for a Bitlink.
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_expand_link(bitlink_id = "bit.ly/DPetrov")
 bitly_expand_link(bitlink_id = "on.natgeo.com/1bEVhwE")
 

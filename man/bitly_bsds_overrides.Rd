@@ -4,11 +4,9 @@
 \alias{bitly_bsds_overrides}
 \title{Branded Short Domains Group Overrides (Premium)}
 \usage{
-bitly_bsds_overrides(access_token, group_id = NA, showRequestURL = F)
+bitly_bsds_overrides(group_id = NA, showRequestURL = F)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
@@ -19,6 +17,7 @@ Retrieves all account overrides matching specified group_guid and bsd query filt
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 ui <- bitly_user_info(showRequestURL = TRUE)
 bsds_over <- bitly_bsds_overrides(group_id = ui$default_group_guid[1])
 }

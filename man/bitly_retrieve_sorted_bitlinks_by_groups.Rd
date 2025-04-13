@@ -5,7 +5,6 @@
 \title{Retrieve Sorted Bitlinks for Group}
 \usage{
 bitly_retrieve_sorted_bitlinks_by_groups(
-  access_token,
   group_guid = NULL,
   unit = "day",
   units = -1,
@@ -16,8 +15,6 @@ bitly_retrieve_sorted_bitlinks_by_groups(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{unit}{- A unit of time}
@@ -40,6 +37,7 @@ This will retrieve a paginated response for Bitlinks that are sorted for the Gro
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_sorted_bitlinks_by_groups(group_guid = "", sort = "clicks")
 }
 }

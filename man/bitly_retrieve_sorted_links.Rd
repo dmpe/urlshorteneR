@@ -5,7 +5,6 @@
 \title{Retrieve Sorted Bitlinks for Group}
 \usage{
 bitly_retrieve_sorted_links(
-  access_token,
   group_id = NA,
   to_sort_by = "clicks",
   unit = "day",
@@ -16,8 +15,6 @@ bitly_retrieve_sorted_links(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{to_sort_by}{- a required string | Enum: "clicks" | The type of sorting that you would like to do}

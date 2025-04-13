@@ -5,7 +5,6 @@
 \title{Create a short Bitlink}
 \usage{
 bitly_create_bitlink(
-  access_token,
   long_url = NULL,
   domain = "bit.ly",
   title = NULL,
@@ -17,8 +16,6 @@ bitly_create_bitlink(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{long_url}{- required, a long URL to be shortened (example: https://www.idnes.cz).
 Must contain http/https}
 
@@ -81,6 +78,7 @@ from any user input before shortening.
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_create_bitlink(long_url = "http://slovnik.seznam.cz/")
 }
 

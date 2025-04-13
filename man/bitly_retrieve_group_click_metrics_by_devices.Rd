@@ -5,14 +5,11 @@
 \title{Get Click Metrics for a specified group by devices (Premium)}
 \usage{
 bitly_retrieve_group_click_metrics_by_devices(
-  access_token,
   group_id = NA,
   showRequestURL = F
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

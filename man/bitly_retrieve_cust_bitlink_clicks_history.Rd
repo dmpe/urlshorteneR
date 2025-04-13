@@ -5,14 +5,11 @@
 \title{Get Clicks for a Custom Bitlink's Entire History (Premium)}
 \usage{
 bitly_retrieve_cust_bitlink_clicks_history(
-  access_token,
   custom_bitlink = NULL,
   showRequestURL = FALSE
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
@@ -23,6 +20,7 @@ Returns the click counts for the specified link. This returns an array with clic
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_cust_bitlink_clicks_history(custom_bitlink = "es.pn/SuperBowl")
 }
 

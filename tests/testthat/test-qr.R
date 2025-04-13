@@ -10,7 +10,9 @@ dotenv::load_dot_env("r.secret")
 context("QR Codes of Bit.ly")
 
 test_that("method creates a Bitlink based on a long URL.", {
-  ll <- bitly_qr_create_code(access_token = Sys.getenv("access_token"), title = "google.com", 
-                             group_guid = "Be2oejZbDDc", bitly_link = "bit.ly/abc1234")
+  ll <- bitly_qr_create_code(
+    title = "google.com",
+    group_guid = "Be2oejZbDDc", bitly_link = "bit.ly/abc1234"
+  )
   expect_equal(dim(ll)[[2]], 12)
 })

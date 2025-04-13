@@ -5,7 +5,6 @@
 \title{Get Metrics for a Bitlink by referrers by domain}
 \usage{
 bitly_retrieve_metrics_by_referrers_by_domain(
-  access_token,
   bitlink = NULL,
   size = 50,
   unit_reference = NULL,
@@ -15,8 +14,6 @@ bitly_retrieve_metrics_by_referrers_by_domain(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{size}{- string |  Default: 50 | The quantity of items to be be returned}
@@ -37,6 +34,7 @@ This endpoint will group referrers metrics about a single Bitlink.
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_metrics_by_referrers_by_domain(
   bitlink = "bit.ly/DPetrov", unit = "day",
   units = -1, size = 100

@@ -5,14 +5,11 @@
 \title{Retrieve OAuth App}
 \usage{
 bitly_app_details(
-  access_token,
   client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8",
   showRequestURL = F
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{client_id}{- The client ID of an OAuth app}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

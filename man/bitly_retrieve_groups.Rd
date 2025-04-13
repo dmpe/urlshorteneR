@@ -4,11 +4,9 @@
 \alias{bitly_retrieve_groups}
 \title{Retrieve a list of all groups}
 \usage{
-bitly_retrieve_groups(access_token, organization_id = NULL, showRequestURL = F)
+bitly_retrieve_groups(organization_id = NULL, showRequestURL = F)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{organization_id}{- an optional string parameter | A GUID for a Bitly organization}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been

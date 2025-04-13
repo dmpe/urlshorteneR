@@ -5,14 +5,11 @@
 \title{Get Metrics for a Custom Bitlink by destination (Premium)}
 \usage{
 bitly_retrieve_destination_metrics(
-  access_token,
   custom_bitlink = NULL,
   showRequestURL = FALSE
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
@@ -23,6 +20,7 @@ Get Click Metrics for a Custom Bitlink by historical Bitlink destinations
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_destination_metrics(custom_bitlink = "es.pn/SuperBowl")
 }
 

@@ -101,7 +101,7 @@ doBearerTokenRequest <- function(verb = "", url = NULL, access_token = NULL, que
           "Content-Type" = "application/json"
         ) |>
         req_perform()
-      }
+    }
   )
   return(processResponse(resp))
 }

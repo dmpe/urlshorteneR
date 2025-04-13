@@ -5,15 +5,12 @@
 \title{Add Custom Bitlink (Premium)}
 \usage{
 bitly_add_cust_bitlink(
-  access_token,
   bitlink_id = NULL,
   custom_bitlink = NULL,
   showRequestURL = FALSE
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink_id}{- string}
 
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
@@ -35,6 +32,7 @@ backhalf. An example of a link that would live in this section is es.pn/SuperBow
 
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_add_cust_bitlink(custom_bitlink = "es.pn/SuperBowl", bitlink_id = "")
 }
 

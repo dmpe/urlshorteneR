@@ -5,7 +5,6 @@
 \title{Update A Channel (Premium)}
 \usage{
 bitly_update_channel(
-  access_token,
   channel_guid = NULL,
   group_guid = NULL,
   guid = NULL,
@@ -18,8 +17,6 @@ bitly_update_channel(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{channel_guid}{- GUID of a target channel}
 
 \item{group_guid}{- a GUID for a Bitly group}

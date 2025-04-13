@@ -49,15 +49,15 @@ shortenerAddin <- function() {
       if (shortener_provider() == "bit.ly") {
         shiny::tagList(
           shiny::textInput("token",
-                           label = "Bearer Token", value = "",
-                           width = "100%"
+            label = "Bearer Token", value = "",
+            width = "100%"
           )
         )
       } else {
         return(NULL)
       }
     })
-    
+
     # Shorten links
     shiny::observeEvent(input$shorten, {
       shiny::req(input$url)

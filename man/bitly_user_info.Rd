@@ -4,11 +4,9 @@
 \alias{bitly_user_info}
 \title{Retrieve information for the current authenticated user}
 \usage{
-bitly_user_info(access_token, showRequestURL = FALSE)
+bitly_user_info(showRequestURL = FALSE)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }
@@ -41,6 +39,7 @@ User operations such as changing your name or fetching basic user information ap
 
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 ui <- bitly_user_info(showRequestURL = TRUE)
 }
 

@@ -5,7 +5,6 @@
 \title{Retrieve Bitlinks by Group}
 \usage{
 bitly_retrieve_bitlinks_by_groups(
-  access_token,
   group_guid = NULL,
   size = 50,
   page = 1,
@@ -26,8 +25,6 @@ bitly_retrieve_bitlinks_by_groups(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_guid}{- a GUID for a Bitly group}
 
 \item{size}{- The quantity of items to be be returned}
@@ -72,6 +69,7 @@ Retrieve a paginated collection of Bitlinks for a Group
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_bitlinks_by_groups(group_guid = "bit.ly/DPetrov", keyword = "novy titulek")
 }
 }

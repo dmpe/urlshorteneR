@@ -4,11 +4,9 @@
 \alias{bitly_retrieve_bitlink}
 \title{Retrieve a Bitlink}
 \usage{
-bitly_retrieve_bitlink(access_token, bitlink = NULL, showRequestURL = FALSE)
+bitly_retrieve_bitlink(bitlink = NULL, showRequestURL = FALSE)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
@@ -19,6 +17,7 @@ This endpoint returns information for a Bitlink.
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_bitlink(bitlink = "cnn.it/2HomWGB")
 }
 

@@ -10,7 +10,6 @@
 #' @param channel_guids - a list of strings
 #' @param description - description of campaign
 #' @param name - its name
-#' @param access_token - bearer token for authentication
 #'
 #' @inheritParams bitly_user_info
 #' @inheritParams bitly_retrieve_group
@@ -29,7 +28,7 @@
 #' @import httr2 jsonlite lubridate
 #'
 #' @export
-bitly_create_campaigns <- function(access_token, group_guid = NULL, channel_guids = NULL, description = NULL,
+bitly_create_campaigns <- function(group_guid = NULL, channel_guids = NULL, description = NULL,
                                    name = NULL, showRequestURL = T) {
   create_camp <- "https://api-ssl.bitly.com/v4/campaigns"
 
@@ -39,7 +38,7 @@ bitly_create_campaigns <- function(access_token, group_guid = NULL, channel_guid
   )
 
   df_create_camps <- doBearerTokenRequest("POST", create_camp,
-    queryParameters = body_req_query, access_token = access_token,
+    queryParameters = body_req_query, access_token = Sys.getenv("bitly_access_token"),
     showURL = showRequestURL
   )
 
@@ -69,12 +68,12 @@ bitly_create_campaigns <- function(access_token, group_guid = NULL, channel_guid
 #'
 #' @import httr2 jsonlite lubridate
 #' @export
-bitly_retrieve_campaigns <- function(access_token, group_guid = NULL, showRequestURL = T) {
+bitly_retrieve_campaigns <- function(group_guid = NULL, showRequestURL = T) {
   get_camp <- "https://api-ssl.bitly.com/v4/campaigns"
 
   query <- list(group_guid = group_guid)
 
-  df_get_camps <- doBearerTokenRequest("GET", get_camp, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+  df_get_camps <- doBearerTokenRequest("GET", get_camp, access_token = Sys.getenv("bitly_access_token"), queryParameters = query, showURL = showRequestURL)
 
   df_get_camps <- data.frame(df_get_camps$campaigns)
   df_get_camps$created <- ymd_hms(df_get_camps$created, tz = "UTC")
@@ -109,7 +108,7 @@ bitly_retrieve_campaigns <- function(access_token, group_guid = NULL, showReques
 #'
 #' @import httr2 jsonlite lubridate
 #' @export
-bitly_create_channel <- function(access_token, group_guid = NULL, guid = NULL, name = NULL, modified = NULL,
+bitly_create_channel <- function(group_guid = NULL, guid = NULL, name = NULL, modified = NULL,
                                  created = NULL, campaign_guid = NULL, bitlink_id = NULL,
                                  showRequestURL = T) {
   create_channel <- "https://api-ssl.bitly.com/v4/channels"
@@ -122,7 +121,7 @@ bitly_create_channel <- function(access_token, group_guid = NULL, guid = NULL, n
   )
 
   df_create_channel <- doBearerTokenRequest("POST", create_channel,
-    access_token = access_token, queryParameters = body_req_query,
+    access_token = Sys.getenv("bitly_access_token"), queryParameters = body_req_query,
     showURL = showRequestURL
   )
 
@@ -154,12 +153,12 @@ bitly_create_channel <- function(access_token, group_guid = NULL, guid = NULL, n
 #'
 #' @import httr2 jsonlite lubridate
 #' @export
-bitly_retrieve_channels <- function(access_token, group_guid = NULL, campaign_guid = NULL, showRequestURL = T) {
+bitly_retrieve_channels <- function(group_guid = NULL, campaign_guid = NULL, showRequestURL = T) {
   get_channels <- "https://api-ssl.bitly.com/v4/channels"
 
   query <- list(group_guid = group_guid, campaign_guid = campaign_guid)
 
-  df_get_channels <- doBearerTokenRequest("GET", get_channels, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+  df_get_channels <- doBearerTokenRequest("GET", get_channels, access_token = Sys.getenv("bitly_access_token"), queryParameters = query, showURL = showRequestURL)
 
   df_get_channels <- data.frame(df_get_channels$channels)
   df_get_channels$created <- ymd_hms(df_get_channels$created, tz = "UTC")
@@ -188,12 +187,12 @@ bitly_retrieve_channels <- function(access_token, group_guid = NULL, campaign_gu
 #'
 #' @import httr2 jsonlite lubridate
 #' @export
-bitly_retrieve_campaign <- function(access_token, campaign_guid = NULL, showRequestURL = T) {
+bitly_retrieve_campaign <- function(campaign_guid = NULL, showRequestURL = T) {
   get_camp <- paste0("https://api-ssl.bitly.com/v4/campaigns/", campaign_guid)
 
   query <- list(campaign_guid = campaign_guid)
 
-  df_get_camp <- doBearerTokenRequest("GET", get_camp, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+  df_get_camp <- doBearerTokenRequest("GET", get_camp, access_token = Sys.getenv("bitly_access_token"), queryParameters = query, showURL = showRequestURL)
 
   df_get_camp <- data.frame(df_get_camp)
   df_get_camp$created <- ymd_hms(df_get_camp$created, tz = "UTC")
@@ -223,12 +222,12 @@ bitly_retrieve_campaign <- function(access_token, campaign_guid = NULL, showRequ
 #'
 #' @import httr2 jsonlite lubridate
 #' @export
-bitly_retrieve_channel <- function(access_token, channel_guid = NULL, showRequestURL = T) {
+bitly_retrieve_channel <- function(channel_guid = NULL, showRequestURL = T) {
   get_channel <- paste0("https://api-ssl.bitly.com/v4/channels/", channel_guid)
 
   query <- list(channel_guid = channel_guid)
 
-  df_get_channel <- doBearerTokenRequest("GET", get_channel, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+  df_get_channel <- doBearerTokenRequest("GET", get_channel, access_token = Sys.getenv("bitly_access_token"), queryParameters = query, showURL = showRequestURL)
 
   df_get_channel <- data.frame(df_get_channel)
   df_get_channel$created <- ymd_hms(df_get_channel$created, tz = "UTC")
@@ -264,7 +263,7 @@ bitly_retrieve_channel <- function(access_token, channel_guid = NULL, showReques
 #' @import httr2 jsonlite lubridate
 #'
 #' @export
-bitly_update_campaign <- function(access_token, campaign_guid = NULL, group_guid = NULL, channel_guids = NULL, description = NULL,
+bitly_update_campaign <- function(campaign_guid = NULL, group_guid = NULL, channel_guids = NULL, description = NULL,
                                   name = NULL, showRequestURL = T) {
   update_campaign <- paste0("https://api-ssl.bitly.com/v4/campaigns", campaign_guid)
 
@@ -274,7 +273,7 @@ bitly_update_campaign <- function(access_token, campaign_guid = NULL, group_guid
   )
 
   df_update_camps <- doBearerTokenRequest("PATCH", update_campaign,
-    access_token = access_token, patch_body = body_req_query,
+    access_token = Sys.getenv("bitly_access_token"), patch_body = body_req_query,
     showURL = showRequestURL
   )
 
@@ -308,7 +307,7 @@ bitly_update_campaign <- function(access_token, campaign_guid = NULL, group_guid
 #' @import httr2 jsonlite lubridate
 #'
 #' @export
-bitly_update_channel <- function(access_token, channel_guid = NULL, group_guid = NULL, guid = NULL, name = NULL, modified = NULL,
+bitly_update_channel <- function(channel_guid = NULL, group_guid = NULL, guid = NULL, name = NULL, modified = NULL,
                                  created = NULL, campaign_guid = NULL, bitlink_id = NULL,
                                  showRequestURL = T) {
   update_channels <- paste0("https://api-ssl.bitly.com/v4/channels", channel_guid)
@@ -319,7 +318,7 @@ bitly_update_channel <- function(access_token, channel_guid = NULL, group_guid =
   )
 
   df_update_camp <- doBearerTokenRequest("PATCH", update_channels,
-    access_token = access_token, patch_body = body_req_query,
+    access_token = Sys.getenv("bitly_access_token"), patch_body = body_req_query,
     showURL = showRequestURL
   )
 

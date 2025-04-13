@@ -33,7 +33,7 @@ jobs:
           job-config: ${{ matrix.config.job-config }}
         
       - run: |
-          brew install libtool
+          brew install libtool # autoconf, automake
 
       - uses: r-hub/actions/setup-deps@v1
         with:

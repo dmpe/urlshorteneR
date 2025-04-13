@@ -5,7 +5,6 @@
 \title{Get Metrics for a Bitlink by referring domains}
 \usage{
 bitly_user_metrics_referring_domains(
-  access_token,
   bitlink = NULL,
   unit = "day",
   units = -1,
@@ -15,8 +14,6 @@ bitly_user_metrics_referring_domains(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{unit}{- string | Default: "day", Enum: "minute" "hour" "day" "week" "month" | A unit of time}
@@ -41,6 +38,7 @@ This endpoint will rollup the click counts to a referrer about a single Bitlink.
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_user_metrics_referring_domains(
   bitlink = "cnn.it/2HomWGB", unit = "month", units = -1,
   size = 100

@@ -3,29 +3,33 @@ library("knitr")
 library(urlshorteneR)
 
 if (interactive()) {
-  ui <- bitly_user_info(access_token = Sys.getenv("access_token"), showRequestURL = TRUE)
+  bitly_bearerToken("access token")
+  ui <- bitly_user_info(showRequestURL = TRUE)
   is_bitly_user_premium_holder()
 }
 
 ## -----------------------------------------------------------------------------
 if (interactive()) {
-  bitly_update_user(access_token = Sys.getenv("access_token"), name = "John Malc", showRequestURL = TRUE)
+  bitly_update_user(name = "John Malc", showRequestURL = TRUE)
 }
 
 ## -----------------------------------------------------------------------------
 if (interactive()) {
+  bitly_bearerToken("access token")
   bitly_app_details()
 }
 
 ## -----------------------------------------------------------------------------
 if (interactive()) {
-  bitly_retrieve_group(access_token = Sys.getenv("access_token"), ui$default_group_guid)
-  bitly_retrieve_groups(access_token = Sys.getenv("access_token"))
+  bitly_bearerToken("access token")
+  bitly_retrieve_group(ui$default_group_guid)
+  bitly_retrieve_groups()
 }
 
 ## -----------------------------------------------------------------------------
 if (interactive()) {
-  bitly_user_info(access_token = Sys.getenv("access_token"))
+  bitly_bearerToken("access token")
+  bitly_user_info()
 }
 
 ## -----------------------------------------------------------------------------
@@ -41,7 +45,7 @@ if (interactive()) {
 
   fin <- NULL
   for (p in 1:length(df$link)) {
-    fin[[p]] <- bitly_create_bitlink(access_token = Sys.getenv("access_token"), long_url = df$link[p])
+    fin[[p]] <- bitly_create_bitlink(long_url = df$link[p])
   }
 }
 

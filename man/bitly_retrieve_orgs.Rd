@@ -4,10 +4,7 @@
 \alias{bitly_retrieve_orgs}
 \title{Retrieve all Organizations}
 \usage{
-bitly_retrieve_orgs(access_token)
-}
-\arguments{
-\item{access_token}{- bearer token for authentication}
+bitly_retrieve_orgs()
 }
 \description{
 Retrieve a list of organizations
@@ -19,6 +16,7 @@ Organizations are part of our hierarchy. This is the top level where a group and
 
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 ros <- bitly_retrieve_orgs()
 }
 }

@@ -4,11 +4,9 @@
 \alias{bitly_retrieve_org_shorten_counts}
 \title{Retrieve Organization Shorten Counts}
 \usage{
-bitly_retrieve_org_shorten_counts(access_token, organization_id = NULL)
+bitly_retrieve_org_shorten_counts(organization_id = NULL)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{organization_id}{- a required string | A GUID for a Bitly organization.
 You may also simply pass "" (double quotes), but this should be avoided at all costs.}
 }
@@ -25,8 +23,9 @@ Organizations are part of our hierarchy. This is the top level where a group and
 
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 all_orgs <- bitly_retrieve_orgs()
-osc <- bitly_org_shorten_counts(access_token = access_token, organization_id = all_orgs$guid)
+osc <- bitly_org_shorten_counts(organization_id = all_orgs$guid)
 df_org_short_counts <- data.frame(osc)
 }
 

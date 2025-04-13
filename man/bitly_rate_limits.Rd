@@ -4,11 +4,9 @@
 \alias{bitly_rate_limits}
 \title{bitly_rate_limits}
 \usage{
-bitly_rate_limits(access_token, showRequestURL = F)
+bitly_rate_limits(showRequestURL = F)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{showRequestURL}{- an optional T/F value to whether show URL which has been
 build and requested from server. For debug purposes, default FALSE.}
 }

@@ -5,7 +5,6 @@
 \title{Get Clicks for a Bitlink}
 \usage{
 bitly_retrieve_clicks(
-  access_token,
   bitlink = NULL,
   size = 50,
   unit_reference = NULL,
@@ -15,8 +14,6 @@ bitly_retrieve_clicks(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{size}{- The quantity of items to be be returned}
@@ -37,6 +34,7 @@ This will return the click counts for a specified Bitlink. This returns an array
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_clicks(bitlink = "cnn.it/2HomWGB", unit = "day", units = -1, size = 100)
 }
 }

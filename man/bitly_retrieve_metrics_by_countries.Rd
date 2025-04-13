@@ -5,7 +5,6 @@
 \title{Get Metrics for a Bitlink by countries}
 \usage{
 bitly_retrieve_metrics_by_countries(
-  access_token,
   bitlink = NULL,
   size = 100,
   unit = NULL,
@@ -15,8 +14,6 @@ bitly_retrieve_metrics_by_countries(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{bitlink}{- required, a Bitlink made of the domain and hash}
 
 \item{size}{- The quantity of items to be be returned}
@@ -37,6 +34,7 @@ a single Bitlink.
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_retrieve_metrics_by_countries(
   bitlink = "bit.ly/DPetrov", unit = "day", units = -1,
   size = 100

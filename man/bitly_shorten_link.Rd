@@ -5,16 +5,14 @@
 \title{Shorten a Link}
 \usage{
 bitly_shorten_link(
-  access_token,
   domain = "bit.ly",
   group_guid = NULL,
   long_url = NULL,
+  access_token = NULL,
   showRequestURL = FALSE
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{domain}{- (optional) the short domain to use; either bit.ly, j.mp, or bitly.com or
 a custom short domain. The default for this parameter is the short domain selected by each
 user in their bitly account settings. Passing a specific domain via this parameter will override
@@ -25,6 +23,8 @@ the default settings.}
 \item{long_url}{- required, a long URL to be shortened (example: https://www.idnes.cz).
 Must contain http/https}
 
+\item{access_token}{- bearer token which might be also provided directly}
+
 \item{showRequestURL}{- show URL which has been build and requested from server. For debug
 purposes.}
 }
@@ -34,6 +34,7 @@ Convert a long url to a Bitlink
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_shorten_link(url = "http://www.seznam.cz/")
 bitly_shorten_link(url = "http://www.seznam.cz/", showRequestURL = TRUE)
 

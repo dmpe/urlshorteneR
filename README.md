@@ -24,6 +24,7 @@ GET https://dev.bitly.com/api-reference/#getOrganization | :heavy_check_mark:
 GET https://dev.bitly.com/api-reference/#getOrganizations | :heavy_check_mark:
 GET https://dev.bitly.com/api-reference/#getOrganizationShortenCounts | :heavy_check_mark:
 GET https://dev.bitly.com/api-reference/#getPlanLimits | :heavy_check_mark:
+GET https://dev.bitly.com/api-reference/#getOrganizationShortenCountsByGroup | :heavy_check_mark:
 
 https://dev.bitly.com/v4/#tag/BSDs DONE | Implemented :heavy_check_mark:
 ----------- | -------------
@@ -55,6 +56,7 @@ GET https://api-ssl.bitly.com/v4/groups | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | :heavy_check_mark:
 PATCH https://api-ssl.bitly.com/v4/groups/{group_guid} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}  | :heavy_check_mark:
+GET https://api-ssl.bitly.com/v4/groups/{group_guid}/feature_usage | :heavy_check_mark:
 
 
 https://dev.bitly.com/v4/#tag/Campaigns DONE | Implemented :heavy_check_mark:/🚫
@@ -89,6 +91,10 @@ GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referrers_by_domains | :heav
 GET https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/referring_domains | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks/{sort} | :heavy_check_mark:
 GET https://api-ssl.bitly.com/v4/groups/{group_guid}/bitlinks | :heavy_check_mark:
+
+https://dev.bitly.com/api-reference/#createQRCodePublic Not finished | Implemented :heavy_check_mark:/🚫
+------------- | -------------
+GET https://api-ssl.bitly.com/v4/qr-codes | :heavy_check_mark:
 
 
 ## Help needed !!!

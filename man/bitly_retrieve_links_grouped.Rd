@@ -5,7 +5,6 @@
 \title{Retrieve Bitlinks by Group}
 \usage{
 bitly_retrieve_links_grouped(
-  access_token,
   group_id = NA,
   keyword = NULL,
   search_query = NULL,
@@ -26,8 +25,6 @@ bitly_retrieve_links_grouped(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{keyword}{- Custom keyword to filter on history entries}

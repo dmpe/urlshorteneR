@@ -2,7 +2,6 @@
 #'
 #' @param showRequestURL - an optional T/F value to whether show URL which has been
 #' build and requested from server. For debug purposes, default FALSE.
-#' @param access_token - bearer token for authentication
 #'
 #' @section User:
 #' User operations such as changing your name or fetching basic user information apply only to the authenticated user.
@@ -21,15 +20,16 @@
 #'
 #' @examples
 #' \dontrun{
+#' bitly_bearerToken("access token")
 #' ui <- bitly_user_info(showRequestURL = TRUE)
 #' }
 #'
 #' @import httr2 stringr lubridate
 #' @export
-bitly_user_info <- function(access_token, showRequestURL = FALSE) {
+bitly_user_info <- function(showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
 
-  df_user_info <- doBearerTokenRequest(verb = "GET", url = user_info_url, access_token = access_token, showURL = showRequestURL)
+  df_user_info <- doBearerTokenRequest(verb = "GET", url = user_info_url, access_token = Sys.getenv("bitly_access_token"), showURL = showRequestURL)
 
   df_user_info_data <- data.frame(df_user_info)
 
@@ -59,6 +59,7 @@ bitly_user_info <- function(access_token, showRequestURL = FALSE) {
 #'
 #' @examples
 #' \dontrun{
+#' bitly_bearerToken("access token")
 #' # this applies only for "free" users
 #' uu <- bitly_update_user(name = "Malc")
 #'
@@ -69,8 +70,9 @@ bitly_user_info <- function(access_token, showRequestURL = FALSE) {
 #' @import httr2 jsonlite lubridate
 #'
 #' @export
-bitly_update_user <- function(access_token, default_group_guid = NULL, name = "", showRequestURL = FALSE) {
+bitly_update_user <- function(default_group_guid = NULL, name = "", showRequestURL = FALSE) {
   user_info_url <- "https://api-ssl.bitly.com/v4/user"
+  access_token <- Sys.getenv("bitly_access_token")
 
   if (!is_bitly_user_premium_holder(access_token)) {
     warning(
@@ -113,12 +115,15 @@ is_bitly_user_premium_holder <- function(access_token) {
 #' @inheritParams bitly_user_info
 #'
 #' @export
-bitly_app_details <- function(access_token, client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
+bitly_app_details <- function(client_id = "be03aead58f23bc1aee6e1d7b7a1d99d62f0ede8", showRequestURL = F) {
   oauth_app_details <- paste0("https://api-ssl.bitly.com/v4/apps/", client_id)
 
   query <- list(client_id = client_id)
 
-  df_app_details <- doBearerTokenRequest("GET", url = oauth_app_details, access_token = access_token, queryParameters = query, showURL = showRequestURL)
+  df_app_details <- doBearerTokenRequest("GET",
+    url = oauth_app_details, access_token = Sys.getenv("bitly_access_token"),
+    queryParameters = query, showURL = showRequestURL
+  )
   df_app_details <- data.frame(df_app_details)
 
   return(df_app_details)
@@ -129,13 +134,12 @@ bitly_app_details <- function(access_token, client_id = "be03aead58f23bc1aee6e1d
 #' @inheritParams bitly_user_info
 #' @return \code{data.frame} of end points and their rate limits by action
 #' @export
-
-bitly_rate_limits <- function(access_token, showRequestURL = F) {
+bitly_rate_limits <- function(showRequestURL = F) {
   platform_lmt <- "https://api-ssl.bitly.com/v4/user/platform_limits"
 
   limits <- doBearerTokenRequest("GET",
     url = platform_lmt,
-    access_token = access_token,
+    access_token = Sys.getenv("bitly_access_token"),
     showURL = showRequestURL
   )
 

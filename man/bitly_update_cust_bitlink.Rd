@@ -5,15 +5,12 @@
 \title{Update Custom Bitlink (Premium)}
 \usage{
 bitly_update_cust_bitlink(
-  access_token,
   custom_bitlink = NULL,
   bitlink_id = NULL,
   showRequestURL = FALSE
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{custom_bitlink}{- A Custom Bitlink made of the domain and keyword}
 
 \item{bitlink_id}{- string}
@@ -26,6 +23,7 @@ Move a Keyword to a different Bitlink
 }
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 bitly_update_cust_bitlink(custom_bitlink = "es.pn/SuperBowl", bitlink_id = "")
 }
 

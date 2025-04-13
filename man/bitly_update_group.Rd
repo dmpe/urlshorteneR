@@ -5,7 +5,6 @@
 \title{Update a Group}
 \usage{
 bitly_update_group(
-  access_token,
   group_id = NA,
   name = NA,
   organization_id = NA,
@@ -13,8 +12,6 @@ bitly_update_group(
 )
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{group_id}{- a required string | A GUID for a Bitly group}
 
 \item{name}{- username to change}

@@ -4,11 +4,9 @@
 \alias{bitly_retrieve_org}
 \title{Retrieve a single Organization}
 \usage{
-bitly_retrieve_org(access_token, organization_id = NULL)
+bitly_retrieve_org(organization_id = NULL)
 }
 \arguments{
-\item{access_token}{- bearer token for authentication}
-
 \item{organization_id}{- a required string | A GUID for a Bitly organization.
 You may also simply pass "" (double quotes), but this should be avoided at all costs.}
 }
@@ -22,6 +20,7 @@ Organizations are part of our hierarchy. This is the top level where a group and
 
 \examples{
 \dontrun{
+bitly_bearerToken("access token")
 all_orgs <- bitly_retrieve_orgs()
 ro <- bitly_retrieve_org(organization_id = all_orgs$guid)
 }
