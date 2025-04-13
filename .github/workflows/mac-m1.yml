@@ -35,11 +35,11 @@ jobs:
       - run: |
           brew install libtool
 
-      # - uses: r-hub/actions/setup-deps@v1
-      #   with:
-      #     job-config: ${{ matrix.config.job-config }}
-      #     token: ${{ secrets.RHUB_TOKEN }}
-      # - uses: r-hub/actions/run-check@v1
-      #   with:
-      #     job-config: ${{ matrix.config.job-config }}
-      #     token: ${{ secrets.RHUB_TOKEN }}
+      - uses: r-hub/actions/setup-deps@v1
+        with:
+          job-config: ${{ matrix.config.job-config }}
+          token: ${{ secrets.RHUB_TOKEN }}
+      - uses: r-hub/actions/run-check@v1
+        with:
+          job-config: ${{ matrix.config.job-config }}
+          token: ${{ secrets.RHUB_TOKEN }}
