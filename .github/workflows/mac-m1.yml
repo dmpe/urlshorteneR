@@ -32,7 +32,8 @@ jobs:
           token: ${{ secrets.RHUB_TOKEN }}
           job-config: ${{ matrix.config.job-config }}
         
-      - run: brew install lib tool
+      - run: |
+          brew install libtool
 
       # - uses: r-hub/actions/setup-deps@v1
       #   with:
