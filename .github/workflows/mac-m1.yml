@@ -14,8 +14,9 @@ jobs:
 
   other-platforms:
     needs: setup
-    runs-on: m1-san
-    name: apple-mac
+    if: ${{ needs.setup.outputs.platforms != '[]' }}
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.label }}
     strategy:
       fail-fast: false
       matrix:
