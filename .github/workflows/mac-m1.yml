@@ -7,7 +7,7 @@ jobs:
     # NO NEED TO CHECKOUT HERE
     - uses: r-hub/actions/setup@v1
       with:
-        config: {"platforms":["1-san"]}
+        config: "m1-san"
       id: rhub-setup
 
   other-platforms:
