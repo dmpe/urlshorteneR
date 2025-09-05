@@ -23,7 +23,7 @@ For 2 other services `is.gd` & `v.gd`, there is no authentication needed. Just c
 
 Return some basic information about my user on Bit.ly. Additionally, is my account a "premium" one?
 
-```{r}
+```{r, eval=FALSE}
 library("knitr")
 library(urlshorteneR)
 
@@ -36,7 +36,7 @@ if (interactive()) {
 
 We can also decide to update my username with a different one.
 
-```{r}
+```{r, eval=FALSE}
 if (interactive()) {
   bitly_update_user(name = "John Malc", showRequestURL = TRUE)
 }
@@ -44,7 +44,7 @@ if (interactive()) {
 
 And what about the metadata about our OAUTH application?
 
-```{r}
+```{r, eval=FALSE}
 if (interactive()) {
   bitly_bearerToken("access token")
   bitly_app_details()
@@ -55,7 +55,7 @@ if (interactive()) {
 
 This retrieves information about a single group that user belongs to and and then about all groups that user are associated with.
 
-```{r}
+```{r, eval=FALSE}
 if (interactive()) {
   bitly_bearerToken("access token")
   bitly_retrieve_group(ui$default_group_guid)
@@ -69,7 +69,7 @@ Official API documentation <https://dev.bitly.com/api-reference>.
 
 The first method returns an information about myself.
 
-```{r}
+```{r, eval=FALSE}
 if (interactive()) {
   bitly_bearerToken("access token")
   bitly_user_info()
@@ -78,7 +78,7 @@ if (interactive()) {
 
 ### Custom Bitlinks
 
-```{r}
+```{r, eval=FALSE}
 if (interactive()) {
   df <- data.frame(
     pubDate = rep("2016-02-10", 4),

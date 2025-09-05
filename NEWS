@@ -2,6 +2,8 @@ For the current development, the user can
 see: https://github.com/dmpe/urlshorteneR
 
 ###
+September 2025 - Fix bug reported by user regarding v.gd function
+
 April 2025     - Major rewrite of the package, using `httr2` as REST backend.
                - Remove oAUTH2 authentication and replaced it with Bearer token authentication.
                - Removed RStudio Addins functionality to shorten and expand bit.ly links via clipboard, without any AuthN.

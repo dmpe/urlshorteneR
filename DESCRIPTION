@@ -4,8 +4,8 @@ Title: R Wrapper for the 'Bit.ly' and 'Is.gd'/'v.gd' URL Shortening
         Services
 Description: Allows using two URL shortening services, which also provide
     expanding and analytic functions. Specifically developed for 'Bit.ly' (which requires OAuth 2.0) and 'is.gd' (no API key).
-Version: 2.0.0
-Date: 2025-04-13
+Version: 2.1.0
+Date: 2025-09-06
 Authors@R: 
    c(
     person("John", "Malc", email = "cincenko@outlook.com", role = c("aut", "cre"),  comment = "@dmpe"),
@@ -13,16 +13,16 @@ Authors@R:
     person("Stephen", "Synchronicity", role = c("ctb"), comment="@yogat3ch"))
 Maintainer: John Malc <cincenko@outlook.com>
 Encoding: UTF-8
-Depends: R (>= 4.2)
-Imports: httr2 (>= 1.1.2), jsonlite (>= 2.0.0), stringr (>= 1.5.1),
-        lubridate (>= 1.9.4), assertthat (>= 0.2.1), shiny (>= 1.10.0),
-        clipr (>= 0.8.0), miniUI (>= 0.1.1.1), cli (>= 3.6.4)
-Suggests: roxygen2 (>= 7.3.2), knitr (>= 1.50), testthat (>= 3.2.3),
-        rmarkdown (>= 2.29), httpuv (>= 1.6.15), stringi (>= 1.8.7),
+Depends: R (>= 4.4)
+Imports: httr2 (>= 1.2.1), jsonlite (>= 2.0.0), stringr (>= 1.5.1),
+        lubridate (>= 1.9.4), assertthat (>= 0.2.1), shiny (>= 1.11.1),
+        clipr (>= 0.8.0), miniUI (>= 0.1.1.1), cli (>= 3.6.5)
+Suggests: roxygen2 (>= 7.3.3), knitr (>= 1.50), testthat (>= 3.2.3),
+        rmarkdown (>= 2.29), httpuv (>= 1.6.16), stringi (>= 1.8.7),
         covr (>= 3.6.4), lintr (>= 3.2.0), dotenv (>= 1.0.3)
 VignetteBuilder: knitr
 License: Apache License 2.0
 URL: https://github.com/dmpe/urlshorteneR
 BugReports: https://github.com/dmpe/urlshorteneR/issues
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 NeedsCompilation: no
